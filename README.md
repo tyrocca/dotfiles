@@ -44,6 +44,45 @@ rm /home/$USER/.tmux-conf
 ln -s /home/$USER/dotfiles/tmux/tmux.conf /home/$USER/.tmux.conf
 ```
 
+### Install zsh
+I just switched to zsh and I really like it. I use [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh)
+
+##### Installation:
+via curl
+```
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+```
+via wget
+```
+sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
+```
+Then make it the default shell with `chsh -s /bin/zsh`, if you can't do that, add this to your bash profile
+```
+export SHELL=/bin/zsh
+exec /bin/zsh -l
+```
+or do this
+```
+rm /home/$USER/.bash_profile
+ln -s /home/$USER/dotfiles/zsh/bash_profile /home/$USER/.bash_profile
+```
+
+You can also install my zshrc!
+```
+rm /home/$USER/.zshrc
+ln -s /home/$USER/dotfiles/zsh/zshrc /home/$USER/.zshrc
+```
+
+### Installing BASH things
+```
+rm /home/$USER/.bash_profile
+ln -s /home/$USER/dotfiles/bash/bash_profile /home/$USER/.bash_profile
+```
 
 
-
+### Quorum specific
+```
+cd quorum-site
+rm /home/$USER/quorum-site/.git/hooks/pre-commit
+ln -s /home/$USER/quorum-site/dotfiles/pre-commit /home/$USER/quorum-site/.git/hooks/pre-commit
+```
