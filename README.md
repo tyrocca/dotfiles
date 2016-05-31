@@ -32,4 +32,17 @@ ln -s /home/$USER/dotfiles/vim/vimrc /home/$USER/.vimrc
 vim +PluginInstall +qall
 ```
 
-### Installing ZSH
+### Installing Tmux
+If you don't have tmux install it
+- Ubuntu: `sudo apt-get install tmux`
+- Mac: `brew install tmux`
+
+link my config files
+```
+rm /home/$USER/.tmux-config
+ln -s /home/$USER/dotfiles/tmux/tmux.conf /home/$USER/tmux.conf
+```
+
+
+
+
