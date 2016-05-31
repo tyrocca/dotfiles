@@ -1,0 +1,5 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =3
+let g:netrw_dirhist_1='/home/ubuntu/quorum-api/ansible/plays/roles/find_ec2_image'
+let g:netrw_dirhist_2='/home/ubuntu/quorum-api/ansible/plays/roles/find_ec2_image/common'
+let g:netrw_dirhist_3='/home/ubuntu/quorum-api/ansible/plays/roles/find_ec2_image/common/tasks'

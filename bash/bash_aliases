@@ -1,0 +1,144 @@
+#!/bin/bash
+#source ~/.bin/tmuxinator.bash
+
+# Bash Rc additions
+cd ~/;
+source bin/activate;
+cd quorum-site;
+
+# set path
+export PATH="/home/$USER/yes/bin:$PATH"
+export EDITOR="vim"
+
+restart_compilers () {
+    echo "Restarting compilers..."
+    # stylus
+    ps ax | grep "$HOME/quorum-site/app/static/css" | awk {'print $1'}| xargs kill -9
+    nohup stylus -w -m --out $HOME/quorum-site/app/static/css/ $HOME/quorum-site/app/static/stylus/ >/dev/null 2>&1 &
+    # cjsx
+    ps ax | grep "$HOME/quorum-site/app/static/jsx" | awk {'print $1'}| xargs kill -9
+    nohup cjsx -o $HOME/quorum-site/app/static/jsx/ -wcb $HOME/quorum-site/app/static/cjsx/ >/dev/null 2>&1 &
+    # coffee
+    ps ax | grep "$HOME/quorum-site/app/static/cc" | awk {'print $1'}| xargs kill -9
+    nohup coffee -o $HOME/quorum-site/app/static/cc/ -wc $HOME/quorum-site/app/static/coffee/  >/dev/null 2>&1 &
+}
+
+restart_compilers
+
+###########
+# Styling #
+###########
+
+# configure colors
+reset_color=`tput sgr0`;
+green_color=`tput setaf 2`;
+red_color=`tput setaf 1`;
+purple_color=`tput setaf 5`;
+
+# commands to print messages of different colors
+green(){
+    echo "${green_color}$1${reset_color}";
+}
+purple(){
+    echo "${purple_color}$1${reset_color}";
+}
+red(){
+    echo "${red_color}$1${reset_color}";
+}
+
+####################
+# Useful Functions #
+####################
+
+# aliases for shell_plus
+sp(){
+ python manage.py shell_plus
+}
+shell(){
+     python manage.py shell_plus;
+}
+# runserver
+serve(){
+    green "### Running Server on port $1...";
+    sudo chown -R ubuntu *
+    pkill -f $1
+    python manage.py runserver 0.0.0.0:$1;
+}
+# parser
+parse(){
+ python manage.py parse $1
+}
+
+# for deleteing defunct / zombies
+kill_zombies() {
+    green "### You are now killing python zombies";
+    for pid in $(ps -ef | awk '/defunct/ { print $3 }'); do
+        kill "$pid";
+    done;
+    red "### Success: Zombies vanquished";
+}
+
+# wipe out swap files
+ls_swp() {
+    find . -name *swp
+}
+
+rm_swp() {
+    find . -name *swp -delete;
+}
+
+# deployment
+reset_remote () {
+    # if no input arguments, use the current branch in git
+    if [ $# -eq 0 ]
+      then
+        branchname=$(git symbolic-ref HEAD | sed -e 's,.*/\(.*\),\1,')
+      else
+        branchname=$1
+    fi
+    echo "Resetting remote to $branchname."
+    sudo git clean -fdx
+    sudo git reset --hard;
+    sudo git fetch origin;
+    sudo git checkout $branchname;
+    sudo git reset --hard origin/$branchname;
+    sudo chown -R $USER *;
+    find . -name '*.pyc' -delete
+}
+
+#################
+# Fun Functions #
+#################
+
+quorum_text () {
+    echo "";
+    purple " \$\$\$\$\$\$\\";
+    purple "\$\$  __\$\$\\";
+    purple "\$\$ /  \$\$ |\$\$\\   \$\$\\  \$\$\$\$\$\$\\   \$\$\$\$\$\$\\  \$\$\\   \$\$\\ \$\$\$\$\$\$\\\$\$\$\$\\";
+    purple "\$\$ |  \$\$ |\$\$ |  \$\$ |\$\$  __\$\$\\ \$\$  __\$\$\\ \$\$ |  \$\$ |\$\$  _\$\$  _\$\$\\";
+    purple "\$\$ |  \$\$ |\$\$ |  \$\$ |\$\$ /  \$\$ |\$\$ |  \\__|\$\$ |  \$\$ |\$\$ / \$\$ / \$\$ |";
+    purple "\$\$ \$\$\\\$\$ |\$\$ |  \$\$ |\$\$ |  \$\$ |\$\$ |      \$\$ |  \$\$ |\$\$ | \$\$ | \$\$ |";
+    purple "\\\$\$\$\$\$\$ / \\\$\$\$\$\$\$  |\\\$\$\$\$\$\$  |\$\$ |      \\\$\$\$\$\$\$  |\$\$ | \$\$ | \$\$ |";
+    purple " \\___\$\$\$\\  \\______/  \\______/ \\__|       \\______/ \\__| \\__| \\__|";
+    purple "     \\___|";
+    echo "";
+}
+
+if [[ "$TMUX" == "" ]] &&
+        [[ "$SSH_CONNECTION" != "" ]]; then
+    # Attempt to discover a detached session and attach
+    # it, else create a new session
+    WHOAMI=$(whoami)
+    if tmux has-session -t $WHOAMI 2>/dev/null; then
+        tmux -2 attach-session -t $WHOAMI
+    else
+        tmux -2 \
+            new-session -s $WHOAMI \; \
+            # seems to cause weird problems
+            #new-session -s $WHOAMI "vim" \; \
+            #split-window "python manage.py runserver 8888" \; \
+            #split-window -h "python manage.py shell_plus" \; \
+            #select-pane -U \; \
+            #resize-pane -D 10
+    fi
+fi

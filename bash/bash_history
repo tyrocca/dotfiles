@@ -1,0 +1,1448 @@
+vim quorum/settings/development_settings.py
+fg
+coffeebar -Mo app/static/cc/ app/static/coffee/
+coffeebar -Mo app/static/cc/ -bapp/static/coffee/
+coffeebar -Mo app/static/cc/ -b app/static/coffee/
+rm -rf app/static/cc/static/
+
+coffeebar -Mo app/static/cc/ -b app/static/coffee/
+rm -rf app/static/cc/static/
+cd app/static/
+coffeebar -Mo cc/ -b coffee/
+/s
+ls
+cd ../../
+serve 8888
+git status
+git hf merge dev-main
+git merge dev-main
+vim .gitignore
+git status
+git hf feature push
+git status
+vim
+git status
+jobs
+find . *.styl
+find . -name *.styl
+ipython
+import os
+styl_files = []
+for dpath, dnames, fnames in os.walk("."):
+ipython
+cd app/static/stylus/
+ls
+cd css
+ls
+cd ..
+rm -rf css/
+cd app/static/stylus/
+cd ~/quorum-site/
+ipython
+fg
+vim .gitignore
+fg
+sp
+vim remove_compiled_stylus.py
+git status
+python remove_compiled_stylus.py 
+vim remove_compiled_stylus.py 
+python remove_compiled_stylus.py 
+git add -A
+git commit -m "what it says"
+git push
+git commit -m "what it says" --no-verify
+git hf feature push
+git status
+serve 8888
+vim app/quicksearch/views.py
+serve 8888
+fg
+serve 8888
+vim quorum/settings/development_settings.py
+vim
+wq
+git status
+rm app/static/coffee/grassroots/supporter_management.js
+git status
+git add -A
+git commit -m "minor"
+git add -A
+git commit -m "whadup"
+git status
+git commit -m "whadup"
+git commit -m "whadup" --no-verify
+git hf feature push
+vim
+:q
+ls
+ssh qnew
+ls
+vim
+q
+vim
+sp
+tmux -v
+
+vim ~/.vim\;\[
+vim
+tmux
+screen
+vim ~/.screenrc
+screen
+vim ~/.screenrc
+cd ..
+cd quorum-site/
+ls
+vim
+vim ~/.tmux.config
+vim
+git status
+git hf update
+find . -name remove*
+vim .gitignore
+git add -A
+git stash
+git status
+git hf feature checkout smallest-table-fixes
+git add -A
+git stash
+git hf feature checkout smallest-table-fixes
+git hf feature update
+git hf update
+git merge dev-main
+vim .gitignore 
+ls
+tmux ls
+tmux kill-session -t myname
+wq
+ls
+vim
+q
+vim
+tmux
+tmux ls
+tmux a -t windows
+tmux a #1
+tmux ls
+vim
+tmux
+export TERM="xterm-256color"
+tmux
+tmux -2
+vim
+tmux
+vim
+q
+tmux
+tmux new -s dev
+vim
+tmux new -s dev
+vim
+aasfddf
+vim
+ls
+source bin/activate
+ld
+ls
+serve 8888
+vim
+tmux
+ls
+tmux
+vim
+tmux
+vim
+ls
+tmux
+tmux ls
+tmux
+vim
+serve 8888
+ls
+sudo su - ty
+tmux ls
+tmux new -s dev
+logout
+vim ~/.bash_aliases 
+vim
+ls
+%fsfasdfasdfasdfadsfasdf
+`%q
+
+
+
+````:;
+ls
+tmux
+ls
+tmux
+vim
+tmux
+ls
+ls
+tmux -v
+tmux -V
+vim
+vim ~/.bash_aliases 
+ls
+vim
+git status
+rm app/static/coffee/action_center_settings.coffee
+rm app/static/coffee/advocacy.coffee
+rm app/static/coffee/bloodhounds.coffee
+rm app/static/coffee/call.coffee
+rm app/static/coffee/campaign.coffee
+rm app/static/coffee/campaign_detail.coffee
+rm app/static/coffee/confirm_address.coffee
+rm app/static/coffee/create_campaign.coffee
+rm app/static/coffee/grassroots_account_recover.coffee
+rm app/static/coffee/grassroots_account_reset.coffee
+rm app/static/coffee/issues.coffee
+rm app/static/coffee/presskit_graph_classes.coffee
+rm app/static/coffee/presskit_graph_mixins.coffee
+rm app/static/coffee/registration.coffee
+rm app/static/coffee/schedule.coffee
+rm app/static/coffee/social_sharing.coffee
+rm app/static/coffee/supporter_management.coffee
+rm app/static/coffee/tweet.coffee
+rm app/static/coffee/visit.coffee
+ls
+git status
+rm app/static/coffee/write.coffee
+ls
+git status
+fg
+git status
+coffeee
+coffee
+which coffee
+echo $PATH
+cd ..
+npm root -d
+npm root -g
+npm --version
+ls /usr/local/lib/node_modules/
+ls /usr/local/lib/node_modules/coffeebar/
+npm --version
+coffee --version
+npm update -g coffee
+coffee --version
+echo $PATH
+serve 8888
+vim quorum/settings/development_settings.py
+serve 8888
+cd app/static/
+coffeebar -Mo coffee/ -b cc/
+cd ..
+ls
+vim quorum/settings/development_settings.py
+cd app/static/
+coffeebar -Mo coffee/ -b cc/
+cd ..
+cd static/
+cd coffee/
+
+rm *js
+ls
+cd grassroots/
+ls
+rm *js
+cd ..
+cd presskit/
+rm *js
+cd ..
+ls
+cd ..
+coffeebar -Mo cc/ -b coffee/
+cd ..
+ls
+serve 8888
+cd app/static/
+rm -rf cc/
+mkdir cc
+coffee -mo cc/ -cb coffee/
+coffee -m cc/ -cb coffee/
+coffee --map -o cc/ -cb coffee/
+;s
+cd //
+ls
+python manage.py runserver 0.0.0.0:8888;
+serve 8888
+cd app/static/
+serve 8888
+ls
+npm install -g coffee-script
+echo $PATH
+NODE_PATH
+$NODE_PATH
+echo $NODE_PATH
+npm list -g
+npm root -g
+NODE_PATH=/usr/local/lib/node_modules
+export NODE_PATH
+coffee --version
+uninstall coffee
+cd app/static/coffee/
+cd ..
+coffeebar -Mo cc/ -b coffee/
+cd ..
+ls
+cd ..
+ls
+seve 8888
+serve 8888
+coffee --map -o cc/ -cb coffee/
+coffeebar -mo cc/ -cb coffee/
+serve 8888
+cd ..
+serve 8888
+vim quorum/settings/development_settings.py
+serve 8888
+vim quorum/settings/base_settings.py
+vim quorum/settings/development_settings.py
+serve 8888
+vim
+cd ..
+pwd
+vim
+vim
+vim ~/.tmux.conf 
+sp
+lllkjkjjjkk
+serve 8888
+vim ~/.vimrc
+vim
+q
+source bin/activate
+ls
+cd ..
+source bin/activate
+cd ..
+ls
+vim ~/.bash_aliases 
+coffee -V
+coffee -version
+npm update -g coffee-script
+coffee -version
+coffee-script
+which coffee
+$PATH
+npm list
+npm update coffee-script
+ls
+npm root
+cd quorum-site
+ls
+npm root -g
+vim
+ls
+git statuss
+git status
+vim
+ag -l "googlemaps
+"
+ag -l "googlemaps"
+fg
+ag -l "googlemaps.js"
+fg
+
+ps aux | grep coffee
+fg
+ps aux | grep coffee
+fg
+ps aux | grep coffee
+ls
+coffeebar -Mo /home/ty/quorum-site/app/static/cc/ -wb /home/ty/quorum-site/app/static/coffee/
+node
+which node
+node -V
+node -version
+node --version
+fg
+ps aux | grep coffee
+coffeebar -Mo /home/ty/quorum-site/app/static/cc/ -wb /home/ty/quorum-site/app/static/coffee/
+fg 1
+fg
+ls
+coffeebar -Mo /home/ty/quorum-site/app/static/cc/ -wb /home/ty/quorum-site/app/static/coffee/
+coffee -o /home/ty/quorum-site/app/static/cc/ -wcb /home/ty/quorum-site/app/static/coffee/
+cd ..
+npm install coffee-script
+la
+cd quorum-site/
+ls
+which coffee
+cd ..
+cd node_modules/
+ls
+cd coffee-script/
+ls
+cd ..
+coffee
+vim
+wq
+vim
+sp
+cd quorum-site/
+sp
+vim
+jobs
+fg
+git status
+git commit -m "fixes #784"
+vim quorum/settings/development_settings.py
+git status
+vim quorum/settings/development_settings.py --no-verify
+git commit -m "fixes 784" --no-verify
+git commit -am "fixes 784" --no-verify
+git commit -am "fixes #784" --no-verify
+git add -A
+git commit -am "fixes #784" --no-verify
+git hf feature push
+git status
+tmux
+vim ~/.tmux.config 
+tmux
+tmux list-sessions
+tmux
+vim ~/.tmux.config 
+tmux
+cd ..
+tmux
+deactivate
+ls
+cat ~/.tmux.config 
+more ~/.tmux.config 
+view ~/.tmux.config 
+tmux
+cwd
+pwd
+tmux
+mv ~/.tmux.config ~/.tmux.conf
+tmux
+tmux -ls
+tmux ls
+killall tmux
+vim
+vim ~/.tmux.conf 
+tmux
+vim ~/.tmux.conf 
+vim
+tmux -s learning
+tmux -s name learning
+tmux new -s test
+pip install powerline-status
+sudo pip install powerline-status
+vim
+tmux
+tmux new -s development
+tmux new -s dev
+vim ~/.vimrc
+tmux
+vim
+fg
+vim
+sp
+cd ..
+source bin/activate
+cd quorum-site/
+sp
+ls
+serve 8888
+normal
+git status
+vim
+vim ~/.tmux.conf 
+vim
+tmux ls
+tmux -a #0
+tmux a #0
+view tmux
+vim ~/.tmux.conf 
+tmux new -s dev
+tmux a dev
+tmux a -t dev
+vim ~/.bash_login
+vim
+sudo su - jonathan
+ls
+serve
+serve 8888
+sp
+fg
+vim ~/.bash_login 
+vim ~/.bash_login 
+tmux attach -t dev || tmux new -s dev
+vim ~/.bash_login 
+tmux-new
+q\
+tmux-new asdf
+tmux-new asdf
+tmux-new 
+tmux-new
+tmux-new
+tmux ls
+tmux-new
+tmux ls
+tmux -a
+tmux a
+tmux ls
+vim ~/.bash_aliases 
+tmux
+vim
+vim
+vim
+vim
+green "asdf"
+vim
+tmux
+rm ~/.bash_login
+vim ~/.bash_aliases 
+tmux new-session -A -s main
+green "Asdf"
+tmux
+tmux attach -t dev || tmux new -s dev
+tmux has-session dev
+tmux has-session -t dev
+tmux new-session -A -s main
+vim bashrc
+vim ~/.bash_aliases 
+tmux -a
+tmux a
+tmux ls
+tmux list-sessions
+vim ~/.bash_aliases 
+vim
+`hl
+
+ls
+git status
+git add -A
+git commit -m "minor"
+less ~/.tmux.cinf
+less ~/.tmux.conf
+ls
+git hf feature push
+git merge dev-main
+git hf feature pull
+git hf merge dev-main
+git merge dev-main
+cd ~/.vim
+git add -A
+git commit -m "added tmux stuff"
+git hf push
+git pull
+git status
+git push
+cd ~/.vimrc
+cd ~/quorum-site
+git status
+ls
+;s
+ls
+vim
+fg
+
+git add -A
+git commit -m "this includes the fixes to css #801 and the #781
+added the addresses & switched to google"
+git status
+git hf feature push'
+
+
+git hf feature push
+git status
+ls
+git status
+ls
+vim tmux-client-7157.log 
+rm tmux-client-7157.log 
+ls
+vim
+serve 8888
+vim ~/.bashrc
+vim ~/.bash_aliases 
+coffee -o app/static/cc/ app/static/coffee/
+ls app/static/coffee/
+coffee -o app/static/cc/ -cb app/static/coffee/
+ls app/static/cc/
+serve 8888
+vim quorum/settings/development_settings.py
+serve 8888
+sp
+ls
+vim
+git pull
+git status
+cd ~/.vim
+git pull
+git pull'
+
+'
+git pull
+vim
+vim ~/.vimrc
+cd ..
+ls
+vim
+cd ~/.vim
+ls
+rm ~/.tmux.conf 
+
+ln -s /home/ty/.vim/tmux.conf ~/.tmux.conf
+ls
+vim ~/.tmux.conf 
+git add -A
+git commit -m "fixed small issue"
+git status
+git add -A
+git push
+cd ..
+ls
+jobs
+cd quorum-site/
+fg
+ls
+jobs
+vim
+fg
+git status
+git commit -m "adds for user and fixes #784 (better headers)"
+git commit -m "adds for user and fixes #784 (better headers)" --no-verify
+git hf feature push
+git commit -am "adds for user and fixes #784 (better headers)" --no-verify
+git status
+git hf push
+git status
+ls
+git status
+
+git status
+git hf feature pull
+git hf feature push
+git hf update
+vim .gitignore
+git status
+git hf feature start remove-shit
+python remove_compiled_stylus.py 
+git status
+git rm --cached app/static/cc/
+git rm -r --cached app/static/cc/
+less .gitignore 
+git status
+git add -A
+git commit -m "remove cc"
+with open(fname) as f:
+rm -r --cached *.css.map
+git rm -r --cached *.css.map
+find *.css
+find . -name *.css
+
+
+find . -name *.txt
+find . -name **.txt
+find . -name **txt
+find . -name *txt
+find . -name *txt exec git rm -r {} \;
+find . -name "*txt" exec git rm -r {} \;
+find . -name "*txt" -exec git rm -r {} \;
+find . -name "*txt" -exec git rm -r {} || echo "not in cache" \;
+find . -name "*txt" -exec sh -c "git rm -r {} || echo 'not in cache'"\;
+find . -name "*txt" -exec git rm -r {} \;
+find . -name "*txt" -exec sh -c "git rm -r {}"\;
+find . -name "*txt" -exec "git rm -r {}"\;
+find . -name "*txt\|*js"
+find . -name "*txt|*js"
+echo {asdf, 3g}"asdf"
+echo {asdf 3g}"asdf"
+find . -name{"*txt","*js}
+
+"
+find . -name{"*txt","*js"}
+find . -name {"*txt","*js"}
+find . -name{" *txt"," *js"}
+find . -name " "{"*txt","*js"}
+find . -name ""{"*txt","*js"}
+find . -name "*txt" -exec sh -c "git rm -r --cached {} || echo 'nope'" \;
+find . -name "*txt" -exec sh -c "git rm -r --cached {} || echo 'nope';" \;
+find . -name "*txt" -exec sh -c "git rm -r --cached {}; || echo 'nope';" \;
+find . -name "*txt" -exec sh -c "git rm -r --cached {} || echo 'nope'" \;
+find . -name "*txt" -exec sh -c "(git rm -r --cached {} || echo 'nope')" \;
+find . -name "*txt" -exec bash -c "(git rm -r --cached {} || echo 'nope')" \;
+find . -name "*txt" -exec sh -c "(git rm -r --cached {} || echo 'nope')" \;
+find . -name "*txt" -exec sh -c "[git rm -r --cached {} || echo 'nope']" \;
+find . -name "*txt" -exec sh -c "[ git rm -r --cached {} || echo 'nope' ]" \;
+find . -name "*txt" -exec sh -c "[ [ git rm -r --cached {} ] || [ echo 'nope' ] ]" \;
+find . -name "*txt" -exec sh -c "git rm -r --cached {} || echo 'nope'" \;
+find . -name "*txt" -exec sh -c "git rm -r --cached {} \ || echo 'nope'" \;
+find . -name "*txt" -exec sh -c "git rm -r --cached {} \ || echo 'nope'";
+find . -name "*txt" -exec sh -c "git rm -r --cached {} \ || echo 'nope'" \ ;
+find . -name "*txt" -exec sh -c "git rm -r --cached {} || echo 'nope'" \ ;
+find . -name "*txt" -exec sh -c "git rm -r --cached {} || echo 'nope'" \;
+find . -name "*txt" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -name "*txt" -exec sh -c 'git rm -r --cached {} \ || echo {} ' \;
+find . -name "*txt" -exec sh -c 'git rm -r --cached {} \ || echo {} ' ;
+find . -name "*txt" -exec sh -c 'git rm -r --cached {} \ || echo {} ' \;
+with open(fname) as f:
+git rm -r --cached ".temp_log.txt" \ || echo {}
+git rm -r --cached ".temp_log.txt" || echo {}\
+git rm -r --cached ".temp_log.txt" || echo {} 
+git rm -r --cached ".temp_log.txt" || echo {} \ ;
+find . -name "*txt" -exec sh -c 'git rm -r --cached {} \|\| echo {} ' \;
+find . -name "*txt" -exec sh -c 'git rm -r --cached {} || echo {} \'
+find . -name "*txt" -exec sh -c 'git rm -r --cached {} || echo {} ;'
+find . -name "*txt" -exec sh -c '[ git rm -r --cached {} || echo {} ];'
+find . -name "*txt" -exec sh -c '[ git rm -r --cached {} || echo {} ] ;'
+find . -name "*txt" -exec sh -c '[ git rm -r --cached {} || echo {} ] \;'
+find . -name "*txt" -exec sh -c '[ git ls-files {} || echo {} ] \;'
+find . -name "*txt" -exec sh -c 'git ls-files {} || echo {} ' \;
+find . -name "*txt" -exec sh -c 'git ls-files {}; echo {} ' \;
+find . -name "*txt" -exec sh -c '[ $[ git ls-files {} ] == 0 ] && git rm -r --cached {}' \;
+with open(fname) as f:
+$[ git ls-files {} ] == 0
+$[ git ls-files {} ]
+
+$[ git ls-files asdf.txt ]
+find . -name "*txt" -exec sh -c '[ $[ git ls-files {} ] == 0 ]' \;
+find . -name "*txt" -exec sh -c "[ $[ git ls-files {} ] == 0 ]" \;
+find . -name "*txt" -exec sh -c '[ $[ git ls-files {} ] == 0 ] && echo {}' \;
+find . -name "*txt" -exec sh -c '[ [ git ls-files {} ] == 0 ] && echo {}' \;
+find . -name "*txt" -exec sh -c '[ $[ git ls-files {} ] == 0 ] && echo {}' \;
+vim tests/.git/
+cd tests
+ls
+ls -a
+cd ..
+vim .git/hooks/pre-commit
+find . -name "*txt" -exec sh -c 'echo {}' \;
+find . -name *txt echo {} \;
+find . -name *txt -exec echo {} \;
+find . -name *py -exec echo {} \;
+find . -name *.py -exec echo {} \;
+find . -name **.txt
+ls
+find *.py
+find . -name *.py
+find . -name "*.py"
+find . -name "*.txt"
+find . -name "*.js"
+find . -name cc/*
+find . -name "*/cc/**"
+find . -name "*/cc/**.js"
+find . -wholename "*/cc/**.js"
+find . -name "*txt" -exec sh -c 'echo {}' \;
+find . -name "*txt" -exec sh -c '[ $[ git ls-files {} ] == 0 ] && echo {}' \;
+find . -name "*txt" -exec sh -c 'git rm -r --cached {} || echo {} \'
+find . -name "*txt" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "*/cc/**.js" -exec sh -c 'echo here {} || echo {} ' \;
+find . -wholename asdfasdfadf q ewf"*/cc/**.js" -exec sh -c 'git rm -r {} || echo {} ' \;
+find . -wholename "*/cc/**.js" -exec sh -c 'echo here {} || echo {} ' \;
+find . -wholename "*cc**.js" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "*/cc/**.js" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+git status
+git add -A
+git commit -m "minor"
+find . -wholename "*/cc/**" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "*/cc/**" -exec sh -c 'git ls-files {} --error-unmatched && git rm -r --cached {} || echo {} ' \;
+find . -wholename "*/cc/**" -exec sh -c 'git ls-files {} --error-unmatch && git rm -r --cached {} || echo {} is ok!' \;
+find . -wholename "*/cc/**" -exec sh -c 'git ls-files {} --error-unmatch; git rm -r --cached {}' \;
+find . -wholename "*/cc/**" -exec sh -c 'git ls-files {} --error-unmatch;' \;
+git ls-files app
+git ls-files app/static/cc/
+find . -wholename "*/cc/**" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "*txt" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "**txt" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "txt" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "app/static/css/grassroots/issues.css" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "app/static/css/grassroots/issues.css"
+find . -wholename "*issues.css"
+find . -wholename "app/static/css/grassroots/issues.css" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "*.codekit" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "*.css.map" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "*.DS_STORE" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "*.gz" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename ".idea" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename ".idea/*" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename ".idea/" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "**.idea" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "*.js.map" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "*.log" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "*_log.txt" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "*.out" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "*.pyc" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "*.sqlite3" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "*.sublime-project" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "*.sublime-workspace" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "*.swp" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "*.swo" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "pr-cleaned.json" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "user_dump.json" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "scratch.coffee" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "scratch.py" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "scratch.txt" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "sftp-config.json" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "/*.txt" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "build/*" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "**/cc/*" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "node_modules/*" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "**/migrations/*" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "**/state_update_logs/*" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "app/app_logs/*" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "app/management/commands/log/*" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "app/management/commands/dump/*" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "app/management/cycle_logs/*" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "app/management/cycle_logs" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "app/management/parser/tmp" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "app/management/parser/yaml/*" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "app/static/css/grassroots/custom/*" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "app/static/data/person_caches/*" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "dump/*" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "app/static/css/bill_profile.css" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "app/static/css/help_page.css" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "app/static/css/alerts.css" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "app/static/css/modal_css_5.css" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "app/static/css/outbox-home.css" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "app/static/css/DESIGN.css" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "app/static/css/project_page.css" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "app/static/css/stats_new.css" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "app/static/css/create_campaign.css" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "app/static/css/sidebar_settings.css" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "app/static/css/issue_profile.css" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "app/static/css/dashboard.css" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "app/static/css/campaign_list_view.css" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "app/static/css/spreadsheet.css" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "app/static/css/vote_profile.css" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "app/static/css/org_design.css" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "app/static/css/congressional_record.css" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "app/static/css/campaign_detail.css" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "app/static/css/onboarding.css" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "app/static/css/blog.css" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "app/static/css/action_center_settings.css" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "app/static/css/committee_profile.css" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "app/static/css/attachments.css" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "app/static/css/panels_new.css" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "app/static/css/compose_campaign_email.css" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "app/static/css/supporter_management.css" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "app/static/css/base_css_new_3.css" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "app/static/css/STYLUS_FUNCTIONS.css" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "app/static/css/d3_tables.css" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "app/static/css/lists.css" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "app/static/css/amendment_profile.css" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "app/static/css/reusable_map.css" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "app/static/css/quorum_cover.css" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "app/static/css/loading_new.css" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "app/static/css/statements_page.css" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "app/static/css/member_profile.css" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "app/static/css/GLOBAL.css" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "app/static/css/manage_teams.css" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "app/static/css/note_modal.css" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "app/static/css/add_to_list.css" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "app/static/css/project_overview.css" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "app/static/css/d3_tables_old.css" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "app/static/css/ui_STYLUS.css" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "app/static/css/grassroots/interactions.css" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "app/static/css/grassroots/member.css" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "app/static/css/grassroots/TEMPLATE.css" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "app/static/css/grassroots/campaign_cards.css" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "app/static/css/grassroots/mixins.css" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "app/static/css/grassroots/forms.css" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "app/static/css/grassroots/issues.css" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "*.codekit" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "*.css.map" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "*.DS_STORE" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "*.gz" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename ".idea" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename ".idea/*" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename ".idea/" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "**.idea" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "*.js.map" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "*.log" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "*_log.txt" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "*.out" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "*.pyc" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "*.sqlite3" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "*.sublime-project" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "*.sublime-workspace" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "*.swp" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "*.swo" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "pr-cleaned.json" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "user_dump.json" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "scratch.coffee" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "scratch.py" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "scratch.txt" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "sftp-config.json" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "/*.txt" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "build/*" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "**/cc/*" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "node_modules/*" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "**/migrations/*" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "**/state_update_logs/*" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "app/app_logs/*" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "app/management/commands/log/*" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "app/management/commands/dump/*" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "app/management/cycle_logs/*" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "app/management/cycle_logs" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "app/management/parser/tmp" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "app/management/parser/yaml/*" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "app/static/css/grassroots/custom/*" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "app/static/data/person_caches/*" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "dump/*" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "app/static/css/bill_profile.css" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "app/static/css/help_page.css" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "app/static/css/alerts.css" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "app/static/css/modal_css_5.css" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "app/static/css/outbox-home.css" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "app/static/css/DESIGN.css" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "app/static/css/project_page.css" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "app/static/css/stats_new.css" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "app/static/css/create_campaign.css" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "app/static/css/sidebar_settings.css" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "app/static/css/issue_profile.css" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "app/static/css/dashboard.css" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "app/static/css/campaign_list_view.css" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "app/static/css/spreadsheet.css" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "app/static/css/vote_profile.css" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "app/static/css/org_design.css" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "app/static/css/congressional_record.css" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "app/static/css/campaign_detail.css" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "app/static/css/onboarding.css" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "app/static/css/blog.css" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "app/static/css/action_center_settings.css" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "app/static/css/committee_profile.css" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "app/static/css/attachments.css" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "app/static/css/panels_new.css" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "app/static/css/compose_campaign_email.css" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "app/static/css/supporter_management.css" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "app/static/css/base_css_new_3.css" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "app/static/css/STYLUS_FUNCTIONS.css" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "app/static/css/d3_tables.css" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "app/static/css/lists.css" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "app/static/css/amendment_profile.css" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "app/static/css/reusable_map.css" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "app/static/css/quorum_cover.css" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "app/static/css/loading_new.css" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "app/static/css/statements_page.css" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "app/static/css/member_profile.css" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "app/static/css/GLOBAL.css" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "app/static/css/manage_teams.css" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "app/static/css/note_modal.css" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "app/static/css/add_to_list.css" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "app/static/css/project_overview.css" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "app/static/css/d3_tables_old.css" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "app/static/css/ui_STYLUS.css" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "app/static/css/grassroots/interactions.css" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "app/static/css/grassroots/member.css" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "app/static/css/grassroots/TEMPLATE.css" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "app/static/css/grassroots/campaign_cards.css" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "app/static/css/grassroots/mixins.css" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "app/static/css/grassroots/forms.css" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "app/static/css/grassroots/issues.css" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+git add -a
+jkkk
+git status
+git add -A
+git commit -m "minor
+"
+sp
+serve 8888
+tmux -a
+tmux a
+vim ~/.bashrc
+git status
+git hf feature push
+find . -wholename "app/static/css/grassroots/issues.css" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+find . -wholename "app/static/css/grassroots/issues.css"
+find . -wholename "*app/static/css/grassroots/issues.css"
+find . -wholename "**app/static/css/grassroots/issues.css"
+find . -wholename "**app/static/css/grassroots/supporter_management.css"
+find . -wholename "**app/static/cc/*.js"
+find . -wholename "**app/static/cc/networs.js"
+find . -wholename "**app/static/cc/networks.js"
+find . -wholename "app/static/cc/networks.js"
+find . -wholename "**app/static/cc/networks.js"
+cd ~/.vimrc
+cd ~/.vim
+git pull
+vim vimrc 
+git add -A
+git commit -m "committing vimrc - added argwrap"
+git push
+cd ..
+cd ~/quorum-site/
+git status
+ls
+vim remove_compiled_stylus.py 
+sp
+fg
+vim remove_compiled_stylus.py 
+view .gitignore
+python remove_compiled_stylus.py 
+vim remove_compiled_stylus.py 
+python remove_compiled_stylus.py 
+find . -wholename "**app/static/css/grassroots/campaign_cards.css" -exec sh -c 'git rm -r --cached {} || echo {} ' \;
+vim remove_compiled_stylus.py 
+git add -A
+git commit -m "wip - thing to remove files is all wack"
+git commit -m "wip - thing to remove files is all wack" --no-verify
+git push
+git hf feature push
+git hf feature checkout smallest-table-fixes 
+git status
+rm -rf app/static/cc/**js
+ls app/static/cc/
+ls app/static/cc/**.coffee
+rm -rf app/static/cc/**.coffee
+rm -rf app/static/cc/
+mkdir app/static/cc/
+ls
+git status
+python remove_compiled_stylus.py 
+git status
+vim app/static/css/supporter_management.css
+git status
+serve 8888
+vim
+sp
+tmux
+jobs
+tmux ls
+vim
+sp
+serve 8888
+vim
+fg
+vim
+git commit -m "adds supporter modals and some other small fixes (styling etc..)
+app/userdata/notes/views.py
+vin app/userdata/notes/views.py
+vim app/userdata/notes/views.py +18
+vim app/grassroots/supporter_management/views.py +145
+vim app/grassroots/supporter_management/views.py +161
+vim app/table/models.py +838
+vim app/userdata/notes/views.py
+ag -l SupporterThread
+app/grassroots/supporter_management/views.py
+vim app/grassroots/supporter_management/views.py
+gf
+fg
+vim app/grassroots/views.py +74
+git add -A
+git commit -m "adds supporter modals and some other small fixes (styling etc..)"
+vim app/userdata/notes/views.py +38
+git add -A
+git commit -m "adds supporter modals and some other small fixes (styling etc..)"
+git hf feature push
+git hf update
+git merge dev-main
+vim .gitignore 
+git merge dev-main
+rm -rf app/static/cc/**js
+
+git merge dev-main
+rm -rf app/static/cc/
+mkdir app/static/cc/
+git merge master
+rm app/management/commands/log/parsing.log
+git merge master
+
+vim quorum/settings/development_settings.py
+git status
+find . -wholename "*/cc/**"
+find . -wholename "*/cc/**" -exec -sh -c "echo {}
+find . -wholename "*/cc/**" -exec -sh -c "echo {}" \;
+find . -wholename "*/cc/**" -exec sh -c "echo {}" \;
+find . -wholename "*/cc/**" -exec sh -c "git rm --cached {}" \;
+find . -wholename "*/cc/**" -exec sh -c "git rm -rf --cached {}" \;
+git status
+vim ~/.gitignore
+vim .gitignore
+git status
+vim .gitignore
+git status
+git add -A
+git commit -m "removed the annoying files again"
+vim quorum/settings/development_settings.py
+git status
+git add -A
+git commit -m "resolved conflicts"
+git commit -m "resolved conflicts" --no-verify
+git hf feature push
+git status
+vim
+git add -A
+git commit -m "before dinner"
+git commit -m "before dinner" --no-verify
+git hf feature push
+vim
+git status
+git add -A
+git commit -m "for jon jon - members"
+git commit -m "for jon jon - members" --no-verify
+git hf feature push
+git status
+ls
+git status
+git hf update
+git branch
+git merge dev-main
+git statsu
+git status
+git hf feature push
+git status
+vim
+ls
+ls tests/
+vim tests/data_check.py 
+vim app/management/commands/check_data.py
+vim
+git add -A
+git status
+git add -A
+git commit -m "minor - I think we just need to recompile"
+git hf push
+git hf update
+git merge dev-main
+git status
+git hf push
+vim
+git add -A
+git commit -m "switching to hotfixing"
+git hf push
+vim
+ag -l "JSONField" -G models
+ag -l "\.JSONField" -G models
+ag -l ".JSONField" -G models
+ag ".JSONField" -G models
+ag " JSONField" -G models
+ag -l " JSONField" -G models
+vim
+sdfadlll
+git status
+ls
+git status
+git add -A
+git commit -m " should have fixed #833 already - also fixes #857"
+git commit -m " should have fixed #833 already - also fixes #857" > vim -R-
+git commit -m " should have fixed #833 already - also fixes #857" | > vim -R-
+git commit -m " should have fixed #833 already - also fixes #857"
+git commit -m " should have fixed #833 already - also fixes #857" --no-verify
+git hf feature push
+sp
+asdfasdfasdfasdfasdfasdkjfhlakjsdflkjasdhflkjashdflkjhasdflkjhasdlkjhlakjsdh
+sp
+cd app/static/
+coffee -o cc/ -c coffee/
+serve 8888
+cd ..
+serve 8888
+cd app/static/
+coffee -o cc/ -c coffee/
+cd ..
+serve 8888
+ls
+serve 8888
+:q
+q
+vim
+logout
+curl -L https://iterm2.com/misc/install_shell_integration.sh | bash
+vim
+tmux -a
+tmux a
+sp
+tmux -cc a
+tmux -CC a
+tmux a
+tmux -CC a
+tmux a
+tmux -CC a
+ls
+q
+vim
+git commit -m
+git commit -m "here is the fix for #819"
+ls
+rm vim 
+ls
+bim
+vim
+git add -A
+ag -l
+ag -l "import JSONField"
+vim app/social/models.py
+ag -l "import JSONField"
+vim app/models.py
+git add -A
+git commit -m "small fix to make 'QJSONFIElD imported as JSONField'
+"
+git add -A
+vim app/userdata/project/views.py
+vim app/social/models.py +405
+git commit -m "small fix to make 'QJSONFIElD imported as JSONField'
+"
+git
+git commit -m "small fix to make 'QJSONFIElD imported as JSONField'
+"
+vim app/social/models.py +405
+vim app/social/models.py
+sp
+git add -A
+git commit -m "small fix to make 'QJSONFIElD imported as JSONField'
+"
+vim app/social/models.py +27
+git add -A
+git commit -m "small fix to make 'QJSONFIElD imported as JSONField'
+"
+git commit -m "small fix to make 'QJSONFIElD imported as JSONField'"
+git commit -m "small fix to make 'QJSONFIElD imported as JSONField'" --no-verify
+git hf feature push
+git status
+vim app/userdata/outbox/views.py
+vi
+vim
+vim ~/.bash_aliases 
+vim
+vim ~/.tmux.conf 
+vim ~/.vimrc
+vim
+vim ~/.tmux.conf 
+vim
+cd ~/.vim
+git add -A
+git status
+git commit -m "small changes - added mouse support when I switched to iterm2"
+git push
+vim
+vim ~/.bashrc
+curl -L https://iterm2.com/misc/install_shell_integration.sh | bash
+vim ~/.profile 
+vim ~/.tmux.conf 
+~/.bash_aliases
+vim ~/.bash_aliases
+sp
+cp
+sp
+ls
+serve 8888
+ls
+l
+la
+ls
+serve 8888
+vim
+tmux new -s "asdf" \; neww "python manage.py shell_plus" 
+tmux new -s "asdf" \; newp "python manage.py shell_plus" 
+man tmux
+tmux new -s "asdf" \; splitp "python manage.py shell_plus" 
+man tmux
+vim
+vim ~/.bash_aliases 
+sp
+cd app/static/cc/
+ls
+cat ~/.bash_aliases 
+q
+vim
+git add -A
+git commit -m "small stability fixes"
+git hf push
+vim 
+vim
+find . -name "outbox"
+find . -name "*outbox*"
+vim app/static/coffee/outbox_send_email.coffee 
+vim app/static/coffee/grassroots/
+vim
+git status
+git add -A
+git commit -m "reviving supporter"
+git commit -m "reviving supporter" --no-verify
+git status
+vim quorum/settings/base_settings.py
+vim app/static/js/libs/googleapi_places.js 
+git status
+git add -A
+git commit -m "fixed maps"
+git hf feature push
+
+vim
+git hf feature checkout smallest-table-fixes 
+git status
+git statsu
+git status
+git checkout hotfix/0.2.2 app/static/js/libs/googleapi_places.js
+git status
+git add -A
+git commit -m "updated my places to work"
+serve 8888
+git status
+git add -A
+git commit -m "stability things - going for quick sprint on supporteremails
+
+"
+git commit -m "stability things - going for quick sprint on supporteremails
+
+" --no-verify
+git hf push
+git status
+git hf hotfix start 0.2.2
+git hf pul
+git hf pull
+git hf update
+git status
+git hf hotfix start 0.2.2
+serve 8888
+vim asdf.txt
+tmux --version
+tmux -version
+tmux -V
+sudo apt-get update
+sudo apt-get install tmux
+vim
+q
+cd app/static/css/
+ls
+vim send_emails.css 
+cd ..
+vim stylus/
+cd ..
+e app/static/stylus/send_emails.styl
+vim app/static/stylus/send_emails.styl
+vim
+rm app/static/coffee/outbox_send_email.coffee 
+vim
+git status
+git add -A
+git commit -m "minor"
+git hf feature push
+vim
+im
+ivmvim
+im
+vim
+vim ~/bin/pbpaste-remote
+vim ~/bin/pbcopy-remote
+vim
+vim /etc/ssh/sshd_config 
+vim ~/.vim
+vim
+tmux
+vim
+tmux
+vim
+asdf
+asdfasdf
+vim
+[jhhjhh
+vim
+vim ~/.bash_aliases 
+vim
+tmux
+tmux a
+vim
+apt-get install irssi
+sudo apt-get install irssi
+irssi
+serve 8989
+python manage.py runserver 8888
+ls
+serve 8888
+vim
+[A
+vim
+sp
+serve 8888
+dbshell
+python manage.py dbshell
+ls
+sp
+git status
+git checkout hotfix/0.2.2 
+git status
+git hf hotfix finish
+git hf hotfix finish 0.2.2
+git branch -D hotfix/0.2.2'
+'
+git branch -D hotfix/0.2.2
+git branch
+git hf feature checkout smallest-table-fixes 
+git status
+ls
+vim
+clear
+vim
+vim ~/.bash_aliases 
+git status
+git add -A
+git commit -m 'minor'
+git hf oush
+git hf push
+git hf update
+git merge dev-main
+vim app/userdata/outbox/models.py
+git status
+git add -A
+git commit -m "resolved merge conflict"
+git commit -m "resolved merge conflict" --no-verify
+git hf push
+git status
+vim ~/.bashrc
+vim ~/.bash_aliases 
+deactivate
+gem install tmuxinator
+vim ~/.bashrc
+vim ~/.bash_aliases 
+vim ~/.tmuxinator/ty.yml
+touch ~/.tmuxintor/ty.yml
+mkdir ~/.tmuxintor/
+vim ~/.tmuxinator/ty.yml
+ls ~/
+la ~/
+rm tmuxitor
+rm -f tmuxitor
+ls
+rm -f .tmuxitor
+la 
+rm ~/.tmuxitor
+cd ~/
+ls
+la
+rm .tmuxintor/
+rm -rf .tmuxintor/
+mkdir ~/.tmuxinator
+fg
+vim
+ps aux | grep coffee
+sp
+ls
+vim ~/.bash_aliases 
+vim
+o,
+vim
+q
+serve 8888
+sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
+zsh
+sudo apt-get install zsh
+zsh --version
+git-core
+apt-get install git-core
+sudo apt-get install git-core
+wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh
+chsh -s `which zsh`
+deactivate
+chsh -s `which zsh`
+vim ~/.zshrc 
+vim ~/.profile
+vim ~/.bash_aliases 
+vim ~/.profile
+deactivate
+chsh -s $(which zsh)
+sudo chsh -s $(which zsh)
+which zsh
+echo $SHELL
+q
+logout
+~/.bash_profile
+vim ~/.bash_profile
