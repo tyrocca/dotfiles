@@ -22,6 +22,7 @@ I use the color scheme solarized with the powerline fonts.
 - To get my colorscheme install [this](http://ethanschoonover.com/solarized).
 - For powerline install [this](https://github.com/powerline/powerline).
 - I also included some of the colorscheme configs in the dotfiles
+
 Then install vim
 ```
 rm -rf /home/$USER/.vim
