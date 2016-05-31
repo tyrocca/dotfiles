@@ -1,7 +1,8 @@
 # My Dotfiles
 
 ### Background
-I am trying to start to manage my dotfiles on github. Here is my attempt
+I am trying to start to manage my dotfiles on github. Here is my attempt.
+
 Dev Env:
 - Vim
 - iTerm2
