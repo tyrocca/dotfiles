@@ -39,7 +39,7 @@ If you don't have tmux install it
 
 link my config files
 ```
-rm /home/$USER/.tmux-config
+rm /home/$USER/.tmux-conf
 ln -s /home/$USER/dotfiles/tmux/tmux.conf /home/$USER/tmux.conf
 ```
 
