@@ -82,7 +82,5 @@ ln -s /home/$USER/dotfiles/bash/bash_profile /home/$USER/.bash_profile
 
 ### Quorum specific
 ```
-cd quorum-site
-rm /home/$USER/quorum-site/.git/hooks/pre-commit
-ln -s /home/$USER/quorum-site/dotfiles/pre-commit /home/$USER/quorum-site/.git/hooks/pre-commit
+rm -rf .git/hooks/pre-commit; cwd=$(pwd); ln -s $cwd/tests/pre-commit.sh $cwd/.git/hooks/pre-commit
 ```
