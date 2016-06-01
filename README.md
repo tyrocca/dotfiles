@@ -45,7 +45,7 @@ link my config files
 ```
 cd ~/
 cwd=$(pwd)
-rm $cwd/.tmux-conf
+rm $cwd/.tmux.conf
 ln -s $cwd/dotfiles/tmux/tmux.conf $cwd/.tmux.conf
 ```
 
