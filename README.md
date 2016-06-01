@@ -13,6 +13,7 @@ Dev Env:
 For the bare minimum run this:
 ```
 cd ~/
+cwd=$(pwd)
 git clone https://github.com/tyrocca/dotfiles.git
 ```
 This installs the repo.
@@ -25,11 +26,13 @@ I use the color scheme solarized with the powerline fonts.
 
 Then install vim
 ```
-rm -rf /home/$USER/.vim
-mkdir /home/$USER/.vim
+cd ~/
+cwd=$(pwd)
+rm -rf $cwd/.vim
+mkdir $cwd/.vim
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-rm /home/$USER/.vimrc
-ln -s /home/$USER/dotfiles/vim/vimrc /home/$USER/.vimrc
+rm $cwd/.vimrc
+ln -s $cwd/dotfiles/vim/vimrc $cwd/.vimrc
 vim +PluginInstall +qall
 ```
 
@@ -40,8 +43,10 @@ If you don't have tmux install it
 
 link my config files
 ```
-rm /home/$USER/.tmux-conf
-ln -s /home/$USER/dotfiles/tmux/tmux.conf /home/$USER/.tmux.conf
+cd ~/
+cwd=$(pwd)
+rm $cwd/.tmux-conf
+ln -s $cwd/dotfiles/tmux/tmux.conf $cwd/.tmux.conf
 ```
 
 ### Install zsh
@@ -63,20 +68,26 @@ exec /bin/zsh -l
 ```
 or do this
 ```
-rm /home/$USER/.bash_profile
-ln -s /home/$USER/dotfiles/zsh/bash_profile /home/$USER/.bash_profile
+cd ~/
+cwd=$(pwd)
+rm $cwd/.bash_profile
+ln -s $cwd/dotfiles/zsh/bash_profile $cwd/.bash_profile
 ```
 
 You can also install my zshrc!
 ```
-rm /home/$USER/.zshrc
-ln -s /home/$USER/dotfiles/zsh/zshrc /home/$USER/.zshrc
+cd ~/
+cwd=$(pwd)
+rm $cwd/.zshrc
+ln -s $cwd/dotfiles/zsh/zshrc $cwd/.zshrc
 ```
 
 ### Installing BASH things
 ```
-rm /home/$USER/.bash_profile
-ln -s /home/$USER/dotfiles/bash/bash_profile /home/$USER/.bash_profile
+cd ~/
+cwd=$(pwd)
+rm $cwd/.bash_profile
+ln -s $cwd/dotfiles/bash/bash_profile $cwd/.bash_profile
 ```
 
 
