@@ -75,6 +75,15 @@ ln -s $cwd/dotfiles/zsh/bash_profile $cwd/.bash_profile
 ```
 
 You can also install my zshrc!
+##### Mac zshrc
+```
+cd ~/
+cwd=$(pwd)
+rm $cwd/.zshrc
+ln -s $cwd/dotfiles/zsh/zsh-mac $cwd/.zshrc
+```
+
+##### Ubuntu zshrc
 ```
 cd ~/
 cwd=$(pwd)
