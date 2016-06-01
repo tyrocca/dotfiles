@@ -54,7 +54,7 @@ shell(){
 # runserver
 serve(){
     green "### Running Server on port $1...";
-    sudo chown -R ubuntu *
+    sudo chown -R $USER *
     pkill -f $1
     python manage.py runserver 0.0.0.0:$1;
 }
