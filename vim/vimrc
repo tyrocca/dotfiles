@@ -192,7 +192,7 @@ set tabstop=4 		" number of visual spaces per TAB
 set softtabstop=4  	" number of spaces in tab when editing
 set shiftwidth=4    " number of
 set expandtab       	" tabs are spaces (tab button = spaces)
-set colorcolumn=100      " keep within this column
+set colorcolumn=80      " keep within this column
 
 "UI configs
 set number 		" show line nums
@@ -312,6 +312,8 @@ nnoremap <leader>1 :center 80<CR>hhv0r#A<SPACE><ESC>40A#<ESC>d80<BAR>YppVr#kk.
 "Accessing mru mode
 nnoremap <silent> <leader>l :CtrlPMRU<CR>
 nnoremap <silent> <leader>b :CtrlPBuffer<CR>
+nnoremap <silent> <leader>t :CtrlPTag<cr>
+
 
 " Ignored files
 "https://robots.thoughtbot.com/faster-grepping-in-vim
@@ -466,4 +468,9 @@ noremap <Up> <NOP>
 noremap <Down> <NOP>
 noremap <Left> <NOP>
 noremap <Right> <NOP>
-inoremap jj <ESC>
+inoremap jj <ESC>  " Some people say this helps speed up normal mode
+set scrolloff=5    " Makes the cursor offset
+
+ " ctags optimization
+"set autochdir
+"set tags=tags;

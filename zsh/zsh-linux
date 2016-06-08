@@ -16,7 +16,7 @@ restart_compilers () {
     nohup cjsx -o $HOME/quorum-site/app/static/jsx/ -wcb $HOME/quorum-site/app/static/cjsx/ >/dev/null 2>&1 &
     # coffee
     ps ax | grep "$HOME/quorum-site/app/static/cc" | awk {'print $1'}| xargs kill -9
-    nohup coffee -o $HOME/quorum-site/app/static/cc/ -wc $HOME/quorum-site/app/static/coffee/  >/dev/null 2>&1 &
+    nohup coffee -o $HOME/quorum-site/app/static/cc/ -wc $HOME/quorum-site/app/static/coffee/  >/dev/null 2> compiler_log.txt &
 }
 
 ###########
