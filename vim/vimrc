@@ -171,13 +171,12 @@ filetype plugin indent on    " required
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
 
-""""""""""""""""""""
-" Built in Toggles "
-""""""""""""""""""""
+""""""""""""""""""""""""
+" * Built in Toggles * "
+""""""""""""""""""""""""
 
 "Colors
 syntax enable
-"colorscheme monokai
 if ($USER == "ty" || $USER == "tyrocca")
     set t_Co=256
     set background=dark
@@ -187,23 +186,33 @@ else
     colorscheme monokai
 endif
 
-"Spaces and Tabs
-set tabstop=4 		" number of visual spaces per TAB
-set softtabstop=4  	" number of spaces in tab when editing
-set shiftwidth=4    " number of
+" Formatting
+set fileformat=unix     " Make sure the files are always unix
+set tabstop=4 		    " number of visual spaces per TAB
+set softtabstop=4  	    " number of spaces in tab when editing
+set shiftwidth=4        " number of spaces when ?
 set expandtab       	" tabs are spaces (tab button = spaces)
 set colorcolumn=80      " keep within this column
 
 "UI configs
-set number 		" show line nums
-set showcmd 		" show last entered command
+set number 		        " show line nums
+set showcmd 		    " show last entered command
 set cursorline          " highlight current line
 filetype indent on      " load filetype-specific indent files
 set wildmenu            " visual autocomplete for command menu
 set lazyredraw          " redraw only when we need to.
-set showmatch 		" show matching ()
-set mouse=a
-set timeoutlen=1000 ttimeoutlen=0  " prevent slowdown
+set showmatch 		    " show matching ()
+set mouse=a             " Turn on mouse mode
+set timeoutlen=1000 ttimeoutlen=0  " prevent slowdown on normal mode
+
+" Prevent Arrow keys
+noremap <Up> <NOP>
+noremap <Down> <NOP>
+noremap <Left> <NOP>
+noremap <Right> <NOP>
+inoremap jj <ESC>   " Some people say this helps speed up normal mode
+set scrolloff=5     " Makes the cursor offset
+
 
 " http://usevim.com/2012/10/19/vim101-set-hidden/
 set hidden
@@ -216,7 +225,7 @@ set incsearch           " search as characters are entered
 set hlsearch            " highlight matches
 
 "Searching
-"set smartcase
+set smartcase
 "/copyright      " Case insensitive
 "/Copyright      " Case sensitive
 "/copyright\C    " Case sensitive
@@ -228,7 +237,7 @@ set hlsearch            " highlight matches
 "either run a new one or manually stop highlighting the old
 "search with :nohlsearch. I find myself running this all
 " the time so I've mapped it to <leader><space>.
-nnoremap <leader><space> :nohlsearch<CR>
+nnoremap <silent> <leader><space> :nohlsearch<CR>
 
 "Smarter searching
 ":set smartcase
@@ -244,28 +253,12 @@ set nofoldenable        "dont fold by default
 set foldlevel=1         "this is just what i use
 
 
-""""""""""""""""
-" Key Mappings "
-""""""""""""""""
-
-" I don't like <C-w> in insert mode so i remapped it
-"inoremap <silent> <C-w> <ESC><C-w>
-
-" Mods for screen (so tmux is the same) 
-nnoremap <c-j> <c-w>j
-nnoremap <c-k> <c-w>k
-nnoremap <c-h> <c-w>h
-nnoremap <c-l> <c-w>l
-"inoremap <C-e> <Esc>A
-"inoremap <C-a> <Esc>I
-
-" For toggling between tabs
-"nnoremap <silent> <S-right> :tabn<CR>
-"nnoremap <silent> <S-left> :tabp<CR>
-
 """""""""""""""""""""""
 " Copying and pasting "
 """""""""""""""""""""""
+" Reselecting Pasted text
+nnoremap <expr> gp '`[' . strpart(getregtype(), 0, 1) . '`]'
+
 "Paste toggle
 set pastetoggle=<F2>
 
@@ -274,12 +267,12 @@ set pastetoggle=<F2>
 "vmap "+y :!xclip -f -sel clip
 "map "+p :r!xclip -o -sel clip
 
-" Reselecting Pasted text
-nnoremap <expr> gp '`[' . strpart(getregtype(), 0, 1) . '`]'
+"""""""""""""""""""""
+" * Function Key Maps "
+"""""""""""""""""""""
+" f10 will strip out whitespace
+nnoremap <silent> <F3> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
 
-"""""""""""""""""""""
-" Function Key Maps "
-"""""""""""""""""""""
 " Buffers
 nnoremap <F5> :buffers<CR>:buffer<Space>
 
@@ -289,22 +282,18 @@ nnoremap <F8> :setlocal foldmethod=indent<CR>:setlocal foldignore= <CR>
 " Launch vimrc
 nnoremap <F9> :tabe ~/.vimrc<CR>
 
-" f10 will strip out whitespace
-"nnoremap <silent> <F10> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
-
 """""""""""""""""""""""
 " Leader Key Mappings "
 """""""""""""""""""""""
-" Make space also be leader
-"map , <Leader>
-
 " for inserting new lines (like <C-o>)
 nnoremap <silent> <leader><CR> i<CR><ESC>
+" this makes a nice surrounding block around a piece of text
 nnoremap <leader>1 :center 80<CR>hhv0r#A<SPACE><ESC>40A#<ESC>d80<BAR>YppVr#kk.
 
-"""""""""""""""
-" Plugin Mods "
-"""""""""""""""
+
+""""""""""""""""""""
+" * Plugin Mods  * "
+""""""""""""""""""""
 
 """""""""""""""""""""""""""
 " Modifications for CTRLP "
@@ -324,7 +313,6 @@ if executable('ag')
 
     " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
     let g:ctrlp_user_command = 'ag %s -l --nocolor -g "" --ignore={"*/cc/*","*/js/*","*/css/*","*/templates/media/*","*/individual_projects/*","*/static/data/*"}'
-
     " ag is fast enough that CtrlP doesn't need to cache
     "let g:ctrlp_use_caching = 0
 else
@@ -334,11 +322,6 @@ else
       \ 'file': '\.pyc$'
       \ }
 endif
-
-" WHAT DOES THIS DO?
-"if exists("g:ctrl_user_command")
-    "unlet g:ctrlp_user_command
-"endif
 
 """""""""""
 " Airline "
@@ -403,14 +386,23 @@ nnoremap <leader>j :NERDTreeFind<CR>
 """"""""
 " TMUX "
 """"""""
-let g:tmux_navigator_no_mappings = 1
 let g:tmux_navigator_save_on_switch = 1  " Save on close
 
-nnoremap <silent> {Left-mapping} :TmuxNavigateLeft<cr>
-nnoremap <silent> {Down-Mapping} :TmuxNavigateDown<cr>
-nnoremap <silent> {Up-Mapping} :TmuxNavigateUp<cr>
-nnoremap <silent> {Right-Mapping} :TmuxNavigateRight<cr>
-nnoremap <silent> {Previous-Mapping} :TmuxNavigatePrevious<cr>
+""""""""""""""""
+" Key Mappings "
+""""""""""""""""
+" Mods for screen (so tmux is the same) 
+"nnoremap <c-j> <c-w>j
+"nnoremap <c-k> <c-w>k
+"nnoremap <c-h> <c-w>h
+"nnoremap <c-l> <c-w>l
+
+"let g:tmux_navigator_no_mappings = 1
+"nnoremap <silent> {Left-mapping} :TmuxNavigateLeft<cr>
+"nnoremap <silent> {Down-Mapping} :TmuxNavigateDown<cr>
+"nnoremap <silent> {Up-Mapping} :TmuxNavigateUp<cr>
+"nnoremap <silent> {Right-Mapping} :TmuxNavigateRight<cr>
+"nnoremap <silent> {Previous-Mapping} :TmuxNavigatePrevious<cr>
 
 """""""""""""""""
 " Auto Commands "
@@ -451,6 +443,16 @@ command! W  write
 """""""""""
 " inspiration
 " http://marcgg.com/blog/2016/03/01/vimrc-example/
+
+
+"""""""""""""""
+" Trial Items "
+"""""""""""""""
+
+ " ctags optimization
+"set autochdir
+"set tags=tags;
+
 " Copy/pasting over ssh to osx
 "function! PropagatePasteBufferToOSX()
     "let @n=getreg('"')
@@ -464,13 +466,3 @@ command! W  write
 "nnoremap <leader>6 :call PopulatePasteBufferFromOSX()<cr>
 "nnoremap <leader>7 :call PropagatePasteBufferToOSX()<cr>
 
-noremap <Up> <NOP>
-noremap <Down> <NOP>
-noremap <Left> <NOP>
-noremap <Right> <NOP>
-inoremap jj <ESC>  " Some people say this helps speed up normal mode
-set scrolloff=5    " Makes the cursor offset
-
- " ctags optimization
-"set autochdir
-"set tags=tags;
