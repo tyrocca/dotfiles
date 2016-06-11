@@ -20,7 +20,6 @@ Plugin 'VundleVim/Vundle.vim'
 """""""""""
 " Styling "
 """""""""""
-
 " Solarized
 Plugin 'altercation/vim-colors-solarized'
 
@@ -59,7 +58,6 @@ Plugin 'L9'
 """""""""""
 " Editing "
 """""""""""
-
 " Edit indent block
 " ai – the current indentation level and the line above
 " ii – the current indentation level excluding the line above
@@ -84,10 +82,10 @@ Plugin 'ervandew/supertab'
 Plugin 'tpope/vim-surround'
 
 " Emmet
-Plugin 'mattn/emmet-vim'
+"Plugin 'mattn/emmet-vim'
 
 " Multiple cursors
-Plugin 'terryma/vim-multiple-cursors'
+"Plugin 'terryma/vim-multiple-cursors'
 
 " ArgWrap - fix argument wrapping
 Plugin 'FooSoft/vim-argwrap'
@@ -99,7 +97,6 @@ Plugin 'FooSoft/vim-argwrap'
 """"""""""""""""""""
 " Navigation Tools "
 """"""""""""""""""""
-
 " plugin to control p
 Plugin 'ctrlpvim/ctrlp.vim'
 
@@ -119,20 +116,14 @@ Plugin 'christoomey/vim-tmux-navigator'
 "File Insert
 Plugin 'rking/ag.vim'
 
-"NERD TREE
-Plugin 'scrooloose/nerdtree'
-
-
 """"""""""""""""""
 " Misc Things... "
 """"""""""""""""""
-
 " Git tools
 Plugin 'tpope/vim-fugitive'
 
-" Vim Shell
-Plugin 'Shougo/vimproc.vim'
-Plugin 'Shougo/vimshell.vim'
+" Command Line tools
+Plugin 'tpope/vim-eunuch'
 
 """"""""""""""""""""""
 "Useful vundle stuff "
@@ -187,7 +178,7 @@ else
 endif
 
 " Formatting
-set fileformat=unix     " Make sure the files are always unix
+set fileformats=unix    " Make sure the files are always unix
 set tabstop=4 		    " number of visual spaces per TAB
 set softtabstop=4  	    " number of spaces in tab when editing
 set shiftwidth=4        " number of spaces when ?
@@ -216,7 +207,7 @@ set scrolloff=5     " Makes the cursor offset
 
 " http://usevim.com/2012/10/19/vim101-set-hidden/
 set hidden
-set history=100
+set history=1000
 
 "UX config
 
@@ -225,6 +216,7 @@ set incsearch           " search as characters are entered
 set hlsearch            " highlight matches
 
 "Searching
+set ignorecase
 set smartcase
 "/copyright      " Case insensitive
 "/Copyright      " Case sensitive
@@ -262,6 +254,11 @@ nnoremap <expr> gp '`[' . strpart(getregtype(), 0, 1) . '`]'
 "Paste toggle
 set pastetoggle=<F2>
 
+" f3 will toggle linenumbers
+noremap <F3> :set invnumber<CR>
+inoremap <F3> <C-O>:set invnumber<CR>
+
+
 "Paste tools to personal clipboard
 "set clipboard=unnamed
 "vmap "+y :!xclip -f -sel clip
@@ -270,11 +267,8 @@ set pastetoggle=<F2>
 """""""""""""""""""""
 " * Function Key Maps "
 """""""""""""""""""""
-" f10 will strip out whitespace
-nnoremap <silent> <F3> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
-
-" Buffers
-nnoremap <F5> :buffers<CR>:buffer<Space>
+" f5 will strip out whitespace
+nnoremap <silent> <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
 
 " Toggle foldmethod on
 nnoremap <F8> :setlocal foldmethod=indent<CR>:setlocal foldignore= <CR>
@@ -289,7 +283,8 @@ nnoremap <F9> :tabe ~/.vimrc<CR>
 nnoremap <silent> <leader><CR> i<CR><ESC>
 " this makes a nice surrounding block around a piece of text
 nnoremap <leader>1 :center 80<CR>hhv0r#A<SPACE><ESC>40A#<ESC>d80<BAR>YppVr#kk.
-
+" Remove those fucking ^M characters
+nnoremap <silent> <leader>6 :%s///g<CR>
 
 """"""""""""""""""""
 " * Plugin Mods  * "
@@ -311,12 +306,16 @@ if executable('ag')
     " Use ag over grep
     set grepprg=ag\ --nogroup\ --nocolor
 
-    " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-    let g:ctrlp_user_command = 'ag %s -l --nocolor -g "" --ignore={"*/cc/*","*/js/*","*/css/*","*/templates/media/*","*/individual_projects/*","*/static/data/*"}'
+    " Use ag in CtrlP for listing files. Lightning fast & respects .gitignore
+    let g:ctrlp_user_command = 'ag %s -l --nocolor -g "" ' .
+        \ '--ignore={"*/cc/*","*/js/*","*/css/*",' .
+        \ '"*/templates/media/*","*/individual_projects/*","*/static/data/*"}'
     " ag is fast enough that CtrlP doesn't need to cache
     "let g:ctrlp_use_caching = 0
 else
-    set wildignore+=*/tmp/*,app/amazon/,*/amazon/**,*/amazon/*,*/cc/*,*.so,*.swp,*.zip,*.pyc,*/.git
+    set wildignore+=*/tmp/*,app/amazon/,*/amazon/**,
+        \*/amazon/*,*/cc/*,*.so,*.swp,*.zip,*.pyc,*/.git
+
     let g:ctrlp_custom_ignore = {
       \ 'dir':  '\v[\/]\.(git|hg|svn)$',
       \ 'file': '\.pyc$'
@@ -345,7 +344,7 @@ nnoremap <silent> <leader>a :ArgWrap<CR>
 " Syntastic "
 """""""""""""
 " for syntastic use f12
-let g:syntastic_mode_map = { 'mode': 'passive' }
+let g:syntastic_mode_map = { 'mode': 'active' }
 nnoremap <F10> :SyntasticToggleMode<CR>
 nnoremap <F12> :update<CR>:SyntasticCheck<CR>  " Toggles Syntax check
 
@@ -376,33 +375,11 @@ nnoremap <F7> :IndentLinesToggle<CR>
 "let g:jedi#popup_select_first = 0
 "let g:jedi#popup_on_dot = 0
 
-"""""""""""""
-" Nerd Tree "
-"""""""""""""
-let NERDTreeMapActivateNode='<right>'
-nnoremap <leader>n :NERDTreeToggle<CR>
-nnoremap <leader>j :NERDTreeFind<CR>
 
 """"""""
 " TMUX "
 """"""""
 let g:tmux_navigator_save_on_switch = 1  " Save on close
-
-""""""""""""""""
-" Key Mappings "
-""""""""""""""""
-" Mods for screen (so tmux is the same) 
-"nnoremap <c-j> <c-w>j
-"nnoremap <c-k> <c-w>k
-"nnoremap <c-h> <c-w>h
-"nnoremap <c-l> <c-w>l
-
-"let g:tmux_navigator_no_mappings = 1
-"nnoremap <silent> {Left-mapping} :TmuxNavigateLeft<cr>
-"nnoremap <silent> {Down-Mapping} :TmuxNavigateDown<cr>
-"nnoremap <silent> {Up-Mapping} :TmuxNavigateUp<cr>
-"nnoremap <silent> {Right-Mapping} :TmuxNavigateRight<cr>
-"nnoremap <silent> {Previous-Mapping} :TmuxNavigatePrevious<cr>
 
 """""""""""""""""
 " Auto Commands "
