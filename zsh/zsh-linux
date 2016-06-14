@@ -6,17 +6,27 @@ cd quorum-site;
 # set path
 export EDITOR="vim"
 
+# better compiler function
 restart_compilers () {
     echo "Restarting compilers..."
+    # kill all processes
+    ps -ef | awk -v USER=$USER \
+        '$1 == USER && $9 ~ /(stylus|cjsx|coffee)/ {print $2}' | \
+        xargs kill -9
+
+    # save current working directory
+    cwd=$(pwd)
+    cd ~/quorum-site/app/static/
+
     # stylus
-    ps ax | grep "$HOME/quorum-site/app/static/css" | awk {'print $1'}| xargs kill -9
-    nohup stylus -w -m --out $HOME/quorum-site/app/static/css/ $HOME/quorum-site/app/static/stylus/ >/dev/null 2>&1 &
+    nohup stylus -w -m --out css/ stylus/ >/dev/null 2>&1 &
     # cjsx
-    ps ax | grep "$HOME/quorum-site/app/static/jsx" | awk {'print $1'}| xargs kill -9
-    nohup cjsx -o $HOME/quorum-site/app/static/jsx/ -wcb $HOME/quorum-site/app/static/cjsx/ >/dev/null 2>&1 &
+    nohup cjsx -o jsx/ -wcb cjsx/ >/dev/null 2>&1 &
     # coffee
-    ps ax | grep "$HOME/quorum-site/app/static/cc" | awk {'print $1'}| xargs kill -9
-    nohup coffee -mo $HOME/quorum-site/app/static/cc/ -wc $HOME/quorum-site/app/static/coffee/  >/dev/null 2> compiler_log.txt &
+    nohup coffee -mo cc/ -wc coffee/  >/dev/null 2> compiler_log.txt &
+
+    # return to working directory
+    cd $cwd
 }
 
 ###########
@@ -55,7 +65,7 @@ shell(){
 serve(){
     green "### Running Server on port $1...";
     sudo chown -R $USER *
-    pkill -f $1
+    sudo pkill -f $1
     python manage.py runserver 0.0.0.0:$1;
 }
 # parser
@@ -125,6 +135,15 @@ auto_pep_file(){
 }
 style_clean(){
     yapf app/geography/models.py --style "google" -i
+}
+
+remove_dos() {
+    echo "checking for ^M characters"
+    grep -r -l  \
+        --include \*\*.py \
+        --include \*\*.html \
+        --include \*\*.coffee | xargs dos2unix
+    echo "^M characters were all removed"
 }
 
 if [[ "$TMUX" == "" ]] &&

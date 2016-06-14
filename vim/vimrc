@@ -178,6 +178,7 @@ else
 endif
 
 " Formatting
+set fileformat=unix    " Make sure the files are always unix
 set fileformats=unix    " Make sure the files are always unix
 set tabstop=4 		    " number of visual spaces per TAB
 set softtabstop=4  	    " number of spaces in tab when editing
@@ -311,7 +312,7 @@ if executable('ag')
         \ '--ignore={"*/cc/*","*/js/*","*/css/*",' .
         \ '"*/templates/media/*","*/individual_projects/*","*/static/data/*"}'
     " ag is fast enough that CtrlP doesn't need to cache
-    "let g:ctrlp_use_caching = 0
+    let g:ctrlp_use_caching = 0
 else
     set wildignore+=*/tmp/*,app/amazon/,*/amazon/**,
         \*/amazon/*,*/cc/*,*.so,*.swp,*.zip,*.pyc,*/.git
@@ -442,4 +443,11 @@ command! W  write
 "endfunction
 "nnoremap <leader>6 :call PopulatePasteBufferFromOSX()<cr>
 "nnoremap <leader>7 :call PropagatePasteBufferToOSX()<cr>
-
+let g:syntastic_error_symbol = '❌'
+let g:syntastic_style_error_symbol = '⁉️'
+let g:syntastic_warning_symbol = '⚠️'
+let g:syntastic_style_warning_symbol = '💩'
+"highlight link SyntasticErrorSign SignColumn
+"highlight link SyntasticWarningSign SignColumn
+"highlight link SyntasticStyleErrorSign SignColumn
+"highlight link SyntasticStyleWarningSign SignColumn
