@@ -349,7 +349,13 @@ let g:syntastic_mode_map = { 'mode': 'active' }
 nnoremap <F10> :SyntasticToggleMode<CR>
 nnoremap <F12> :update<CR>:SyntasticCheck<CR>  " Toggles Syntax check
 
-"Ignore Errors
+" Fun styling for syntastic
+let g:syntastic_error_symbol = '❌'
+let g:syntastic_style_error_symbol = '⁉️'
+let g:syntastic_warning_symbol = '⚠️'
+let g:syntastic_style_warning_symbol = '💩'
+
+" Ignore Errors
 let g:syntastic_python_checkers = ["flake8"]
 let g:syntastic_python_flake8_args = '--max-line-length=200 --ignore=W391'
 
@@ -443,11 +449,3 @@ command! W  write
 "endfunction
 "nnoremap <leader>6 :call PopulatePasteBufferFromOSX()<cr>
 "nnoremap <leader>7 :call PropagatePasteBufferToOSX()<cr>
-let g:syntastic_error_symbol = '❌'
-let g:syntastic_style_error_symbol = '⁉️'
-let g:syntastic_warning_symbol = '⚠️'
-let g:syntastic_style_warning_symbol = '💩'
-"highlight link SyntasticErrorSign SignColumn
-"highlight link SyntasticWarningSign SignColumn
-"highlight link SyntasticStyleErrorSign SignColumn
-"highlight link SyntasticStyleWarningSign SignColumn
