@@ -3,31 +3,36 @@ if [ -f ~/.bashrc ]; then
     source ~/.bashrc
 fi
 
-#source ~/.bin/tmuxinator.bash
-
-# Bash Rc additions
+# bash additions
 cd ~/;
 source bin/activate;
 cd quorum-site;
 
 # set path
-export PATH="/home/$USER/yes/bin:$PATH"
 export EDITOR="vim"
 
+# better compiler function
 restart_compilers () {
     echo "Restarting compilers..."
-    # stylus
-    ps ax | grep "$HOME/quorum-site/app/static/css" | awk {'print $1'}| xargs kill -9
-    nohup stylus -w -m --out $HOME/quorum-site/app/static/css/ $HOME/quorum-site/app/static/stylus/ >/dev/null 2>&1 &
-    # cjsx
-    ps ax | grep "$HOME/quorum-site/app/static/jsx" | awk {'print $1'}| xargs kill -9
-    nohup cjsx -o $HOME/quorum-site/app/static/jsx/ -wcb $HOME/quorum-site/app/static/cjsx/ >/dev/null 2>&1 &
-    # coffee
-    ps ax | grep "$HOME/quorum-site/app/static/cc" | awk {'print $1'}| xargs kill -9
-    nohup coffee -o $HOME/quorum-site/app/static/cc/ -wc $HOME/quorum-site/app/static/coffee/  >/dev/null 2>&1 &
-}
+    # kill all processes
+    ps -ef | awk -v USER=$USER \
+        '$1 == USER && $9 ~ /(stylus|cjsx|coffee)/ {print $2}' | \
+        xargs kill -9
 
-restart_compilers
+    # save current working directory
+    cwd=$(pwd)
+    cd ~/quorum-site/app/static/
+
+    # stylus
+    nohup stylus -w -m --out css/ stylus/ >/dev/null 2>&1 &
+    # cjsx
+    nohup cjsx -o jsx/ -wcb cjsx/ >/dev/null 2>&1 &
+    # coffee
+    nohup coffee -mo cc/ -wc coffee/  >/dev/null 2> compiler_log.txt &
+
+    # return to working directory
+    cd $cwd
+}
 
 ###########
 # Styling #
@@ -65,7 +70,7 @@ shell(){
 serve(){
     green "### Running Server on port $1...";
     sudo chown -R $USER *
-    pkill -f $1
+    sudo pkill -f $1
     python manage.py runserver 0.0.0.0:$1;
 }
 # parser
@@ -124,12 +129,34 @@ quorum_text () {
     purple "\$\$ \$\$\\\$\$ |\$\$ |  \$\$ |\$\$ |  \$\$ |\$\$ |      \$\$ |  \$\$ |\$\$ | \$\$ | \$\$ |";
     purple "\\\$\$\$\$\$\$ / \\\$\$\$\$\$\$  |\\\$\$\$\$\$\$  |\$\$ |      \\\$\$\$\$\$\$  |\$\$ | \$\$ | \$\$ |";
     purple " \\___\$\$\$\\  \\______/  \\______/ \\__|       \\______/ \\__| \\__| \\__|";
-    purple "     \\___|";
+    purple "     \\___|  * Data Driven Analytics | Dev Env for $USER *";
     echo "";
+}
+quorum_text
+
+###pip install autopep8
+auto_pep_file(){
+    autopep8 --in-place --max-line-length 100 $1
+}
+style_clean(){
+    yapf app/geography/models.py --style "google" -i
+}
+
+remove_dos() {
+    echo "checking for ^M characters"
+    grep -r -l 
+ \
+        --include \*\*.py \
+        --include \*\*.html \
+        --include \*\*.coffee | xargs dos2unix
+    echo "^M characters were all removed"
 }
 
 if [[ "$TMUX" == "" ]] &&
         [[ "$SSH_CONNECTION" != "" ]]; then
+    # restart compilers
+    restart_compilers
+
     # Attempt to discover a detached session and attach
     # it, else create a new session
     WHOAMI=$(whoami)
