@@ -11,6 +11,11 @@ cd quorum-site;
 # set path
 export EDITOR="vim"
 
+path="/home/$USER/bin:/home/$USER/yes/bin:/home/$USER/bin:/home/$USER/yes/bin:/home/$USER/bin:"
+path+="/usr/local/lib:"
+path+="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
+export PATH="$path"
+
 # better compiler function
 restart_compilers () {
     echo "Restarting compilers..."
