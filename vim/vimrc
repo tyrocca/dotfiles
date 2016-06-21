@@ -52,7 +52,7 @@ Plugin 'mtscout6/vim-cjsx'
 Plugin 'wavded/vim-stylus'
 
 " For coding in vim
-"plugin from http://vim-scripts.org/vim/scripts.html
+" plugin from http://vim-scripts.org/vim/scripts.html
 Plugin 'L9'
 
 """""""""""
@@ -69,8 +69,17 @@ Plugin 'scrooloose/nerdcommenter'
 " Syntax highighting
 Plugin 'scrooloose/syntastic'
 
-" server auto complete < no dependent files
+" Server auto complete < no dependent files
 Plugin 'ervandew/supertab'
+
+" Surround
+Plugin 'tpope/vim-surround'
+
+" ArgWrap - fix argument wrapping
+Plugin 'FooSoft/vim-argwrap'
+
+" Repeater
+Plugin 'tpope/vim-repeat'
 
 " jedi vim - make sure you pip jedi
 "Plugin 'davidhalter/jedi-vim'
@@ -78,17 +87,11 @@ Plugin 'ervandew/supertab'
 " YOU complete me!
 "Plugin 'Valloric/YouCompleteMe'
 
-" Surround
-Plugin 'tpope/vim-surround'
-
 " Emmet
 "Plugin 'mattn/emmet-vim'
 
 " Multiple cursors
 "Plugin 'terryma/vim-multiple-cursors'
-
-" ArgWrap - fix argument wrapping
-Plugin 'FooSoft/vim-argwrap'
 
 " Fuzzy finder
 "Plugin 'vim-scripts/FuzzyFinder'
@@ -103,6 +106,9 @@ Plugin 'ctrlpvim/ctrlp.vim'
 " tmux
 Plugin 'christoomey/vim-tmux-navigator'
 
+"File Insert
+Plugin 'rking/ag.vim'
+
 " Tagbar
 " You need to install exuberant c tags
 "     brew install ctags (mac)
@@ -113,8 +119,6 @@ Plugin 'christoomey/vim-tmux-navigator'
 " install gem install CoffeeTags
 "Plugin 'lukaszkorecki/CoffeeTags'
 
-"File Insert
-Plugin 'rking/ag.vim'
 
 """"""""""""""""""
 " Misc Things... "
@@ -125,10 +129,13 @@ Plugin 'tpope/vim-fugitive'
 " Command Line tools
 Plugin 'tpope/vim-eunuch'
 
+" Dispatch Vim - allows async commands
+Plugin 'tpope/vim-dispatch'
+
+
 """"""""""""""""""""""
 "Useful vundle stuff "
 """"""""""""""""""""""
-
 " The sparkup vim script is in a subdirectory of this repo called vim.
 " Pass the path to set the runtimepath properly.
 Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
@@ -437,6 +444,14 @@ command! W  write
 """""""""""""""
 " Trial Items "
 """""""""""""""
+" changes the cursor in vim
+if exists('$TMUX')
+    let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
+    let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
+else
+    let &t_SI = "\<Esc>]50;CursorShape=1\x7"
+    let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+endif
 
  " ctags optimization
 "set autochdir
