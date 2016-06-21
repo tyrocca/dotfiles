@@ -170,7 +170,12 @@ filetype plugin indent on    " required
 syntax enable
 if ($USER == "ty" || $USER == "tyrocca")
     set t_Co=256
-    set background=dark
+    if ($terminal_background == "light")
+        set background=light
+    else
+        set background=dark
+    endif
+
     let g:solarized_termcolors=16
     colorscheme solarized
 else

@@ -21,9 +21,25 @@ restart_compilers () {
     # stylus
     nohup stylus -w -m --out css/ stylus/ >/dev/null 2>&1 &
     # cjsx
-    nohup cjsx -o jsx/ -wcb cjsx/ >/dev/null 2>&1 &
+    nohup cjsx -mo jsx/ -wcb cjsx/ >/dev/null 2>&1 &
     # coffee
     nohup coffee -mo cc/ -wc coffee/  >/dev/null 2> compiler_log.txt &
+
+    # return to working directory
+    cd $cwd
+}
+
+compile_static_files () {
+    # save current working directory
+    cwd=$(pwd)
+    cd ~/quorum-site/app/static/
+
+    # stylus
+    nohup stylus -m --out css/ stylus/ >/dev/null 2>&1 &
+    # cjsx
+    nohup cjsx -mo jsx/ -c cjsx/ >/dev/null 2>&1 &
+    # coffee
+    nohup coffee -mo cc/ -c coffee/  >/dev/null 2> compiler_log.txt &
 
     # return to working directory
     cd $cwd
@@ -142,6 +158,7 @@ remove_dos() {
     grep -r -l  \
         --include \*\*.py \
         --include \*\*.html \
+        --include \*\*.styl \
         --include \*\*.coffee | xargs dos2unix
     echo "^M characters were all removed"
 }
