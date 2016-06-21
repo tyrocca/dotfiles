@@ -1,3 +1,2 @@
-echo 'I remind people of a young Bran Start'
 export SHELL=/bin/zsh
 exec /bin/zsh -l

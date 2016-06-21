@@ -23,7 +23,7 @@ restart_compilers () {
     # cjsx
     nohup cjsx -mo jsx/ -wcb cjsx/ >/dev/null 2>&1 &
     # coffee
-    nohup coffee -mo cc/ -wc coffee/  >/dev/null 2> compiler_log.txt &
+    nohup coffee -mo cc/ -wc coffee/  >/dev/null 2>&1 &
 
     # return to working directory
     cd $cwd
@@ -35,12 +35,16 @@ compile_static_files () {
     cd ~/quorum-site/app/static/
 
     # stylus
-    nohup stylus -m --out css/ stylus/ >/dev/null 2>&1 &
+    echo "Compiling Stylus"
+    stylus -m --out css/ stylus/
     # cjsx
-    nohup cjsx -mo jsx/ -c cjsx/ >/dev/null 2>&1 &
+    echo "Compiling CJSX"
+    cjsx -mo jsx/ -cb cjsx/
     # coffee
-    nohup coffee -mo cc/ -c coffee/  >/dev/null 2> compiler_log.txt &
+    echo "Compiling Coffee"
+    coffee -mo cc/ -c coffee/
 
+    echo "All done - returning to CWD"
     # return to working directory
     cd $cwd
 }

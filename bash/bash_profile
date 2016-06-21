@@ -33,11 +33,32 @@ restart_compilers () {
     # cjsx
     nohup cjsx -mo jsx/ -wcb cjsx/ >/dev/null 2>&1 &
     # coffee
-    nohup coffee -mo cc/ -wc coffee/  >/dev/null 2> compiler_log.txt &
+    nohup coffee -mo cc/ -wc coffee/  >/dev/null 2>&1 &
 
     # return to working directory
     cd $cwd
 }
+
+compile_static_files () {
+    # save current working directory
+    cwd=$(pwd)
+    cd ~/quorum-site/app/static/
+
+    # stylus
+    echo "Compiling Stylus"
+    stylus -m --out css/ stylus/
+    # cjsx
+    echo "Compiling CJSX"
+    cjsx -mo jsx/ -cb cjsx/
+    # coffee
+    echo "Compiling Coffee"
+    coffee -mo cc/ -c coffee/
+
+    echo "All done - returning to CWD"
+    # return to working directory
+    cd $cwd
+}
+
 
 ###########
 # Styling #
@@ -80,7 +101,7 @@ serve(){
 }
 # parser
 parse(){
- python manage.py parse $1
+    python manage.py parse $1
 }
 
 # for deleteing defunct / zombies
