@@ -39,8 +39,8 @@ Plugin 'tomasr/molokai'
 " Monokai
 Plugin 'sickill/vim-monokai'
 
-" Indent guide
-Plugin 'Yggdroot/indentLine'
+" Typescript
+Plugin 'leafgarland/typescript-vim'
 
 " CoffeeScript
 Plugin 'kchmck/vim-coffee-script'
@@ -54,6 +54,15 @@ Plugin 'wavded/vim-stylus'
 " For coding in vim
 " plugin from http://vim-scripts.org/vim/scripts.html
 Plugin 'L9'
+
+" Typescript ide
+"Plugin 'Quramy/tsuquyomi'
+
+" Another Async library for typescript
+"Plugin 'Shougo/vimproc.vim'
+
+" Indent guide
+"Plugin 'Yggdroot/indentLine'
 
 """""""""""
 " Editing "
@@ -131,7 +140,6 @@ Plugin 'tpope/vim-eunuch'
 
 " Dispatch Vim - allows async commands
 Plugin 'tpope/vim-dispatch'
-
 
 """"""""""""""""""""""
 "Useful vundle stuff "
