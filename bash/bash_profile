@@ -17,27 +17,27 @@ path+="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/
 export PATH="$path"
 
 # better compiler function
-restart_compilers () {
-    echo "Restarting compilers..."
-    # kill all processes
-    ps -ef | awk -v USER=$USER \
-        '$1 == USER && $9 ~ /(stylus|cjsx|coffee)/ {print $2}' | \
-        xargs kill -9
+#restart_compilers () {
+    #echo "Restarting compilers..."
+    ## kill all processes
+    #ps -ef | awk -v USER=$USER \
+        #'$1 == USER && $9 ~ /(stylus|cjsx|coffee)/ {print $2}' | \
+        #xargs kill -9
 
-    # save current working directory
-    cwd=$(pwd)
-    cd ~/quorum-site/app/static/
+    ## save current working directory
+    #cwd=$(pwd)
+    #cd ~/quorum-site/app/static/
 
-    # stylus
-    nohup stylus -w -m --out css/ stylus/ >/dev/null 2>&1 &
-    # cjsx
-    nohup cjsx -mo jsx/ -wcb cjsx/ >/dev/null 2>&1 &
-    # coffee
-    nohup coffee -mo cc/ -wc coffee/  >/dev/null 2>&1 &
+    ## stylus
+    #nohup stylus -w -m --out css/ stylus/ >/dev/null 2>&1 &
+    ## cjsx
+    #nohup cjsx -mo jsx/ -wcb cjsx/ >/dev/null 2>&1 &
+    ## coffee
+    #nohup coffee -mo cc/ -wc coffee/  >/dev/null 2>&1 &
 
-    # return to working directory
-    cd $cwd
-}
+    ## return to working directory
+    #cd $cwd
+#}
 
 compile_static_files () {
     # save current working directory
@@ -179,8 +179,6 @@ remove_dos() {
 
 if [[ "$TMUX" == "" ]] &&
         [[ "$SSH_CONNECTION" != "" ]]; then
-    # restart compilers
-    restart_compilers
 
     # Attempt to discover a detached session and attach
     # it, else create a new session
