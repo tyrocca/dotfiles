@@ -49,7 +49,7 @@ compile_static_files () {
     stylus -m --out css/ stylus/
     # cjsx
     echo "Compiling CJSX"
-    cjsx -mo jsx/ -cb cjsx/
+    cjsx -mo jsx/ -c cjsx/
     # coffee
     echo "Compiling Coffee"
     coffee -mo cc/ -c coffee/
@@ -97,7 +97,7 @@ serve(){
     green "### Running Server on port $1...";
     sudo chown -R $USER *
     sudo pkill -f $1
-    python manage.py runserver 0.0.0.0:$1;
+    python manage.py runsslserver 0.0.0.0:$1;
 }
 # parser
 parse(){
@@ -170,8 +170,7 @@ style_clean(){
 
 remove_dos() {
     echo "checking for ^M characters"
-    grep -r -l 
- \
+    grep -r -l \
         --include \*\*.py \
         --include \*\*.html \
         --include \*\*.coffee | xargs dos2unix

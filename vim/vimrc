@@ -215,6 +215,7 @@ set wildmenu            " visual autocomplete for command menu
 set lazyredraw          " redraw only when we need to.
 set showmatch 		    " show matching ()
 set mouse=a             " Turn on mouse mode
+set ttymouse=sgr        " Turn on mouse resizing
 set timeoutlen=1000 ttimeoutlen=0  " prevent slowdown on normal mode
 
 " Prevent Arrow keys
