@@ -76,7 +76,12 @@ Plugin 'michaeljsmith/vim-indent-object'
 Plugin 'scrooloose/nerdcommenter'
 
 " Syntax highighting
-Plugin 'scrooloose/syntastic'
+if !has('nvim')
+    Plugin 'scrooloose/syntastic'
+else
+    " Async highlighting
+    Plugin 'neomake/neomake'
+endif
 
 " Server auto complete < no dependent files
 Plugin 'ervandew/supertab'
@@ -215,7 +220,9 @@ set wildmenu            " visual autocomplete for command menu
 set lazyredraw          " redraw only when we need to.
 set showmatch 		    " show matching ()
 set mouse=a             " Turn on mouse mode
-set ttymouse=sgr        " Turn on mouse resizing
+if !has('nvim')
+    set ttymouse=sgr
+endif
 set timeoutlen=1000 ttimeoutlen=0  " prevent slowdown on normal mode
 
 " Prevent Arrow keys
@@ -365,20 +372,26 @@ nnoremap <silent> <leader>a :ArgWrap<CR>
 """""""""""""
 " Syntastic "
 """""""""""""
-" for syntastic use f12
-let g:syntastic_mode_map = { 'mode': 'active' }
-nnoremap <F10> :SyntasticToggleMode<CR>
-nnoremap <F12> :update<CR>:SyntasticCheck<CR>  " Toggles Syntax check
+if !has('nvim')
+    " for syntastic use f12
+    let g:syntastic_mode_map = { 'mode': 'active' }
+    nnoremap <F10> :SyntasticToggleMode<CR>
+    nnoremap <F12> :update<CR>:SyntasticCheck<CR>  " Toggles Syntax check
 
-" Fun styling for syntastic
-let g:syntastic_error_symbol = '❌'
-let g:syntastic_style_error_symbol = '⁉️'
-let g:syntastic_warning_symbol = '⚠️'
-let g:syntastic_style_warning_symbol = '💩'
+    " Fun styling for syntastic
+    let g:syntastic_error_symbol = '❌'
+    let g:syntastic_style_error_symbol = '⁉️'
+    let g:syntastic_warning_symbol = '⚠️'
+    let g:syntastic_style_warning_symbol = '💩'
 
-" Ignore Errors
-let g:syntastic_python_checkers = ["flake8"]
-let g:syntastic_python_flake8_args = '--max-line-length=200 --ignore=W391'
+    " Ignore Errors
+    let g:syntastic_python_checkers = ["flake8"]
+    let g:syntastic_python_flake8_args = '--max-line-length=200 --ignore=W391'
+else
+    let g:neomake_python_enabled_makers = ['flake8']
+    autocmd! BufWritePost * Neomake
+endif
+
 
 """"""""""""""""""""
 " Fugitive settings "
