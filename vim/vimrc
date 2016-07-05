@@ -1,5 +1,4 @@
 " for Vundle
-
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
@@ -15,7 +14,6 @@ Plugin 'VundleVim/Vundle.vim'
 
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
-
 
 """""""""""
 " Styling "
@@ -110,7 +108,6 @@ Plugin 'tpope/vim-repeat'
 " Fuzzy finder
 "Plugin 'vim-scripts/FuzzyFinder'
 
-
 """"""""""""""""""""
 " Navigation Tools "
 """"""""""""""""""""
@@ -148,9 +145,9 @@ Plugin 'tpope/vim-eunuch'
 " Dispatch Vim - allows async commands
 Plugin 'tpope/vim-dispatch'
 
-""""""""""""""""""""""
-"Useful vundle stuff "
-""""""""""""""""""""""
+"""""""""""""""""""""""""""
+" * Useful vundle stuff * "
+"""""""""""""""""""""""""""
 " The sparkup vim script is in a subdirectory of this repo called vim.
 " Pass the path to set the runtimepath properly.
 Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
@@ -187,8 +184,7 @@ filetype plugin indent on    " required
 """"""""""""""""""""""""
 " * Built in Toggles * "
 """"""""""""""""""""""""
-
-"Colors
+" Colors
 syntax enable
 if ($USER == "ty" || $USER == "tyrocca")
     set t_Co=256
@@ -296,7 +292,7 @@ inoremap <F3> <C-O>:set invnumber<CR>
 "map "+p :r!xclip -o -sel clip
 
 """""""""""""""""""""
-" * Function Key Maps "
+" Function Key Maps "
 """""""""""""""""""""
 " f5 will strip out whitespace
 nnoremap <silent> <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
@@ -317,6 +313,15 @@ nnoremap <leader>1 :center 80<CR>hhv0r#A<SPACE><ESC>40A#<ESC>d80<BAR>YppVr#kk.
 " Remove those fucking ^M characters
 nnoremap <silent> <leader>6 :%s///g<CR>
 
+
+"""""""""""""""""""""""
+" * GUI only things * " 
+"""""""""""""""""""""""
+
+if has("gui_running")
+    set guifont=Meslo\ LG\ M\ Regular\ for\ Powerline  
+endif
+
 """"""""""""""""""""
 " * Plugin Mods  * "
 """"""""""""""""""""
@@ -335,25 +340,13 @@ nnoremap <silent> <leader>t :CtrlPTag<cr>
 "Silver Searcher
 
 let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
-"if executable('ag')
-    "" Use ag over grep
-    "set grepprg=ag\ --nogroup\ --nocolor
-
-    "" Use ag in CtrlP for listing files. Lightning fast & respects .gitignore
-    "let g:ctrlp_user_command = 'ag %s -l --nocolor -g "" ' .
-        "\ '--ignore={"*/cc/*","*/js/*","*/css/*",' .
-        "\ '"*/templates/media/*","*/individual_projects/*","*/static/data/*"}'
-    "" ag is fast enough that CtrlP doesn't need to cache
-    "let g:ctrlp_use_caching = 0
-"else
+let g:ctrlp_use_caching = 0
 set wildignore+=*/tmp/*,**/css/*,
     \*/cc/*,*.so,*.swp,*.zip,*.pyc,*/.git
-
-    "let g:ctrlp_custom_ignore = {
-      "\ 'dir':  '\v[\/]\.(git|hg|svn)$',
-      "\ 'file': '\.pyc$'
-      "\ }
-"endif
+"let g:ctrlp_custom_ignore = {
+  "\ 'dir':  '\v[\/]\.(git|hg|svn)$',
+  "\ 'file': '\.pyc$'
+  "\ }
 
 """""""""""
 " Airline "
