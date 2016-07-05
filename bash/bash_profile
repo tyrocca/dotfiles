@@ -179,7 +179,6 @@ remove_dos() {
 
 if [[ "$TMUX" == "" ]] &&
         [[ "$SSH_CONNECTION" != "" ]]; then
-    restart_compilers
 
     # Attempt to discover a detached session and attach
     # it, else create a new session

@@ -81,6 +81,7 @@ sp(){
 shell(){
      python manage.py shell_plus;
 }
+
 # runserver
 serve(){
     green "### Running Server on port $1...";
@@ -88,6 +89,7 @@ serve(){
     sudo pkill -f $1
     python manage.py runserver 0.0.0.0:$1;
 }
+
 # parser
 parse(){
  python manage.py parse $1
@@ -169,7 +171,6 @@ remove_dos() {
 
 if [[ "$TMUX" == "" ]] &&
         [[ "$SSH_CONNECTION" != "" ]]; then
-    restart_compilers
 
     # Attempt to discover a detached session and attach
     # it, else create a new session
