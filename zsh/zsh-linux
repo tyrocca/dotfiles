@@ -151,6 +151,11 @@ quorum_text () {
 }
 quorum_text
 
+# fun cow thing
+fortune | cowsay -f $(ls /usr/share/cowsay/cows/ | shuf -n1) | lolcat
+echo ""
+
+
 ###pip install autopep8
 auto_pep_file(){
     autopep8 --in-place --max-line-length 100 $1

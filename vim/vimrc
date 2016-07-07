@@ -37,8 +37,12 @@ Plugin 'tomasr/molokai'
 " Monokai
 Plugin 'sickill/vim-monokai'
 
-" Typescript
-Plugin 'leafgarland/typescript-vim'
+" Indent guide
+"Plugin 'Yggdroot/indentLine'
+
+"""""""""""""
+" Languages "
+"""""""""""""
 
 " CoffeeScript
 Plugin 'kchmck/vim-coffee-script'
@@ -49,7 +53,16 @@ Plugin 'mtscout6/vim-cjsx'
 " Stylus
 Plugin 'wavded/vim-stylus'
 
-" For coding in vim
+" Typescript
+Plugin 'leafgarland/typescript-vim'
+
+" Javascript
+Plugin 'pangloss/vim-javascript'
+
+" Jsx 
+Plugin 'mxw/vim-jsx'
+
+" Vimscript
 " plugin from http://vim-scripts.org/vim/scripts.html
 Plugin 'L9'
 
@@ -59,15 +72,12 @@ Plugin 'L9'
 " Another Async library for typescript
 "Plugin 'Shougo/vimproc.vim'
 
-" Indent guide
-"Plugin 'Yggdroot/indentLine'
-
 """""""""""
 " Editing "
 """""""""""
 " Edit indent block
-" ai – the current indentation level and the line above
-" ii – the current indentation level excluding the line above
+"   * ai – the current indentation level and the line above
+"   * ii – the current indentation level excluding the line above
 Plugin 'michaeljsmith/vim-indent-object'
 
 " Commentout
@@ -471,6 +481,12 @@ else
     let &t_SI = "\<Esc>]50;CursorShape=1\x7"
     let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 endif
+
+""""""""""""""""""""
+" Webpack problems "
+""""""""""""""""""""
+" https://github.com/webpack/webpack/issues/781
+set backupcopy=yes
 
  " ctags optimization
 "set autochdir
