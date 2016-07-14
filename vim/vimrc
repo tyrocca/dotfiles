@@ -229,7 +229,7 @@ set lazyredraw          " redraw only when we need to.
 set showmatch 		    " show matching ()
 set mouse=a             " Turn on mouse mode
 if !has('nvim')
-    set ttymouse=xterm
+    set ttymouse=xterm2
 endif
 set timeoutlen=1000 ttimeoutlen=0  " prevent slowdown on normal mode
 
