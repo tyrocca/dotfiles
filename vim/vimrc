@@ -1,76 +1,63 @@
-" for Vundle
+""""""""""""""""
+" * Vim Plug * "
+""""""""""""""""
 set nocompatible              " be iMproved, required
-filetype off                  " required
+" https://github.com/junegunn/vim-plug
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+" Automatic install
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall | source $MYVIMRC
+endif
 
-" alternatively, pass a path where Vundle should install plugins
-" call vundle#begin('~/some/path/here')
-
-" let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
-
-" The following are examples of different formats supported.
-" Keep Plugin commands between vundle#begin/end.
+" Start plugin manager
+call plug#begin('~/.vim/plugged')
 
 """""""""""
 " Styling "
 """""""""""
 " Solarized
-Plugin 'altercation/vim-colors-solarized'
+Plug 'altercation/vim-colors-solarized'
 
 " LightLine
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
+Plug 'vim-airline/vim-airline' | Plug 'vim-airline/vim-airline-themes'
 
 " Tmux line
-Plugin 'edkolev/tmuxline.vim'
+Plug 'edkolev/tmuxline.vim'
 
 " Mod8 (spacegray)
-Plugin 'easysid/mod8.vim'
+Plug 'easysid/mod8.vim'
 
 " Molokai
-Plugin 'tomasr/molokai'
+Plug 'tomasr/molokai'
 
 " Monokai
-Plugin 'sickill/vim-monokai'
-
-" Indent guide
-"Plugin 'Yggdroot/indentLine'
+Plug 'sickill/vim-monokai'
 
 """""""""""""
 " Languages "
 """""""""""""
+" Javascript
+Plug 'pangloss/vim-javascript'
 
 " CoffeeScript
-Plugin 'kchmck/vim-coffee-script'
+Plug 'kchmck/vim-coffee-script'
 
 " CJSX
-Plugin 'mtscout6/vim-cjsx'
+Plug 'mtscout6/vim-cjsx'
 
 " Stylus
-Plugin 'wavded/vim-stylus'
-
-" Typescript
-Plugin 'leafgarland/typescript-vim'
-
-" Javascript
-Plugin 'pangloss/vim-javascript'
+Plug 'wavded/vim-stylus', { 'for': 'stylus' }
 
 " Jsx 
-Plugin 'mxw/vim-jsx'
+Plug 'mxw/vim-jsx'
 
-" Vimscript
-" plugin from http://vim-scripts.org/vim/scripts.html
-Plugin 'L9'
+" Typescript
+Plug 'leafgarland/typescript-vim'
 
-" Typescript ide
-"Plugin 'Quramy/tsuquyomi'
-
-" Another Async library for typescript
-"Plugin 'Shougo/vimproc.vim'
+" Typescript ide & Async library for typescript
+"Plug 'Quramy/tsuquyomi' | Plug 'Shougo/vimproc.vim' , { 'do': 'make' }
 
 """""""""""
 " Editing "
@@ -78,118 +65,82 @@ Plugin 'L9'
 " Edit indent block
 "   * ai – the current indentation level and the line above
 "   * ii – the current indentation level excluding the line above
-Plugin 'michaeljsmith/vim-indent-object'
+Plug 'michaeljsmith/vim-indent-object'
 
 " Commentout
-Plugin 'scrooloose/nerdcommenter'
+Plug 'scrooloose/nerdcommenter'
 
 " Syntax highighting
 if !has('nvim')
-    Plugin 'scrooloose/syntastic'
+    Plug 'scrooloose/syntastic'
 else
     " Async highlighting
-    Plugin 'neomake/neomake'
+    Plug 'neomake/neomake'
 endif
 
 " Server auto complete < no dependent files
-Plugin 'ervandew/supertab'
+Plug 'ervandew/supertab'
 
 " Surround
-Plugin 'tpope/vim-surround'
+Plug 'tpope/vim-surround'
 
 " ArgWrap - fix argument wrapping
-Plugin 'FooSoft/vim-argwrap'
+Plug 'FooSoft/vim-argwrap'
 
 " Repeater
-Plugin 'tpope/vim-repeat'
+Plug 'tpope/vim-repeat'
 
 " jedi vim - make sure you pip jedi
-"Plugin 'davidhalter/jedi-vim'
+"Plug 'davidhalter/jedi-vim'
 
 " YOU complete me!
-"Plugin 'Valloric/YouCompleteMe'
+"Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
 
 " Emmet
-"Plugin 'mattn/emmet-vim'
+"Plug 'mattn/emmet-vim'
 
 " Multiple cursors
-"Plugin 'terryma/vim-multiple-cursors'
-
-" Fuzzy finder
-"Plugin 'vim-scripts/FuzzyFinder'
+"Plug 'terryma/vim-multiple-cursors'
 
 """"""""""""""""""""
 " Navigation Tools "
 """"""""""""""""""""
+" Fuzzy finder
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+
 " plugin to control p
-Plugin 'ctrlpvim/ctrlp.vim'
+Plug 'ctrlpvim/ctrlp.vim'
 " plugin to speed up control p
-Plugin 'FelikZ/ctrlp-py-matcher'
+Plug 'FelikZ/ctrlp-py-matcher'
 
 " tmux
-Plugin 'christoomey/vim-tmux-navigator'
+Plug 'christoomey/vim-tmux-navigator'
 
 "File Insert
-Plugin 'rking/ag.vim'
+Plug 'rking/ag.vim'
 
 " Tagbar
 " You need to install exuberant c tags
 "     brew install ctags (mac)
 "     sudo apt-get install exuberant-ctags (ubuntu)
-"Plugin 'majutsushi/tagbar'
-
-"Coffeescript tabbar
-" install gem install CoffeeTags
-"Plugin 'lukaszkorecki/CoffeeTags'
-
+"Plug 'majutsushi/tagbar'
 
 """"""""""""""""""
 " Misc Things... "
 """"""""""""""""""
 " Git tools
-Plugin 'tpope/vim-fugitive'
+Plug 'tpope/vim-fugitive'
 
 " Command Line tools
-Plugin 'tpope/vim-eunuch'
+Plug 'tpope/vim-eunuch'
 
 " Dispatch Vim - allows async commands
-Plugin 'tpope/vim-dispatch'
+Plug 'tpope/vim-dispatch'
 
-"""""""""""""""""""""""""""
-" * Useful vundle stuff * "
-"""""""""""""""""""""""""""
-" The sparkup vim script is in a subdirectory of this repo called vim.
-" Pass the path to set the runtimepath properly.
-Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
+" Add plugins to &runtimepath
+call plug#end()
 
-" Git plugin not hosted on GitHub
-"Plugin 'git://git.wincent.com/command-t.git'
-
-" git repos on your local machine (i.e. when working on your own plugin)
-" Plugin 'file:///home/gmarik/path/to/plugin'
-
-" Avoid a name conflict with L9
-"Plugin 'user/L9', {'name': 'newL9'}
-
-
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
-
-filetype plugin indent on    " required
-
-" To ignore plugin indent changes, instead use:
-"filetype plugin on
-
-" Brief help
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just
-" :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to
-" auto-approve removal
-
-" see :h vundle for more details or wiki for FAQ
-" Put your non-Plugin stuff after this line
 
 """"""""""""""""""""""""
 " * Built in Toggles * "
@@ -336,27 +287,25 @@ endif
 " * Plugin Mods  * "
 """"""""""""""""""""
 
+"""""""""""""""""""""""""
+" Modifications for FZF "
+"""""""""""""""""""""""""
+nnoremap <silent> <C-p> :FZF<CR>
+
 """""""""""""""""""""""""""
 " Modifications for CTRLP "
 """""""""""""""""""""""""""
 "Accessing mru mode
+let g:ctrlp_map = '<leader>p'
+let g:ctrlp_cmd = 'CtrlP'
 nnoremap <silent> <leader>l :CtrlPMRU<CR>
-nnoremap <silent> <leader>b :CtrlPBuffer<CR>
-nnoremap <silent> <leader>t :CtrlPTag<cr>
-
-
-" Ignored files
-"https://robots.thoughtbot.com/faster-grepping-in-vim
-"Silver Searcher
+"nnoremap <silent> <leader>b :CtrlPBuffer<CR>
+"nnoremap <silent> <leader>t :CtrlPTag<cr>
 
 let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
 let g:ctrlp_use_caching = 0
 set wildignore+=*/tmp/*,**/css/*,
     \*/cc/*,*.so,*.swp,*.zip,*.pyc,*/.git
-"let g:ctrlp_custom_ignore = {
-  "\ 'dir':  '\v[\/]\.(git|hg|svn)$',
-  "\ 'file': '\.pyc$'
-  "\ }
 
 """""""""""
 " Airline "
@@ -449,7 +398,7 @@ autocmd BufWritePre *.py,*.js,*.coffee :call <SID>StripTrailingWhitespaces()
 
 " open recent files if no file arg is passed
 if len(argv()) == 0
-    autocmd VimEnter * CtrlPMRU
+    autocmd VimEnter * FZF
 endif
 
 """""""""""""""
