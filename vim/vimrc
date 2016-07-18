@@ -290,7 +290,8 @@ endif
 """""""""""""""""""""""""
 " Modifications for FZF "
 """""""""""""""""""""""""
-nnoremap <silent> <C-p> :FZF<CR>
+nnoremap <silent> <C-p> :GitFiles<CR>
+nnoremap <silent> <leader>l :History<CR>
 
 """""""""""""""""""""""""""
 " Modifications for CTRLP "
@@ -298,7 +299,7 @@ nnoremap <silent> <C-p> :FZF<CR>
 "Accessing mru mode
 let g:ctrlp_map = '<leader>p'
 let g:ctrlp_cmd = 'CtrlP'
-nnoremap <silent> <leader>l :CtrlPMRU<CR>
+"nnoremap <silent> <leader>l :CtrlPMRU<CR>
 "nnoremap <silent> <leader>b :CtrlPBuffer<CR>
 "nnoremap <silent> <leader>t :CtrlPTag<cr>
 
@@ -398,7 +399,7 @@ autocmd BufWritePre *.py,*.js,*.coffee :call <SID>StripTrailingWhitespaces()
 
 " open recent files if no file arg is passed
 if len(argv()) == 0
-    autocmd VimEnter * FZF
+    autocmd VimEnter * CtrlPMRU
 endif
 
 """""""""""""""
