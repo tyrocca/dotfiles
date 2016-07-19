@@ -391,8 +391,13 @@ if !has('nvim')
     let g:syntastic_warning_symbol = '⚠️'
     let g:syntastic_style_warning_symbol = '💩'
 
-    " Ignore Errors
+    " Javascript
+    let g:syntastic_javascript_checkers = ['eslint']
+
+    " Python
     let g:syntastic_python_checkers = ["flake8"]
+
+    " Ignore Errors
     let g:syntastic_python_flake8_args = '--max-line-length=200 --ignore=W391'
 else
     let g:neomake_python_enabled_makers = ['flake8']
