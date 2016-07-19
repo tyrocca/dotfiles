@@ -30,10 +30,9 @@ cd ~/
 cwd=$(pwd)
 rm -rf $cwd/.vim
 mkdir $cwd/.vim
-git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 rm $cwd/.vimrc
 ln -s $cwd/dotfiles/vim/vimrc $cwd/.vimrc
-vim +PluginInstall +qall
+vim
 ```
 
 ### Installing Tmux
