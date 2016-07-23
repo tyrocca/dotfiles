@@ -70,6 +70,9 @@ Plug 'michaeljsmith/vim-indent-object'
 " Commentout
 Plug 'scrooloose/nerdcommenter'
 
+" Commenter
+Plug 'tpope/vim-commentary'
+
 " Syntax highighting
 if !has('nvim')
     Plug 'scrooloose/syntastic'
@@ -395,7 +398,7 @@ function! <SID>StripTrailingWhitespaces()
     let @/=_s
     call cursor(l, c)
 endfunction
-autocmd BufWritePre *.py,*.js,*.coffee :call <SID>StripTrailingWhitespaces()
+autocmd BufWritePre *.py,*.js,*.coffee,*.styl,*.cjsx,*.html,*.jsx :call <SID>StripTrailingWhitespaces()
 
 " open recent files if no file arg is passed
 if len(argv()) == 0
