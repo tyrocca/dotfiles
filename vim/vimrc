@@ -278,6 +278,8 @@ nnoremap <leader>1 :center 80<CR>hhv0r#A<SPACE><ESC>40A#<ESC>d80<BAR>YppVr#kk.
 " Remove those fucking ^M characters
 nnoremap <silent> <leader>6 :%s///g<CR>
 
+" for saving
+nnoremap <leader>w :w<CR>
 
 """""""""""""""""""""""
 " * GUI only things * " 

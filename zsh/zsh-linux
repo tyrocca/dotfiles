@@ -76,10 +76,13 @@ red(){
 
 # aliases for shell_plus
 sp(){
- python manage.py shell_plus
+    python manage.py shell_plus
 }
 shell(){
-     python manage.py shell_plus;
+    python manage.py shell_plus;
+}
+dbshell(){
+    python manage.py dbshell;
 }
 
 # runserver
@@ -87,6 +90,7 @@ serve(){
     green "### Running Server on port $1...";
     sudo chown -R $USER *
     sudo pkill -f $1
+    find . -name "*pyc" -delete
     python manage.py runserver 0.0.0.0:$1;
 }
 
