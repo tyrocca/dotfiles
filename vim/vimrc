@@ -26,6 +26,9 @@ Plug 'vim-airline/vim-airline' | Plug 'vim-airline/vim-airline-themes'
 " Tmux line
 Plug 'edkolev/tmuxline.vim'
 
+" Groovebox
+Plug 'morhetz/gruvbox'
+
 " Mod8 (spacegray)
 Plug 'easysid/mod8.vim'
 
@@ -161,7 +164,8 @@ if ($USER == "ty" || $USER == "tyrocca")
     let g:solarized_termcolors=16
     colorscheme solarized
 else
-    colorscheme monokai
+    set background=dark
+    colorscheme gruvbox
 endif
 
 " Formatting
