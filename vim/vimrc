@@ -26,6 +26,9 @@ Plug 'vim-airline/vim-airline' | Plug 'vim-airline/vim-airline-themes'
 " Tmux line
 Plug 'edkolev/tmuxline.vim'
 
+" Groovebox
+Plug 'morhetz/gruvbox'
+
 " Mod8 (spacegray)
 Plug 'easysid/mod8.vim'
 
@@ -69,6 +72,9 @@ Plug 'michaeljsmith/vim-indent-object'
 
 " Commentout
 Plug 'scrooloose/nerdcommenter'
+
+" Commenter
+Plug 'tpope/vim-commentary'
 
 " Syntax highighting
 if !has('nvim')
@@ -158,7 +164,8 @@ if ($USER == "ty" || $USER == "tyrocca")
     let g:solarized_termcolors=16
     colorscheme solarized
 else
-    colorscheme monokai
+    set background=dark
+    colorscheme gruvbox
 endif
 
 " Formatting
@@ -189,7 +196,8 @@ noremap <Up> <NOP>
 noremap <Down> <NOP>
 noremap <Left> <NOP>
 noremap <Right> <NOP>
-inoremap jj <ESC>   " Some people say this helps speed up normal mode
+" Some people say this helps speed up normal mode
+inoremap jj <ESC>
 set scrolloff=5     " Makes the cursor offset
 
 
@@ -230,7 +238,7 @@ nnoremap <silent> <leader><space> :nohlsearch<CR>
 set foldmethod=indent   "fold based on indent
 set foldnestmax=10      "deepest fold is 10 levels
 set nofoldenable        "dont fold by default
-set foldlevel=1         "this is just what i use
+set foldlevel=0         "this is just what i use
 
 
 """""""""""""""""""""""
@@ -274,6 +282,8 @@ nnoremap <leader>1 :center 80<CR>hhv0r#A<SPACE><ESC>40A#<ESC>d80<BAR>YppVr#kk.
 " Remove those fucking ^M characters
 nnoremap <silent> <leader>6 :%s///g<CR>
 
+" for saving
+nnoremap <leader>w :w<CR>
 
 """""""""""""""""""""""
 " * GUI only things * " 
@@ -333,7 +343,8 @@ if !has('nvim')
     " for syntastic use f12
     let g:syntastic_mode_map = { 'mode': 'active' }
     nnoremap <F10> :SyntasticToggleMode<CR>
-    nnoremap <F12> :update<CR>:SyntasticCheck<CR>  " Toggles Syntax check
+    " Toggles Syntax check
+    nnoremap <F12> :update<CR>:SyntasticCheck<CR>
 
     " Fun styling for syntastic
     let g:syntastic_error_symbol = '❌'
@@ -400,12 +411,12 @@ function! <SID>StripTrailingWhitespaces()
     let @/=_s
     call cursor(l, c)
 endfunction
-autocmd BufWritePre *.py,*.js,*.coffee :call <SID>StripTrailingWhitespaces()
+autocmd BufWritePre *.py,*.js,*.coffee,*.styl,*.cjsx,*.html,*.jsx :call <SID>StripTrailingWhitespaces()
 
 " open recent files if no file arg is passed
-if len(argv()) == 0
-    autocmd VimEnter * CtrlPMRU
-endif
+"if len(argv()) == 0
+    "autocmd VimEnter * CtrlPMRU
+"endif
 
 """""""""""""""
 " Misc things "
