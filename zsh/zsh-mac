@@ -64,6 +64,11 @@ export PATH="//anaconda/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X1
 
 source $ZSH/oh-my-zsh.sh
 
+# set cow says thing
+#COWDIR="/usr/local/Cellar/cowsay/3.03/share/cows/"
+fortune | cowsay -f $(ls /usr/local/Cellar/cowsay/3.03/share/cows/ | gshuf | head -n1) | lolcat
+echo ""
+
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
@@ -98,14 +103,8 @@ bindkey '^h' backward-delete-char
 bindkey '^w' backward-kill-word
 bindkey '^r' history-incremental-search-backward
 
-#function zle-line-init zle-keymap-select {
-    #VIM_PROMPT="%{$fg_bold[yellow]%} [% NORMAL]%  %{$reset_color%}"
-    #RPS1="${${KEYMAP/vicmd/$VIM_PROMPT}/(main|viins)/} $EPS1"
-    #zle reset-prompt
-#}
-
-#zle -N zle-line-init
-#zle -N zle-keymap-select
 export KEYTIMEOUT=1
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
