@@ -26,6 +26,9 @@ Plug 'vim-airline/vim-airline' | Plug 'vim-airline/vim-airline-themes'
 " Tmux line
 Plug 'edkolev/tmuxline.vim'
 
+" Dracula
+Plug 'dracula/vim'
+
 " Groovebox
 Plug 'morhetz/gruvbox'
 
@@ -37,6 +40,7 @@ Plug 'tomasr/molokai'
 
 " Monokai
 Plug 'sickill/vim-monokai'
+
 
 """""""""""""
 " Languages "
@@ -69,6 +73,9 @@ Plug 'leafgarland/typescript-vim'
 "   * ai – the current indentation level and the line above
 "   * ii – the current indentation level excluding the line above
 Plug 'michaeljsmith/vim-indent-object'
+
+" Abolish - random vi things
+Plug 'tpope/vim-abolish'
 
 " Commentout
 Plug 'scrooloose/nerdcommenter'
@@ -448,20 +455,3 @@ endif
 """"""""""""""""""""
 " https://github.com/webpack/webpack/issues/781
 set backupcopy=yes
-
- " ctags optimization
-"set autochdir
-"set tags=tags;
-
-" Copy/pasting over ssh to osx
-"function! PropagatePasteBufferToOSX()
-    "let @n=getreg('"')
-    "call system('pbcopy-remote', @n)
-    "echo "done"
-"endfunction
-"function! PopulatePasteBufferFromOSX()
-    "let @"=system('pbpaste-remote')
-    "echo "done"
-"endfunction
-"nnoremap <leader>6 :call PopulatePasteBufferFromOSX()<cr>
-"nnoremap <leader>7 :call PropagatePasteBufferToOSX()<cr>
