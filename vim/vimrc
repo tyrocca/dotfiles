@@ -261,6 +261,8 @@ set pastetoggle=<F2>
 noremap <F3> :set invnumber<CR>
 inoremap <F3> <C-O>:set invnumber<CR>
 
+noremap <F4> :colorscheme gruvbox <CR>
+
 
 "Paste tools to personal clipboard
 "set clipboard=unnamed
@@ -309,7 +311,8 @@ endif
 """""""""""""""""""""""""
 nnoremap <silent> <C-p> :GitFiles<CR>
 nnoremap <silent> <leader>l :History<CR>
-
+nnoremap <silent> <leader>t :Tags<CR>
+nnoremap <silent> <leader>b :BTags<CR>
 """""""""""""""""""""""""""
 " Modifications for CTRLP "
 """""""""""""""""""""""""""
