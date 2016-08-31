@@ -259,6 +259,8 @@ noremap <F3> :set invnumber<CR>
 inoremap <F3> <C-O>:set invnumber<CR>
 
 noremap <F4> :colorscheme gruvbox <CR>
+call togglebg#map("<F5>")
+
 
 
 "Paste tools to personal clipboard
@@ -270,7 +272,7 @@ noremap <F4> :colorscheme gruvbox <CR>
 " Function Key Maps "
 """""""""""""""""""""
 " f5 will strip out whitespace
-nnoremap <silent> <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
+"nnoremap <silent> <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
 
 " Toggle foldmethod on
 nnoremap <F8> :setlocal foldmethod=indent<CR>:setlocal foldignore= <CR>
