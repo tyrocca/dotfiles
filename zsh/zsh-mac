@@ -60,6 +60,7 @@ plugins=(git git-hubflow osx tmux web-search python django)
 # User configuration
 
 export PATH="//anaconda/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin"
+export EDITOR="vim"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh

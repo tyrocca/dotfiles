@@ -53,7 +53,7 @@ Plug 'mtscout6/vim-cjsx'
 " Stylus
 Plug 'wavded/vim-stylus', { 'for': 'stylus' }
 
-" Jsx 
+" Jsx
 Plug 'mxw/vim-jsx'
 
 " Typescript
@@ -176,6 +176,7 @@ set softtabstop=4  	    " number of spaces in tab when editing
 set shiftwidth=4        " number of spaces when ?
 set expandtab       	" tabs are spaces (tab button = spaces)
 set colorcolumn=80      " keep within this column
+set backspace=2         " make backspace work
 
 "UI configs
 set number 		        " show line nums
@@ -254,12 +255,6 @@ set pastetoggle=<F2>
 noremap <F3> :set invnumber<CR>
 inoremap <F3> <C-O>:set invnumber<CR>
 
-
-"Paste tools to personal clipboard
-"set clipboard=unnamed
-"vmap "+y :!xclip -f -sel clip
-"map "+p :r!xclip -o -sel clip
-
 """""""""""""""""""""
 " Function Key Maps "
 """""""""""""""""""""
@@ -286,11 +281,11 @@ nnoremap <silent> <leader>6 :%s///g<CR>
 nnoremap <leader>w :w<CR>
 
 """""""""""""""""""""""
-" * GUI only things * " 
+" * GUI only things * "
 """""""""""""""""""""""
 
 if has("gui_running")
-    set guifont=Meslo\ LG\ M\ Regular\ for\ Powerline  
+    set guifont=Meslo\ LG\ M\ Regular\ for\ Powerline
 endif
 
 """"""""""""""""""""
@@ -411,7 +406,7 @@ function! <SID>StripTrailingWhitespaces()
     let @/=_s
     call cursor(l, c)
 endfunction
-autocmd BufWritePre *.py,*.js,*.coffee,*.styl,*.cjsx,*.html,*.jsx :call <SID>StripTrailingWhitespaces()
+autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
 
 " open recent files if no file arg is passed
 "if len(argv()) == 0
@@ -454,19 +449,3 @@ endif
 " https://github.com/webpack/webpack/issues/781
 set backupcopy=yes
 
- " ctags optimization
-"set autochdir
-"set tags=tags;
-
-" Copy/pasting over ssh to osx
-"function! PropagatePasteBufferToOSX()
-    "let @n=getreg('"')
-    "call system('pbcopy-remote', @n)
-    "echo "done"
-"endfunction
-"function! PopulatePasteBufferFromOSX()
-    "let @"=system('pbpaste-remote')
-    "echo "done"
-"endfunction
-"nnoremap <leader>6 :call PopulatePasteBufferFromOSX()<cr>
-"nnoremap <leader>7 :call PropagatePasteBufferToOSX()<cr>
