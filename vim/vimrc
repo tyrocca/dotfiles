@@ -26,17 +26,14 @@ Plug 'vim-airline/vim-airline' | Plug 'vim-airline/vim-airline-themes'
 " Tmux line
 Plug 'edkolev/tmuxline.vim'
 
-" Dracula
-Plug 'dracula/vim'
-
 " Groovebox
 Plug 'morhetz/gruvbox'
 
-" Mod8 (spacegray)
-Plug 'easysid/mod8.vim'
+" Vim one
+Plug 'rakr/vim-one'
 
-" Molokai
-Plug 'tomasr/molokai'
+" Vim two firewatch
+Plug 'rakr/vim-two-firewatch'
 
 " Monokai
 Plug 'sickill/vim-monokai'
