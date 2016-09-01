@@ -29,14 +29,15 @@ Plug 'edkolev/tmuxline.vim'
 " Groovebox
 Plug 'morhetz/gruvbox'
 
-" Mod8 (spacegray)
-Plug 'easysid/mod8.vim'
+" Vim one
+Plug 'rakr/vim-one'
 
-" Molokai
-Plug 'tomasr/molokai'
+" Vim two firewatch
+Plug 'rakr/vim-two-firewatch'
 
 " Monokai
 Plug 'sickill/vim-monokai'
+
 
 """""""""""""
 " Languages "
@@ -69,6 +70,12 @@ Plug 'leafgarland/typescript-vim'
 "   * ai – the current indentation level and the line above
 "   * ii – the current indentation level excluding the line above
 Plug 'michaeljsmith/vim-indent-object'
+
+" TEMP - vim repl
+Plug 'jpalardy/vim-slime'
+
+" Abolish - random vi things
+Plug 'tpope/vim-abolish'
 
 " Commentout
 Plug 'scrooloose/nerdcommenter'
@@ -254,6 +261,7 @@ set pastetoggle=<F2>
 " f3 will toggle linenumbers
 noremap <F3> :set invnumber<CR>
 inoremap <F3> <C-O>:set invnumber<CR>
+noremap <F4> :colorscheme gruvbox <CR>
 
 """""""""""""""""""""
 " Function Key Maps "
@@ -297,7 +305,8 @@ endif
 """""""""""""""""""""""""
 nnoremap <silent> <C-p> :GitFiles<CR>
 nnoremap <silent> <leader>l :History<CR>
-
+nnoremap <silent> <leader>t :Tags<CR>
+nnoremap <silent> <leader>b :BTags<CR>
 """""""""""""""""""""""""""
 " Modifications for CTRLP "
 """""""""""""""""""""""""""
@@ -431,6 +440,13 @@ command! W  write
 " http://marcgg.com/blog/2016/03/01/vimrc-example/
 
 
+""""""""""""""""""""
+" Webpack problems "
+""""""""""""""""""""
+" https://github.com/webpack/webpack/issues/781
+set backupcopy=yes
+
+
 """""""""""""""
 " Trial Items "
 """""""""""""""
@@ -443,9 +459,7 @@ else
     let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 endif
 
-""""""""""""""""""""
-" Webpack problems "
-""""""""""""""""""""
-" https://github.com/webpack/webpack/issues/781
-set backupcopy=yes
+" SLIME
+let g:slime_target = "tmux"
+let g:slime_python_ipython = 1
 
