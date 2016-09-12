@@ -446,6 +446,14 @@ let &t_ZH="\e[3m"
 let &t_ZR="\e[23m"
 
 highlight Comment cterm=italic
+
+"let g:neomake_error_sign = {'text': '❌', 'texthl': 'NeomakeErrorSign'}
+" let g:neomake_warning_sign = {'text': '💩', 'texthl': 'NeomakeWarningSign'}
+" let g:neomake_message_sign = {'text': '⚠️', 'texthl': 'NeomakeMessageSign'}
+" let g:neomake_info_sign = {'text': '⁉️', 'texthl': 'NeomakeInfoSign'}
+"makes gutter correct color
+highlight clear SignColumn
+
 " let g:deoplete#enable_at_startup = 1
 
 " Let <Tab> also do completion
