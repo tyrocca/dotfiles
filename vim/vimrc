@@ -36,7 +36,6 @@ Plug 'morhetz/gruvbox'
 " Monokai
 Plug 'sickill/vim-monokai'
 
-
 """""""""""""
 " Languages "
 """""""""""""
@@ -48,6 +47,9 @@ Plug 'mtscout6/vim-cjsx'
 
 " Stylus
 Plug 'wavded/vim-stylus', { 'for': 'stylus' }
+
+" Python thing
+Plug 'hynek/vim-python-pep8-indent'
 
 """""""""""
 " Editing "
@@ -78,7 +80,7 @@ else
 endif
 
 " Server auto complete < no dependent files
-Plug 'ervandew/supertab'
+" Plug 'ervandew/supertab'
 
 " Surround
 Plug 'tpope/vim-surround'
@@ -92,11 +94,11 @@ Plug 'tpope/vim-repeat'
 """"""""""""""""""""
 " Navigation Tools "
 """"""""""""""""""""
-" if has('nvim')
-"     Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-"     Plug 'zchee/deoplete-jedi'
-"     Plug 'davidhalter/jedi'
-" endif
+if has('nvim')
+    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+    Plug 'zchee/deoplete-jedi'
+    Plug 'davidhalter/jedi'
+endif
 
 " Gutentags
 Plug 'ludovicchabant/vim-gutentags'
@@ -169,10 +171,10 @@ endif
 set timeoutlen=1000 ttimeoutlen=0  " prevent slowdown on normal mode
 
 " Prevent Arrow keys
-noremap <Up> <NOP>
-noremap <Down> <NOP>
-noremap <Left> <NOP>
-noremap <Right> <NOP>
+" noremap <Up> <NOP>
+" noremap <Down> <NOP>
+" noremap <Left> <NOP>
+" noremap <Right> <NOP>
 " Some people say this helps speed up normal mode
 inoremap jj <ESC>
 set scrolloff=5     " Makes the cursor offset
@@ -440,26 +442,33 @@ endif
 let g:slime_target = "tmux"
 let g:slime_python_ipython = 1
 
-" set t_ZH=[3m
-" set t_ZR=[23m
 let &t_ZH="\e[3m"
 let &t_ZR="\e[23m"
 
 highlight Comment cterm=italic
 
-"let g:neomake_error_sign = {'text': '❌', 'texthl': 'NeomakeErrorSign'}
-" let g:neomake_warning_sign = {'text': '💩', 'texthl': 'NeomakeWarningSign'}
-" let g:neomake_message_sign = {'text': '⚠️', 'texthl': 'NeomakeMessageSign'}
-" let g:neomake_info_sign = {'text': '⁉️', 'texthl': 'NeomakeInfoSign'}
 "makes gutter correct color
 highlight clear SignColumn
 
-" let g:deoplete#enable_at_startup = 1
+""""""""""""
+" Deoplete "
+""""""""""""
 
-" Let <Tab> also do completion
-" inoremap <silent><expr> <Tab>
-" 	\ pumvisible() ? "\<C-n>" :
-" 	\ deoplete#mappings#manual_complete()
+let g:deoplete#enable_at_startup = 1
 
-" " Close the documentation window when completion is done
-" autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
+" mapping to make it so that tab triggers auto complete
+" https://www.reddit.com/r/neovim/comments/4d04k1/deoplete_pops_up_when_i_dont_want_it_to/
+imap <silent><expr> <TAB>
+  \ pumvisible() ? "\<C-n>" :
+  \ <SID>check_back_space() ? "\<TAB>" :
+  \ deoplete#mappings#manual_complete()
+function! s:check_back_space() abort "{{{
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~ '\s'
+endfunction"}}}
+
+" Disable auto complete
+let g:deoplete#disable_auto_complete = 1
+
+" Close the documentation window when completion is done
+autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
