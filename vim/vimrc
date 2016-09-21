@@ -40,16 +40,16 @@ Plug 'sickill/vim-monokai'
 " Languages "
 """""""""""""
 " CoffeeScript
-Plug 'kchmck/vim-coffee-script'
+Plug 'kchmck/vim-coffee-script', { 'for': ['coffee', 'cjsx', 'coffee.cjsx'] }
 
 " CJSX
-Plug 'mtscout6/vim-cjsx'
+Plug 'mtscout6/vim-cjsx', { 'for': ['coffee', 'cjsx', 'coffee.cjsx'] }
 
 " Javascript
-Plug 'pangloss/vim-javascript'
+Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'javascript.jsx'] }
 
 " Jsx
-Plug 'mxw/vim-jsx'
+Plug 'mxw/vim-jsx', { 'for': 'javascript.jsx' }
 
 " Stylus
 Plug 'wavded/vim-stylus', { 'for': 'stylus' }
@@ -139,6 +139,9 @@ Plug 'rking/ag.vim'
 """"""""""""""""""
 " Git tools
 Plug 'tpope/vim-fugitive'
+
+" Git
+" Plug 'airblade/vim-gitgutter'
 
 " Add plugins to &runtimepath
 call plug#end()
@@ -432,8 +435,6 @@ command! W  write
 """""""""""
 " inspiration
 " http://marcgg.com/blog/2016/03/01/vimrc-example/
-
-
 
 """""""""""""""
 " Trial Items "
