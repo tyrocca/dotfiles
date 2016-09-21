@@ -57,6 +57,9 @@ Plug 'wavded/vim-stylus', { 'for': 'stylus' }
 " Python thing
 Plug 'hynek/vim-python-pep8-indent'
 
+" Markdown
+Plug 'plasticboy/vim-markdown'
+
 """""""""""
 " Editing "
 """""""""""
