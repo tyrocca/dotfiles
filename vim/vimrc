@@ -144,7 +144,7 @@ Plug 'rking/ag.vim'
 Plug 'tpope/vim-fugitive'
 
 " Git
-" Plug 'airblade/vim-gitgutter'
+Plug 'airblade/vim-gitgutter'
 
 " Add plugins to &runtimepath
 call plug#end()
@@ -253,9 +253,16 @@ set pastetoggle=<F2>
 " f3 will toggle linenumbers
 noremap <F3> :set invnumber<CR>
 inoremap <F3> <C-O>:set invnumber<CR>
-noremap <F4> :colorscheme gruvbox <CR>
-call togglebg#map("<F5>")
 
+" f4 will toggle git gutter
+noremap <F4> :GitGutterToggle<CR>
+inoremap <F4> <C-O>:GitGutterToggle<CR>
+
+" F5 toggles friendly colorscheme
+noremap <F5> :colorscheme gruvbox <CR>
+
+" F6 for background toggle
+call togglebg#map("<F6>")
 
 """""""""""""""""""""
 " Function Key Maps "
@@ -475,3 +482,5 @@ if has('nvim')
     " Close the documentation window when completion is done
     autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
 endif
+
+
