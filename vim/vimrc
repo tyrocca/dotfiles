@@ -134,8 +134,12 @@ endif
 " tmux
 Plug 'christoomey/vim-tmux-navigator'
 
-"File Insert
-Plug 'rking/ag.vim'
+" Ag - deprecated
+" Plug 'rking/ag.vim'
+
+" Ack
+Plug 'mileszs/ack.vim'
+
 
 """"""""""""""""""
 " Misc Things... "
@@ -338,6 +342,19 @@ let g:airline_powerline_fonts = 1
 
 " For TMUX plugin
 let g:tmuxline_powerline_separators = 1
+
+"""""""""""""""""
+" Ack (like Ag) "
+"""""""""""""""""
+if executable('ag')
+    let g:ackprg = 'ag --nogroup --nocolor --column'
+    " let g:ackprg = 'ag --vimgrep'
+    " let g:ackprg = 'ag --vimgrep --smart-case'
+    " cnoreabbrev ag Ack
+    " cnoreabbrev aG Ack
+    " cnoreabbrev Ag Ack
+    " cnoreabbrev AG Ack
+endif
 
 """""""""""
 " ArgWrap "
