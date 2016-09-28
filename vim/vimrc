@@ -75,7 +75,7 @@ Plug 'jpalardy/vim-slime'
 Plug 'tpope/vim-abolish'
 
 " Commentout
-Plug 'scrooloose/nerdcommenter'
+" Plug 'scrooloose/nerdcommenter'
 
 " Commenter
 Plug 'tpope/vim-commentary'
@@ -94,6 +94,17 @@ endif
 " Server auto complete < no dependent files
 Plug 'ervandew/supertab'
 
+" Autocomplete
+if has('nvim')
+    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+    Plug 'zchee/deoplete-jedi'
+    Plug 'davidhalter/jedi'
+    " " Track the engine.
+    " Plug 'SirVer/ultisnips'
+    " " Snippets are separated from the engine. Add this if you want them:
+    " Plug 'honza/vim-snippets'
+endif
+
 " Surround
 Plug 'tpope/vim-surround'
 
@@ -106,29 +117,18 @@ Plug 'tpope/vim-repeat'
 """"""""""""""""""""
 " Navigation Tools "
 """"""""""""""""""""
-if has('nvim')
-    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-    Plug 'zchee/deoplete-jedi'
-    Plug 'davidhalter/jedi'
-    " " Track the engine.
-    " Plug 'SirVer/ultisnips'
-    " " Snippets are separated from the engine. Add this if you want them:
-    " Plug 'honza/vim-snippets'
-
-endif
-
 " Gutentags
 Plug 'ludovicchabant/vim-gutentags'
 
 " Fuzzy finder
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
-
 if has("gui_running")
     " plugin to control p
     Plug 'ctrlpvim/ctrlp.vim'
     " plugin to speed up control p
     Plug 'FelikZ/ctrlp-py-matcher'
+else
+    Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+    Plug 'junegunn/fzf.vim'
 endif
 
 " tmux
@@ -136,10 +136,10 @@ Plug 'christoomey/vim-tmux-navigator'
 
 " Ag - deprecated
 " Plug 'rking/ag.vim'
-
 " Ack
-Plug 'mileszs/ack.vim'
-
+" Plug 'mileszs/ack.vim'
+" Vim Grepper
+Plug 'mhinz/vim-grepper'
 
 """"""""""""""""""
 " Misc Things... "
@@ -149,6 +149,9 @@ Plug 'tpope/vim-fugitive'
 
 " Git
 Plug 'airblade/vim-gitgutter'
+
+" Notes
+Plug 'xolox/vim-notes' | Plug 'xolox/vim-misc'
 
 " Add plugins to &runtimepath
 call plug#end()
@@ -172,12 +175,10 @@ endif
 
 " Formatting / Settings
 set backspace=2         " make backspace work
-set colorcolumn=80      " keep within this column
 set expandtab       	" tabs are spaces (tab button = spaces)
-set fileformat=unix    " Make sure the files are always unix
+set fileformat=unix     " Make sure the files are always unix
 set fileformats=unix    " Make sure the files are always unix
-set scrolloff=5     " Makes the cursor offset
-set shiftwidth=4        " number of spaces when ?
+set shiftwidth=4        " number of spaces when shifting block
 set softtabstop=4  	    " number of spaces in tab when editing
 set tabstop=4 		    " number of visual spaces per TAB
 
@@ -193,6 +194,8 @@ set foldlevel=0         "this is just what i use
 
 " UI configs
 filetype indent on      " load filetype-specific indent files
+set scrolloff=5         " Makes the cursor offset
+set colorcolumn=80      " keep within this column
 set cursorline          " highlight current line
 set lazyredraw          " redraw only when we need to.
 set number 		        " show line nums
@@ -343,17 +346,19 @@ let g:airline_powerline_fonts = 1
 " For TMUX plugin
 let g:tmuxline_powerline_separators = 1
 
-"""""""""""""""""
-" Ack (like Ag) "
-"""""""""""""""""
+"""""""""""""""
+" Vim Grepper "
+"""""""""""""""
 if executable('ag')
-    let g:ackprg = 'ag --nogroup --nocolor --column'
+    " let g:ackprg = 'ag --nogroup --nocolor --column'
     " let g:ackprg = 'ag --vimgrep'
     " let g:ackprg = 'ag --vimgrep --smart-case'
     " cnoreabbrev ag Ack
     " cnoreabbrev aG Ack
     " cnoreabbrev Ag Ack
+    " cnoreabbrev Ag Ack
     " cnoreabbrev AG Ack
+    cnoreabbrev Ag GrepperAg
 endif
 
 """""""""""
@@ -500,4 +505,10 @@ if has('nvim')
     autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
 endif
 
+
+"""""""""""""
+" vim notes "
+"""""""""""""
+let g:notes_directories = ['~/Notes']
+let g:notes_suffix = '.txt'
 
