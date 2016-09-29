@@ -327,7 +327,7 @@ else
     nnoremap <silent> <C-p> :GitFiles<CR>
     nnoremap <silent> <leader>l :History<CR>
     nnoremap <silent> <leader>t :Tags<CR>
-    nnoremap <silent> <leader>b :BTags<CR>
+    nnoremap <silent> <leader>r :BTags<CR>
 endif
 
 " wildcard
