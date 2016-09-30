@@ -33,8 +33,20 @@ Plug 'edkolev/tmuxline.vim'
 " Groovebox
 Plug 'morhetz/gruvbox'
 
+" Molokai
+Plug 'tomasr/molokai'
+
 " Monokai
 Plug 'sickill/vim-monokai'
+
+" Tomorrow Theme
+Plug 'chriskempson/vim-tomorrow-theme'
+
+" Zenburn
+Plug 'Zenburn'
+
+" Base16
+Plug 'chriskempson/base16-vim'
 
 """""""""""""
 " Languages "
@@ -176,6 +188,7 @@ endif
 " Formatting / Settings
 set backspace=2         " make backspace work
 set expandtab       	" tabs are spaces (tab button = spaces)
+" set smarttab
 set fileformat=unix     " Make sure the files are always unix
 set fileformats=unix    " Make sure the files are always unix
 set shiftwidth=4        " number of spaces when shifting block
@@ -327,7 +340,8 @@ else
     nnoremap <silent> <C-p> :GitFiles<CR>
     nnoremap <silent> <leader>l :History<CR>
     nnoremap <silent> <leader>t :Tags<CR>
-    nnoremap <silent> <leader>b :BTags<CR>
+    nnoremap <silent> <leader>r :BTags<CR>
+    nnoremap <silent> <leader>b :Buffers<CR>
 endif
 
 " wildcard
@@ -345,6 +359,9 @@ let g:airline_powerline_fonts = 1
 
 " For TMUX plugin
 let g:tmuxline_powerline_separators = 1
+
+" View buffers
+let g:airline#extensions#tabline#enabled = 1
 
 """""""""""""""
 " Vim Grepper "
