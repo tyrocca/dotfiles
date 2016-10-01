@@ -80,9 +80,6 @@ Plug 'plasticboy/vim-markdown'
 "   * ii – the current indentation level excluding the line above
 Plug 'michaeljsmith/vim-indent-object'
 
-" TEMP - vim repl
-Plug 'jpalardy/vim-slime'
-
 " Abolish - random vi things
 Plug 'tpope/vim-abolish'
 
@@ -91,9 +88,6 @@ Plug 'tpope/vim-abolish'
 
 " Commenter
 Plug 'tpope/vim-commentary'
-
-" Mapping from Tim
-Plug 'tpope/vim-unimpaired'
 
 " Syntax highighting
 if !has('nvim')
@@ -129,8 +123,14 @@ Plug 'tpope/vim-repeat'
 """"""""""""""""""""
 " Navigation Tools "
 """"""""""""""""""""
+" Allows colon as an arg
+Plug 'bogado/file-line'
+
 " Gutentags
 Plug 'ludovicchabant/vim-gutentags'
+
+" Mapping from Tim
+Plug 'tpope/vim-unimpaired'
 
 " Fuzzy finder
 if has("gui_running")
@@ -158,6 +158,9 @@ Plug 'mhinz/vim-grepper'
 """"""""""""""""""
 " Git tools
 Plug 'tpope/vim-fugitive'
+
+" TEMP - vim repl
+Plug 'jpalardy/vim-slime'
 
 " Git
 Plug 'airblade/vim-gitgutter'
