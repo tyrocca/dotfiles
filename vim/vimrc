@@ -102,13 +102,28 @@ Plug 'ervandew/supertab'
 
 " Autocomplete
 if has('nvim')
+    " * Auto complete tool *
     Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-    Plug 'zchee/deoplete-jedi'
-    Plug 'davidhalter/jedi'
-    " " Track the engine.
-    " Plug 'SirVer/ultisnips'
-    " " Snippets are separated from the engine. Add this if you want them:
-    " Plug 'honza/vim-snippets'
+
+    " * Snippets *
+    " Track the engine.
+    Plug 'SirVer/ultisnips'
+    " Snippets are separated from the engine. Add this if you want them:
+    Plug 'honza/vim-snippets'
+
+    " Python Autocomplete
+    Plug 'zchee/deoplete-jedi', { 'for': ['python'] }
+    Plug 'davidhalter/jedi', { 'for': ['python'] }
+
+    " Javascript Autocomplete
+    " New trial items
+    " setting up deoplete etc... http://bit.ly/2duFHbJ
+    " ~/.config/nvim/plugged/tern_for_vim/ <<< run npm install or ...
+    " ~/.vim/plugged/tern_for_vim/ <<< run npm install
+    Plug 'ternjs/tern_for_vim', { 'for': ['javascript', 'javascript.jsx'] }
+    Plug 'carlitux/deoplete-ternjs', { 'for': ['javascript', 'javascript.jsx'] }
+    Plug 'othree/jspc.vim', { 'for': ['coffee', 'cjsx', 'coffee.cjsx', 'javascript', 'javascript.jsx'] }
+
 endif
 
 " Surround
@@ -235,6 +250,9 @@ else
     let &t_SI = "\<Esc>]50;CursorShape=1\x7"
     let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 endif
+
+" copy paste over ssh
+" set clipboard^=unnamedplus,unnamed
 
 " Search configs
 set incsearch           " search as characters are entered
@@ -370,15 +388,12 @@ let g:airline#extensions#tabline#enabled = 1
 " Vim Grepper "
 """""""""""""""
 if executable('ag')
-    " let g:ackprg = 'ag --nogroup --nocolor --column'
-    " let g:ackprg = 'ag --vimgrep'
-    " let g:ackprg = 'ag --vimgrep --smart-case'
-    " cnoreabbrev ag Ack
-    " cnoreabbrev aG Ack
-    " cnoreabbrev Ag Ack
-    " cnoreabbrev Ag Ack
-    " cnoreabbrev AG Ack
     cnoreabbrev Ag GrepperAg
+    " leader star ag's for you
+    nnoremap <leader>*   :Grepper -tool ag -cword -noprompt<cr>
+    " gs searches ex: gs$
+    nmap gs <plug>(GrepperOperator)
+    xmap gs <plug>(GrepperOperator)
 endif
 
 """""""""""
@@ -521,6 +536,25 @@ if has('nvim')
     " Disable auto complete
     "let g:deoplete#disable_auto_complete = 1
 
+    " Allows multiple omni functions
+    let g:deoplete#omni#functions = {}
+    let g:deoplete#omni#functions.javascript = [
+        \ 'tern#Complete',
+        \ 'jspc#omni'
+    \]
+
+    " Adjust deoplete sources
+    set completeopt=longest,menuone,preview
+    let g:deoplete#sources = {}
+    let g:deoplete#sources['javascript.jsx'] = ['file', 'ultisnips', 'ternjs']
+    let g:tern#command = ['tern']
+    let g:tern#arguments = ['--persistent']
+
+    " autocmd FileType javascript let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
+    " or just disable the preview entirely
+    set completeopt-=preview
+    " inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+
     " Close the documentation window when completion is done
     autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
 endif
@@ -532,3 +566,27 @@ endif
 let g:notes_directories = ['~/Notes']
 let g:notes_suffix = '.txt'
 
+"""""""""""""
+" Ultisnips "
+"""""""""""""
+let g:UltiSnipsExpandTrigger="<Leader><Leader>"
+
+
+
+
+"""""""""
+" UNDO? "
+"""""""""
+" swap files
+
+" swap files (.swp) in a common location
+" // means use the file's full path
+set dir=~/.vim/_swap//
+
+" " backup files (~) in a common location if possible
+" set backup
+" set backupdir=~/.vim/_backup/,~/tmp,.
+
+" " turn on undo files, put them in a common location
+" set undofile
+" set undodir=~/.vim/_undo/
