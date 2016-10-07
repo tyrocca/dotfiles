@@ -1,0 +1,58 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+<C-p>	neovim/init.vim	/^    nnoremap <silent> <C-p> :GitFiles<CR>$/;"	m
+<Down>	neovim/init.vim	/^noremap <Down> <NOP>$/;"	m
+<F10>	neovim/init.vim	/^    nnoremap <F10> :SyntasticToggleMode<CR>$/;"	m
+<F12>	neovim/init.vim	/^    nnoremap <F12> :update<CR>:SyntasticCheck<CR>$/;"	m
+<F3>	neovim/init.vim	/^inoremap <F3> <C-O>:set invnumber<CR>$/;"	m
+<F3>	neovim/init.vim	/^noremap <F3> :set invnumber<CR>$/;"	m
+<F4>	neovim/init.vim	/^noremap <F4> :colorscheme gruvbox <CR>$/;"	m
+<F7>	neovim/init.vim	/^nnoremap <F7> :IndentLinesToggle<CR>$/;"	m
+<F8>	neovim/init.vim	/^nnoremap <F8> :setlocal foldmethod=indent<CR>:setlocal foldignore= <CR>$/;"	m
+<F9>	neovim/init.vim	/^nnoremap <F9> :tabe ~\/.vimrc<CR>$/;"	m
+<Left>	neovim/init.vim	/^noremap <Left> <NOP>$/;"	m
+<Right>	neovim/init.vim	/^noremap <Right> <NOP>$/;"	m
+<Up>	neovim/init.vim	/^noremap <Up> <NOP>$/;"	m
+<leader>1	neovim/init.vim	/^nnoremap <leader>1 :center 80<CR>hhv0r#A<SPACE><ESC>40A#<ESC>d80<BAR>YppVr#kk.$/;"	m
+<leader>6	neovim/init.vim	/^nnoremap <silent> <leader>6 :%s\/$/;"	m
+<leader><CR>	neovim/init.vim	/^nnoremap <silent> <leader><CR> i<CR><ESC>$/;"	m
+<leader><space>	neovim/init.vim	/^nnoremap <silent> <leader><space> :nohlsearch<CR>$/;"	m
+<leader>a	neovim/init.vim	/^nnoremap <silent> <leader>a :ArgWrap<CR>$/;"	m
+<leader>b	neovim/init.vim	/^    nnoremap <silent> <leader>b :BTags<CR>$/;"	m
+<leader>b	neovim/init.vim	/^    nnoremap <silent> <leader>b :CtrlPBuffer<CR>$/;"	m
+<leader>l	neovim/init.vim	/^    nnoremap <silent> <leader>l :CtrlPMRU<CR>$/;"	m
+<leader>l	neovim/init.vim	/^    nnoremap <silent> <leader>l :History<CR>$/;"	m
+<leader>t	neovim/init.vim	/^    nnoremap <silent> <leader>t :CtrlPTag<cr>$/;"	m
+<leader>t	neovim/init.vim	/^    nnoremap <silent> <leader>t :Tags<CR>$/;"	m
+<leader>w	neovim/init.vim	/^nnoremap <leader>w :w<CR>$/;"	m
+StripTrailingWhitespaces	neovim/init.vim	/^function! <SID>StripTrailingWhitespaces()$/;"	f
+W	neovim/init.vim	/^command! W  write$/;"	c
+g:airline_powerline_fonts	neovim/init.vim	/^let g:airline_powerline_fonts = 1$/;"	v
+g:ctrlp_cmd	neovim/init.vim	/^    let g:ctrlp_cmd = 'CtrlP'$/;"	v
+g:ctrlp_map	neovim/init.vim	/^    let g:ctrlp_map = '<leader>p'$/;"	v
+g:ctrlp_match_func	neovim/init.vim	/^    let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }$/;"	v
+g:ctrlp_use_caching	neovim/init.vim	/^    let g:ctrlp_use_caching = 0$/;"	v
+g:indentLine_enabled	neovim/init.vim	/^let g:indentLine_enabled = 0$/;"	v
+g:indentLine_faster	neovim/init.vim	/^let g:indentLine_faster = 1$/;"	v
+g:neomake_python_enabled_makers	neovim/init.vim	/^    let g:neomake_python_enabled_makers = ['flake8']$/;"	v
+g:slime_python_ipython	neovim/init.vim	/^let g:slime_python_ipython = 1$/;"	v
+g:slime_target	neovim/init.vim	/^let g:slime_target = "tmux"$/;"	v
+g:solarized_termcolors	neovim/init.vim	/^        let g:solarized_termcolors=16$/;"	v
+g:syntastic_error_symbol	neovim/init.vim	/^    let g:syntastic_error_symbol = '❌'$/;"	v
+g:syntastic_javascript_checkers	neovim/init.vim	/^    let g:syntastic_javascript_checkers = ['eslint']$/;"	v
+g:syntastic_mode_map	neovim/init.vim	/^    let g:syntastic_mode_map = { 'mode': 'active' }$/;"	v
+g:syntastic_python_checkers	neovim/init.vim	/^    let g:syntastic_python_checkers = ["flake8"]$/;"	v
+g:syntastic_python_flake8_args	neovim/init.vim	/^    let g:syntastic_python_flake8_args = '--max-line-length=200 --ignore=W391'$/;"	v
+g:syntastic_style_error_symbol	neovim/init.vim	/^    let g:syntastic_style_error_symbol = '⁉️'$/;"	v
+g:syntastic_style_warning_symbol	neovim/init.vim	/^    let g:syntastic_style_warning_symbol = '💩'$/;"	v
+g:syntastic_warning_symbol	neovim/init.vim	/^    let g:syntastic_warning_symbol = '⚠️'$/;"	v
+g:tmux_navigator_save_on_switch	neovim/init.vim	/^let g:tmux_navigator_save_on_switch = 1  " Save on close$/;"	v
+g:tmuxline_powerline_separators	neovim/init.vim	/^let g:tmuxline_powerline_separators = 1$/;"	v
+gp	neovim/init.vim	/^nnoremap <expr> gp '`[' . strpart(getregtype(), 0, 1) . '`]'$/;"	m
+jj	neovim/init.vim	/^inoremap jj <ESC>$/;"	m
+setupTmux	setup_dotfiles.sh	/^setupTmux() {$/;"	f
+setupVim	setup_dotfiles.sh	/^setupVim() {$/;"	f
