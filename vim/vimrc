@@ -59,6 +59,7 @@ Plug 'mtscout6/vim-cjsx', { 'for': ['coffee', 'cjsx', 'coffee.cjsx'] }
 
 " Javascript
 Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'javascript.jsx'] }
+" Plug 'othree/yajs.vim', { 'for': ['javascript', 'javascript.jsx'] }
 
 " Jsx
 Plug 'mxw/vim-jsx', { 'for': 'javascript.jsx' }
@@ -110,6 +111,8 @@ if has('nvim')
     Plug 'SirVer/ultisnips'
     " Snippets are separated from the engine. Add this if you want them:
     Plug 'honza/vim-snippets'
+    " More snippets
+    Plug 'greg-js/vim-react-es6-snippets', { 'for': ['javascript', 'javascript.jsx'] }
 
     " Python Autocomplete
     Plug 'zchee/deoplete-jedi', { 'for': ['python'] }
@@ -590,3 +593,7 @@ set dir=~/.vim/_swap//
 " " turn on undo files, put them in a common location
 " set undofile
 " set undodir=~/.vim/_undo/
+
+" Makes it so that javascript keys are colored
+" https://github.com/pangloss/vim-javascript/issues/138
+hi def link jsObjectKey Label
