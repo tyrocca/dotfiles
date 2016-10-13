@@ -3,7 +3,6 @@
 
 # install repo
 # cd ~/;
-# cwd=$(pwd);
 # git clone https://github.com/tyrocca/dotfiles.git;
 
 # install vim
@@ -57,7 +56,7 @@ linkEslint(){
 # run these
 installVim;
 linkNeoViml
-enableTernl
+enableTern;
 
 # most people won't want to overwrite their eslintrc
 # linkEslint;
