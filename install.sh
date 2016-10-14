@@ -31,7 +31,9 @@ linkNeoVim(){
     cd ~/;
     cwd=$(pwd);
     mkdir "$cwd/.config";
+    rm -rf "$cwd/.config/nvim";
     mkdir "$cwd/.config/nvim";
+    rm "$cwd/.config/nvim/init.vim";
     ln -s "$cwd/dotfiles/vim/vimrc" "$cwd/.config/nvim/init.vim";
     nvim +VimEnter +PlugInstall +qall +silent;
 }
