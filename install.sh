@@ -55,7 +55,7 @@ linkEslint(){
 
 # run these
 installVim;
-linkNeoViml
+linkNeoVim;
 enableTern;
 
 # most people won't want to overwrite their eslintrc
