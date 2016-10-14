@@ -23,7 +23,7 @@ installVim(){
     mkdir "$cwd/.vim";
     rm "$cwd/.vimrc";
     ln -s "$cwd/dotfiles/vim/vimrc" "$cwd/.vimrc";
-    vim +silent +VimEnter +PlugInstall +qall;
+    vim +VimEnter +PlugInstall +qall +silent;
 }
 
 # link neo vim (only if apt things were setup first
@@ -33,7 +33,7 @@ linkNeoVim(){
     mkdir "$cwd/.config";
     mkdir "$cwd/.config/nvim";
     ln -s "$cwd/dotfiles/vim/vimrc" "$cwd/.config/nvim/init.vim";
-    nvim +silent +VimEnter +PlugInstall +qall;
+    nvim +VimEnter +PlugInstall +qall +silent;
 }
 
 # this turns on great javascript autocomplete
