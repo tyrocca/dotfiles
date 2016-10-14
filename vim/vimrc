@@ -8,11 +8,11 @@ set nocompatible              " be iMproved, required
 if !has("nvim") && empty(glob('~/.vim/autoload/plug.vim'))
     silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
         \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-    autocmd VimEnter * PlugInstall | source ~/dotfiles/vim/plugins.vim
+    autocmd VimEnter * PlugInstall | source $MYVIMRC
 elseif has("nvim") && empty(glob('~/.config/nvim/autoload/plug.vim'))
     silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
         \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-    autocmd VimEnter * PlugInstall | source ~/dotfiles/vim/plugins.vim
+    autocmd VimEnter * PlugInstall | source $MYVIMRC
 else
     source ~/dotfiles/vim/plugins.vim
 endif
