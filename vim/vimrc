@@ -23,11 +23,19 @@ endif
 " Colors
 syntax enable
 set background=dark
+
+" Color scheme is gruvbox by default so anyone can use it
+" (solarized requires special things)
 if ($USER == "ty" || $USER == "tyrocca")
+    " TRAIL ITEMS
+    let g:hardtime_default_on = 1
+
+    " Not needed for neovim
     if !has('nvim')
         set t_Co=256
         let g:solarized_termcolors=16
     endif
+    " Set colorscheme
     colorscheme solarized
 else
     colorscheme gruvbox
@@ -51,7 +59,7 @@ set tabstop=4 		    " number of visual spaces per TAB
 set hidden
 set history=1000
 
-"folding settings
+" folding settings
 set foldmethod=indent   "fold based on indent
 set foldnestmax=10      "deepest fold is 10 levels
 set nofoldenable        "dont fold by default
@@ -287,6 +295,7 @@ let g:slime_python_ipython = 1
 """""""""""""""""""
 " Syntax Checking "
 """""""""""""""""""
+
 " makes gutter correct color
 highlight clear SignColumn
 
@@ -402,7 +411,7 @@ endfunction
 autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
 
 " Auto set width to 80 chars
-au BufRead,BufNewFile *.md setlocal textwidth=80
+" au BufRead,BufNewFile *.md setlocal textwidth=80
 
 """""""""""
 " Credits "
@@ -415,7 +424,15 @@ au BufRead,BufNewFile *.md setlocal textwidth=80
 """""""""""""""
 
 " Italics for vim
+" https://alexpearce.me/2014/05/italics-in-iterm2-vim-tmux/
 let &t_ZH="\e[3m"
 let &t_ZR="\e[23m"
 
 highlight Comment cterm=italic
+
+
+"""""""""""""
+" Hard Mode "
+"""""""""""""
+let g:sneak#streak = 1
+nnoremap <leader>h <Esc>:HardTimeToggle<CR>

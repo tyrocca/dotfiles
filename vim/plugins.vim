@@ -169,5 +169,10 @@ Plug 'airblade/vim-gitgutter'
 " Notes
 Plug 'xolox/vim-notes' | Plug 'xolox/vim-misc'
 
+" HARDMODE!
+" Plug 'wikitopian/hardmode'
+Plug 'takac/vim-hardtime'
+Plug 'justinmk/vim-sneak'
+
 " Add plugins to &runtimepath
 call plug#end()
