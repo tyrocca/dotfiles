@@ -13,181 +13,9 @@ elseif has("nvim") && empty(glob('~/.config/nvim/autoload/plug.vim'))
     silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
         \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
     autocmd VimEnter * PlugInstall | source $MYVIMRC
-endif
-
-" Start plugin manager
-call plug#begin('~/.vim/plugged')
-
-"""""""""""
-" Styling "
-"""""""""""
-" Solarized
-Plug 'altercation/vim-colors-solarized'
-
-" LightLine
-Plug 'vim-airline/vim-airline' | Plug 'vim-airline/vim-airline-themes'
-
-" Tmux line
-Plug 'edkolev/tmuxline.vim'
-
-" Groovebox
-Plug 'morhetz/gruvbox'
-
-" Molokai
-Plug 'tomasr/molokai'
-
-" Monokai
-Plug 'sickill/vim-monokai'
-
-" Tomorrow Theme
-Plug 'chriskempson/vim-tomorrow-theme'
-
-" Zenburn
-Plug 'Zenburn'
-
-" Base16
-Plug 'chriskempson/base16-vim'
-
-"""""""""""""
-" Languages "
-"""""""""""""
-" CoffeeScript
-Plug 'kchmck/vim-coffee-script', { 'for': ['coffee', 'cjsx', 'coffee.cjsx'] }
-
-" CJSX
-Plug 'mtscout6/vim-cjsx', { 'for': ['coffee', 'cjsx', 'coffee.cjsx'] }
-
-" Javascript
-Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'javascript.jsx'] }
-" Plug 'othree/yajs.vim', { 'for': ['javascript', 'javascript.jsx'] }
-
-" Jsx
-Plug 'mxw/vim-jsx', { 'for': 'javascript.jsx' }
-
-" Stylus
-Plug 'wavded/vim-stylus', { 'for': 'stylus' }
-
-" Python thing
-Plug 'hynek/vim-python-pep8-indent'
-
-" Markdown
-Plug 'plasticboy/vim-markdown'
-
-"""""""""""
-" Editing "
-"""""""""""
-" Edit indent block
-"   * ai – the current indentation level and the line above
-"   * ii – the current indentation level excluding the line above
-Plug 'michaeljsmith/vim-indent-object'
-
-" Abolish - random vi things
-Plug 'tpope/vim-abolish'
-
-" Commentout
-" Plug 'scrooloose/nerdcommenter'
-
-" Commenter
-Plug 'tpope/vim-commentary'
-
-" Syntax highighting
-if !has('nvim')
-    Plug 'scrooloose/syntastic'
 else
-    " Async highlighting
-    Plug 'neomake/neomake'
+    source ~/dotfiles/vim/plugins.vim
 endif
-
-" Server auto complete < no dependent files
-Plug 'ervandew/supertab'
-
-" Autocomplete
-if has('nvim')
-    " * Auto complete tool *
-    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-
-    " * Snippets *
-    " Track the engine.
-    Plug 'SirVer/ultisnips'
-    " Snippets are separated from the engine. Add this if you want them:
-    Plug 'honza/vim-snippets'
-    " More snippets
-    Plug 'greg-js/vim-react-es6-snippets', { 'for': ['javascript', 'javascript.jsx'] }
-
-    " Python Autocomplete
-    Plug 'zchee/deoplete-jedi', { 'for': ['python'] }
-    Plug 'davidhalter/jedi', { 'for': ['python'] }
-
-    " Javascript Autocomplete
-    " New trial items
-    " setting up deoplete etc... http://bit.ly/2duFHbJ
-    " ~/.config/nvim/plugged/tern_for_vim/ <<< run npm install or ...
-    " ~/.vim/plugged/tern_for_vim/ <<< run npm install
-    Plug 'ternjs/tern_for_vim', { 'for': ['javascript', 'javascript.jsx'] }
-    Plug 'carlitux/deoplete-ternjs', { 'for': ['javascript', 'javascript.jsx'] }
-    Plug 'othree/jspc.vim', { 'for': ['coffee', 'cjsx', 'coffee.cjsx', 'javascript', 'javascript.jsx'] }
-endif
-
-" Surround
-Plug 'tpope/vim-surround'
-
-" ArgWrap - fix argument wrapping
-Plug 'FooSoft/vim-argwrap'
-
-" Repeater
-Plug 'tpope/vim-repeat'
-
-""""""""""""""""""""
-" Navigation Tools "
-""""""""""""""""""""
-" Allows colon as an arg
-Plug 'bogado/file-line'
-
-" Gutentags
-Plug 'ludovicchabant/vim-gutentags'
-
-" Mapping from Tim
-Plug 'tpope/vim-unimpaired'
-
-" Fuzzy finder
-if has("gui_running")
-    " plugin to control p
-    Plug 'ctrlpvim/ctrlp.vim'
-    " plugin to speed up control p
-    Plug 'FelikZ/ctrlp-py-matcher'
-else
-    Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-    Plug 'junegunn/fzf.vim'
-endif
-
-" tmux
-Plug 'christoomey/vim-tmux-navigator'
-
-" Ag - deprecated
-" Plug 'rking/ag.vim'
-" Ack
-" Plug 'mileszs/ack.vim'
-" Vim Grepper
-Plug 'mhinz/vim-grepper'
-
-""""""""""""""""""
-" Misc Things... "
-""""""""""""""""""
-" Git tools
-Plug 'tpope/vim-fugitive'
-
-" TEMP - vim repl
-Plug 'jpalardy/vim-slime'
-
-" Git
-Plug 'airblade/vim-gitgutter'
-
-" Notes
-Plug 'xolox/vim-notes' | Plug 'xolox/vim-misc'
-
-" Add plugins to &runtimepath
-call plug#end()
-
 
 """"""""""""""""""""""""
 " * Built in Toggles * "
@@ -195,11 +23,19 @@ call plug#end()
 " Colors
 syntax enable
 set background=dark
+
+" Color scheme is gruvbox by default so anyone can use it
+" (solarized requires special things)
 if ($USER == "ty" || $USER == "tyrocca")
+    " TRAIL ITEMS
+    " let g:hardtime_default_on = 1
+
+    " Not needed for neovim
     if !has('nvim')
         set t_Co=256
         let g:solarized_termcolors=16
     endif
+    " Set colorscheme
     colorscheme solarized
 else
     colorscheme gruvbox
@@ -223,7 +59,7 @@ set tabstop=4 		    " number of visual spaces per TAB
 set hidden
 set history=1000
 
-"folding settings
+" folding settings
 set foldmethod=indent   "fold based on indent
 set foldnestmax=10      "deepest fold is 10 levels
 set nofoldenable        "dont fold by default
@@ -256,6 +92,18 @@ else
     let &t_SI = "\<Esc>]50;CursorShape=1\x7"
     let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 endif
+
+""""""""""""""""""
+" Fumble fingers "
+""""""""""""""""""
+" prevents writing stupid files
+cabbrev w] w
+cabbrev w\ w
+cabbrev w' w
+
+" make write actually write
+command! W  write
+
 
 " copy paste over ssh
 " set clipboard^=unnamedplus,unnamed
@@ -347,6 +195,7 @@ endif
 """"""""""""""""""""
 " * Plugin Mods  * "
 """"""""""""""""""""
+
 " File Navigation tools (if gui we need a different one)
 if has("gui_running")
     """""""""""""""""""""""""""
@@ -390,28 +239,64 @@ let g:tmuxline_powerline_separators = 1
 " View buffers
 let g:airline#extensions#tabline#enabled = 1
 
-"""""""""""""""
-" Vim Grepper "
-"""""""""""""""
-if executable('ag')
-    cnoreabbrev Ag GrepperAg
-    " leader star ag's for you
-    nnoremap <leader>*   :Grepper -tool ag -cword -noprompt<cr>
-    " gs searches ex: gs$
-    nmap gs <plug>(GrepperOperator)
-    xmap gs <plug>(GrepperOperator)
-endif
-
 """""""""""
 " ArgWrap "
 """""""""""
 " Command to exec
 nnoremap <silent> <leader>a :ArgWrap<CR>
 
+""""""""""""
+" Deoplete "
+""""""""""""
+if has('nvim')
+    let g:deoplete#enable_at_startup = 1
+    " mapping to make it so that tab triggers auto complete if you don't want
+    " auto open
+    " Disable auto complete
+    " let g:deoplete#disable_auto_complete = 1
+    " https://www.reddit.com/r/neovim/comments/4d04k1/deoplete_pops_up_when_i_dont_want_it_to/
+
+    " Allows multiple omni functions
+    let g:deoplete#omni#functions = {}
+    let g:deoplete#omni#functions.javascript = [
+        \ 'tern#Complete',
+        \ 'jspc#omni'
+    \]
+
+    " Adjust deoplete sources
+    set completeopt=longest,menuone,preview
+    let g:deoplete#sources = {}
+    let g:deoplete#sources['javascript.jsx'] = ['file', 'ultisnips', 'ternjs']
+    let g:tern#command = ['tern']
+    let g:tern#arguments = ['--persistent']
+
+    " autocmd FileType javascript let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
+    " or just disable the preview entirely
+    set completeopt-=preview
+    " inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+
+    " Close the documentation window when completion is done
+    autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
+endif
+
+""""""""""""""""""""
+" Fugitive settings "
+"""""""""""""""""""""
+" by default is split
+set diffopt+=vertical
+
+""""""""""""""""
+" REPL - Slime "
+""""""""""""""""
+" SLIME
+let g:slime_target = "tmux"
+let g:slime_python_ipython = 1
+
 """""""""""""""""""
 " Syntax Checking "
 """""""""""""""""""
-"makes gutter correct color
+
+" makes gutter correct color
 highlight clear SignColumn
 
 if has('nvim')
@@ -453,118 +338,27 @@ else
     let g:syntastic_python_flake8_args = '--max-line-length=200 --ignore=W391'
 endif
 
-""""""""""""""""""""
-" Fugitive settings "
-"""""""""""""""""""""
-" by default is split
-set diffopt+=vertical
+"""""""""""""
+" Ultisnips "
+"""""""""""""
+let g:UltiSnipsExpandTrigger="<Leader><Leader>"
 
 """"""""
 " TMUX "
 """"""""
 let g:tmux_navigator_save_on_switch = 1  " Save on close
 
-
-"""""""""""""""""""""
-" * Auto Commands * "
-"""""""""""""""""""""
-" auto cmd to strip whitespace
-"autocmd BufWritePre * :%s/\s\+$//e
-function! <SID>StripTrailingWhitespaces()
-    " Preparation: save last search, and cursor position.
-    let _s=@/
-    let l = line(".")
-    let c = col(".")
-    " Do the business:
-    %s/\s\+$//e
-    " Clean up: restore previous search history, and cursor position
-    let @/=_s
-    call cursor(l, c)
-endfunction
-autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
-
-
-""""""""""""""""""""""""""""""
-" * Quorum Specific Things * "
-""""""""""""""""""""""""""""""
-" Webpack problems
-" https://github.com/webpack/webpack/issues/781
-set backupcopy=yes
-
-
-"""""""""""""""""""
-" * Misc things * "
-"""""""""""""""""""
-" prevents writing stupid files
-cabbrev w] w
-cabbrev w\ w
-cabbrev w' w
-
-" make write actually write
-command! W  write
-
-"""""""""""
-" Credits "
-"""""""""""
-" inspiration
-" http://marcgg.com/blog/2016/03/01/vimrc-example/
-
 """""""""""""""
-" Trial Items "
+" Vim Grepper "
 """""""""""""""
-" SLIME
-let g:slime_target = "tmux"
-let g:slime_python_ipython = 1
-
-" Italics for vim
-let &t_ZH="\e[3m"
-let &t_ZR="\e[23m"
-
-highlight Comment cterm=italic
-
-
-""""""""""""
-" Deoplete "
-""""""""""""
-if has('nvim')
-    let g:deoplete#enable_at_startup = 1
-    " mapping to make it so that tab triggers auto complete
-    " https://www.reddit.com/r/neovim/comments/4d04k1/deoplete_pops_up_when_i_dont_want_it_to/
-    " imap <silent><expr> <TAB>
-    "   \ pumvisible() ? "\<C-n>" :
-    "   \ <SID>check_back_space() ? "\<TAB>" :
-    "   \ deoplete#mappings#manual_complete()
-    " function! s:check_back_space() abort "{{{
-    "   let col = col('.') - 1
-    "   return !col || getline('.')[col - 1]  =~ '\s'
-    " endfunction"}}}
-
-    " Disable auto complete
-    "let g:deoplete#disable_auto_complete = 1
-
-    " Allows multiple omni functions
-    let g:deoplete#omni#functions = {}
-    let g:deoplete#omni#functions.javascript = [
-        \ 'tern#Complete',
-        \ 'jspc#omni'
-    \]
-
-    " Adjust deoplete sources
-    set completeopt=longest,menuone,preview
-    let g:deoplete#sources = {}
-    let g:deoplete#sources['javascript.jsx'] = ['file', 'ultisnips', 'ternjs']
-    let g:tern#command = ['tern']
-    let g:tern#arguments = ['--persistent']
-
-    " autocmd FileType javascript let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
-    " or just disable the preview entirely
-    set completeopt-=preview
-    " inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-
-    " Close the documentation window when completion is done
-    autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
+if executable('ag')
+    cnoreabbrev Ag GrepperAg
+    " leader star ag's for you
+    nnoremap <leader>*   :Grepper -tool ag -cword -noprompt<cr>
+    " gs searches ex: gs$
+    nmap gs <plug>(GrepperOperator)
+    xmap gs <plug>(GrepperOperator)
 endif
-
 
 """""""""""""
 " vim notes "
@@ -572,10 +366,13 @@ endif
 let g:notes_directories = ['~/Notes']
 let g:notes_suffix = '.txt'
 
-"""""""""""""
-" Ultisnips "
-"""""""""""""
-let g:UltiSnipsExpandTrigger="<Leader><Leader>"
+
+"""""""""""""""""""""""""""""""
+" * Webpack Specific Things * "
+"""""""""""""""""""""""""""""""
+" Webpack problems
+" https://github.com/webpack/webpack/issues/781
+set backupcopy=yes
 
 """""""""
 " UNDO? "
@@ -593,3 +390,54 @@ set dir=~/.vim/_swap//
 " " turn on undo files, put them in a common location
 " set undofile
 " set undodir=~/.vim/_undo/
+
+
+"""""""""""""""""""""
+" * Auto Commands * "
+"""""""""""""""""""""
+
+" auto cmd to strip whitespace
+function! <SID>StripTrailingWhitespaces()
+    " Preparation: save last search, and cursor position.
+    let _s=@/
+    let l = line(".")
+    let c = col(".")
+    " Do the business:
+    %s/\s\+$//e
+    " Clean up: restore previous search history, and cursor position
+    let @/=_s
+    call cursor(l, c)
+endfunction
+autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
+
+" Auto set width to 80 chars
+" au BufRead,BufNewFile *.md setlocal textwidth=80
+
+"""""""""""
+" Credits "
+"""""""""""
+" inspiration
+" http://marcgg.com/blog/2016/03/01/vimrc-example/
+
+"""""""""""""""
+" Trial Items "
+"""""""""""""""
+
+" Italics for vim
+" https://alexpearce.me/2014/05/italics-in-iterm2-vim-tmux/
+let &t_ZH="\e[3m"
+let &t_ZR="\e[23m"
+
+highlight Comment cterm=italic
+
+
+"""""""""""""
+" Hard Mode "
+"""""""""""""
+let g:sneak#streak = 1
+nnoremap <leader>h <Esc>:HardTimeToggle<CR>
+let g:hardtime_ignore_quickfix = 1
+let g:hardtime_maxcount = 2
+let g:hardtime_showmsg = 1
+let g:neomake_javascript_eslint_exe = $PWD .'/node_modules/.bin/eslint'
+
