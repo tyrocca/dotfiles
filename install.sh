@@ -38,6 +38,12 @@ linkNeoVim(){
     nvim +VimEnter +PlugInstall +qall +silent;
 }
 
+enableItalics(){
+    cd ~/dotfiles;
+    tic xterm-256color-italic.terminfo;
+    cd ~/;
+}
+
 # this turns on great javascript autocomplete
 enableTern(){
     cd ~/.vim/plugged/tern_for_vim/
@@ -59,6 +65,8 @@ linkEslint(){
 installVim;
 linkNeoVim;
 enableTern;
+enableItalics;
+
 
 # most people won't want to overwrite their eslintrc
 # linkEslint;
