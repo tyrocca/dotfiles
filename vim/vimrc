@@ -28,7 +28,7 @@ set background=dark
 " (solarized requires special things)
 if ($USER == "ty" || $USER == "tyrocca")
     " TRAIL ITEMS
-    let g:hardtime_default_on = 1
+    " let g:hardtime_default_on = 1
 
     " Not needed for neovim
     if !has('nvim')
@@ -436,3 +436,8 @@ highlight Comment cterm=italic
 """""""""""""
 let g:sneak#streak = 1
 nnoremap <leader>h <Esc>:HardTimeToggle<CR>
+let g:hardtime_ignore_quickfix = 1
+let g:hardtime_maxcount = 2
+let g:hardtime_showmsg = 1
+let g:neomake_javascript_eslint_exe = $PWD .'/node_modules/.bin/eslint'
+
