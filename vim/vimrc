@@ -126,7 +126,6 @@ if has('nvim')
     Plug 'ternjs/tern_for_vim', { 'for': ['javascript', 'javascript.jsx'] }
     Plug 'carlitux/deoplete-ternjs', { 'for': ['javascript', 'javascript.jsx'] }
     Plug 'othree/jspc.vim', { 'for': ['coffee', 'cjsx', 'coffee.cjsx', 'javascript', 'javascript.jsx'] }
-
 endif
 
 " Surround
@@ -205,6 +204,10 @@ if ($USER == "ty" || $USER == "tyrocca")
 else
     colorscheme gruvbox
 endif
+
+" Makes it so that javascript keys are colored
+" https://github.com/pangloss/vim-javascript/issues/138
+hi def link jsObjectKey Label
 
 " Formatting / Settings
 set backspace=2         " make backspace work
@@ -574,9 +577,6 @@ let g:notes_suffix = '.txt'
 """""""""""""
 let g:UltiSnipsExpandTrigger="<Leader><Leader>"
 
-
-
-
 """""""""
 " UNDO? "
 """""""""
@@ -593,7 +593,3 @@ set dir=~/.vim/_swap//
 " " turn on undo files, put them in a common location
 " set undofile
 " set undodir=~/.vim/_undo/
-
-" Makes it so that javascript keys are colored
-" https://github.com/pangloss/vim-javascript/issues/138
-hi def link jsObjectKey Label
