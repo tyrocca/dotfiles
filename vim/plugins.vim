@@ -73,13 +73,8 @@ Plug 'tpope/vim-abolish'
 " Commenter
 Plug 'tpope/vim-commentary'
 
-" Syntax highighting
-if !has('nvim')
-    Plug 'scrooloose/syntastic'
-else
-    " Async highlighting
-    Plug 'neomake/neomake'
-endif
+" Async highlighting
+Plug 'neomake/neomake'
 
 " Server auto complete < no dependent files
 Plug 'ervandew/supertab'
