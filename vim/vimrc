@@ -6,15 +6,46 @@ set nocompatible              " be iMproved, required
 
 " Automatic install
 if !has("nvim") && empty(glob('~/.vim/autoload/plug.vim'))
+    " Install for regular vim
+    " First install VimPlug
     silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
         \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    " Then source the plugins
+    source ~/dotfiles/vim/plugins.vim
+    set nocompatible  " Make sure nocopatible is toggled
+    " Load and source
     autocmd VimEnter * PlugInstall | source $MYVIMRC
 elseif has("nvim") && empty(glob('~/.config/nvim/autoload/plug.vim'))
+    " Install for neovim
+    " Install VimPlug
     silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
         \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    " Source Plugins
+    source ~/dotfiles/vim/plugins.vim
+    " Reload vim!
     autocmd VimEnter * PlugInstall | source $MYVIMRC
 else
+    " Load Plugins!
     source ~/dotfiles/vim/plugins.vim
+
+    " set settings for things that need plugins
+    " Color scheme is gruvbox by default so anyone can use it
+    if ($USER == "ty" || $USER == "tyrocca")
+        " (solarized requires special things, so only I have it)
+        " Trial ITEMS
+        " let g:hardtime_default_on = 1
+
+        " Not needed for neovim
+        if !has('nvim')
+            set t_Co=256
+            let g:solarized_termcolors=16
+        endif
+        " Set colorscheme
+        colorscheme solarized
+    else
+        colorscheme gruvbox
+    endif
+
 endif
 
 """"""""""""""""""""""""
@@ -23,23 +54,6 @@ endif
 " Colors
 syntax enable
 set background=dark
-
-" Color scheme is gruvbox by default so anyone can use it
-" (solarized requires special things)
-if ($USER == "ty" || $USER == "tyrocca")
-    " TRAIL ITEMS
-    let g:hardtime_default_on = 1
-
-    " Not needed for neovim
-    if !has('nvim')
-        set t_Co=256
-        let g:solarized_termcolors=16
-    endif
-    " Set colorscheme
-    colorscheme solarized
-else
-    colorscheme gruvbox
-endif
 
 " Formatting / Settings
 set backspace=2         " make backspace work
@@ -162,9 +176,6 @@ inoremap <F4> <C-O>:GitGutterToggle<CR>
 
 " F5 toggles friendly colorscheme
 noremap <F5> :colorscheme gruvbox <CR>
-
-" F6 for background toggle
-" call togglebg#map("<F6>")
 
 """""""""""""""""""""
 " Function Key Maps "
