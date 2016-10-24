@@ -6,49 +6,6 @@ cd quorum-site;
 # set path
 export EDITOR="vim"
 
-# better compiler function
-restart_compilers () {
-    echo "Restarting compilers..."
-    # kill all processes
-    ps -ef | awk -v USER=$USER \
-        '$1 == USER && $9 ~ /(stylus|cjsx|coffee)/ {print $2}' | \
-        xargs kill -9
-
-    # save current working directory
-    cwd=$(pwd)
-    cd ~/quorum-site/app/static/
-
-    # stylus
-    nohup stylus -w -m --out css/ stylus/ >/dev/null 2>&1 &
-    # cjsx
-    nohup cjsx -mo jsx/ -wcb cjsx/ >/dev/null 2>&1 &
-    # coffee
-    nohup coffee -mo cc/ -wc coffee/  >/dev/null 2>&1 &
-
-    # return to working directory
-    cd $cwd
-}
-
-compile_static_files () {
-    # save current working directory
-    cwd=$(pwd)
-    cd ~/quorum-site/app/static/
-
-    # stylus
-    echo "Compiling Stylus"
-    stylus -m --out css/ stylus/
-    # cjsx
-    echo "Compiling CJSX"
-    cjsx -mo jsx/ -c cjsx/
-    # coffee
-    echo "Compiling Coffee"
-    coffee -mo cc/ -c coffee/
-
-    echo "All done - returning to CWD"
-    # return to working directory
-    cd $cwd
-}
-
 ###########
 # Styling #
 ###########
@@ -76,13 +33,24 @@ red(){
 
 # aliases for shell_plus
 sp(){
-    python manage.py shell_plus
-}
-shell(){
     python manage.py shell_plus;
 }
+pdb_sp(){
+    red "#######################################";
+    red "# WARNING - Using Production Database #";
+    red "#######################################";
+    python manage.py shell_plus --use_prod_db;
+}
+
+# db shell
 dbshell(){
     python manage.py dbshell;
+}
+pdb_dbshell(){
+    red "#######################################";
+    red "# WARNING - Using Production Database #";
+    red "#######################################";
+    python manage.py dbshell --use_prod_db;
 }
 
 # runserver
@@ -93,10 +61,26 @@ serve(){
     find . -name "*pyc" -delete
     python manage.py runserver 0.0.0.0:$1;
 }
+pdb_serve(){
+    red "#######################################";
+    red "# WARNING - Using Production Database #";
+    red "#######################################";
+    green "### Running Server on port $1...";
+    sudo chown -R $USER *
+    sudo pkill -f $1
+    find . -name "*pyc" -delete
+    python manage.py runserver 0.0.0.0:$1 --use_prod_db;
+}
 
 # parser
 parse(){
- python manage.py parse $1
+    python manage.py parse $1;
+}
+pdb_parse(){
+    red "#######################################";
+    red "# WARNING - Using Production Database #";
+    red "#######################################";
+    python manage.py parse $1 --use_prod_db;
 }
 
 # for deleteing defunct / zombies
