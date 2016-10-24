@@ -28,7 +28,7 @@ set background=dark
 " (solarized requires special things)
 if ($USER == "ty" || $USER == "tyrocca")
     " TRAIL ITEMS
-    " let g:hardtime_default_on = 1
+    let g:hardtime_default_on = 1
 
     " Not needed for neovim
     if !has('nvim')
@@ -41,11 +41,10 @@ else
     colorscheme gruvbox
 endif
 
-
-
 " Formatting / Settings
 set backspace=2         " make backspace work
 set expandtab       	" tabs are spaces (tab button = spaces)
+
 " set smarttab
 set fileformat=unix     " Make sure the files are always unix
 set fileformats=unix    " Make sure the files are always unix
@@ -165,7 +164,7 @@ inoremap <F4> <C-O>:GitGutterToggle<CR>
 noremap <F5> :colorscheme gruvbox <CR>
 
 " F6 for background toggle
-call togglebg#map("<F6>")
+" call togglebg#map("<F6>")
 
 """""""""""""""""""""
 " Function Key Maps "
@@ -319,31 +318,6 @@ let g:neomake_python_flake8_args = ['--max-line-length=200', '--ignore=W391']
 let g:neomake_javascript_enabled_makers = ['eslint']
 
 autocmd! BufWritePost * Neomake
-
-" Since neomake works on both - just use that!
-"""""""""""""
-" Syntastic "
-"""""""""""""
-" " for syntastic use f12
-" let g:syntastic_mode_map = { 'mode': 'active' }
-" nnoremap <F10> :SyntasticToggleMode<CR>
-" " Toggles Syntax check
-" nnoremap <F12> :update<CR>:SyntasticCheck<CR>
-
-" " Fun styling for syntastic
-" let g:syntastic_error_symbol = '❌'
-" let g:syntastic_style_error_symbol = '⁉️'
-" let g:syntastic_warning_symbol = '⚠️'
-" let g:syntastic_style_warning_symbol = '💩'
-
-" " Javascript
-" let g:syntastic_javascript_checkers = ['eslint']
-
-" " Python
-" let g:syntastic_python_checkers = ["flake8"]
-
-" " Ignore Errors
-" let g:syntastic_python_flake8_args = '--max-line-length=200 --ignore=W391'
 
 """""""""""""
 " Ultisnips "
