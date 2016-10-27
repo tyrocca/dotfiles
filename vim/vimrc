@@ -30,7 +30,10 @@ else
 
     " set settings for things that need plugins
     " Color scheme is gruvbox by default so anyone can use it
-    if ($USER == "ty" || $USER == "tyrocca")
+    if has("gui_vimr")
+        set termguicolors
+        colorscheme gruvbox
+    elseif ($USER == "ty" || $USER == "tyrocca")
         " (solarized requires special things, so only I have it)
         " Trial ITEMS
         " let g:hardtime_default_on = 1
