@@ -5,6 +5,7 @@ cd quorum-site;
 
 # set path
 export EDITOR="vim"
+alias lint="~/quorum-site/node_modules/.bin/eslint"
 
 ###########
 # Styling #

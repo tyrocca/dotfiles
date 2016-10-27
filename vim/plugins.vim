@@ -122,6 +122,9 @@ Plug 'tpope/vim-repeat'
 " Allows colon as an arg
 Plug 'bogado/file-line'
 
+" Relative Number Toggle
+Plug 'jeffkreeftmeijer/vim-numbertoggle'
+
 " Gutentags
 Plug 'ludovicchabant/vim-gutentags'
 
