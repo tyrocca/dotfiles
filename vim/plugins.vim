@@ -51,10 +51,10 @@ Plug 'mxw/vim-jsx', { 'for': 'javascript.jsx' }
 Plug 'wavded/vim-stylus', { 'for': 'stylus' }
 
 " Python thing
-Plug 'hynek/vim-python-pep8-indent'
+Plug 'hynek/vim-python-pep8-indent', { 'for': 'python' }
 
 " Markdown
-Plug 'plasticboy/vim-markdown'
+Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
 
 """""""""""
 " Editing "
@@ -102,7 +102,7 @@ if has('nvim')
     " ~/.config/nvim/plugged/tern_for_vim/ <<< run npm install or ...
     " ~/.vim/plugged/tern_for_vim/ <<< run npm install
     Plug 'ternjs/tern_for_vim', { 'for': ['javascript', 'javascript.jsx'] }
-    Plug 'carlitux/deoplete-ternjs', { 'for': ['javascript', 'javascript.jsx'] }
+    Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern', 'for': ['javascript', 'javascript.jsx'] }
     Plug 'othree/jspc.vim', { 'for': ['coffee', 'cjsx', 'coffee.cjsx', 'javascript', 'javascript.jsx'] }
 
 endif

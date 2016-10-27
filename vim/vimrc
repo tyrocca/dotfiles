@@ -427,5 +427,11 @@ nnoremap <leader>h <Esc>:HardTimeToggle<CR>
 let g:hardtime_ignore_quickfix = 1
 let g:hardtime_maxcount = 2
 let g:hardtime_showmsg = 1
-let g:neomake_javascript_eslint_exe = $PWD .'/node_modules/.bin/eslint'
 
+" Thing to set neomake for quorum
+let g:neomake_javascript_eslint_exe = $PWD .'/node_modules/.bin/eslint'
+" if !empty(glob('~/quorum-site/node_modules/'))
+"     let g:neomake_javascript_eslint_exe = '/home/ty/quorum-site/node_modules/.bin/eslint'
+" elseif !empty(glob($PWD .'/node_modules/.bin/eslint/'))
+"     let g:neomake_javascript_eslint_exe = $PWD .'/node_modules/.bin/eslint'
+" endif
