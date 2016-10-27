@@ -255,7 +255,7 @@ let g:airline_powerline_fonts = 1
 let g:tmuxline_powerline_separators = 1
 
 " View buffers
-let g:airline#extensions#tabline#enabled = 1
+" let g:airline#extensions#tabline#enabled = 1
 
 """""""""""
 " ArgWrap "
