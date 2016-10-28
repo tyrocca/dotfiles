@@ -9,7 +9,7 @@
 --exclude=jsx/*
 
 --langdef=coffee
---langmap=coffee:.coffee .cjsx
+--langmap=coffee:.coffee
 --regex-coffee=/(^|=[ \t])*class ([A-Za-z_][A-Za-z0-9_]+\.)*([A-Za-z_][A-Za-z0-9_]+)( extends ([A-Za-z][A-Za-z0-9_.]*)+)?$/\3/c,class/
 --regex-coffee=/^[ \t]*(module\.)?(exports\.)?@?(([A-Za-z][A-Za-z0-9_.]*)+):.*[-=]>.*$/\3/m,method/
 --regex-coffee=/^[ \t]*(module\.)?(exports\.)?(([A-Za-z][A-Za-z0-9_.]*)+)[ \t]*=.*[-=]>.*$/\3/f,function/
@@ -19,3 +19,10 @@
 --regex-coffee=/^[ \t]*(([A-Za-z][A-Za-z0-9_.]*)+):[^->\n]*$/\1/f,field/
 --regex-coffee=/((constructor|initialize):[ \t]*\()@(([A-Za-z][A-Za-z0-9_.]*)+)([ \t]*=[ \t]*[^,)]+)?/\3/f,field/
 
+--langdef=JSX
+--langmap=jsx:.jsx
+--regex-jsx=/^[ \t]*import[ \t]+([^;]+)/\1/r,import,imports/
+--regex-jsx=/^[ \t]*([a-z]+[ \t]+)*function[ \t]+([A-Za-z0-9_]+[ \t]*[^{;]*)/\2/f,function,functions/
+--regex-jsx=/^[ \t]*([a-z]+[ \t]+)*class[ \t]+([A-Za-z0-9_]+)[ \t]*([^)])/\2/c,class,classes/
+--regex-jsx=/^[ \t]*([a-z]+[ \t]+)*interface[ \t]+([A-Za-z0-9_]+)[ \t]*([^)])/\2/i,interface,interfaces/
+--regex-jsx=/^[ \t]*([a-z]+[ \t]+)*mixin[ \t]+([A-Za-z0-9_]+)[ \t]*([^)])/\2/m,mixin,mixins/
