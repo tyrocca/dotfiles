@@ -102,7 +102,7 @@ if has('nvim')
     " ~/.config/nvim/plugged/tern_for_vim/ <<< run npm install or ...
     " ~/.vim/plugged/tern_for_vim/ <<< run npm install
     Plug 'ternjs/tern_for_vim', { 'for': ['javascript', 'javascript.jsx'] }
-    Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern', 'for': ['javascript', 'javascript.jsx'] }
+    Plug 'carlitux/deoplete-ternjs', { 'for': ['javascript', 'javascript.jsx'] }
     Plug 'othree/jspc.vim', { 'for': ['coffee', 'cjsx', 'coffee.cjsx', 'javascript', 'javascript.jsx'] }
 
 endif
@@ -165,7 +165,7 @@ Plug 'jpalardy/vim-slime'
 Plug 'airblade/vim-gitgutter'
 
 " Notes
-Plug 'xolox/vim-notes' | Plug 'xolox/vim-misc'
+" Plug 'xolox/vim-notes' | Plug 'xolox/vim-misc'
 
 " HARDMODE!
 " Plug 'wikitopian/hardmode'
