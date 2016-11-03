@@ -22,6 +22,8 @@ Plug 'tomasr/molokai'
 " Monokai
 Plug 'sickill/vim-monokai'
 
+Plug 'lifepiller/vim-solarized'
+
 " Tomorrow Theme
 Plug 'chriskempson/vim-tomorrow-theme'
 
