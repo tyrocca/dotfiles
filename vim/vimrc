@@ -347,9 +347,13 @@ let g:tmux_navigator_save_on_switch = 1  " Save on close
 " Vim Grepper "
 """""""""""""""
 if executable('ag')
+    cnoreabbrev AG GrepperAg
     cnoreabbrev Ag GrepperAg
+    cnoreabbrev ag GrepperAg
     " leader star ag's for you
     nnoremap <leader>*   :Grepper -tool ag -cword -noprompt<cr>
+    let g:grepper = {}
+    let g:grepper.ag = { 'grepprg': 'ag --nogroup --nocolor --column' }
     " gs searches ex: gs$
     nmap gs <plug>(GrepperOperator)
     xmap gs <plug>(GrepperOperator)
