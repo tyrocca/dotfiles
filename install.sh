@@ -41,6 +41,7 @@ linkNeoVim(){
 enableItalics(){
     cd ~/dotfiles;
     tic xterm-256color-italic.terminfo;
+    tic screen-256color-italic.terminfo;
     cd ~/;
 }
 
@@ -57,7 +58,6 @@ enableTmux() {
     cwd=$(pwd)
     rm "$cwd/.tmux.conf"
     ln -s "$cwd/dotfiles/tmux/tmux.conf" "$cwd/.tmux.conf"
-    tic screen-256color-italic.terminfo
     cd ~/
 }
 
