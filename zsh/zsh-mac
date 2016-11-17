@@ -58,8 +58,6 @@ plugins=(git git-hubflow osx tmux web-search python django)
 
 
 # User configuration
-
-export PATH="//anaconda/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin"
 export EDITOR="vim"
 # export MANPATH="/usr/local/man:$MANPATH"
 
@@ -67,7 +65,7 @@ source $ZSH/oh-my-zsh.sh
 
 # set cow says thing
 #COWDIR="/usr/local/Cellar/cowsay/3.03/share/cows/"
-fortune | cowsay -f $(ls /usr/local/Cellar/cowsay/3.03/share/cows/ | gshuf | head -n1) | lolcat
+fortune | cowsay -f $(ls /usr/local/Cellar/cowsay/3.04/share/cows/ | gshuf | head -n1) | lolcat
 echo ""
 
 # You may need to manually set your language environment
@@ -84,19 +82,25 @@ echo ""
 # export ARCHFLAGS="-arch x86_64"
 
 # ssh
-# export SSH_KEY_PATH="~/.ssh/dsa_id"
+export SSH_KEY_PATH="~/.ssh/"
+export PEM_KEY_PATH="~/.ssh/keys/"
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 #
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
+# aliases
+alias zshconfig="nvim ~/.zshrc"
+alias ohmyzsh="nvim ~/.oh-my-zsh"
+alias vimrc="nvim ~/.vimrc"
+alias vim_plugins="nvim ~/dotfiles/vim/plugin"
+
+# cd to volumes
+alias hd_folder='cd /Volumes/Macintosh\ HD/Symlinks'
+
 
 #bindkey -v
-
 bindkey '^P' up-history
 bindkey '^N' down-history
 bindkey '^?' backward-delete-char
@@ -109,3 +113,6 @@ export KEYTIMEOUT=1
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# BASE16_SHELL=$HOME/.config/base16-shell/
+# [ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"

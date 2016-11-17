@@ -376,7 +376,7 @@ set backupcopy=yes
 
 " swap files (.swp) in a common location
 " // means use the file's full path
-set dir=~/.vim/_swap//
+" set dir=~/.vim/_swap//
 
 " " backup files (~) in a common location if possible
 " set backup
@@ -430,8 +430,15 @@ let g:hardtime_showmsg = 1
 
 " Thing to set neomake for quorum
 let g:neomake_javascript_eslint_exe = $PWD .'/node_modules/.bin/eslint'
+
 " if !empty(glob('~/quorum-site/node_modules/'))
 "     let g:neomake_javascript_eslint_exe = '/home/ty/quorum-site/node_modules/.bin/eslint'
 " elseif !empty(glob($PWD .'/node_modules/.bin/eslint/'))
 "     let g:neomake_javascript_eslint_exe = $PWD .'/node_modules/.bin/eslint'
 " endif
+
+
+
+" autocmd Filetype html setlocal ts=2 sts=2 sw=2
+" autocmd Filetype ruby setlocal ts=2 sts=2 sw=2
+" autocmd Filetype javascript setlocal ts=4 sts=4 sw=4
