@@ -41,6 +41,7 @@ linkNeoVim(){
 enableItalics(){
     cd ~/dotfiles;
     tic xterm-256color-italic.terminfo;
+    tic screen-256color-italic.terminfo;
     cd ~/;
 }
 
@@ -49,6 +50,15 @@ enableTern(){
     cd ~/.vim/plugged/tern_for_vim/
     npm install;
     cd ~/;
+}
+
+# enable iterm2
+enableTmux() {
+    cd ~/
+    cwd=$(pwd)
+    rm "$cwd/.tmux.conf"
+    ln -s "$cwd/dotfiles/tmux/tmux.conf" "$cwd/.tmux.conf"
+    cd ~/
 }
 
 # link neo vim (only if apt things were setup first
@@ -66,6 +76,7 @@ installVim;
 linkNeoVim;
 enableTern;
 enableItalics;
+enableTmux;
 
 
 # most people won't want to overwrite their eslintrc

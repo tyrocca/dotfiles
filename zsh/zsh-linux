@@ -34,9 +34,11 @@ red(){
 
 # aliases for shell_plus
 sp(){
+    find . -name "*pyc" -delete
     python manage.py shell_plus;
 }
 pdb_sp(){
+    find . -name "*pyc" -delete
     red "#######################################";
     red "# WARNING - Using Production Database #";
     red "#######################################";
@@ -45,9 +47,11 @@ pdb_sp(){
 
 # db shell
 dbshell(){
+    find . -name "*pyc" -delete
     python manage.py dbshell;
 }
 pdb_dbshell(){
+    find . -name "*pyc" -delete
     red "#######################################";
     red "# WARNING - Using Production Database #";
     red "#######################################";
@@ -63,6 +67,7 @@ serve(){
     python manage.py runserver 0.0.0.0:$1;
 }
 pdb_serve(){
+    find . -name "*pyc" -delete
     red "#######################################";
     red "# WARNING - Using Production Database #";
     red "#######################################";
@@ -75,9 +80,11 @@ pdb_serve(){
 
 # parser
 parse(){
+    find . -name "*pyc" -delete
     python manage.py parse $1;
 }
 pdb_parse(){
+    find . -name "*pyc" -delete
     red "#######################################";
     red "# WARNING - Using Production Database #";
     red "#######################################";

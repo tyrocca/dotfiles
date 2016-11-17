@@ -58,10 +58,11 @@ bindkey '^r' history-incremental-search-backward
 
 # User configuration
 
-path="/home/$USER/bin:/home/$USER/yes/bin:/home/$USER/bin:/home/$USER/yes/bin:/home/$USER/bin:"
-path+="/usr/local/lib:"
-path+="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
-export PATH="$path"
+export PATH=/node_modules/.bin/:$PATH
+# path="/home/$USER/bin:/home/$USER/yes/bin:/home/$USER/bin:/home/$USER/yes/bin:/home/$USER/bin:"
+# path+="/usr/local/lib:"
+# path+="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
+# export PATH="$path"
 
 # export MANPATH="/usr/local/man:$MANPATH"
 

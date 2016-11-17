@@ -48,7 +48,7 @@ Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'javascript.jsx'] }
 " Plug 'othree/yajs.vim', { 'for': ['javascript', 'javascript.jsx'] }
 
 " Jsx
-Plug 'mxw/vim-jsx', { 'for': 'javascript.jsx' }
+Plug 'mxw/vim-jsx', { 'for': ['javascript', 'javascript.jsx'] }
 
 " Stylus
 Plug 'wavded/vim-stylus', { 'for': 'stylus' }

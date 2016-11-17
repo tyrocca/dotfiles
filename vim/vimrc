@@ -329,7 +329,9 @@ let g:neomake_python_enabled_makers = ['flake8']
 let g:neomake_python_flake8_args = ['--max-line-length=200', '--ignore=W391']
 
 " Javascript
+let g:neomake_javascript_eslint_exe = $PWD .'/node_modules/.bin/eslint'
 let g:neomake_javascript_enabled_makers = ['eslint']
+let g:neomake_jsx_enabled_makers = ['eslint']
 
 autocmd! BufWritePost * Neomake
 
@@ -347,9 +349,13 @@ let g:tmux_navigator_save_on_switch = 1  " Save on close
 " Vim Grepper "
 """""""""""""""
 if executable('ag')
+    cnoreabbrev AG GrepperAg
     cnoreabbrev Ag GrepperAg
+    cnoreabbrev ag GrepperAg
     " leader star ag's for you
     nnoremap <leader>*   :Grepper -tool ag -cword -noprompt<cr>
+    let g:grepper = {}
+    let g:grepper.ag = { 'grepprg': 'ag --nogroup --nocolor --column' }
     " gs searches ex: gs$
     nmap gs <plug>(GrepperOperator)
     xmap gs <plug>(GrepperOperator)
@@ -429,8 +435,7 @@ let g:hardtime_maxcount = 2
 let g:hardtime_showmsg = 1
 
 " Thing to set neomake for quorum
-let g:neomake_javascript_eslint_exe = $PWD .'/node_modules/.bin/eslint'
-
+" let g:neomake_javascript_eslint_exe = $PWD .'/node_modules/.bin/eslint'
 " if !empty(glob('~/quorum-site/node_modules/'))
 "     let g:neomake_javascript_eslint_exe = '/home/ty/quorum-site/node_modules/.bin/eslint'
 " elseif !empty(glob($PWD .'/node_modules/.bin/eslint/'))
