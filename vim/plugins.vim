@@ -27,12 +27,13 @@ Plug 'lifepillar/vim-solarized8'
 
 " Tomorrow Theme
 Plug 'chriskempson/vim-tomorrow-theme'
+Plug 'chriskempson/base16-vim'
 
 " Zenburn
 Plug 'Zenburn'
 
 " Base16 - this is so damn big...
-" Plug 'chriskempson/base16-vim'
+Plug 'chriskempson/base16-vim'
 
 """""""""""""
 " Languages "
