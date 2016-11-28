@@ -19,7 +19,7 @@
 --regex-coffee=/^[ \t]*(([A-Za-z][A-Za-z0-9_.]*)+):[^->\n]*$/\1/f,field/
 --regex-coffee=/((constructor|initialize):[ \t]*\()@(([A-Za-z][A-Za-z0-9_.]*)+)([ \t]*=[ \t]*[^,)]+)?/\3/f,field/
 
---langdef=JSX
+--langdef=jsx
 --langmap=jsx:.jsx
 --regex-jsx=/^[ \t]*import[ \t]+([^;]+)/\1/r,import,imports/
 --regex-jsx=/^[ \t]*([a-z]+[ \t]+)*function[ \t]+([A-Za-z0-9_]+[ \t]*[^{;]*)/\2/f,function,functions/
