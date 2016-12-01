@@ -59,7 +59,8 @@ bindkey '^r' history-incremental-search-backward
 # User configuration
 
 # export PATH=/node_modules/.bin/:$PATH
-export PATH="$PATH:$HOME/.yarn/bin"
+# export PATH="$PATH:$HOME/.yarn/bin"
+export PATH="$PATH:`yarn global bin`"
 # path="/home/$USER/bin:/home/$USER/yes/bin:/home/$USER/bin:/home/$USER/yes/bin:/home/$USER/bin:"
 # path+="/usr/local/lib:"
 # path+="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"

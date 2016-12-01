@@ -33,7 +33,7 @@ Plug 'chriskempson/base16-vim'
 Plug 'Zenburn'
 
 " Base16 - this is so damn big...
-Plug 'chriskempson/base16-vim'
+" Plug 'chriskempson/base16-vim'
 
 """""""""""""
 " Languages "
@@ -63,6 +63,9 @@ Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
 """""""""""
 " Editing "
 """""""""""
+" This is for making vim obey editor config files
+Plug 'editorconfig/editorconfig-vim'
+
 " Edit indent block
 "   * ai – the current indentation level and the line above
 "   * ii – the current indentation level excluding the line above
