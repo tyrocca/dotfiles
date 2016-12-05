@@ -40,7 +40,8 @@ else
 
         " Not needed for neovim
         if !has('nvim')
-            set t_Co=256
+            " set t_Co=256
+            set t_Co=16
             let g:solarized_termcolors=16
         endif
 
@@ -70,12 +71,10 @@ syntax enable
 set background=dark
 
 " Formatting / Settings
-set backspace=2         " make backspace work
-set expandtab       	" tabs are spaces (tab button = spaces)
-
-" set smarttab
 set fileformat=unix     " Make sure the files are always unix
 set fileformats=unix    " Make sure the files are always unix
+set backspace=2         " make backspace work
+set expandtab       	" tabs are spaces (tab button = spaces)
 set shiftwidth=4        " number of spaces when shifting block
 set softtabstop=4  	    " number of spaces in tab when editing
 set tabstop=4 		    " number of visual spaces per TAB
@@ -101,7 +100,7 @@ set nofoldenable        "dont fold by default
 set foldlevel=0         "this is just what i use
 
 " UI configs
-filetype indent on      " load filetype-specific indent files
+filetype plugin indent on      " load filetype-specific indent files
 set scrolloff=5         " Makes the cursor offset
 set colorcolumn=80      " keep within this column
 set cursorline          " highlight current line
@@ -344,6 +343,21 @@ let g:neomake_javascript_eslint_exe = $PWD .'/node_modules/.bin/eslint'
 let g:neomake_javascript_enabled_makers = ['eslint']
 let g:neomake_jsx_enabled_makers = ['eslint']
 
+" " let g:neomake_stylus_enabled_makers = ['stylint']
+" let errorformat =
+"     \ '%P%f,' .
+"     \ '%-Q,' .
+"     \ '%\m%l:%c%\s%\+%t%\%%(rror%\|arning%\)%\s%\+%m%\s%\+%\S%\+%\s%#,' .
+"     \ '%\m%l%\s%\+%t%\%%(rror%\|arning%\)%\s%\+%m%\s%\+%\S%\+%\s%#'
+
+" let g:neomake_stylus_stylint2_maker = {
+"     \ 'exe': $PWD .'/node_modules/.bin/stylint',
+"     \ 'args': ['--config ~/.stylintrc'],
+"     \ 'errorformat': errorformat,
+"     \ }
+
+" let g:neomake_stylus_enabled_makers = ['stylint2']
+
 autocmd! BufWritePost * Neomake
 
 """""""""""""
@@ -459,5 +473,6 @@ let g:hardtime_showmsg = 1
 """""""""""""""""""""""""""""""""""""""""
 " autocmd Filetype html setlocal ts=2 sts=2 sw=2
 " autocmd Filetype ruby setlocal ts=2 sts=2 sw=2
-autocmd Filetype javascript,javascript.jsx setlocal ts=4 sts=4 sw=4 colorcolumn=100
-autocmd Filetype python setlocal ts=4 sts=4 sw=4 colorcolumn=80
+autocmd Filetype coffee setlocal ts=4 sts=4 sw=4
+" autocmd Filetype javascript,javascript.jsx setlocal ts=4 sts=4 sw=4 colorcolumn=100
+" autocmd Filetype python setlocal ts=4 sts=4 sw=4 colorcolumn=80
