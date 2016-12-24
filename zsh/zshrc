@@ -1,5 +1,6 @@
 # Path to your oh-my-zsh installation.
 export ZSH=/home/$USER/.oh-my-zsh
+
 # alias "vim"="nvim"
 
 # Set name of the theme to load.
@@ -53,12 +54,14 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git git-hubflow osx tmux tmuxinator web-search python django zsh-syntax-highlighting)
+plugins=(git git-hubflow osx tmux tmuxinator web-search python django zsh-syntax-highlighting, npm, pip, tmux, yarn)
 bindkey '^r' history-incremental-search-backward
 
 # User configuration
 
-export PATH=/node_modules/.bin/:$PATH
+# export PATH=/node_modules/.bin/:$PATH
+# export PATH="$PATH:$HOME/.yarn/bin"
+export PATH="$PATH:`yarn global bin`"
 # path="/home/$USER/bin:/home/$USER/yes/bin:/home/$USER/bin:/home/$USER/yes/bin:/home/$USER/bin:"
 # path+="/usr/local/lib:"
 # path+="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
@@ -151,3 +154,12 @@ _gen_fzf_default_opts() {
 _gen_fzf_default_opts
 
 # export TZ=America/New_York
+# BASE16_SHELL=$HOME/.config/base16-shell/
+# [ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
+
+# auto correct modifications
+if [ -f ~/dotfiles/zsh/zsh_nocorrect ]; then
+    while read -r COMMAND; do
+        alias $COMMAND="nocorrect $COMMAND"
+    done < ~/dotfiles/zsh/zsh_nocorrect
+fi

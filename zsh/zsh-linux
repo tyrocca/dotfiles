@@ -3,9 +3,10 @@ cd ~/;
 source bin/activate;
 cd quorum-site;
 
-# set path
 export EDITOR="vim"
 alias lint="~/quorum-site/node_modules/.bin/eslint"
+# set path
+PATH=$(npm bin):$PATH
 
 ###########
 # Styling #

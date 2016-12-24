@@ -27,6 +27,7 @@ Plug 'lifepillar/vim-solarized8'
 
 " Tomorrow Theme
 Plug 'chriskempson/vim-tomorrow-theme'
+Plug 'chriskempson/base16-vim'
 
 " Zenburn
 Plug 'Zenburn'
@@ -62,6 +63,9 @@ Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
 """""""""""
 " Editing "
 """""""""""
+" This is for making vim obey editor config files
+Plug 'editorconfig/editorconfig-vim'
+
 " Edit indent block
 "   * ai – the current indentation level and the line above
 "   * ii – the current indentation level excluding the line above
