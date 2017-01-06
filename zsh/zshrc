@@ -163,3 +163,8 @@ if [ -f ~/dotfiles/zsh/zsh_nocorrect ]; then
         alias $COMMAND="nocorrect $COMMAND"
     done < ~/dotfiles/zsh/zsh_nocorrect
 fi
+
+# GITHUB - useful function
+clean_merged_branches() {
+    git branch --merged | egrep -v "(^\*|master|dev)" | xargs git branch -d
+}
