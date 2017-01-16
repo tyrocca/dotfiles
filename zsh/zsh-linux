@@ -109,7 +109,7 @@ migrate(){
 migrate_fake(){
     python manage.py migrate $1 --fake;
 }
-inital_migrations() {
+initial_migrations() {
     green "* Making Fake Migrations *";
     makemigrations $1;
     migrate_fake $1;
@@ -134,7 +134,7 @@ clear_migrations(){
     find . -name "*pyc" -delete;
     find . -name "migrations" -type d -exec rm -rf "{}" \;
     green "* Making API migrations *";
-    inital_migrations api;
+    initial_migrations api;
     green "* Initial Migrations Finished *";
 }
 

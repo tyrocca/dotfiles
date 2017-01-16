@@ -88,6 +88,9 @@ Plug 'ervandew/supertab'
 
 " Autocomplete
 if has('nvim')
+    " formatting tool
+    Plug 'sbdchd/neoformat'
+
     " * Auto complete tool *
     Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 
