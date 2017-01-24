@@ -133,7 +133,9 @@ Plug 'tpope/vim-repeat'
 Plug 'bogado/file-line'
 
 " Relative Number Toggle
-Plug 'jeffkreeftmeijer/vim-numbertoggle'
+if ($USER == "ty" || $USER == "tyrocca")
+    Plug 'jeffkreeftmeijer/vim-numbertoggle'
+endif
 
 " Gutentags
 Plug 'ludovicchabant/vim-gutentags'
