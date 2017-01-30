@@ -7,7 +7,7 @@ call plug#begin('~/.vim/plugged')
 " Solarized
 Plug 'altercation/vim-colors-solarized'
 
-" LightLine
+" Airline (last thing shortens git flow"
 Plug 'vim-airline/vim-airline' | Plug 'vim-airline/vim-airline-themes'
 
 " Tmux line
@@ -74,11 +74,14 @@ Plug 'michaeljsmith/vim-indent-object'
 " Abolish - random vi things
 Plug 'tpope/vim-abolish'
 
-" Commentout
-" Plug 'scrooloose/nerdcommenter'
+" ArgWrap - fix argument wrapping
+Plug 'FooSoft/vim-argwrap'
 
 " Commenter
 Plug 'tpope/vim-commentary'
+
+" HARDMODE!
+Plug 'takac/vim-hardtime'
 
 " Async highlighting
 Plug 'neomake/neomake'
@@ -86,7 +89,15 @@ Plug 'neomake/neomake'
 " Server auto complete < no dependent files
 Plug 'ervandew/supertab'
 
-" Autocomplete
+" Surround
+Plug 'tpope/vim-surround'
+
+" Repeater
+Plug 'tpope/vim-repeat'
+
+"""""""""""""""""""""""""
+" Autocomplete - Neovim "
+"""""""""""""""""""""""""
 if has('nvim')
     " formatting tool
     Plug 'sbdchd/neoformat'
@@ -114,23 +125,16 @@ if has('nvim')
     Plug 'ternjs/tern_for_vim', { 'for': ['javascript', 'javascript.jsx'] }
     Plug 'carlitux/deoplete-ternjs', { 'for': ['javascript', 'javascript.jsx'] }
     Plug 'othree/jspc.vim', { 'for': ['coffee', 'cjsx', 'coffee.cjsx', 'javascript', 'javascript.jsx'] }
-
 endif
-
-" Surround
-Plug 'tpope/vim-surround'
-
-" ArgWrap - fix argument wrapping
-Plug 'FooSoft/vim-argwrap'
-
-" Repeater
-Plug 'tpope/vim-repeat'
 
 """"""""""""""""""""
 " Navigation Tools "
 """"""""""""""""""""
 " Allows colon as an arg
 Plug 'bogado/file-line'
+
+" Vim sneak - better movement
+Plug 'justinmk/vim-sneak'
 
 " Relative Number Toggle
 if ($USER == "ty" || $USER == "tyrocca")
@@ -157,32 +161,28 @@ endif
 " tmux
 Plug 'christoomey/vim-tmux-navigator'
 
-" Ag - deprecated
-" Plug 'rking/ag.vim'
-" Ack
-" Plug 'mileszs/ack.vim'
 " Vim Grepper
 Plug 'mhinz/vim-grepper'
 
 """"""""""""""""""
 " Misc Things... "
 """"""""""""""""""
+" Undo Tree
+Plug 'simnalamburt/vim-mundo'
+" Gundo doesn't work with normal vim :(
+" Plug 'sjl/gundo.vim'
+
 " Git tools
 Plug 'tpope/vim-fugitive'
+
+" Git changes
+Plug 'airblade/vim-gitgutter'
 
 " TEMP - vim repl
 Plug 'jpalardy/vim-slime'
 
-" Git
-Plug 'airblade/vim-gitgutter'
-
 " Notes
 " Plug 'xolox/vim-notes' | Plug 'xolox/vim-misc'
-
-" HARDMODE!
-" Plug 'wikitopian/hardmode'
-Plug 'takac/vim-hardtime'
-Plug 'justinmk/vim-sneak'
 
 " Add plugins to &runtimepath
 call plug#end()
