@@ -260,7 +260,7 @@ else
     """""""""""""""""""""""""
     " Modifications for FZF "
     """""""""""""""""""""""""
-    nnoremap <silent> <C-p> :GitFiles<CR>
+    nnoremap <silent> <C-p> :GFiles<CR>
     nnoremap <silent> <leader>l :History<CR>
     nnoremap <silent> <leader>t :Tags<CR>
     nnoremap <silent> <leader>r :BTags<CR>
