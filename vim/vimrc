@@ -111,10 +111,11 @@ set showmatch 		    " show matching ()
 set wildmenu            " visual autocomplete for command menu
 
 " UI Settings if nvim isn't running
+set mouse=a             " Turn on mouse mode
 if !has('nvim')
     set ttymouse=xterm2
-    set mouse=a             " Turn on mouse mode
 endif
+
 
 " changes the cursor in vim
 if has('nvim')
@@ -230,6 +231,13 @@ if has("gui_running")
     set guifont=Meslo\ LG\ M\ Regular\ for\ Powerline
 endif
 
+"""""""""""""""""""""""
+" * Neovim Terminal * "
+"""""""""""""""""""""""
+if has("nvim")
+    " make it so escape can close terminal
+    tnoremap <Esc> <C-\><C-n>
+endif
 
 """"""""""""""""""""
 " * Plugin Mods  * "
