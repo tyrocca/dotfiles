@@ -35,6 +35,10 @@ purple(){
 red(){
     echo "${red_color}$1${reset_color}";
 }
+update_neo_vim() {
+    sudo apt-get update;
+    sudo apt-get install neovim;
+}
 
 ####################
 # Useful Functions #

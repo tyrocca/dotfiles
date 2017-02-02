@@ -168,3 +168,6 @@ fi
 clean_merged_branches() {
     git branch --merged | egrep -v "(^\*|master|dev)" | xargs git branch -d
 }
+
+# CLIPPER alias clip="nc localhost 8377"
+alias clip="nc localhost 8377"
