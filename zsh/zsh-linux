@@ -3,12 +3,6 @@ cd ~/;
 source bin/activate;
 cd quorum-site;
 
-# aliases
-alias zshconfig="nvim ~/.zshrc"
-alias ohmyzsh="nvim ~/.oh-my-zsh"
-alias vimrc="nvim ~/.vimrc"
-alias vim_plugins="nvim ~/dotfiles/vim/plugins.vim"
-
 export EDITOR="vim"
 alias lint="~/quorum-site/node_modules/.bin/eslint"
 

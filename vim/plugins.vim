@@ -60,6 +60,9 @@ Plug 'hynek/vim-python-pep8-indent', { 'for': 'python' }
 " Markdown
 Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
 
+" Tmux
+Plug 'keith/tmux.vim'
+
 """""""""""
 " Editing "
 """""""""""
@@ -107,11 +110,11 @@ if has('nvim')
 
     " * Snippets *
     " Track the engine.
-    Plug 'SirVer/ultisnips'
-    " Snippets are separated from the engine. Add this if you want them:
-    Plug 'honza/vim-snippets'
-    " More snippets
-    Plug 'greg-js/vim-react-es6-snippets', { 'for': ['javascript', 'javascript.jsx'] }
+    " Plug 'SirVer/ultisnips'
+    " " Snippets are separated from the engine. Add this if you want them:
+    " Plug 'honza/vim-snippets'
+    " " More snippets
+    " Plug 'greg-js/vim-react-es6-snippets', { 'for': ['javascript', 'javascript.jsx'] }
 
     " Python Autocomplete
     Plug 'zchee/deoplete-jedi', { 'for': ['python'] }
@@ -131,15 +134,15 @@ endif
 " Navigation Tools "
 """"""""""""""""""""
 " Allows colon as an arg
-Plug 'bogado/file-line'
+" Plug 'bogado/file-line'
 
 " Vim sneak - better movement
 Plug 'justinmk/vim-sneak'
 
 " Relative Number Toggle
-if ($USER == "ty" || $USER == "tyrocca")
-    Plug 'jeffkreeftmeijer/vim-numbertoggle'
-endif
+" if ($USER == "ty" || $USER == "tyrocca")
+"     Plug 'jeffkreeftmeijer/vim-numbertoggle'
+" endif
 
 " Gutentags
 Plug 'ludovicchabant/vim-gutentags'
@@ -168,7 +171,7 @@ Plug 'mhinz/vim-grepper'
 " Misc Things... "
 """"""""""""""""""
 " Undo Tree
-Plug 'simnalamburt/vim-mundo'
+" Plug 'simnalamburt/vim-mundo'
 " Gundo doesn't work with normal vim :(
 " Plug 'sjl/gundo.vim'
 
@@ -176,7 +179,7 @@ Plug 'simnalamburt/vim-mundo'
 Plug 'tpope/vim-fugitive'
 
 " Git changes
-Plug 'airblade/vim-gitgutter'
+" Plug 'airblade/vim-gitgutter'
 
 " TEMP - vim repl
 Plug 'jpalardy/vim-slime'

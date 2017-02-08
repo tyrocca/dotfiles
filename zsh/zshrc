@@ -171,3 +171,21 @@ clean_merged_branches() {
 
 # CLIPPER alias clip="nc localhost 8377"
 alias clip="nc localhost 8377"
+
+###############
+# * Aliases * #
+###############
+# things for vim - swp files
+alias ls_swp="ls ~/.vim/.swp/"
+alias rm_swp="rm ~/.vim/.swp/*"
+# backups
+alias ls_backups="ls ~/.vim/.backup/*"
+alias rm_backups="rm ~/.vim/.backup/*"
+# updo files
+alias ls_backups="ls ~/.vim/.backup/*"
+alias rm_backups="rm ~/.vim/.backup/*"
+# other helpful things
+alias zshconfig="nvim ~/.zshrc"
+alias ohmyzsh="nvim ~/.oh-my-zsh"
+alias vimrc="nvim ~/.vimrc"
+alias vim_plugins="nvim ~/dotfiles/vim/plugins.vim"
