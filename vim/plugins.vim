@@ -32,9 +32,6 @@ Plug 'chriskempson/base16-vim'
 " Zenburn
 Plug 'Zenburn'
 
-" Base16 - this is so damn big...
-" Plug 'chriskempson/base16-vim'
-
 """""""""""""
 " Languages "
 """""""""""""
@@ -46,7 +43,6 @@ Plug 'mtscout6/vim-cjsx', { 'for': ['coffee', 'cjsx', 'coffee.cjsx'] }
 
 " Javascript
 Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'javascript.jsx'] }
-" Plug 'othree/yajs.vim', { 'for': ['javascript', 'javascript.jsx'] }
 
 " Jsx
 Plug 'mxw/vim-jsx', { 'for': ['javascript', 'javascript.jsx'] }
@@ -110,11 +106,11 @@ if has('nvim')
 
     " * Snippets *
     " Track the engine.
-    " Plug 'SirVer/ultisnips'
-    " " Snippets are separated from the engine. Add this if you want them:
-    " Plug 'honza/vim-snippets'
-    " " More snippets
-    " Plug 'greg-js/vim-react-es6-snippets', { 'for': ['javascript', 'javascript.jsx'] }
+    Plug 'SirVer/ultisnips'
+    " Snippets are separated from the engine. Add this if you want them:
+    Plug 'honza/vim-snippets'
+    " More snippets
+    Plug 'greg-js/vim-react-es6-snippets', { 'for': ['javascript', 'javascript.jsx'] }
 
     " Python Autocomplete
     Plug 'zchee/deoplete-jedi', { 'for': ['python'] }
@@ -171,8 +167,8 @@ Plug 'mhinz/vim-grepper'
 " Misc Things... "
 """"""""""""""""""
 " Undo Tree
-" Plug 'simnalamburt/vim-mundo'
-" Gundo doesn't work with normal vim :(
+Plug 'simnalamburt/vim-mundo'
+" Gundo doesn't work with neovim :(
 " Plug 'sjl/gundo.vim'
 
 " Git tools

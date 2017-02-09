@@ -185,6 +185,28 @@ nnoremap <silent> <F19> :call system('nc localhost 8377', @0)<CR>
 "Paste toggle
 set pastetoggle=<F2>
 
+"""""""""""""""""""""""""""""""
+" * Webpack Specific Things * "
+"""""""""""""""""""""""""""""""
+" Webpack problems
+" https://github.com/webpack/webpack/issues/781
+set backupcopy=yes
+
+""""""""""""""""""""""""
+" Vim Backups and Undo "
+""""""""""""""""""""""""
+" swap files
+" swap files (.swp) in a common location
+" // means use the file's full path
+set directory=~/.vim/.swp//
+
+" " backup files (~) in a common location if possible
+set backup
+set backupdir=~/.vim/.backup//
+
+" turn on undo files, put them in a common location
+set undofile
+set undodir=~/.vim/.undo//
 
 """""""""""""""""""""
 " Function Key Maps "
@@ -199,11 +221,6 @@ inoremap <F4> <C-O>:GitGutterToggle<CR>
 
 " F5 toggles friendly colorscheme
 noremap <F5> :colorscheme gruvbox <CR>
-" nnoremap <F6> :MundoToggle <CR>
-" nnoremap <silent><leader>u :MundoToggle <CR>
-" if has('python3')
-"     let g:mundo_prefer_python3 = 1          " anything else breaks on Ubuntu 16.04+
-" endif
 
 " Toggle foldmethod on
 nnoremap <F8> :setlocal foldmethod=indent<CR>:setlocal foldignore= <CR>
@@ -282,9 +299,6 @@ let g:airline_powerline_fonts = 1
 
 " For TMUX plugin
 let g:tmuxline_powerline_separators = 1
-
-" View buffers
-" let g:airline#extensions#tabline#enabled = 1
 
 """""""""""
 " ArgWrap "
@@ -385,6 +399,16 @@ let g:neomake_jsx_enabled_makers = ['eslint']
 
 autocmd! BufWritePost * Neomake
 
+""""""""""""""""""""
+" Undo helper tool "
+""""""""""""""""""""
+nnoremap <F6> :MundoToggle <CR>
+nnoremap <silent><leader>u :MundoToggle <CR>
+if has('python3')
+    let g:mundo_prefer_python3 = 1          " anything else breaks on Ubuntu 16.04+
+endif
+
+
 """""""""""""
 " Ultisnips "
 """""""""""""
@@ -419,30 +443,6 @@ endif
 let g:notes_directories = ['~/Notes']
 let g:notes_suffix = '.txt'
 
-"""""""""""""""""""""""""""""""
-" * Webpack Specific Things * "
-"""""""""""""""""""""""""""""""
-" Webpack problems
-" https://github.com/webpack/webpack/issues/781
-set backupcopy=yes
-
-"""""""""
-" UNDO? "
-"""""""""
-" swap files
-" swap files (.swp) in a common location
-" // means use the file's full path
-set directory=~/.vim/.swp//
-
-" " backup files (~) in a common location if possible
-set backup
-set backupdir=~/.vim/.backup//
-
-" turn on undo files, put them in a common location
-set undofile
-set undodir=~/.vim/.undo//
-
-
 """""""""""""""""""""
 " * Auto Commands * "
 """""""""""""""""""""
@@ -467,25 +467,23 @@ autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
 " make commit messages have spell check
 autocmd FileType gitcommit setlocal spell
 
-"""""""""""
-" Credits "
-"""""""""""
-" inspiration
-" http://marcgg.com/blog/2016/03/01/vimrc-example/
 
-"""""""""""""""
-" Trial Items "
-"""""""""""""""
-
+"""""""""""""""""""
+" * Trial Items * "
+"""""""""""""""""""
 
 """""""""""""
 " Hard Mode "
 """""""""""""
-let g:sneak#streak = 1
 nnoremap <leader>h <Esc>:HardTimeToggle<CR>
 let g:hardtime_ignore_quickfix = 1
 let g:hardtime_maxcount = 2
 let g:hardtime_showmsg = 1
+
+"""""""""""""
+" Vim Sneak "
+"""""""""""""
+let g:sneak#streak = 1
 
 " Thing to set neomake for quorum
 " let g:neomake_javascript_eslint_exe = $PWD .'/node_modules/.bin/eslint'
@@ -504,4 +502,10 @@ let g:hardtime_showmsg = 1
 autocmd Filetype coffee setlocal ts=4 sts=4 sw=4
 autocmd Filetype javascript,javascript.jsx setlocal ts=4 sts=4 sw=4 colorcolumn=100
 
+
+"""""""""""
+" Credits "
+"""""""""""
+" inspiration
+" http://marcgg.com/blog/2016/03/01/vimrc-example/
 " autocmd Filetype python setlocal ts=4 sts=4 sw=4 colorcolumn=80
