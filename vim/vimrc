@@ -434,9 +434,9 @@ let g:notes_suffix = '.txt'
 " auto cmd to strip whitespace
 function! <SID>StripTrailingWhitespaces()
     " Ignore: do not run if FileType is markdown
-    if &ft = 'markdown\|gitcommit'
-        return
-    endif
+    " if &ft = 'markdown\|gitcommit'
+    "     return
+    " endif
     " Preparation: save last search, and cursor position.
     let _s=@/
     let l = line(".")
