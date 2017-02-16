@@ -36,10 +36,7 @@ Plug 'Zenburn'
 " Languages "
 """""""""""""
 " CoffeeScript
-Plug 'kchmck/vim-coffee-script', { 'for': ['coffee', 'cjsx', 'coffee.cjsx'] }
-
-" CJSX
-Plug 'mtscout6/vim-cjsx', { 'for': ['coffee', 'cjsx', 'coffee.cjsx'] }
+Plug 'kchmck/vim-coffee-script', { 'for': ['coffee'] }
 
 " Javascript
 Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'javascript.jsx'] }

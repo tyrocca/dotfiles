@@ -30,14 +30,12 @@ else
 
     " set settings for things that need plugins
     " Color scheme is gruvbox by default so anyone can use it
+    colorscheme gruvbox
     if has("gui_vimr")
+        " in vimR we want the gui colors because they look nice
         set termguicolors
-        colorscheme gruvbox
     elseif ($USER == "ty" || $USER == "tyrocca")
         " (solarized requires special things, so only I have it)
-        " Trial ITEMS
-        " let g:hardtime_default_on = 1
-
         " Not needed for neovim
         if !has('nvim')
             set t_Co=16
@@ -46,6 +44,9 @@ else
 
         " Set colorscheme
         colorscheme solarized
+
+        " Trial ITEMS
+        " let g:hardtime_default_on = 1
 
         " Trying to get trucolors to work -
         " if (0 == 1)
@@ -57,8 +58,6 @@ else
         "     endif
         "     colorscheme base16-solarized-dark
         " endif
-    else
-        colorscheme gruvbox
     endif
 
 endif
@@ -382,21 +381,6 @@ let g:neomake_python_flake8_args = ['--max-line-length=200', '--ignore=W391']
 let g:neomake_javascript_enabled_makers = ['eslint']
 let g:neomake_jsx_enabled_makers = ['eslint']
 
-" " let g:neomake_stylus_enabled_makers = ['stylint']
-" let errorformat =
-"     \ '%P%f,' .
-"     \ '%-Q,' .
-"     \ '%\m%l:%c%\s%\+%t%\%%(rror%\|arning%\)%\s%\+%m%\s%\+%\S%\+%\s%#,' .
-"     \ '%\m%l%\s%\+%t%\%%(rror%\|arning%\)%\s%\+%m%\s%\+%\S%\+%\s%#'
-
-" let g:neomake_stylus_stylint2_maker = {
-"     \ 'exe': $PWD .'/node_modules/.bin/stylint',
-"     \ 'args': ['--config ~/.stylintrc'],
-"     \ 'errorformat': errorformat,
-"     \ }
-
-" let g:neomake_stylus_enabled_makers = ['stylint2']
-
 autocmd! BufWritePost * Neomake
 
 """"""""""""""""""""
@@ -449,6 +433,10 @@ let g:notes_suffix = '.txt'
 
 " auto cmd to strip whitespace
 function! <SID>StripTrailingWhitespaces()
+    " Ignore: do not run if FileType is markdown
+    if &ft = 'markdown\|gitcommit'
+        return
+    endif
     " Preparation: save last search, and cursor position.
     let _s=@/
     let l = line(".")
@@ -485,21 +473,12 @@ let g:hardtime_showmsg = 1
 """""""""""""
 let g:sneak#streak = 1
 
-" Thing to set neomake for quorum
-" let g:neomake_javascript_eslint_exe = $PWD .'/node_modules/.bin/eslint'
-" if !empty(glob('~/quorum-site/node_modules/'))
-"     let g:neomake_javascript_eslint_exe = '/home/ty/quorum-site/node_modules/.bin/eslint'
-" elseif !empty(glob($PWD .'/node_modules/.bin/eslint/'))
-"     let g:neomake_javascript_eslint_exe = $PWD .'/node_modules/.bin/eslint'
-" endif
-
 
 """""""""""""""""""""""""""""""""""""""""
 " FileType Configs (overwrite defaults) "
 """""""""""""""""""""""""""""""""""""""""
 " autocmd Filetype html setlocal ts=2 sts=2 sw=2
 " autocmd Filetype ruby setlocal ts=2 sts=2 sw=2
-autocmd Filetype coffee setlocal ts=4 sts=4 sw=4
 autocmd Filetype javascript,javascript.jsx setlocal ts=4 sts=4 sw=4 colorcolumn=100
 
 
