@@ -30,9 +30,9 @@ else
 
     " set settings for things that need plugins
     " Color scheme is gruvbox by default so anyone can use it
-    colorscheme gruvbox
     if has("gui_vimr")
         " in vimR we want the gui colors because they look nice
+        colorscheme gruvbox
         set termguicolors
     elseif ($USER == "ty" || $USER == "tyrocca")
         " (solarized requires special things, so only I have it)
@@ -68,8 +68,9 @@ else
         "     endif
         "     colorscheme base16-solarized-dark
         " endif
+    else
+        colorscheme gruvbox
     endif
-
 endif
 
 """"""""""""""""""""""""
@@ -355,6 +356,17 @@ endif
 """""""""""""""""""""
 " by default is split
 set diffopt+=vertical
+
+""""""""""""""
+" vim js-doc "
+""""""""""""""
+" Turn on es6 syntax
+let g:jsdoc_enable_es6 = 1
+" Allow prompt for interactive input
+let g:jsdoc_allow_input_prompt = 1
+" Prompt for a function description
+let g:jsdoc_input_description = 1
+nmap <silent> <leader>d <Plug>(jsdoc)
 
 """"""""""""""""
 " REPL - Slime "
