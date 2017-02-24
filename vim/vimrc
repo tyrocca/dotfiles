@@ -32,7 +32,7 @@ else
     " Color scheme is gruvbox by default so anyone can use it
     if has("gui_vimr")
         " in vimR we want the gui colors because they look nice
-        colorscheme=gruvbox
+        colorscheme gruvbox
         set termguicolors
     elseif ($USER == "ty" || $USER == "tyrocca")
         " (solarized requires special things, so only I have it)
@@ -59,7 +59,7 @@ else
         "     colorscheme base16-solarized-dark
         " endif
     else
-        colorscheme=gruvbox
+        colorscheme gruvbox
     endif
 endif
 
