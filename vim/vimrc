@@ -347,6 +347,17 @@ endif
 " by default is split
 set diffopt+=vertical
 
+""""""""""""""
+" vim js-doc "
+""""""""""""""
+" Turn on es6 syntax
+let g:jsdoc_enable_es6 = 1
+" Allow prompt for interactive input
+let g:jsdoc_allow_input_prompt = 1
+" Prompt for a function description
+let g:jsdoc_input_description = 1
+nmap <silent> <leader>d <Plug>(jsdoc)
+
 """"""""""""""""
 " REPL - Slime "
 """"""""""""""""

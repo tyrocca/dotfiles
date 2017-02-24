@@ -41,6 +41,9 @@ Plug 'kchmck/vim-coffee-script', { 'for': ['coffee'] }
 " Javascript
 Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'javascript.jsx'] }
 
+" Javascript doc tool
+Plug 'heavenshell/vim-jsdoc', { 'for': ['javascript', 'javascript.jsx'] }
+
 " Jsx
 Plug 'mxw/vim-jsx', { 'for': ['javascript', 'javascript.jsx'] }
 
