@@ -215,6 +215,12 @@ remove_dos() {
     echo "^M characters were all removed"
 }
 
+activate_keychain() {
+    keychain --nogui ~/.ssh/id_rsa
+    . ~/.keychain/$HOST-sh
+}
+activate_keychain;
+
 if [[ "$TMUX" == "" ]] &&
         [[ "$SSH_CONNECTION" != "" ]]; then
 
