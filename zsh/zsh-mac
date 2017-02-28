@@ -59,7 +59,10 @@ plugins=(git git-hubflow osx tmux web-search python django)
 
 # User configuration
 export EDITOR="vim"
-export PATH="$PATH:$HOME/.yarn/bin"
+# export PATH="$PATH:$HOME/.yarn/bin"
+export PATH="$PATH:`yarn global bin`"
+alias npm-exec='PATH=$(npm bin):$PATH'
+
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh

@@ -37,13 +37,24 @@ else
     elseif ($USER == "ty" || $USER == "tyrocca")
         " (solarized requires special things, so only I have it)
         " Not needed for neovim
-        if !has('nvim')
-            set t_Co=16
-            let g:solarized_termcolors=16
+        " if !has('nvim')
+        "     set t_Co=16
+        "     let g:solarized_termcolors=16
+        " endif
+
+        if ($USER == "tyrocca" && has("termguicolors"))
+            set termguicolors
+            let g:gruvbox_italic=1
+            colorscheme gruvbox
+            " let g:gruvbox_contrast_dark="hard"
+            if exists('$TMUX')
+                autocmd VimEnter * call tmuxline#set_statusline('vim_statusline_3')
+            endif
+        else
+            " Set colorscheme
+            colorscheme solarized
         endif
 
-        " Set colorscheme
-        colorscheme solarized
 
         " Trial ITEMS
         " let g:hardtime_default_on = 1

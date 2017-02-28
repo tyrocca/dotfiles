@@ -24,6 +24,7 @@ Plug 'sickill/vim-monokai'
 
 " Alt solarized
 Plug 'lifepillar/vim-solarized8'
+Plug 'romainl/flattened'
 
 " Tomorrow Theme
 Plug 'chriskempson/vim-tomorrow-theme'
