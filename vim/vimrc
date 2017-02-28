@@ -52,7 +52,7 @@ else
             endif
         else
             " Set colorscheme
-            " colorscheme solarized
+            " set termguicolors
             colorscheme gruvbox
         endif
 
