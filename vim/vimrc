@@ -432,11 +432,17 @@ let g:tmux_navigator_save_on_switch = 1  " Save on close
 """""""""""""""
 " Vim Grepper "
 """""""""""""""
-if executable('ag')
+if executable('rg')
+    cnoreabbrev RG GrepperRg
+    cnoreabbrev Rg GrepperRg
+    cnoreabbrev rg GrepperRg
+    nnoremap <leader>*   :Grepper -tool rg -cword -noprompt<cr>
+elseif executable('ag')
     " somtimes I write the wrong thing
     cnoreabbrev AG GrepperAg
     cnoreabbrev Ag GrepperAg
     cnoreabbrev ag GrepperAg
+
     " leader star ag's for you
     nnoremap <leader>*   :Grepper -tool ag -cword -noprompt<cr>
     let g:grepper = {}
