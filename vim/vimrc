@@ -207,17 +207,19 @@ set backupcopy=yes
 """"""""""""""""""""""""
 " Vim Backups and Undo "
 """"""""""""""""""""""""
-" swap files
 " swap files (.swp) in a common location
 " // means use the file's full path
+silent !mkdir -p ~/.vim/.swp/ > /dev/null 2>&1
 set directory=~/.vim/.swp//
 
 " " backup files (~) in a common location if possible
 set backup
+silent !mkdir -p ~/.vim/.backup/ > /dev/null 2>&1
 set backupdir=~/.vim/.backup//
 
 " turn on undo files, put them in a common location
 set undofile
+silent !mkdir -p ~/.vim/.undo/ > /dev/null 2>&1
 set undodir=~/.vim/.undo//
 
 """""""""""""""""""""
