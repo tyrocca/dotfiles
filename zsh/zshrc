@@ -121,7 +121,7 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 
 # FZF
 export VIM_COLOR_SCHEME=gruvbox
-export VIM_BACKGROUND=light
+export VIM_BACKGROUND=dark
 
 _gen_fzf_default_opts() {
     local base03="234"
@@ -192,8 +192,22 @@ alias vim_plugins="nvim ~/dotfiles/vim/plugins.vim"
 
 alias fix_node_modules='vim ./node_modules/react-widgets/lib/scss/core.scss +139 "+%s/^&//g" "+wq"'
 
+
 toggle_background() {
-    if [ $VIM_BACKGROUND = "light" ]
+    # if args are passed
+    old_color=$VIM_BACKGROUND
+    if [ $# -eq 1 ]
+    then
+        if [ $1 = "light" ]
+        then
+            old_color="dark"
+        else
+            old_color="light"
+        fi
+    fi
+
+    # now set the new color
+    if [ $old_color = "light" ]
     then
         vim ~/.zshrc "+%s/VIM_BACKGROUND=\zslight\ze/dark/ge" "+wq"
     else
