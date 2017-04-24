@@ -356,8 +356,14 @@ set diffopt+=vertical
 let g:jsdoc_enable_es6 = 1
 " Allow prompt for interactive input
 let g:jsdoc_allow_input_prompt = 1
+" this adds in the function name
+let g:jsdoc_additional_descriptions = 1
+" The character after the param name
+let g:jsdoc_param_description_separator = " - "
 " Prompt for a function description
 let g:jsdoc_input_description = 1
+" undersocre is private
+let g:jsdoc_underscore_private = 1
 nmap <silent> <leader>d <Plug>(jsdoc)
 
 """"""""""""""""
