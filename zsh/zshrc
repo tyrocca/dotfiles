@@ -120,6 +120,9 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # FZF
+export VIM_COLOR_SCHEME=gruvbox
+export VIM_BACKGROUND=dark
+
 _gen_fzf_default_opts() {
     local base03="234"
     local base02="235"
@@ -141,15 +144,19 @@ _gen_fzf_default_opts() {
     # Comment and uncomment below for the light theme.
 
     ## Solarized Dark color scheme for fzf
-    export FZF_DEFAULT_OPTS="
-        --color fg:-1,bg:-1,hl:$blue,fg+:$base2,bg+:$base02,hl+:$blue
-        --color info:$yellow,prompt:$yellow,pointer:$base3,marker:$base3,spinner:$yellow
-    "
-    ## Solarized Light color scheme for fzf
-    # export FZF_DEFAULT_OPTS="
-    #     --color fg:-1,bg:-1,hl:$blue,fg+:$base02,bg+:$base2,hl+:$blue
-    #     --color info:$yellow,prompt:$yellow,pointer:$base03,marker:$base03,spinner:$yellow
-    # "
+    if [ $VIM_BACKGROUND = "dark" ]
+    then
+        export FZF_DEFAULT_OPTS="
+            --color fg:-1,bg:-1,hl:$blue,fg+:$base2,bg+:$base02,hl+:$blue
+            --color info:$yellow,prompt:$yellow,pointer:$base3,marker:$base3,spinner:$yellow
+        "
+    else
+        # Solarized Light color scheme for fzf
+         export FZF_DEFAULT_OPTS="
+             --color fg:-1,bg:-1,hl:$blue,fg+:$base02,bg+:$base2,hl+:$blue
+             --color info:$yellow,prompt:$yellow,pointer:$base03,marker:$base03,spinner:$yellow
+         "
+    fi
 
 }
 _gen_fzf_default_opts
@@ -184,6 +191,32 @@ alias vimrc="nvim ~/.vimrc"
 alias vim_plugins="nvim ~/dotfiles/vim/plugins.vim"
 
 alias fix_node_modules='vim ./node_modules/react-widgets/lib/scss/core.scss +139 "+%s/^&//g" "+wq"'
+
+
+toggle_background() {
+    # if args are passed
+    old_color=$VIM_BACKGROUND
+    if [ $# -eq 1 ]
+    then
+        if [ $1 = "light" ]
+        then
+            old_color="dark"
+        else
+            old_color="light"
+        fi
+    fi
+
+    # now set the new color
+    if [ $old_color = "light" ]
+    then
+        vim ~/.zshrc "+%s/VIM_BACKGROUND=\zslight\ze/dark/ge" "+wq"
+    else
+        vim ~/.zshrc "+%s/VIM_BACKGROUND=\zsdark\ze/light/ge" "+wq"
+    fi
+    source ~/.zshrc
+}
+
+
 
 ####################
 # Helper Functions #

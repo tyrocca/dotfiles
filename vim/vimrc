@@ -28,60 +28,44 @@ else
     " Load Plugins!
     source ~/dotfiles/vim/plugins.vim
 
+    " Background
+    if exists("$VIM_COLOR_SCHEME")
+        colorscheme $VIM_COLOR_SCHEME
+    else
+        colorscheme gruvbox
+    endif
+
     " set settings for things that need plugins
     " Color scheme is gruvbox by default so anyone can use it
     if has("gui_vimr")
         " in vimR we want the gui colors because they look nice
-        colorscheme gruvbox
         set termguicolors
     elseif ($USER == "ty" || $USER == "tyrocca")
-        " (solarized requires special things, so only I have it)
-        " Not needed for neovim
-        " if !has('nvim')
-        "     set t_Co=16
-        "     let g:solarized_termcolors=16
-        " endif
-
         if ($USER == "tyrocca" && has("termguicolors"))
             set termguicolors
             set clipboard=unnamed,unnamedplus
             let g:gruvbox_italic=1
-            colorscheme gruvbox
-            " let g:gruvbox_contrast_dark="hard"
+            " let g:gruvbox_contrast_light="soft"
             if exists('$TMUX')
                 autocmd VimEnter * call tmuxline#set_statusline('vim_statusline_3')
             endif
-        else
-            " Set colorscheme
-            " set termguicolors
-            colorscheme gruvbox
         endif
-
-
         " Trial ITEMS
         " let g:hardtime_default_on = 1
-
-        " Trying to get trucolors to work -
-        " if (0 == 1)
-        "     " get termguicolors to work
-        "     set termguicolors
-        "     if filereadable(expand("~/.vimrc_background"))
-        "         let base16colorspace=256
-        "         source ~/.vimrc_background
-        "     endif
-        "     colorscheme base16-solarized-dark
-        " endif
-    else
-        colorscheme gruvbox
     endif
 endif
 
 """"""""""""""""""""""""
 " * Built in Toggles * "
 """"""""""""""""""""""""
-" Colors
 syntax enable
-set background=dark
+
+" Set Colorscheme
+if (exists("$VIM_BACKGROUND") && $VIM_BACKGROUND == "light")
+    set background=light
+else
+    set background=dark
+endif
 
 " Formatting / Settings
 set fileformat=unix     " Make sure the files are always unix
@@ -133,6 +117,8 @@ endif
 " changes the cursor in vim
 if has('nvim')
     let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
+    " for new neovim
+    set guicursor=n-v-c:block-Cursor/lCursor-blinkon0,i-ci:ver25-Cursor/lCursor,r-cr:hor20-Cursor/lCursor
 elseif exists('$TMUX')
     let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
     let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
@@ -148,6 +134,7 @@ endif
 cabbrev w] w
 cabbrev w\ w
 cabbrev w' w
+iabbrev py_breakpoint import ipdb; ipdb.set_trace()
 
 " make write actually write
 command! W  write
@@ -512,7 +499,14 @@ let g:sneak#streak = 1
 """""""""""""""""""""""""""""""""""""""""
 " autocmd Filetype html setlocal ts=2 sts=2 sw=2
 " autocmd Filetype ruby setlocal ts=2 sts=2 sw=2
-autocmd Filetype javascript,javascript.jsx setlocal ts=4 sts=4 sw=4 colorcolumn=100
+autocmd Filetype javascript,javascript.jsx
+            \ setlocal ts=4 sts=4 sw=4 colorcolumn=100 |
+            \ :iabbrev <buffer> True true |
+            \ :iabbrev <buffer> False false
+
+autocmd Filetype python
+            \ :iabbrev <buffer> true True |
+            \ :iabbrev <buffer> false False
 
 
 """""""""""

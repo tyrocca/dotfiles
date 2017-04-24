@@ -178,11 +178,14 @@ Plug 'tpope/vim-fugitive'
 " Git changes
 " Plug 'airblade/vim-gitgutter'
 
-" TEMP - vim repl
+" vim REPL
 Plug 'jpalardy/vim-slime'
 
 " Notes
 " Plug 'xolox/vim-notes' | Plug 'xolox/vim-misc'
+
+" Trial
+" Plug 'metakirby5/codi.vim'
 
 " Add plugins to &runtimepath
 call plug#end()
