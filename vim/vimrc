@@ -43,12 +43,12 @@ else
     elseif ($USER == "ty" || $USER == "tyrocca")
         if ($USER == "tyrocca" && has("termguicolors"))
             set termguicolors
-            set clipboard=unnamed,unnamedplus
+            " set clipboard=unnamed,unnamedplus
             let g:gruvbox_italic=1
             " let g:gruvbox_contrast_light="soft"
-            if exists('$TMUX')
-                autocmd VimEnter * call tmuxline#set_statusline('vim_statusline_3')
-            endif
+            " if exists('$TMUX')
+            "     autocmd VimEnter * call tmuxline#set_statusline('vim_statusline_3')
+            " endif
         endif
         " Trial ITEMS
         " let g:hardtime_default_on = 1
@@ -300,6 +300,7 @@ set laststatus=2
 let g:airline_powerline_fonts = 1
 
 " For TMUX plugin
+let g:airline#extensions#tmuxline#enabled = 0
 let g:tmuxline_powerline_separators = 1
 
 """""""""""

@@ -103,8 +103,6 @@ alias activate_env="source env/bin/activate"
 
 # cd to volumes
 alias hd_folder='cd /Volumes/Macintosh\ HD/Symlinks'
-alias custom_contacts='cd /Volumes/Macintosh\ HD/Symlinks/Google\ Drive/Quorum/Quorum\ Dev/Custom\ Data/client_custom_contacts/'
-alias custom_data='cd /Volumes/Macintosh\ HD/Symlinks/Google\ Drive/Quorum/Quorum\ Dev/Custom\ Data/client_custom_data/'
 alias desktop="cd ~/Desktop/"
 
 
@@ -123,8 +121,6 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 # fzf searching
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-# BASE16_SHELL=$HOME/.config/base16-shell/
-# [ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
 export WORKON_HOME=~/Envs
 export PROJECT_HOME=~/Code/current_projects
 source /usr/local/bin/virtualenvwrapper.sh
@@ -141,3 +137,6 @@ ssh-reagent () {
   done
   echo Cannot find ssh agent - maybe you should reconnect and forward it?
 }
+
+
+export PIP_ROOT_DIR='/usr/local/lib/python2.7/site-packages'
