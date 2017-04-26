@@ -45,6 +45,9 @@ else
             set termguicolors
             " set clipboard=unnamed,unnamedplus
             let g:gruvbox_italic=1
+            " we are setting the theme in the tmux config so
+            " we don't want airline to do it
+            let g:airline#extensions#tmuxline#enabled = 0
             " let g:gruvbox_contrast_light="soft"
             " if exists('$TMUX')
             "     autocmd VimEnter * call tmuxline#set_statusline('vim_statusline_3')
@@ -300,7 +303,6 @@ set laststatus=2
 let g:airline_powerline_fonts = 1
 
 " For TMUX plugin
-let g:airline#extensions#tmuxline#enabled = 0
 let g:tmuxline_powerline_separators = 1
 
 """""""""""
