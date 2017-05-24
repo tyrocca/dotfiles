@@ -54,13 +54,17 @@ DISABLE_UPDATE_PROMPT=true
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git git-hubflow osx tmux web-search python django)
+plugins=(git git-hubflow osx tmux tmuxinator web-search python \
+    django zsh-syntax-highlighting npm pip tmux yarn)
 
 
 # User configuration
-export EDITOR="vim"
-# export PATH="$PATH:$HOME/.yarn/bin"
+export EDITOR="nvim"
+
+# PATH configurations
 export PATH="$PATH:`yarn global bin`"
+export PATH="/usr/local/opt/openssl/bin:$PATH"
+
 alias npm-exec='PATH=$(npm bin):$PATH'
 
 # export MANPATH="/usr/local/man:$MANPATH"
@@ -68,8 +72,8 @@ alias npm-exec='PATH=$(npm bin):$PATH'
 source $ZSH/oh-my-zsh.sh
 
 # set cow says thing
-#COWDIR="/usr/local/Cellar/cowsay/3.03/share/cows/"
-fortune | cowsay -f $(ls /usr/local/Cellar/cowsay/3.04/share/cows/ | gshuf | head -n1) | lolcat
+COWDIR="/usr/local/Cellar/cowsay/3.04/share/cows/"
+fortune | cowsay -f $(ls $COWDIR | gshuf | head -n1) | lolcat
 echo ""
 
 # You may need to manually set your language environment
@@ -102,8 +106,10 @@ alias vimplugins="nvim ~/dotfiles/vim/plugins.vim"
 alias activate_env="source env/bin/activate"
 
 # cd to volumes
-alias hd_folder='cd /Volumes/Macintosh\ HD/Symlinks'
+export HARD_DRIVE='/Volumes/Macintosh\ HD/Symlinks'
+alias hd_folder="cd $HARD_DRIVE"
 alias desktop="cd ~/Desktop/"
+alias code="cd ~/Code/"
 
 
 #bindkey -v
@@ -140,3 +146,42 @@ ssh-reagent () {
 
 
 export PIP_ROOT_DIR='/usr/local/lib/python2.7/site-packages'
+
+
+##########
+# Github #
+##########
+clean_merged_branches() {
+    git branch --merged | egrep -v "(^\*|master|dev)" | xargs git branch -d
+}
+
+
+#################
+# Quorum Things #
+#################
+start_quorum() {
+    cd ~/Code/Quorum
+    source bin/activate
+    cd quorum-site
+    npm-exec
+}
+sp() {
+    python manage.py shell_plus
+}
+p_sp() {
+    python manage.py shell_plus --use_prod_db
+}
+p_serve() {
+    while true; do
+        echo "Oops - Restarting Production django server" | cowsay | lolcat
+        python manage.py runserver --use_prod_db
+        sleep 1
+    done
+}
+serve() {
+    while true; do
+        echo "Oops - Restarting django server" | cowsay | lolcat
+        python manage.py runserver
+        sleep 1
+    done
+}

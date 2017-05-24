@@ -30,12 +30,12 @@ Plug 'romainl/flattened'
 Plug 'chriskempson/vim-tomorrow-theme'
 Plug 'chriskempson/base16-vim'
 
-" Zenburn
-Plug 'Zenburn'
-
 """""""""""""
 " Languages "
 """""""""""""
+" C doc generator (:dox)
+Plug 'vim-scripts/DoxygenToolkit.vim',
+
 " CoffeeScript
 Plug 'kchmck/vim-coffee-script', { 'for': ['coffee'] }
 
@@ -51,7 +51,7 @@ Plug 'mxw/vim-jsx', { 'for': ['javascript', 'javascript.jsx'] }
 " Stylus
 Plug 'wavded/vim-stylus', { 'for': 'stylus' }
 
-" Python thing
+" Python thing - makes indentation the way I like
 Plug 'hynek/vim-python-pep8-indent', { 'for': 'python' }
 
 " Markdown
@@ -74,7 +74,7 @@ Plug 'michaeljsmith/vim-indent-object'
 " Abolish - random vi things
 Plug 'tpope/vim-abolish'
 
-" ArgWrap - fix argument wrapping
+" ArgWrap - fix argument wrapping <#
 Plug 'FooSoft/vim-argwrap'
 
 " Commenter
@@ -85,9 +85,6 @@ Plug 'takac/vim-hardtime'
 
 " Async highlighting
 Plug 'neomake/neomake'
-
-" Server auto complete < no dependent files
-Plug 'ervandew/supertab'
 
 " Surround
 Plug 'tpope/vim-surround'
@@ -127,6 +124,9 @@ if has('nvim')
     Plug 'othree/jspc.vim', { 'for': ['coffee', 'cjsx', 'coffee.cjsx', 'javascript', 'javascript.jsx'] }
 endif
 
+" Supertab
+Plug 'ervandew/supertab'
+
 """"""""""""""""""""
 " Navigation Tools "
 """"""""""""""""""""
@@ -136,16 +136,16 @@ endif
 " Vim sneak - better movement
 Plug 'justinmk/vim-sneak'
 
-" Relative Number Toggle
-" if ($USER == "ty" || $USER == "tyrocca")
-"     Plug 'jeffkreeftmeijer/vim-numbertoggle'
-" endif
+" Mapping from Tim
+Plug 'tpope/vim-unimpaired'
 
 " Gutentags
 Plug 'ludovicchabant/vim-gutentags'
 
-" Mapping from Tim
-Plug 'tpope/vim-unimpaired'
+" Relative Number Toggle
+" if ($USER == "ty" || $USER == "tyrocca")
+"     Plug 'jeffkreeftmeijer/vim-numbertoggle'
+" endif
 
 " Fuzzy finder
 if has("gui_running")
@@ -175,11 +175,11 @@ Plug 'simnalamburt/vim-mundo'
 " Git tools
 Plug 'tpope/vim-fugitive'
 
-" Git changes
-" Plug 'airblade/vim-gitgutter'
-
 " vim REPL
 Plug 'jpalardy/vim-slime'
+
+" Git changes
+" Plug 'airblade/vim-gitgutter'
 
 " Notes
 " Plug 'xolox/vim-notes' | Plug 'xolox/vim-misc'
