@@ -171,17 +171,17 @@ sp() {
 p_sp() {
     python manage.py shell_plus --use_prod_db
 }
-p_serve() {
-    while true; do
-        echo "Oops - Restarting Production django server" | cowsay | lolcat
-        python manage.py runserver --use_prod_db
-        sleep 1
-    done
-}
 serve() {
     while true; do
         echo "Oops - Restarting django server" | cowsay | lolcat
-        python manage.py runserver
+        python manage.py runserver $1
+        sleep 1
+    done
+}
+p_serve() {
+    while true; do
+        echo "Oops - Restarting Production django server" | cowsay | lolcat
+        python manage.py runserver --use_prod_db $1
         sleep 1
     done
 }
