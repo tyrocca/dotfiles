@@ -159,29 +159,4 @@ clean_merged_branches() {
 #################
 # Quorum Things #
 #################
-start_quorum() {
-    cd ~/Code/Quorum
-    source bin/activate
-    cd quorum-site
-    npm-exec
-}
-sp() {
-    python manage.py shell_plus
-}
-p_sp() {
-    python manage.py shell_plus --use_prod_db
-}
-serve() {
-    while true; do
-        echo "Oops - Restarting django server" | cowsay | lolcat
-        python manage.py runserver $1
-        sleep 1
-    done
-}
-p_serve() {
-    while true; do
-        echo "Oops - Restarting Production django server" | cowsay | lolcat
-        python manage.py runserver --use_prod_db $1
-        sleep 1
-    done
-}
+source ~/dotfiles/zsh/quorum_rc.zsh
