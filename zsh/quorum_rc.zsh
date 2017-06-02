@@ -14,6 +14,12 @@ start_quorum() {
 alias qtmux="tmuxinator start quorum"
 alias qq="start_quorum"
 
+# function to start a branch off master
+qhotfix() {
+    git pull origin master
+    git checkout -b hotfix/$1 master
+}
+
 sp() {
     python manage.py shell_plus --run_local
 }

@@ -111,8 +111,8 @@ if has('nvim')
     Plug 'greg-js/vim-react-es6-snippets', { 'for': ['javascript', 'javascript.jsx'] }
 
     " Python Autocomplete
-    Plug 'zchee/deoplete-jedi', { 'for': ['python'] }
     Plug 'davidhalter/jedi', { 'for': ['python'] }
+    Plug 'zchee/deoplete-jedi', { 'for': ['python'] }
 
     " Javascript Autocomplete
     " New trial items
@@ -121,7 +121,7 @@ if has('nvim')
     " ~/.vim/plugged/tern_for_vim/ <<< run npm install
     Plug 'ternjs/tern_for_vim', { 'for': ['javascript', 'javascript.jsx'] }
     Plug 'carlitux/deoplete-ternjs', { 'for': ['javascript', 'javascript.jsx'] }
-    Plug 'othree/jspc.vim', { 'for': ['coffee', 'cjsx', 'coffee.cjsx', 'javascript', 'javascript.jsx'] }
+    Plug 'othree/jspc.vim', { 'for': ['javascript', 'javascript.jsx'] }
 endif
 
 " Supertab
