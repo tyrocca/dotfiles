@@ -173,7 +173,7 @@ cabbrev w' w
 command! W  write
 
 " other abbrevs
-iabbrev py_breakpoint import ipdb; ipdb.set_trace()
+" iabbrev py_breakpoint import ipdb; ipdb.set_trace()
 
 """"""""""""""""""""""""
 " Vim Backups and Undo "
@@ -316,39 +316,22 @@ let g:tmuxline_powerline_separators = 1
 " Command to exec
 nnoremap <silent> <leader>a :ArgWrap<CR>
 
-""""""""""""
-" Deoplete "
-""""""""""""
-if has('nvim')
-    " Turns on Deoplete
-    let g:deoplete#enable_at_startup = 1
+"""""""
+" NCM "
+"""""""
+if has("nvim")
+    " for python completions
+    let g:python_support_python3_requirements =
+                \ add(get(g:,'python_support_python3_requirements',[]),'jedi')
+    " language specific completions on markdown file
+    let g:python_support_python3_requirements =
+                \ add(get(g:,'python_support_python3_requirements',[]),'mistune')
 
-    " mapping to make it so that tab triggers auto complete if you don't want
-    " auto open http://bit.ly/2kBXK0v
-    " Disable auto complete
-    " let g:deoplete#disable_auto_complete = 1
-
-    " Allows multiple omni functions
-    let g:deoplete#omni#functions = {}
-    let g:deoplete#omni#functions.javascript = [
-        \ 'tern#Complete',
-        \ 'jspc#omni'
-    \]
-
-    " Adjust deoplete sources
-    set completeopt=longest,menuone,preview
-    let g:deoplete#sources = {}
-    let g:deoplete#sources['javascript.jsx'] = ['file', 'ultisnips', 'ternjs']
-    let g:tern#command = ['tern']
-    let g:tern#arguments = ['--persistent']
-
-    " autocmd FileType javascript let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
-    " or just disable the preview entirely
-    set completeopt-=preview
-    " inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-
-    " Close the documentation window when completion is done
-    autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
+    " utils, optional
+    let g:python_support_python3_requirements =
+                \ add(get(g:,'python_support_python3_requirements',[]),'psutil')
+    let g:python_support_python3_requirements =
+                \ add(get(g:,'python_support_python3_requirements',[]),'setproctitle')
 endif
 
 """""""""""""""""""""
@@ -454,17 +437,14 @@ elseif executable('ag')
 endif
 
 """""""""""""
-" vim notes "
+" Vim Sneak "
 """""""""""""
-" Currently Disabled
-" let g:notes_directories = ['~/Notes']
-" let g:notes_suffix = '.txt'
+let g:sneak#streak = 1
 
 
 """""""""""""""""""""
 " * Auto Commands * "
 """""""""""""""""""""
-
 " auto cmd to strip whitespace
 function! <SID>StripTrailingWhitespaces()
     " Ignore: do not run if FileType is markdown
@@ -487,24 +467,6 @@ autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
 " au BufRead,BufNewFile *.md setlocal textwidth=80
 
 " make commit messages have spell check
-autocmd FileType gitcommit setlocal spell
-
-"""""""""""""""""""
-" * Trial Items * "
-"""""""""""""""""""
-
-"""""""""""""
-" Hard Mode "
-"""""""""""""
-nnoremap <leader>h <Esc>:HardTimeToggle<CR>
-let g:hardtime_ignore_quickfix = 1
-let g:hardtime_maxcount = 2
-let g:hardtime_showmsg = 1
-
-"""""""""""""
-" Vim Sneak "
-"""""""""""""
-let g:sneak#streak = 1
 
 """""""""""""""""""""""""""""""""""""""""
 " FileType Configs (overwrite defaults) "
@@ -519,6 +481,42 @@ autocmd Filetype javascript,javascript.jsx
 autocmd Filetype python
             \ :iabbrev <buffer> true True |
             \ :iabbrev <buffer> false False
+
+" Pencil writing tool
+let g:pencil#wrapModeDefault = 'soft'   " default is 'hard'
+
+augroup pencil
+  autocmd!
+  autocmd FileType markdown,mkd call pencil#init()
+              \ | setlocal spell colorcolumn=
+              \ | call AutoCorrect()
+  autocmd Filetype git,gitsendemail,*commit*,*COMMIT* call pencil#init()
+              \ | setlocal spell
+              \ | call AutoCorrect()
+  autocmd FileType text call pencil#init()
+              \ | setlocal spell colorcolumn=
+              \ | call AutoCorrect()
+augroup END
+
+
+"""""""""""""""""""
+" * Trial Items * "
+"""""""""""""""""""
+
+"""""""""""""
+" vim notes "
+"""""""""""""
+" Currently Disabled
+" let g:notes_directories = ['~/Notes']
+" let g:notes_suffix = '.txt'
+
+"""""""""""""
+" Hard Mode "
+"""""""""""""
+nnoremap <leader>h <Esc>:HardTimeToggle<CR>
+let g:hardtime_ignore_quickfix = 1
+let g:hardtime_maxcount = 2
+let g:hardtime_showmsg = 1
 
 
 """""""""""

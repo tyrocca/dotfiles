@@ -92,36 +92,39 @@ Plug 'tpope/vim-surround'
 " Repeater
 Plug 'tpope/vim-repeat'
 
+" Pencil - for text editing
+Plug 'reedes/vim-pencil'
+" Autocorrect plugin
+Plug 'panozzaj/vim-autocorrect'
+
 """""""""""""""""""""""""
 " Autocomplete - Neovim "
 """""""""""""""""""""""""
-if has('nvim')
-    " formatting tool
-    Plug 'sbdchd/neoformat'
-
-    " * Auto complete tool *
-    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-
-    " * Snippets *
-    " Track the engine.
-    Plug 'SirVer/ultisnips'
-    " Snippets are separated from the engine. Add this if you want them:
-    Plug 'honza/vim-snippets'
-    " More snippets
-    Plug 'greg-js/vim-react-es6-snippets', { 'for': ['javascript', 'javascript.jsx'] }
+if (has('nvim'))
+    " Plug 'othree/jspc.vim', { 'for': ['javascript', 'javascript.jsx'] }
+    " the framework
+    Plug 'roxma/nvim-completion-manager'
+    Plug 'roxma/python-support.nvim'
 
     " Python Autocomplete
     Plug 'davidhalter/jedi', { 'for': ['python'] }
-    Plug 'zchee/deoplete-jedi', { 'for': ['python'] }
 
-    " Javascript Autocomplete
-    " New trial items
-    " setting up deoplete etc... http://bit.ly/2duFHbJ
-    " ~/.config/nvim/plugged/tern_for_vim/ <<< run npm install or ...
-    " ~/.vim/plugged/tern_for_vim/ <<< run npm install
+    " Javascript (Tern autocomplete)
     Plug 'ternjs/tern_for_vim', { 'for': ['javascript', 'javascript.jsx'] }
-    Plug 'carlitux/deoplete-ternjs', { 'for': ['javascript', 'javascript.jsx'] }
-    Plug 'othree/jspc.vim', { 'for': ['javascript', 'javascript.jsx'] }
+    Plug 'roxma/nvim-cm-tern',  {'do': 'npm install'}
+
+    " Vimscript autocomplete
+    Plug 'Shougo/neco-vim'
+
+    " * Snippets *
+    " Track the engine.
+    " Plug 'SirVer/ultisnips'
+    " " Snippets are separated from the engine. Add this if you want them:
+    " Plug 'honza/vim-snippets'
+    " " More snippets
+    " Plug 'greg-js/vim-react-es6-snippets', { 'for': ['javascript', 'javascript.jsx'] }
+    " formatting tool
+    Plug 'sbdchd/neoformat'
 endif
 
 " Supertab
