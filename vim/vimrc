@@ -447,10 +447,6 @@ let g:sneak#streak = 1
 """""""""""""""""""""
 " auto cmd to strip whitespace
 function! <SID>StripTrailingWhitespaces()
-    " Ignore: do not run if FileType is markdown
-    " if &ft = 'markdown\|gitcommit'
-    "     return
-    " endif
     " Preparation: save last search, and cursor position.
     let _s=@/
     let l = line(".")
@@ -463,32 +459,37 @@ function! <SID>StripTrailingWhitespaces()
 endfunction
 autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
 
-" Auto set width to 80 chars
-" au BufRead,BufNewFile *.md setlocal textwidth=80
 
 " make commit messages have spell check
 
 """""""""""""""""""""""""""""""""""""""""
 " FileType Configs (overwrite defaults) "
 """""""""""""""""""""""""""""""""""""""""
-" autocmd Filetype html setlocal ts=2 sts=2 sw=2
-" autocmd Filetype ruby setlocal ts=2 sts=2 sw=2
+autocmd Filetype html setlocal ts=2 sts=2 sw=2
+autocmd Filetype ruby setlocal ts=2 sts=2 sw=2
 autocmd Filetype javascript,javascript.jsx
-            \ setlocal ts=4 sts=4 sw=4 colorcolumn=100 |
-            \ :iabbrev <buffer> True true |
-            \ :iabbrev <buffer> False false
+            \ setlocal ts=4 sts=4 sw=4 colorcolumn=100
+            \ | :iabbrev <buffer> True true
+            \ | :iabbrev <buffer> False false
 
 autocmd Filetype python
-            \ :iabbrev <buffer> true True |
-            \ :iabbrev <buffer> false False
+            \ :iabbrev <buffer> true True
+            \ | :iabbrev <buffer> false False
 
+"""""""""""""""""""""""""""
+" Pencil Plugin FileTypes "
+"""""""""""""""""""""""""""
 " Pencil writing tool
 let g:pencil#wrapModeDefault = 'soft'   " default is 'hard'
 
+" Latex https://github.com/xuhdev/vim-latex-live-preview (Skim is an option)
+let g:livepreview_previewer = 'open -a Preview'
+
+" Pencil augroup
 augroup pencil
   autocmd!
   autocmd FileType markdown,mkd call pencil#init()
-              \ | setlocal spell colorcolumn=
+              \ | setlocal spell ts=2 sts=2 sw=2 colorcolumn=
               \ | call AutoCorrect()
   autocmd Filetype git,gitsendemail,*commit*,*COMMIT* call pencil#init()
               \ | setlocal spell
@@ -496,6 +497,11 @@ augroup pencil
   autocmd FileType text call pencil#init()
               \ | setlocal spell colorcolumn=
               \ | call AutoCorrect()
+  autocmd Filetype tex call pencil#init()
+              \ | setlocal spell ts=2 sts=2 sw=2 colorcolumn=
+              \ | call AutoCorrect()
+              \ | autocmd! BufWritePost <buffer> :AsyncRun! osascript -e 'tell application "Keyboard Maestro Engine" to do script "Update Preview"'
+              " \ | setl updatetime=1000
 augroup END
 
 

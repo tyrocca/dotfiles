@@ -57,24 +57,22 @@ DISABLE_UPDATE_PROMPT=true
 plugins=(git git-hubflow osx tmux tmuxinator web-search python \
     django zsh-syntax-highlighting npm pip tmux yarn)
 
-
 # User configuration
 export EDITOR="nvim"
 
 # PATH configurations
 export PATH="$PATH:`yarn global bin`"
 export PATH="/usr/local/opt/openssl/bin:$PATH"
+# stack package recommended this:
+export PATH="/Users/$USER/.local/bin:$PATH"
 
+# this is recommended when using npm
 alias npm-exec='PATH=$(npm bin):$PATH'
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
+# here we source oh my zsh
 source $ZSH/oh-my-zsh.sh
-
-# set cow says thing
-COWDIR="/usr/local/Cellar/cowsay/3.04/share/cows/"
-fortune | cowsay -f $(ls $COWDIR | gshuf | head -n1) | lolcat
-echo ""
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
@@ -97,8 +95,10 @@ export PEM_KEY_PATH="~/.ssh/keys/"
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
-#
-# aliases
+
+###########
+# aliases #
+###########
 alias zshconfig="nvim ~/.zshrc"
 alias ohmyzsh="nvim ~/.oh-my-zsh"
 alias vimconfig="nvim ~/.vimrc"
@@ -111,7 +111,6 @@ alias hd_folder="cd $HARD_DRIVE"
 alias desktop="cd ~/Desktop/"
 alias code="cd ~/Code/"
 
-
 #bindkey -v
 bindkey '^P' up-history
 bindkey '^N' down-history
@@ -120,33 +119,17 @@ bindkey '^h' backward-delete-char
 bindkey '^w' backward-kill-word
 bindkey '^r' history-incremental-search-backward
 
+# this makes some things faster?
 export KEYTIMEOUT=1
 
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+#####################
+# Appearance Things #
+#####################
 
-# fzf searching
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-export WORKON_HOME=~/Envs
-export PROJECT_HOME=~/Code/current_projects
-source /usr/local/bin/virtualenvwrapper.sh
-
-# nice ssh reagent thing
-ssh-reagent () {
-  for agent in /tmp/ssh-*/agent.*; do
-      export SSH_AUTH_SOCK=$agent
-      if ssh-add -l 2>&1 > /dev/null; then
-         echo Found working SSH Agent:
-         ssh-add -l
-         return
-      fi
-  done
-  echo Cannot find ssh agent - maybe you should reconnect and forward it?
-}
-
-
-export PIP_ROOT_DIR='/usr/local/lib/python2.7/site-packages'
-
+# set cow says thing - this is always fun :)
+COWDIR="/usr/local/Cellar/cowsay/3.04/share/cows/"
+fortune | cowsay -f $(ls $COWDIR | gshuf | head -n1) | lolcat
+echo ""
 
 ##########
 # Github #
@@ -155,8 +138,41 @@ clean_merged_branches() {
     git branch --merged | egrep -v "(^\*|master|dev)" | xargs git branch -d
 }
 
+###########
+# Add-ons #
+###########
+# fzf searching
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# this is the iterm integration
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+# Virtual Env Things
+export WORKON_HOME=~/Envs
+export PROJECT_HOME=~/Code/current_projects
+source /usr/local/bin/virtualenvwrapper.sh
+
+#############
+# Path Vars #
+#############
+export PIP_ROOT_DIR='/usr/local/lib/python2.7/site-packages'
 
 #################
 # Quorum Things #
 #################
 source ~/dotfiles/zsh/quorum_rc.zsh
+
+
+
+# nice ssh reagent thing
+# ssh-reagent () {
+#   for agent in /tmp/ssh-*/agent.*; do
+#       export SSH_AUTH_SOCK=$agent
+#       if ssh-add -l 2>&1 > /dev/null; then
+#          echo Found working SSH Agent:
+#          ssh-add -l
+#          return
+#       fi
+#   done
+#   echo Cannot find ssh agent - maybe you should reconnect and forward it?
+# }

@@ -28,7 +28,6 @@ Plug 'romainl/flattened'
 
 " Tomorrow Theme
 Plug 'chriskempson/vim-tomorrow-theme'
-Plug 'chriskempson/base16-vim'
 
 """""""""""""
 " Languages "
@@ -55,7 +54,11 @@ Plug 'wavded/vim-stylus', { 'for': 'stylus' }
 Plug 'hynek/vim-python-pep8-indent', { 'for': 'python' }
 
 " Markdown
-Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
+Plug 'plasticboy/vim-markdown', { 'for': ['markdown', 'gitcommit']}
+
+" Latex
+Plug 'lervag/vimtex', { 'for': 'plaintex' }
+Plug 'xuhdev/vim-latex-live-preview', { 'for': 'plaintex' }
 
 " Tmux
 Plug 'keith/tmux.vim'
@@ -94,6 +97,7 @@ Plug 'tpope/vim-repeat'
 
 " Pencil - for text editing
 Plug 'reedes/vim-pencil'
+
 " Autocorrect plugin
 Plug 'panozzaj/vim-autocorrect'
 
@@ -134,7 +138,7 @@ Plug 'ervandew/supertab'
 " Navigation Tools "
 """"""""""""""""""""
 " Allows colon as an arg
-" Plug 'bogado/file-line'
+Plug 'bogado/file-line'
 
 " Vim sneak - better movement
 Plug 'justinmk/vim-sneak'
@@ -170,6 +174,9 @@ Plug 'mhinz/vim-grepper'
 """"""""""""""""""
 " Misc Things... "
 """"""""""""""""""
+" Async run
+Plug 'skywind3000/asyncrun.vim'
+
 " Undo Tree
 Plug 'simnalamburt/vim-mundo'
 " Gundo doesn't work with neovim :(
@@ -188,7 +195,7 @@ Plug 'jpalardy/vim-slime'
 " Plug 'xolox/vim-notes' | Plug 'xolox/vim-misc'
 
 " Trial
-" Plug 'metakirby5/codi.vim'
+Plug 'metakirby5/codi.vim'
 
 " Add plugins to &runtimepath
 call plug#end()
