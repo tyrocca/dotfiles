@@ -14,9 +14,12 @@ start_quorum() {
 alias qtmux="tmuxinator start quorum"
 alias qq="start_quorum"
 
+alias qdev_db="ssh -nNf db-quorum-dev"
+alias qdev_db="ssh -nNf db-quorum-prod"
+
 # function to start a branch off master
 qhotfix() {
-    git pull origin master
+    git fetch origin master
     git checkout -b hotfix/$1 master
 }
 

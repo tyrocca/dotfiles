@@ -52,11 +52,7 @@ else
             " we don't want airline to do it
             let g:airline#extensions#tmuxline#enabled = 0
             " let g:gruvbox_contrast_light="soft"
-            " if exists('$TMUX')
-            "     autocmd VimEnter * call tmuxline#set_statusline('vim_statusline_3')
-            " endif
         endif
-
         " Trial ITEMS
         " let g:hardtime_default_on = 1
     endif
@@ -161,6 +157,12 @@ if has("gui_running")
     set guifont=Meslo\ LG\ M\ Regular\ for\ Powerline
 endif
 
+" Netrw
+" https://shapeshed.com/vim-netrw/
+let g:netrw_liststyle = 3    " styling of the files
+let g:netrw_browse_split = 4 " open in new window
+let g:netrw_winsize = 25     " make it use 25 % of the screen
+
 """""""""""""""""
 " Abbreviations "
 """""""""""""""""
@@ -191,7 +193,7 @@ set backupcopy=yes
 silent !mkdir -p ~/.vim/.swp/ > /dev/null 2>&1
 set directory=~/.vim/.swp//
 
-" " backup files (~) in a common location if possible
+" backup files (~) in a common location if possible
 set backup
 silent !mkdir -p ~/.vim/.backup/ > /dev/null 2>&1
 set backupdir=~/.vim/.backup//
@@ -364,6 +366,30 @@ nmap <silent> <leader>d <Plug>(jsdoc)
 let g:slime_target = "tmux"
 let g:slime_python_ipython = 1
 
+"""""""""
+" Vimux "
+"""""""""
+let g:VimuxOrientation = "h"
+
+""""""""""""
+" Vim Test "
+""""""""""""
+if exists('$TMUX')
+    let test#strategy = "vimux"
+else
+    let text#strategy = 'asyncrun'
+endif
+
+""""""""""""""""""
+" Vim easy align "
+""""""""""""""""""
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap ga <Plug>(EasyAlign)
+
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
+
+
 
 """""""""""""""""""""""
 " * Syntax Checking * "
@@ -457,24 +483,10 @@ function! <SID>StripTrailingWhitespaces()
     let @/=_s
     call cursor(l, c)
 endfunction
-autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
+autocmd! BufWritePre * :call <SID>StripTrailingWhitespaces()
 
 
 " make commit messages have spell check
-
-"""""""""""""""""""""""""""""""""""""""""
-" FileType Configs (overwrite defaults) "
-"""""""""""""""""""""""""""""""""""""""""
-autocmd Filetype html setlocal ts=2 sts=2 sw=2
-autocmd Filetype ruby setlocal ts=2 sts=2 sw=2
-autocmd Filetype javascript,javascript.jsx
-            \ setlocal ts=4 sts=4 sw=4 colorcolumn=100
-            \ | :iabbrev <buffer> True true
-            \ | :iabbrev <buffer> False false
-
-autocmd Filetype python
-            \ :iabbrev <buffer> true True
-            \ | :iabbrev <buffer> false False
 
 """""""""""""""""""""""""""
 " Pencil Plugin FileTypes "
@@ -487,21 +499,35 @@ let g:livepreview_previewer = 'open -a Preview'
 
 " Pencil augroup
 augroup pencil
-  autocmd!
-  autocmd FileType markdown,mkd call pencil#init()
-              \ | setlocal spell ts=2 sts=2 sw=2 colorcolumn=
-              \ | call AutoCorrect()
-  autocmd Filetype git,gitsendemail,*commit*,*COMMIT* call pencil#init()
-              \ | setlocal spell
-              \ | call AutoCorrect()
-  autocmd FileType text call pencil#init()
-              \ | setlocal spell colorcolumn=
-              \ | call AutoCorrect()
-  autocmd Filetype tex call pencil#init()
-              \ | setlocal spell ts=2 sts=2 sw=2 colorcolumn=
-              \ | call AutoCorrect()
-              \ | autocmd! BufWritePost <buffer> :AsyncRun! osascript -e 'tell application "Keyboard Maestro Engine" to do script "Update Preview"'
-              " \ | setl updatetime=1000
+    autocmd!
+    autocmd FileType markdown,mkd call pencil#init()
+                \ | setlocal spell ts=2 sts=2 sw=2 colorcolumn=
+                \ | call AutoCorrect()
+    autocmd Filetype git,gitsendemail,*commit*,*COMMIT* call pencil#init()
+                \ | setlocal spell
+                \ | call AutoCorrect()
+    autocmd FileType text call pencil#init()
+                \ | setlocal spell colorcolumn=
+                \ | call AutoCorrect()
+    autocmd Filetype tex,plaintex call pencil#init()
+                \ | setlocal spell ts=2 sts=2 sw=2 colorcolumn=
+                \ | call AutoCorrect()
+                \ | autocmd! BufWritePost <buffer> :AsyncRun! osascript -e 'tell application "Keyboard Maestro Engine" to do script "Update Preview"'
+    " \ | setl updatetime=1000
+
+    """""""""""""""""""""""""""""""""""""""""
+    " FileType Configs (overwrite defaults) "
+    """""""""""""""""""""""""""""""""""""""""
+    autocmd Filetype html setlocal ts=2 sts=2 sw=2
+    autocmd Filetype ruby setlocal ts=2 sts=2 sw=2
+    autocmd Filetype javascript,javascript.jsx
+                \ setlocal ts=4 sts=4 sw=4 colorcolumn=100
+                \ | :iabbrev <buffer> True true
+                \ | :iabbrev <buffer> False false
+
+    autocmd Filetype python
+                \ :iabbrev <buffer> true True
+                \ | :iabbrev <buffer> false False
 augroup END
 
 

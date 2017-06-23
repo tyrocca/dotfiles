@@ -10,9 +10,6 @@ Plug 'altercation/vim-colors-solarized'
 " Airline (last thing shortens git flow"
 Plug 'vim-airline/vim-airline' | Plug 'vim-airline/vim-airline-themes'
 
-" Tmux line
-Plug 'edkolev/tmuxline.vim'
-
 " Groovebox
 Plug 'morhetz/gruvbox'
 
@@ -57,11 +54,8 @@ Plug 'hynek/vim-python-pep8-indent', { 'for': 'python' }
 Plug 'plasticboy/vim-markdown', { 'for': ['markdown', 'gitcommit']}
 
 " Latex
-Plug 'lervag/vimtex', { 'for': 'plaintex' }
-Plug 'xuhdev/vim-latex-live-preview', { 'for': 'plaintex' }
-
-" Tmux
-Plug 'keith/tmux.vim'
+Plug 'lervag/vimtex', { 'for': ['plaintex', 'tex'] }
+Plug 'xuhdev/vim-latex-live-preview', { 'for': ['plaintex', 'tex'] }
 
 """""""""""
 " Editing "
@@ -100,6 +94,9 @@ Plug 'reedes/vim-pencil'
 
 " Autocorrect plugin
 Plug 'panozzaj/vim-autocorrect'
+
+" Easy Align
+Plug 'junegunn/vim-easy-align'
 
 """""""""""""""""""""""""
 " Autocomplete - Neovim "
@@ -165,17 +162,34 @@ else
     Plug 'junegunn/fzf.vim'
 endif
 
-" tmux
-Plug 'christoomey/vim-tmux-navigator'
-
 " Vim Grepper
 Plug 'mhinz/vim-grepper'
+
+
+""""""""""""""""
+" Tmux and vim "
+""""""""""""""""
+" Tmux
+Plug 'keith/tmux.vim'
+
+" Tmux line
+Plug 'edkolev/tmuxline.vim'
+
+" Tmux key bindings
+Plug 'christoomey/vim-tmux-navigator'
+
+" tmux
+Plug 'benmills/vimux'
+
 
 """"""""""""""""""
 " Misc Things... "
 """"""""""""""""""
 " Async run
 Plug 'skywind3000/asyncrun.vim'
+
+" Test runner
+Plug 'janko-m/vim-test'
 
 " Undo Tree
 Plug 'simnalamburt/vim-mundo'

@@ -104,6 +104,10 @@ alias ohmyzsh="nvim ~/.oh-my-zsh"
 alias vimconfig="nvim ~/.vimrc"
 alias vimplugins="nvim ~/dotfiles/vim/plugins.vim"
 alias activate_env="source env/bin/activate"
+# chrome
+alias chrome="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome"
+alias chrome-canary="/Applications/Google\ Chrome\ Canary.app/Contents/MacOS/Google\ Chrome\ Canary"
+alias chromium="/Applications/Chromium.app/Contents/MacOS/Chromium"
 
 # cd to volumes
 export HARD_DRIVE='/Volumes/Macintosh\ HD/Symlinks'
@@ -176,3 +180,6 @@ source ~/dotfiles/zsh/quorum_rc.zsh
 #   done
 #   echo Cannot find ssh agent - maybe you should reconnect and forward it?
 # }
+
+# OPAM configuration
+. /Users/tyrocca/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
