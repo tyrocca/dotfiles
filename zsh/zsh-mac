@@ -55,7 +55,7 @@ DISABLE_UPDATE_PROMPT=true
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git git-hubflow osx tmux tmuxinator web-search python \
-    django zsh-syntax-highlighting npm pip tmux yarn)
+    django zsh-syntax-highlighting npm pip tmux yarn virtualenvwrapper)
 
 # User configuration
 export EDITOR="nvim"

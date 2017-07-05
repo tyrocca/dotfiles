@@ -5,9 +5,7 @@
 alias quorumrc="nvim ~/dotfiles/zsh/quorum_rc.zsh"
 
 start_quorum() {
-    cd ~/Code/Quorum
-    source bin/activate
-    cd quorum-site
+    cd ~/Code/quorum-wrapper/Quorum
     lolcat ~/dotfiles/misc/quorum.txt
     npm-exec
 }
