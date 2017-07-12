@@ -57,6 +57,9 @@ Plug 'plasticboy/vim-markdown', { 'for': ['markdown', 'gitcommit']}
 Plug 'lervag/vimtex', { 'for': ['plaintex', 'tex'] }
 Plug 'xuhdev/vim-latex-live-preview', { 'for': ['plaintex', 'tex'] }
 
+" Indent Deducer
+Plug 'tpope/vim-sleuth'
+
 """""""""""
 " Editing "
 """""""""""
@@ -102,6 +105,9 @@ Plug 'junegunn/vim-easy-align'
 " Autocomplete - Neovim "
 """""""""""""""""""""""""
 if (has('nvim'))
+    " LSP
+    " Plug 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins' }
+
     " Plug 'othree/jspc.vim', { 'for': ['javascript', 'javascript.jsx'] }
     " the framework
     Plug 'roxma/nvim-completion-manager'
@@ -210,6 +216,9 @@ Plug 'jpalardy/vim-slime'
 
 " Trial
 Plug 'metakirby5/codi.vim'
+
+" Fun!
+Plug 'johngrib/vim-game-code-break'
 
 " Add plugins to &runtimepath
 call plug#end()

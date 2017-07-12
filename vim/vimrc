@@ -102,6 +102,10 @@ endif
 """"""""""
 set incsearch           " search as characters are entered
 set hlsearch            " highlight matches
+if has("nvim")
+    " set as split or nospit
+    set inccommand=split
+endif
 set ignorecase
 set smartcase
 "/copyright      " Case insensitive
@@ -550,6 +554,20 @@ let g:hardtime_ignore_quickfix = 1
 let g:hardtime_maxcount = 2
 let g:hardtime_showmsg = 1
 
+"""""""
+" LSP "
+"""""""
+" let g:LanguageClient_serverCommands = {
+"     \ 'javascript': ['./node_modules/javascript-typescript-langserver/lib/language-server-stdio.js'],
+"     \ 'python': ['pyls']
+"     \ }
+
+" " Automatically start language servers.
+" let g:LanguageClient_autoStart = 1
+
+" nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
+" nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
+" nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
 
 """""""""""
 " Credits "
