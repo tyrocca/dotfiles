@@ -7,31 +7,33 @@
 
 ubuntu_install() {
     # start install
-    sudo apt-get update
-    sudo apt-get upgrade
-    sudo apt-get install curl
-    sudo apt-get install git
+    sudo apt-get -y --force-yes update
+    sudo apt-get -y --force-yes upgrade
+    sudo apt-get -y --force-yes install curl
+    sudo apt-get -y --force-yes install git
     # npm
-    sudo apt-get install npm
+    sudo apt-get -y --force-yes install npm
 
     # zsh
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
     # C Things
-    sudo apt-get install clang
+    sudo apt-get -y --force-yes install clang
     sudo update-alternatives --install /usr/bin/cc cc /usr/bin/clang 50
-    sudo apt-get install git kcachegrind linux-tools-generic bochs qemu
+    sudo apt-get -y --force-yes install git kcachegrind linux-tools-generic bochs qemu
 
     # programming tools
-    sudo apt-get install exuberant-ctags
-    sudo apt-get install tmux
+    sudo apt-get -y --force-yes install exuberant-ctags
+    sudo apt-get -y --force-yes install tmux
 
     # neovim
-    sudo apt-get install software-properties-common
+    sudo apt-get -y --force-yes install software-properties-common
     sudo add-apt-repository ppa:neovim-ppa/stable
-    sudo apt-get update
-    sudo apt-get install neovim
-    sudo apt-get install python-dev python-pip python3-dev python3-pip
+    sudo apt-get -y --force-yes update
+    sudo apt-get -y --force-yes install neovim
+    sudo apt-get -y --force-yes install python-dev python-pip python3-dev python3-pip
+    sudo apt-get -y --force-yes install python3-venv
+    pip install virtualenv
 }
 
 
@@ -71,7 +73,7 @@ linkNeoVim(){
     mkdir "$cwd/.config/nvim";
     rm "$cwd/.config/nvim/init.vim";
     ln -s "$cwd/dotfiles/vim/vimrc" "$cwd/.config/nvim/init.vim";
-    nvim +VimEnter +PlugInstall +qall +silent;
+    nvim +PlugInstall +PythonSupportInitPython3 +PythonSupportInitPython2 +qall +silent;
 }
 
 enableItalics(){
