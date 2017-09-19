@@ -513,8 +513,7 @@ augroup pencil
     autocmd FileType text call pencil#init()
                 \ | setlocal spell colorcolumn=
                 \ | call AutoCorrect()
-    autocmd Filetype tex,plaintex call pencil#init()
-                \ | setlocal spell ts=2 sts=2 sw=2 colorcolumn=
+    autocmd Filetype tex,plaintex setlocal spell ts=2 sts=2 sw=2 colorcolumn=
                 \ | call AutoCorrect()
                 \ | autocmd! BufWritePost <buffer> :AsyncRun! osascript -e 'tell application "Keyboard Maestro Engine" to do script "Update Preview"'
     " \ | setl updatetime=1000
@@ -557,17 +556,20 @@ let g:hardtime_showmsg = 1
 """""""
 " LSP "
 """""""
-" let g:LanguageClient_serverCommands = {
-"     \ 'javascript': ['./node_modules/javascript-typescript-langserver/lib/language-server-stdio.js'],
-"     \ 'python': ['pyls']
-"     \ }
+" Toggle this
+if (0)
+    let g:LanguageClient_serverCommands = {
+                \ 'javascript': ['./node_modules/javascript-typescript-langserver/lib/language-server-stdio.js'],
+                \ 'python': ['pyls']
+                \ }
 
-" " Automatically start language servers.
-" let g:LanguageClient_autoStart = 1
+    " Automatically start language servers.
+    let g:LanguageClient_autoStart = 1
 
-" nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
-" nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
-" nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
+    nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
+    nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
+    nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
+endif
 
 """""""""""
 " Credits "
@@ -575,3 +577,7 @@ let g:hardtime_showmsg = 1
 " inspiration
 " http://marcgg.com/blog/2016/03/01/vimrc-example/
 " autocmd Filetype python setlocal ts=4 sts=4 sw=4 colorcolumn=80
+" nnoremap <leader>h <Esc>:HardTimeToggle<CR>
+
+let g:jsx_ext_required = 0
+

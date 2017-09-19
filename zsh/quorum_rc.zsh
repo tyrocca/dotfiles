@@ -4,8 +4,11 @@
 
 alias quorumrc="nvim ~/dotfiles/zsh/quorum_rc.zsh"
 
+export RUNNING_QUORUM_LOCALLY="True"
+
 start_quorum() {
     cd ~/Code/quorum-wrapper/Quorum
+    workon Quorum
     lolcat ~/dotfiles/misc/quorum.txt
     npm-exec
 }
@@ -13,7 +16,7 @@ alias qtmux="tmuxinator start quorum"
 alias qq="start_quorum"
 
 alias qdev_db="ssh -nNf db-quorum-dev"
-alias qdev_db="ssh -nNf db-quorum-prod"
+alias qprod_db="ssh -nNf db-quorum-prod"
 
 # function to start a branch off master
 qhotfix() {

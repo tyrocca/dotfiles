@@ -5,6 +5,42 @@
 # cd ~/;
 # git clone https://github.com/tyrocca/dotfiles.git;
 
+ubuntu_install() {
+    # start install
+    sudo apt-get update
+    sudo apt-get upgrade
+    sudo apt-get install curl
+    sudo apt-get install git
+    # npm
+    sudo apt-get install npm
+
+    # zsh
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+
+    # C Things
+    sudo apt-get install clang
+    sudo update-alternatives --install /usr/bin/cc cc /usr/bin/clang 50
+    sudo apt-get install git kcachegrind linux-tools-generic bochs qemu
+
+    # programming tools
+    sudo apt-get install exuberant-ctags
+    sudo apt-get install tmux
+
+    # neovim
+    sudo apt-get install software-properties-common
+    sudo add-apt-repository ppa:neovim-ppa/stable
+    sudo apt-get update
+    sudo apt-get install neovim
+    sudo apt-get install python-dev python-pip python3-dev python3-pip
+}
+
+
+
+###########
+# Z-shell #
+###########
+# Add zsh for the zsh users
+
 # install vim
 installVim(){
     cd ~/;
@@ -39,7 +75,7 @@ linkNeoVim(){
 }
 
 enableItalics(){
-    cd ~/dotfiles;
+    cd ~/dotfiles/terminal/;
     tic xterm-256color-italic.terminfo;
     tic screen-256color-italic.terminfo;
     cd ~/;
@@ -67,11 +103,12 @@ linkEslint(){
     cwd=$(pwd);
 
     # enable ctags
-    rm -rf ~/.ctags;
+    rm -rf ~/.eslintrc.js;
     ln -s "$cwd/dotfiles/eslintrc.js" "$cwd/.eslintrc.js";
 }
 
 # run these
+ubuntu_install;
 installVim;
 linkNeoVim;
 enableTern;

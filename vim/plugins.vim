@@ -30,7 +30,10 @@ Plug 'chriskempson/vim-tomorrow-theme'
 " Languages "
 """""""""""""
 " C doc generator (:dox)
-Plug 'vim-scripts/DoxygenToolkit.vim',
+Plug 'vim-scripts/DoxygenToolkit.vim'
+
+" C extra stuff
+Plug 'justinmk/vim-syntax-extra'
 
 " CoffeeScript
 Plug 'kchmck/vim-coffee-script', { 'for': ['coffee'] }
@@ -54,7 +57,7 @@ Plug 'hynek/vim-python-pep8-indent', { 'for': 'python' }
 Plug 'plasticboy/vim-markdown', { 'for': ['markdown', 'gitcommit']}
 
 " Latex
-Plug 'lervag/vimtex', { 'for': ['plaintex', 'tex'] }
+" Plug 'lervag/vimtex', { 'for': ['plaintex', 'tex'] }
 Plug 'xuhdev/vim-latex-live-preview', { 'for': ['plaintex', 'tex'] }
 
 " Indent Deducer
@@ -209,7 +212,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'jpalardy/vim-slime'
 
 " Git changes
-" Plug 'airblade/vim-gitgutter'
+Plug 'airblade/vim-gitgutter'
 
 " Notes
 " Plug 'xolox/vim-notes' | Plug 'xolox/vim-misc'

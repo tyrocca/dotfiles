@@ -100,7 +100,7 @@ source $ZSH/oh-my-zsh.sh
 export KEYTIMEOUT=1
 
 if [[ "$OSTYPE" == "linux-gnu" ]]; then
-    source /home/$USER/dotfiles/zsh/zsh-linux
+    # source /home/$USER/dotfiles/zsh/zsh-linux
 elif [[ "$OSTYPE" == "darwin"* ]]; then
         # Mac OSX
 elif [[ "$OSTYPE" == "cygwin" ]]; then

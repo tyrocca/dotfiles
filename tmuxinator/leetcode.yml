@@ -1,17 +1,16 @@
-# ~/.tmuxinator/quorum.yml
+# ~/.tmuxinator/leetcode.yml
 
-name: quorum
-root: ~/
+name: leetcode
+root: ~/Code/leetcode
 
 # Optional tmux socket
 # socket_name: foo
 
 # Runs before everything. Use it to start daemons etc.
-pre:
-  - ssh -Nnf db-quorum-dev
+# pre: sudo /etc/rc.d/mysqld start
 
 # Runs in each window and pane before window/pane specific commands. Useful for setting up interpreter versions.
-pre_window: start_quorum
+# pre_window: rbenv shell 2.0.0-p247
 
 # Pass command line options to tmux. Useful for specifying a different tmux.conf.
 # tmux_options: -f ~/.tmux.mac.conf
@@ -29,15 +28,14 @@ pre_window: start_quorum
 # attach: false
 
 # Runs after everything. Use it to attach to tmux with custom options etc.
-# post: tmux -CC attach -t quorum
+# post: tmux -CC attach -t leetcode
 
 windows:
-  - editor: nvim
-  - server:
+  - editor:
       layout: main-vertical
+      # Synchronize all panes of this window, can be enabled before or after the pane commands run.
+      # 'before' represents legacy functionality and will be deprecated in a future release, in favour of 'after'
+      # synchronize: after
       panes:
-         - gulp:
-           - yarn
-           - gulp
-         - runserver:
-           - serve
+        - nvim
+        - ipython

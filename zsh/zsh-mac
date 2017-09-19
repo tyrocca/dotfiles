@@ -7,7 +7,6 @@ DEFAULT_USER=tyrocca
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
 ZSH_THEME=robbyrussell
-#ZSH_THEME=agnoster
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -50,26 +49,63 @@ DISABLE_UPDATE_PROMPT=true
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
+# User configuration
+export EDITOR="nvim"
+
+#######################
+# PATH configurations #
+#######################
+
+# # Add brew to path
+PATH="/usr/local/bin:/usr/local/sbin:$PATH"
+
+# Vagrant
+PATH=$PATH:/Applications/VirtualBox.app/Contents/MacOS/
+
+# add yarn to path
+PATH="$PATH:`yarn global bin`"
+
+# add open ssl to path (this is very annoying)
+PATH="/usr/local/opt/openssl/bin:$PATH"
+
+# stack package recommended this:
+PATH="/Users/$USER/.local/bin:$PATH"
+
+# GCC
+PATH="/usr/local/Cellar/gcc/7.2.0/bin:$PATH"
+alias gcc="/usr/local/Cellar/gcc/7.2.0/bin/gcc-7"
+export PATH
+
+# export MANPATH="/usr/local/man:$MANPATH"
+
+##############################
+# * Python and virtual env * #
+##############################
+# The python stuff has to be place here because the plugins get confused
+# This has to be placed above
+# alias python="/usr/local/bin/python2"
+# alias python="/usr/local/bin/python3"
+export PIP_ROOT_DIR='/usr/local/lib/python2.7/site-packages'
+
+# Virtual Env Things
+# export PYTHONPATH="${PYTHONPATH}:/usr/bin"
+export PYTHONPATH="/usr/local/lib/python:$PYTHONPATH"
+export WORKON_HOME=~/Envs
+export PROJECT_HOME=~/Code/current_projects
+export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python2.7
+export VIRTUALENVWRAPPER_VIRTUALENV=/usr/local/bin/virtualenv
+source /usr/local/bin/virtualenvwrapper.sh
+
+###############
+# ZSH PLUGINS #
+###############
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
+
 plugins=(git git-hubflow osx tmux tmuxinator web-search python \
-    django zsh-syntax-highlighting npm pip tmux yarn virtualenvwrapper)
-
-# User configuration
-export EDITOR="nvim"
-
-# PATH configurations
-export PATH="$PATH:`yarn global bin`"
-export PATH="/usr/local/opt/openssl/bin:$PATH"
-# stack package recommended this:
-export PATH="/Users/$USER/.local/bin:$PATH"
-
-# this is recommended when using npm
-alias npm-exec='PATH=$(npm bin):$PATH'
-
-# export MANPATH="/usr/local/man:$MANPATH"
+    django zsh-syntax-highlighting npm pip tmux yarn)
 
 # here we source oh my zsh
 source $ZSH/oh-my-zsh.sh
@@ -96,24 +132,8 @@ export PEM_KEY_PATH="~/.ssh/keys/"
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 
-###########
-# aliases #
-###########
-alias zshconfig="nvim ~/.zshrc"
-alias ohmyzsh="nvim ~/.oh-my-zsh"
-alias vimconfig="nvim ~/.vimrc"
-alias vimplugins="nvim ~/dotfiles/vim/plugins.vim"
-alias activate_env="source env/bin/activate"
-# chrome
-alias chrome="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome"
-alias chrome-canary="/Applications/Google\ Chrome\ Canary.app/Contents/MacOS/Google\ Chrome\ Canary"
-alias chromium="/Applications/Chromium.app/Contents/MacOS/Chromium"
-
-# cd to volumes
-export HARD_DRIVE='/Volumes/Macintosh\ HD/Symlinks'
-alias hd_folder="cd $HARD_DRIVE"
-alias desktop="cd ~/Desktop/"
-alias code="cd ~/Code/"
+# export ZSH_CUSTOM="~/dotfiles/zsh/"
+source ~/dotfiles/zsh/aliases.zsh
 
 #bindkey -v
 bindkey '^P' up-history
@@ -145,41 +165,15 @@ clean_merged_branches() {
 ###########
 # Add-ons #
 ###########
-# fzf searching
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+source ~/dotfiles/zsh/addons.zsh
 
-# this is the iterm integration
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
-
-# Virtual Env Things
-export WORKON_HOME=~/Envs
-export PROJECT_HOME=~/Code/current_projects
-source /usr/local/bin/virtualenvwrapper.sh
-
-#############
-# Path Vars #
-#############
-export PIP_ROOT_DIR='/usr/local/lib/python2.7/site-packages'
-
-#################
-# Quorum Things #
-#################
-source ~/dotfiles/zsh/quorum_rc.zsh
-
-
-
-# nice ssh reagent thing
-# ssh-reagent () {
-#   for agent in /tmp/ssh-*/agent.*; do
-#       export SSH_AUTH_SOCK=$agent
-#       if ssh-add -l 2>&1 > /dev/null; then
-#          echo Found working SSH Agent:
-#          ssh-add -l
-#          return
-#       fi
-#   done
-#   echo Cannot find ssh agent - maybe you should reconnect and forward it?
+########
+# MISC #
+########
+# test_61() {
+#     rm -rf *.dSYM > /dev/null 2>&1;
+#     make clean > /dev/null 2>&1;
+#     make CFLAGS+=" -ggdb3 -fsanitize=undefined,address -fno-omit-frame-pointer" \
+#         RUN_OPTIONS+="ASAN_OPTIONS=allocator_may_return_null=1" \
+#         CC=gcc-7 SANITIZE=1 TESTS="$1";
 # }
-
-# OPAM configuration
-. /Users/tyrocca/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
