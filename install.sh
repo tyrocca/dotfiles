@@ -14,13 +14,13 @@ ubuntu_install() {
     # npm
     sudo apt-get -y --force-yes install npm
 
-    # zsh
-    sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-
     # C Things
     sudo apt-get -y --force-yes install clang
     sudo update-alternatives --install /usr/bin/cc cc /usr/bin/clang 50
     sudo apt-get -y --force-yes install git kcachegrind linux-tools-generic bochs qemu
+
+    # zsh
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
     # programming tools
     sudo apt-get -y --force-yes install exuberant-ctags

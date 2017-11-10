@@ -8,6 +8,7 @@ alias zshconfig="nvim ~/.zshrc"
 alias ohmyzsh="nvim ~/.oh-my-zsh"
 alias vimconfig="nvim ~/.vimrc"
 alias vimplugins="nvim ~/dotfiles/vim/plugins.vim"
+alias add_alias="nvim ~/dotfiles/zsh/aliases.zsh"
 # quick source
 alias activate_env="source env/bin/activate"
 # chrome
@@ -29,3 +30,15 @@ bindkey '^?' backward-delete-char
 bindkey '^h' backward-delete-char
 bindkey '^w' backward-kill-word
 bindkey '^r' history-incremental-search-backward
+
+##########
+# CS 165 #
+##########
+
+alias ssh165='cd ~/Code/cs165; vagrant up > /dev/null 2>&1; vagrant ssh -- -t "cd /vagrant/src; bash"'
+
+make_milestone() {
+    git tag -d milestone$1-submit
+    git tag milestone$1-submit
+    git push --tags -f
+}

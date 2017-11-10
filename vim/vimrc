@@ -521,16 +521,18 @@ augroup pencil
     """""""""""""""""""""""""""""""""""""""""
     " FileType Configs (overwrite defaults) "
     """""""""""""""""""""""""""""""""""""""""
-    autocmd Filetype html setlocal ts=2 sts=2 sw=2
-    autocmd Filetype ruby setlocal ts=2 sts=2 sw=2
-    autocmd Filetype javascript,javascript.jsx
+    autocmd FileType html setlocal ts=2 sts=2 sw=2
+    autocmd FileType ruby setlocal ts=2 sts=2 sw=2
+    autocmd FileType javascript,javascript.jsx
                 \ setlocal ts=4 sts=4 sw=4 colorcolumn=100
                 \ | :iabbrev <buffer> True true
                 \ | :iabbrev <buffer> False false
-
-    autocmd Filetype python
+    autocmd FileType python
                 \ :iabbrev <buffer> true True
                 \ | :iabbrev <buffer> false False
+    autocmd FileType c,cpp
+                \ setlocal ts=4 sts=4 sw=4 colorcolumn=80
+                \ | set path+=./include
 augroup END
 
 
@@ -580,4 +582,16 @@ endif
 " nnoremap <leader>h <Esc>:HardTimeToggle<CR>
 
 let g:jsx_ext_required = 0
+
+" This is a hack for making this work
+if (1)
+    let g:neomake_c_gcc_exe = 'make'
+    let g:neomake_c_gcc_args = '-C $PWD CC="gcc-7 -std=c99 -ggdb3"'
+    let g:neomake_c_gcc_append_file = 0
+    let g:neomake_c_enabled_makers = ['gcc']
+    " let g:neomake_c_clang_exe = 'make'
+    " let g:neomake_c_clang_args = '-C $PWD CC="clang -std=c99 -g -ggdb3"'
+    " let g:neomake_c_clang_append_file = 0
+    " let g:neomake_c_enabled_makers = ['clang']
+endif
 

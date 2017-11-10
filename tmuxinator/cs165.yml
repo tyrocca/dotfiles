@@ -1,7 +1,7 @@
 # ~/.tmuxinator/cs165.yml
 
 name: cs165
-root: ~/Code/cs165/
+root: ~/Code/cs165/src/
 
 # Optional tmux socket
 # socket_name: foo
@@ -30,6 +30,7 @@ root: ~/Code/cs165/
 # Runs after everything. Use it to attach to tmux with custom options etc.
 # post: tmux -CC attach -t cs165
 
+# - cd ~/Code/cs165; vagrant up > /dev/null 2>&1; vagrant ssh -- -t "cd /vagrant/src; bash"
 windows:
   - editor:
       layout: main-vertical
@@ -38,3 +39,4 @@ windows:
       # synchronize: after
       panes:
         - nvim
+        - ls

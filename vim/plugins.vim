@@ -61,7 +61,7 @@ Plug 'plasticboy/vim-markdown', { 'for': ['markdown', 'gitcommit']}
 Plug 'xuhdev/vim-latex-live-preview', { 'for': ['plaintex', 'tex'] }
 
 " Indent Deducer
-Plug 'tpope/vim-sleuth'
+" Plug 'tpope/vim-sleuth'
 
 """""""""""
 " Editing "
@@ -109,12 +109,21 @@ Plug 'junegunn/vim-easy-align'
 """""""""""""""""""""""""
 if (has('nvim'))
     " LSP
-    " Plug 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins' }
-
-    " Plug 'othree/jspc.vim', { 'for': ['javascript', 'javascript.jsx'] }
+    if (0)
+        Plug 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins' }
+    endif
     " the framework
     Plug 'roxma/nvim-completion-manager'
     Plug 'roxma/python-support.nvim'
+
+    " * Snippets *
+    " Track the engine.
+    Plug 'SirVer/ultisnips'
+    " Snippets are separated from the engine. Add this if you want them:
+    Plug 'honza/vim-snippets'
+
+    " C/C++ autocomplete
+    Plug 'roxma/ncm-clang'
 
     " Python Autocomplete
     Plug 'davidhalter/jedi', { 'for': ['python'] }
@@ -122,15 +131,11 @@ if (has('nvim'))
     " Javascript (Tern autocomplete)
     Plug 'ternjs/tern_for_vim', { 'for': ['javascript', 'javascript.jsx'] }
     Plug 'roxma/nvim-cm-tern',  {'do': 'npm install'}
+    " Plug 'othree/jspc.vim', { 'for': ['javascript', 'javascript.jsx'] }
 
     " Vimscript autocomplete
     Plug 'Shougo/neco-vim'
 
-    " * Snippets *
-    " Track the engine.
-    " Plug 'SirVer/ultisnips'
-    " " Snippets are separated from the engine. Add this if you want them:
-    " Plug 'honza/vim-snippets'
     " " More snippets
     " Plug 'greg-js/vim-react-es6-snippets', { 'for': ['javascript', 'javascript.jsx'] }
     " formatting tool
@@ -144,7 +149,8 @@ Plug 'ervandew/supertab'
 " Navigation Tools "
 """"""""""""""""""""
 " Allows colon as an arg
-Plug 'bogado/file-line'
+" Plug 'bogado/file-line'
+Plug 'kopischke/vim-fetch'
 
 " Vim sneak - better movement
 Plug 'justinmk/vim-sneak'
