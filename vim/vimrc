@@ -263,6 +263,9 @@ nnoremap <F9> :tabe ~/.vimrc<CR>
 nnoremap <silent> <leader><CR> i<CR><ESC>
 " this makes a nice surrounding block around a piece of text
 nnoremap <leader>1 :center 80<CR>hhv0r#A<SPACE><ESC>40A#<ESC>d80<BAR>YppVr#kk.
+" Another commenting tool
+nnoremap <leader>2 ^3a/<ESC>a<SPACE><ESC>75a*<ESC>o<ESC>^3a/<ESC>a<SPACE><ESC>75a*<ESC>O<ESC>^3a/<ESC>a<SPACE>
+
 " Remove those fucking ^M characters
 nnoremap <silent> <leader>6 :%s///g<CR>
 
@@ -418,7 +421,7 @@ let g:neomake_python_enabled_makers = ['flake8']
 let g:neomake_python_flake8_args = ['--max-line-length=200', '--ignore=W391']
 
 " Javascript
-" let g:neomake_javascript_eslint_exe = $PWD .'/node_modules/.bin/eslint'
+let g:neomake_javascript_eslint_exe = $PWD .'/node_modules/.bin/eslint'
 let g:neomake_javascript_enabled_makers = ['eslint']
 let g:neomake_jsx_enabled_makers = ['eslint']
 
@@ -524,7 +527,7 @@ augroup pencil
     autocmd FileType html setlocal ts=2 sts=2 sw=2
     autocmd FileType ruby setlocal ts=2 sts=2 sw=2
     autocmd FileType javascript,javascript.jsx
-                \ setlocal ts=4 sts=4 sw=4 colorcolumn=100
+                \ setlocal ts=2 sts=2 sw=2 colorcolumn=100
                 \ | :iabbrev <buffer> True true
                 \ | :iabbrev <buffer> False false
     autocmd FileType python
@@ -532,8 +535,18 @@ augroup pencil
                 \ | :iabbrev <buffer> false False
     autocmd FileType c,cpp
                 \ setlocal ts=4 sts=4 sw=4 colorcolumn=80
-                \ | set path+=./include
+                " \ | set path+=./include
+                " \ | autocmd BufRead,BufNewFile *.h,*.c set filetype=c.doxygen
 augroup END
+
+
+" Settings for C
+let &path.="./src/include,./include/,"
+let g:load_doxygen_syntax=1
+" augroup project
+"     autocmd!
+"     autocmd BufRead,BufNewFile *.h,*.c set filetype=c.doxygen
+" augroup END
 
 
 """""""""""""""""""
@@ -573,20 +586,18 @@ if (0)
     nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
 endif
 
-"""""""""""
-" Credits "
-"""""""""""
-" inspiration
-" http://marcgg.com/blog/2016/03/01/vimrc-example/
-" autocmd Filetype python setlocal ts=4 sts=4 sw=4 colorcolumn=80
-" nnoremap <leader>h <Esc>:HardTimeToggle<CR>
 
 let g:jsx_ext_required = 0
 
+"""""""""""""""""""""""""""
+" Compiling a c directory "
+"""""""""""""""""""""""""""
+
 " This is a hack for making this work
-if (1)
+if (0)
     let g:neomake_c_gcc_exe = 'make'
-    let g:neomake_c_gcc_args = '-C $PWD CC="gcc-7 -std=c99 -ggdb3"'
+    " let g:neomake_c_gcc_args = '-C $PWD CC="gcc-7 -std=c99 -ggdb3"'
+    let g:neomake_c_gcc_args = '-C $PWD CC="clang -std=c99 -ggdb3"'
     let g:neomake_c_gcc_append_file = 0
     let g:neomake_c_enabled_makers = ['gcc']
     " let g:neomake_c_clang_exe = 'make'
@@ -595,3 +606,13 @@ if (1)
     " let g:neomake_c_enabled_makers = ['clang']
 endif
 
+
+nmap ]h <Plug>GitGutterNextHunk
+nmap [h <Plug>GitGutterPrevHunk
+"""""""""""
+" Credits "
+"""""""""""
+" inspiration
+" http://marcgg.com/blog/2016/03/01/vimrc-example/
+" autocmd Filetype python setlocal ts=4 sts=4 sw=4 colorcolumn=80
+" nnoremap <leader>h <Esc>:HardTimeToggle<CR>

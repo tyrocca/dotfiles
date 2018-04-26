@@ -31,6 +31,31 @@ bindkey '^h' backward-delete-char
 bindkey '^w' backward-kill-word
 bindkey '^r' history-incremental-search-backward
 
+####################
+# Helper Functions #
+####################
+# things for vim - swp files
+ls_swp() {
+    ls ~/.vim/.swp/
+}
+rm_swp() {
+    rm ~/.vim/.swp/*
+}
+# backups
+ls_backups() {
+    ls ~/.vim/.backup/
+}
+rm_backups() {
+    rm ~/.vim/.backup/*
+}
+# undo files
+ls_undo() {
+    ls ~/.vim/.undo/
+}
+rm_undo() {
+    rm ~/.vim/.undo/*
+}
+
 ##########
 # CS 165 #
 ##########
@@ -42,3 +67,13 @@ make_milestone() {
     git tag milestone$1-submit
     git push --tags -f
 }
+
+# This function makes a file with the sanitizer. It can take in the file with or
+make_san() {
+    export ASAN_OPTIONS=allocator_may_return_null=1;
+    # export ASAN_OPTIONS=allocator_may_return_null=1,detect_leaks=1;
+    base=${1%.*};
+    rm $base > /dev/null 2>&1;
+    clang -std=c99 -ggdb3 -fsanitize=undefined,address -fno-omit-frame-pointer -Wall -Wextra -pedantic -O0 -o $base $base.c
+}
+

@@ -1,7 +1,7 @@
 # ~/.tmuxinator/cs165.yml
 
 name: cs61
-root: ~/Code/cs61-f17-psets-tyrocca/pset4
+root: ~/Code/cs61-f17-psets-tyrocca/pset6
 
 # Optional tmux socket
 # socket_name: foo
@@ -38,4 +38,4 @@ windows:
       # synchronize: after
       panes:
         - nvim
-        - cd ~/Code/cs61-f17-psets-tyrocca; vagrant up > /dev/null 2>&1; vagrant ssh -- -t "cd /vagrant/pset4/; bash"
+        - cd ~/Code/cs61-f17-psets-tyrocca; vagrant up > /dev/null 2>&1; vagrant ssh -- -t "cd /vagrant/pset6/; bash"

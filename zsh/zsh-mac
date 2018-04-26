@@ -65,9 +65,12 @@ PATH="/usr/local/opt/openssl/bin:$PATH"
 # stack package recommended this:
 PATH="/Users/$USER/.local/bin:$PATH"
 
+# add Go
+PATH="/usr/local/go/bin:$PATH"
+
 # GCC
-PATH="/usr/local/Cellar/gcc/7.2.0/bin:$PATH"
-alias gcc="/usr/local/Cellar/gcc/7.2.0/bin/gcc-7"
+# PATH="/usr/local/Cellar/gcc/7.2.0/bin:$PATH"
+# alias gcc="/usr/local/Cellar/gcc/7.2.0/bin/gcc-7"
 
 # End of path things
 # add yarn to path
@@ -75,6 +78,9 @@ PATH="$PATH:`yarn global bin`"
 
 # Vagrant
 PATH="$PATH:/Applications/VirtualBox.app/Contents/MacOS"
+
+# Path for python
+PATH="/usr/local/opt/python@2/libexec/bin:$PATH"
 
 export PATH
 
