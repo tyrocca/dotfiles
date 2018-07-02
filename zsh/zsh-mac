@@ -56,17 +56,20 @@ export EDITOR="nvim"
 # PATH configurations #
 #######################
 
-# # Add brew to path
-PATH="/usr/local/bin:/usr/local/sbin:$PATH"
-
 # add open ssl to path (this is very annoying)
 PATH="/usr/local/opt/openssl/bin:$PATH"
+
+# add Go
+PATH="/usr/local/go/bin:$PATH"
+
+# Path for python
+PATH="/usr/local/opt/python@2/libexec/bin:$PATH"
 
 # stack package recommended this:
 PATH="/Users/$USER/.local/bin:$PATH"
 
-# add Go
-PATH="/usr/local/go/bin:$PATH"
+# # Add brew to path
+PATH="/usr/local/bin:/usr/local/sbin:$PATH"
 
 # GCC
 # PATH="/usr/local/Cellar/gcc/7.2.0/bin:$PATH"
@@ -77,10 +80,10 @@ PATH="/usr/local/go/bin:$PATH"
 PATH="$PATH:`yarn global bin`"
 
 # Vagrant
-PATH="$PATH:/Applications/VirtualBox.app/Contents/MacOS"
+# PATH="$PATH:/Applications/VirtualBox.app/Contents/MacOS"
 
-# Path for python
-PATH="/usr/local/opt/python@2/libexec/bin:$PATH"
+# To prevent dups - (not sure about the impact here)
+# typeset -U PATH
 
 export PATH
 
@@ -89,20 +92,20 @@ export PATH
 ##############################
 # * Python and virtual env * #
 ##############################
-# The python stuff has to be place here because the plugins get confused
-# This has to be placed above
-# alias python="/usr/local/bin/python2"
-# alias python="/usr/local/bin/python3"
-export PIP_ROOT_DIR='/usr/local/lib/python2.7/site-packages'
+# # The python stuff has to be place here because the plugins get confused
+# # This has to be placed above
+# # alias python="/usr/local/bin/python2"
+# # alias python="/usr/local/bin/python3"
+# export PIP_ROOT_DIR='/usr/local/lib/python2.7/site-packages'
 
-# Virtual Env Things
-# export PYTHONPATH="${PYTHONPATH}:/usr/bin"
-export PYTHONPATH="/usr/local/lib/python:$PYTHONPATH"
-export WORKON_HOME=~/Envs
-export PROJECT_HOME=~/Code/current_projects
-export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python2.7
-export VIRTUALENVWRAPPER_VIRTUALENV=/usr/local/bin/virtualenv
-source /usr/local/bin/virtualenvwrapper.sh
+# # Virtual Env Things
+# # export PYTHONPATH="${PYTHONPATH}:/usr/bin"
+# export PYTHONPATH="/usr/local/lib/python:$PYTHONPATH"
+# export WORKON_HOME=~/Envs
+# export PROJECT_HOME=~/Code/current_projects
+# export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python2.7
+# export VIRTUALENVWRAPPER_VIRTUALENV=/usr/local/bin/virtualenv
+# source /usr/local/bin/virtualenvwrapper.sh
 
 ###############
 # ZSH PLUGINS #
@@ -113,7 +116,7 @@ source /usr/local/bin/virtualenvwrapper.sh
 # Add wisely, as too many plugins slow down shell startup.
 
 plugins=(git git-hubflow osx tmux tmuxinator web-search python \
-    django zsh-syntax-highlighting npm pip tmux yarn)
+    django pyenv zsh-syntax-highlighting npm pip tmux yarn)
 
 # here we source oh my zsh
 source $ZSH/oh-my-zsh.sh

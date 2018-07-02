@@ -108,11 +108,10 @@ Plug 'junegunn/vim-easy-align'
 " Autocomplete - Neovim "
 """""""""""""""""""""""""
 if (has('nvim'))
-    " LSP
-    if (0)
-        Plug 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins' }
-    endif
-    " the framework
+
+    """""""""""""""""""""""""""""""""""""
+    " DEPRECATED OLD VERSION OF COMPLETE "
+    """""""""""""""""""""""""""""""""""""
     Plug 'roxma/nvim-completion-manager'
     Plug 'roxma/python-support.nvim'
 
@@ -135,12 +134,46 @@ if (has('nvim'))
 
     " Vimscript autocomplete
     Plug 'Shougo/neco-vim'
-
-    " " More snippets
-    " Plug 'greg-js/vim-react-es6-snippets', { 'for': ['javascript', 'javascript.jsx'] }
-    " formatting tool
     Plug 'sbdchd/neoformat'
+
+    " " LSP
+    Plug 'autozimu/LanguageClient-neovim', {
+                \ 'branch': 'next',
+                \ 'do': 'bash install.sh',
+                \ }
+
+    " Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+    " " the framework
+    " Plug 'roxma/python-support.nvim'
+
+    " " * Snippets *
+    " " Track the engine.
+    " Plug 'SirVer/ultisnips'
+    " " Snippets are separated from the engine. Add this if you want them:
+    " Plug 'honza/vim-snippets'
+
+    " " Python Autocomplete
+    " Plug 'davidhalter/jedi', { 'for': ['python'] }
+    " Plug 'zchee/deoplete-jedi'
+
+    " " Javascript (Tern autocomplete)
+    " Plug 'ternjs/tern_for_vim', { 'for': ['javascript', 'javascript.jsx'] }
+    " Plug 'roxma/nvim-cm-tern',  {'do': 'npm install'}
+    " " Plug 'othree/jspc.vim', { 'for': ['javascript', 'javascript.jsx'] }
+
+    " " Vimscript autocomplete
+    " Plug 'Shougo/neco-vim'
+
+    " " " More snippets
+    " " Plug 'greg-js/vim-react-es6-snippets', { 'for': ['javascript', 'javascript.jsx'] }
+    " " formatting tool
+    " Plug 'sbdchd/neoformat'
+else
+    Plug 'Shougo/deoplete.nvim'
+    Plug 'roxma/nvim-yarp'
+    Plug 'roxma/vim-hug-neovim-rpc'
 endif
+
 
 " Supertab
 Plug 'ervandew/supertab'
@@ -159,7 +192,7 @@ Plug 'justinmk/vim-sneak'
 Plug 'tpope/vim-unimpaired'
 
 " Gutentags
-Plug 'ludovicchabant/vim-gutentags'
+" Plug 'ludovicchabant/vim-gutentags'
 
 " Relative Number Toggle
 " if ($USER == "ty" || $USER == "tyrocca")
@@ -231,3 +264,24 @@ Plug 'johngrib/vim-game-code-break'
 
 " Add plugins to &runtimepath
 call plug#end()
+
+
+
+""""""""
+"" NCM "
+""""""""
+"""" Neocomplete dead
+"if has("nvim")
+"    " for python completions
+"    let g:python_support_python3_requirements =
+"                \ add(get(g:,'python_support_python3_requirements',[]),'jedi')
+"    " language specific completions on markdown file
+"    let g:python_support_python3_requirements =
+"                \ add(get(g:,'python_support_python3_requirements',[]),'mistune')
+
+"    " utils, optional
+"    let g:python_support_python3_requirements =
+"                \ add(get(g:,'python_support_python3_requirements',[]),'psutil')
+"    let g:python_support_python3_requirements =
+"                \ add(get(g:,'python_support_python3_requirements',[]),'setproctitle')
+"endif

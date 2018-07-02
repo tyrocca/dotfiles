@@ -255,6 +255,7 @@ nnoremap <F8> :setlocal foldmethod=indent<CR>:setlocal foldignore= <CR>
 
 " Launch vimrc
 nnoremap <F9> :tabe ~/.vimrc<CR>
+nnoremap <F12> :%s///g<CR>
 
 """""""""""""""""""""""
 " Leader Key Mappings "
@@ -325,9 +326,26 @@ let g:tmuxline_powerline_separators = 1
 " Command to exec
 nnoremap <silent> <leader>a :ArgWrap<CR>
 
+
+"""""""""""""
+"" Deoplete "
+"""""""""""""
+"let g:python_host_prog = '/Users/tyrocca/.pyenv/versions/neovim2/bin/python'
+"let g:python3_host_prog = '/Users/tyrocca/.pyenv/versions/neovim3/bin/python'
+"let g:deoplete#enable_at_startup = 1
+"" let g:deoplete#sources = {}
+"" let g:deoplete#sources.cpp = ['LanguageClient']
+"" let g:deoplete#sources.python = ['LanguageClient']
+"" let g:deoplete#sources.python3 = ['LanguageClient']
+"" let g:deoplete#sources.rust = ['LanguageClient']
+"" let g:deoplete#sources.c = ['LanguageClient']
+"" let g:deoplete#sources.javascript = ['LanguageClient']
+"" let g:deoplete#sources.vim = ['vim']
+
 """""""
 " NCM "
 """""""
+""" Neocomplete dead
 if has("nvim")
     " for python completions
     let g:python_support_python3_requirements =
@@ -335,13 +353,15 @@ if has("nvim")
     " language specific completions on markdown file
     let g:python_support_python3_requirements =
                 \ add(get(g:,'python_support_python3_requirements',[]),'mistune')
-
+    let g:python_support_python3_requirements =
+                \ add(get(g:,'python_support_python3_requirements',[]),'python-language-server')
     " utils, optional
     let g:python_support_python3_requirements =
                 \ add(get(g:,'python_support_python3_requirements',[]),'psutil')
     let g:python_support_python3_requirements =
                 \ add(get(g:,'python_support_python3_requirements',[]),'setproctitle')
 endif
+
 
 """""""""""""""""""""
 " Fugitive settings "
@@ -416,9 +436,9 @@ endif
 " NeoMake "
 """""""""""
 " Python
-let g:neomake_python_enabled_makers = ['flake8']
+" let g:neomake_python_enabled_makers = ['flake8']
 " Ignore Errors
-let g:neomake_python_flake8_args = ['--max-line-length=200', '--ignore=W391']
+" let g:neomake_python_flake8_args = ['--max-line-length=200', '--ignore=W391']
 
 " Javascript
 let g:neomake_javascript_eslint_exe = $PWD .'/node_modules/.bin/eslint'
@@ -572,19 +592,20 @@ let g:hardtime_showmsg = 1
 " LSP "
 """""""
 " Toggle this
-if (0)
-    let g:LanguageClient_serverCommands = {
-                \ 'javascript': ['./node_modules/javascript-typescript-langserver/lib/language-server-stdio.js'],
-                \ 'python': ['pyls']
-                \ }
+" if (0)
+"     let g:LanguageClient_serverCommands = {
+"                 \ 'python': ['pyls'],
+"                 \ 'javascript': ['javascript-typescript-stdio'],
+"                 \ }
 
-    " Automatically start language servers.
-    let g:LanguageClient_autoStart = 1
+"                 " \ 'javascript': ['./node_modules/javascript-typescript-langserver/lib/language-server-stdio.js'],
+"     " Automatically start language servers.
+"     let g:LanguageClient_autoStart = 1
 
-    nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
-    nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
-    nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
-endif
+"     nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
+"     nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
+"     nnoremap <silent> <F11> :call LanguageClient_textDocument_rename()<CR>
+" endif
 
 
 let g:jsx_ext_required = 0

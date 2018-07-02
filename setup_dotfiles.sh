@@ -16,3 +16,4 @@ setupTmux() {
     ln -s /home/$USER/dotfiles/tmux/tmux.conf /home/$USER/.tmux.conf
 }
 
+setupVim
