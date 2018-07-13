@@ -162,9 +162,12 @@ export KEYTIMEOUT=1
 #####################
 
 # set cow says thing - this is always fun :)
-COWDIR="/usr/local/Cellar/cowsay/3.04/share/cows/"
-fortune | cowsay -f $(ls $COWDIR*.cow | gshuf | head -n1) | lolcat
-echo ""
+random_cowsay() {
+    COWDIR="/usr/local/Cellar/cowsay/3.04/share/cows/"
+    fortune | cowsay -f $(ls $COWDIR*.cow | gshuf | head -n1) | lolcat
+    echo ""
+}
+random_cowsay
 
 export VIM_COLOR_SCHEME=gruvbox
 export VIM_BACKGROUND=dark

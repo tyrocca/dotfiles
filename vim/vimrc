@@ -327,40 +327,25 @@ let g:tmuxline_powerline_separators = 1
 nnoremap <silent> <leader>a :ArgWrap<CR>
 
 
-"""""""""""""
-"" Deoplete "
-"""""""""""""
-"let g:python_host_prog = '/Users/tyrocca/.pyenv/versions/neovim2/bin/python'
-"let g:python3_host_prog = '/Users/tyrocca/.pyenv/versions/neovim3/bin/python'
-"let g:deoplete#enable_at_startup = 1
-"" let g:deoplete#sources = {}
-"" let g:deoplete#sources.cpp = ['LanguageClient']
-"" let g:deoplete#sources.python = ['LanguageClient']
-"" let g:deoplete#sources.python3 = ['LanguageClient']
-"" let g:deoplete#sources.rust = ['LanguageClient']
-"" let g:deoplete#sources.c = ['LanguageClient']
-"" let g:deoplete#sources.javascript = ['LanguageClient']
-"" let g:deoplete#sources.vim = ['vim']
-
-"""""""
-" NCM "
-"""""""
-""" Neocomplete dead
-if has("nvim")
-    " for python completions
-    let g:python_support_python3_requirements =
-                \ add(get(g:,'python_support_python3_requirements',[]),'jedi')
-    " language specific completions on markdown file
-    let g:python_support_python3_requirements =
-                \ add(get(g:,'python_support_python3_requirements',[]),'mistune')
-    let g:python_support_python3_requirements =
-                \ add(get(g:,'python_support_python3_requirements',[]),'python-language-server')
-    " utils, optional
-    let g:python_support_python3_requirements =
-                \ add(get(g:,'python_support_python3_requirements',[]),'psutil')
-    let g:python_support_python3_requirements =
-                \ add(get(g:,'python_support_python3_requirements',[]),'setproctitle')
-endif
+""""""""
+"" NCM "
+""""""""
+"""" Neocomplete dead
+"if has("nvim")
+"    " for python completions
+"    let g:python_support_python3_requirements =
+"                \ add(get(g:,'python_support_python3_requirements',[]),'jedi')
+"    " language specific completions on markdown file
+"    let g:python_support_python3_requirements =
+"                \ add(get(g:,'python_support_python3_requirements',[]),'mistune')
+"    let g:python_support_python3_requirements =
+"                \ add(get(g:,'python_support_python3_requirements',[]),'python-language-server')
+"    " utils, optional
+"    let g:python_support_python3_requirements =
+"                \ add(get(g:,'python_support_python3_requirements',[]),'psutil')
+"    let g:python_support_python3_requirements =
+"                \ add(get(g:,'python_support_python3_requirements',[]),'setproctitle')
+"endif
 
 
 """""""""""""""""""""
@@ -593,10 +578,6 @@ let g:hardtime_showmsg = 1
 """""""
 " Toggle this
 " if (0)
-"     let g:LanguageClient_serverCommands = {
-"                 \ 'python': ['pyls'],
-"                 \ 'javascript': ['javascript-typescript-stdio'],
-"                 \ }
 
 "                 " \ 'javascript': ['./node_modules/javascript-typescript-langserver/lib/language-server-stdio.js'],
 "     " Automatically start language servers.
@@ -617,19 +598,15 @@ let g:jsx_ext_required = 0
 " This is a hack for making this work
 if (0)
     let g:neomake_c_gcc_exe = 'make'
-    " let g:neomake_c_gcc_args = '-C $PWD CC="gcc-7 -std=c99 -ggdb3"'
     let g:neomake_c_gcc_args = '-C $PWD CC="clang -std=c99 -ggdb3"'
     let g:neomake_c_gcc_append_file = 0
     let g:neomake_c_enabled_makers = ['gcc']
-    " let g:neomake_c_clang_exe = 'make'
-    " let g:neomake_c_clang_args = '-C $PWD CC="clang -std=c99 -g -ggdb3"'
-    " let g:neomake_c_clang_append_file = 0
-    " let g:neomake_c_enabled_makers = ['clang']
 endif
 
 
 nmap ]h <Plug>GitGutterNextHunk
 nmap [h <Plug>GitGutterPrevHunk
+
 """""""""""
 " Credits "
 """""""""""
@@ -637,3 +614,68 @@ nmap [h <Plug>GitGutterPrevHunk
 " http://marcgg.com/blog/2016/03/01/vimrc-example/
 " autocmd Filetype python setlocal ts=4 sts=4 sw=4 colorcolumn=80
 " nnoremap <leader>h <Esc>:HardTimeToggle<CR>
+
+
+
+
+""""""""""
+" Python "
+""""""""""
+" if has("nvim")
+" endif
+
+let g:python_host_prog = '/Users/tyrocca/.pyenv/versions/neovim2/bin/python'
+let g:python3_host_prog = '/Users/tyrocca/.pyenv/versions/neovim3/bin/python'
+au FileType gitcommit,gitrebase let g:gutentags_enabled=0
+
+"" let g:LanguageClient_serverCommands = {
+""             \ 'javascript': ['javascript-typescript-stdio'],
+""             \ 'javascript.jsx': ['javascript-typescript-stdio'],
+""             \ }
+"" nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
+"" nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
+"" nnoremap <silent> <F11> :call LanguageClient_textDocument_rename()<CR>
+
+"" tern
+"" if exists('g:plugs["tern_for_vim"]')
+""   let g:deoplete#omni#functions = {}
+""   let g:deoplete#omni#functions.javascript = [
+""     \ 'tern#Complete',
+""     \ 'jspc#omni'
+""   \]
+"" endif
+"" let g:deoplete#sources = {}
+"" let g:deoplete#sources['javascript.jsx'] = ['file', 'ultisnips', 'ternjs']
+"" let g:deoplete#sources#ternjs#filetypes = [
+""             \ 'jsx',
+""             \ 'javascript.jsx',
+""             \ ]
+"" let g:tern#command = ['tern']
+"" let g:tern#arguments = ['--persistent']
+"" let g:tern_request_timeout = 1
+"let g:deoplete#enable_at_startup = 1
+"if !exists('g:deoplete#omni#input_patterns')
+"  let g:deoplete#omni#input_patterns = {}
+"endif
+""autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
+"autocmd InsertLeave * if pumvisible() == 0 | pclose | endif
+"augroup omnifuncs
+"  autocmd!
+"  autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+"  autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+"  autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+"augroup end
+
+""""""""""""""
+""" Deoplete "
+""""""""""""""
+""let g:python_host_prog = '/Users/tyrocca/.pyenv/versions/neovim2/bin/python'
+""let g:python3_host_prog = '/Users/tyrocca/.pyenv/versions/neovim3/bin/python'
+""" let g:deoplete#sources = {}
+""" let g:deoplete#sources.cpp = ['LanguageClient']
+""" let g:deoplete#sources.python = ['LanguageClient']
+""" let g:deoplete#sources.python3 = ['LanguageClient']
+""" let g:deoplete#sources.rust = ['LanguageClient']
+""" let g:deoplete#sources.c = ['LanguageClient']
+""" let g:deoplete#sources.javascript = ['LanguageClient']
+""" let g:deoplete#sources.vim = ['vim']

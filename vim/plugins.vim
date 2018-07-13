@@ -47,6 +47,9 @@ Plug 'heavenshell/vim-jsdoc', { 'for': ['javascript', 'javascript.jsx'] }
 " Jsx
 Plug 'mxw/vim-jsx', { 'for': ['javascript', 'javascript.jsx'] }
 
+" Styling
+Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
+
 " Stylus
 Plug 'wavded/vim-stylus', { 'for': 'stylus' }
 
@@ -107,67 +110,49 @@ Plug 'junegunn/vim-easy-align'
 """""""""""""""""""""""""
 " Autocomplete - Neovim "
 """""""""""""""""""""""""
+" assuming your using vim-plug: https://github.com/junegunn/vim-plug
 if (has('nvim'))
+    Plug 'ncm2/ncm2'
+    " ncm2 requires nvim-yarp
+    Plug 'roxma/nvim-yarp'
 
-    """""""""""""""""""""""""""""""""""""
-    " DEPRECATED OLD VERSION OF COMPLETE "
-    """""""""""""""""""""""""""""""""""""
-    Plug 'roxma/nvim-completion-manager'
-    Plug 'roxma/python-support.nvim'
+    Plug 'ncm2/ncm2-bufword'
+    Plug 'ncm2/ncm2-tmux'
+    Plug 'ncm2/ncm2-path'
+    Plug 'ncm2/ncm2-jedi'
+    Plug 'ncm2/ncm2-tern',  {'do': 'npm install'}
+    Plug 'ncm2/ncm2-cssomni'
+    " Trial Items
+    Plug 'ncm2/ncm2-path'
+    Plug 'ncm2/ncm2-abbrfuzzy'
+    Plug 'ncm2/ncm2-github'
+    Plug 'ncm2/ncm2-markdown-subscope'
+    Plug 'ncm2/ncm2-html-subscope'
+    Plug 'ncm2/ncm2-tagprefix'
 
-    " * Snippets *
-    " Track the engine.
-    Plug 'SirVer/ultisnips'
-    " Snippets are separated from the engine. Add this if you want them:
-    Plug 'honza/vim-snippets'
+    " enable ncm2 for all buffer
+    autocmd BufEnter * call ncm2#enable_for_buffer()
 
-    " C/C++ autocomplete
-    Plug 'roxma/ncm-clang'
-
-    " Python Autocomplete
-    Plug 'davidhalter/jedi', { 'for': ['python'] }
-
-    " Javascript (Tern autocomplete)
-    Plug 'ternjs/tern_for_vim', { 'for': ['javascript', 'javascript.jsx'] }
-    Plug 'roxma/nvim-cm-tern',  {'do': 'npm install'}
-    " Plug 'othree/jspc.vim', { 'for': ['javascript', 'javascript.jsx'] }
-
-    " Vimscript autocomplete
-    Plug 'Shougo/neco-vim'
+    " note that must keep noinsert in completeopt, the others is optional
+    set completeopt=noinsert,menuone,noselect
+    " Autoformater
     Plug 'sbdchd/neoformat'
 
-    " " LSP
-    Plug 'autozimu/LanguageClient-neovim', {
-                \ 'branch': 'next',
-                \ 'do': 'bash install.sh',
-                \ }
+"     " Deoplete
+"     Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 
-    " Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-    " " the framework
-    " Plug 'roxma/python-support.nvim'
+"     " Python Autocomplete
+"     Plug 'davidhalter/jedi', { 'for': ['python'] }
+"     Plug 'zchee/deoplete-jedi', { 'for': ['python'] }
 
-    " " * Snippets *
-    " " Track the engine.
-    " Plug 'SirVer/ultisnips'
-    " " Snippets are separated from the engine. Add this if you want them:
-    " Plug 'honza/vim-snippets'
-
-    " " Python Autocomplete
-    " Plug 'davidhalter/jedi', { 'for': ['python'] }
-    " Plug 'zchee/deoplete-jedi'
-
-    " " Javascript (Tern autocomplete)
-    " Plug 'ternjs/tern_for_vim', { 'for': ['javascript', 'javascript.jsx'] }
-    " Plug 'roxma/nvim-cm-tern',  {'do': 'npm install'}
-    " " Plug 'othree/jspc.vim', { 'for': ['javascript', 'javascript.jsx'] }
-
-    " " Vimscript autocomplete
-    " Plug 'Shougo/neco-vim'
-
-    " " " More snippets
-    " " Plug 'greg-js/vim-react-es6-snippets', { 'for': ['javascript', 'javascript.jsx'] }
-    " " formatting tool
-    " Plug 'sbdchd/neoformat'
+"     " Javascript
+"     Plug 'ternjs/tern_for_vim', { 'for': ['javascript', 'javascript.jsx'] }
+"     Plug 'carlitux/deoplete-ternjs', { 'for': ['javascript', 'javascript.jsx'] }
+"     " Plug 'othree/jspc.vim', { 'for': ['javascript', 'javascript.jsx'] }
+"     " Plug 'autozimu/LanguageClient-neovim', {
+"     "             \ 'branch': 'next',
+"     "             \ 'do': 'bash install.sh',
+"     "             \ }
 else
     Plug 'Shougo/deoplete.nvim'
     Plug 'roxma/nvim-yarp'
@@ -176,7 +161,7 @@ endif
 
 
 " Supertab
-Plug 'ervandew/supertab'
+" Plug 'ervandew/supertab'
 
 """"""""""""""""""""
 " Navigation Tools "
@@ -192,7 +177,7 @@ Plug 'justinmk/vim-sneak'
 Plug 'tpope/vim-unimpaired'
 
 " Gutentags
-" Plug 'ludovicchabant/vim-gutentags'
+Plug 'ludovicchabant/vim-gutentags'
 
 " Relative Number Toggle
 " if ($USER == "ty" || $USER == "tyrocca")
@@ -285,3 +270,36 @@ call plug#end()
 "    let g:python_support_python3_requirements =
 "                \ add(get(g:,'python_support_python3_requirements',[]),'setproctitle')
 "endif
+
+    """"""""""""""""""""""""""""""""""""""
+    "" DEPRECATED OLD VERSION OF COMPLETE "
+    """"""""""""""""""""""""""""""""""""""
+    "Plug 'roxma/nvim-completion-manager'
+    "Plug 'roxma/python-support.nvim'
+
+    "" * Snippets *
+    "" Track the engine.
+    "Plug 'SirVer/ultisnips'
+    "" Snippets are separated from the engine. Add this if you want them:
+    "Plug 'honza/vim-snippets'
+
+    "" C/C++ autocomplete
+    "Plug 'roxma/ncm-clang'
+
+    "" Python Autocomplete
+    "Plug 'davidhalter/jedi', { 'for': ['python'] }
+
+    "" Javascript (Tern autocomplete)
+    "Plug 'ternjs/tern_for_vim', { 'for': ['javascript', 'javascript.jsx'] }
+    "Plug 'roxma/nvim-cm-tern',  {'do': 'npm install'}
+    "" Plug 'othree/jspc.vim', { 'for': ['javascript', 'javascript.jsx'] }
+
+    "" Vimscript autocomplete
+    "Plug 'Shougo/neco-vim'
+    "Plug 'sbdchd/neoformat'
+
+    "" LSP
+    "Plug 'autozimu/LanguageClient-neovim', {
+    "            \ 'branch': 'next',
+    "            \ 'do': 'bash install.sh',
+    "            \ }
