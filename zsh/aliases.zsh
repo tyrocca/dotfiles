@@ -9,6 +9,7 @@ alias ohmyzsh="nvim ~/.oh-my-zsh"
 alias vimconfig="nvim ~/.vimrc"
 alias vimplugins="nvim ~/dotfiles/vim/plugins.vim"
 alias add_alias="nvim ~/dotfiles/zsh/aliases.zsh"
+alias disable_zsh_git='git config oh-my-zsh.hide-status 1'
 # quick source
 alias activate_env="source env/bin/activate"
 # chrome

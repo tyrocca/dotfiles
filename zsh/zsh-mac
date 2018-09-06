@@ -56,11 +56,12 @@ export EDITOR="nvim"
 # PATH configurations #
 #######################
 
-# add open ssl to path (this is very annoying)
-PATH="/usr/local/opt/openssl/bin:$PATH"
 
 # add Go
 PATH="/usr/local/go/bin:$PATH"
+
+# add rust
+PATH="$HOME/.cargo/bin:$PATH"
 
 # Path for python
 PATH="/usr/local/opt/python@2/libexec/bin:$PATH"
@@ -70,6 +71,9 @@ PATH="/Users/$USER/.local/bin:$PATH"
 
 # # Add brew to path
 PATH="/usr/local/bin:/usr/local/sbin:$PATH"
+
+# add open ssl to path (this is very annoying) ????? HERE
+PATH="/usr/local/opt/openssl/bin:$PATH"
 
 # GCC
 # PATH="/usr/local/Cellar/gcc/7.2.0/bin:$PATH"
@@ -84,6 +88,8 @@ PATH="$PATH:`yarn global bin`"
 
 # To prevent dups - (not sure about the impact here)
 # typeset -U PATH
+#
+
 
 export PATH
 

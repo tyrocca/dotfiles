@@ -56,6 +56,10 @@ Plug 'wavded/vim-stylus', { 'for': 'stylus' }
 " Python thing - makes indentation the way I like
 Plug 'hynek/vim-python-pep8-indent', { 'for': 'python' }
 
+" Trial item
+Plug 'ambv/black'
+Plug 'heavenshell/vim-pydocstring'
+
 " Markdown
 Plug 'plasticboy/vim-markdown', { 'for': ['markdown', 'gitcommit']}
 
@@ -124,7 +128,6 @@ if (has('nvim'))
     Plug 'ncm2/ncm2-cssomni'
     " Trial Items
     Plug 'ncm2/ncm2-path'
-    Plug 'ncm2/ncm2-abbrfuzzy'
     Plug 'ncm2/ncm2-github'
     Plug 'ncm2/ncm2-markdown-subscope'
     Plug 'ncm2/ncm2-html-subscope'
@@ -181,7 +184,7 @@ Plug 'ludovicchabant/vim-gutentags'
 
 " Relative Number Toggle
 " if ($USER == "ty" || $USER == "tyrocca")
-"     Plug 'jeffkreeftmeijer/vim-numbertoggle'
+Plug 'jeffkreeftmeijer/vim-numbertoggle'
 " endif
 
 " Fuzzy finder
@@ -243,6 +246,9 @@ Plug 'airblade/vim-gitgutter'
 
 " Trial
 Plug 'metakirby5/codi.vim'
+
+" File tools
+Plug 'tpope/vim-eunuch'
 
 " Fun!
 Plug 'johngrib/vim-game-code-break'

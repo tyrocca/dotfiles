@@ -106,6 +106,10 @@ klapp() {
     cd ~/Klaviyo/Repos/app/;
 }
 
+kldeploy() {
+    cd ~/Klaviyo/Repos/infrastructure-deployment/ && git pull;
+}
+
 kldbshell() {
     klapp && ./bin/django dbshell;
 }
@@ -120,6 +124,8 @@ alias klfix='klapp && git checkout -- src/learning/media/dev-js/react/account_ma
 
 alias klserve='klfix && sudo bin/django runserver 127.0.0.1:80'
 alias klflows-js='klfix && yarn react'
+alias kl-compile-statics="bin/django compile_assets --closure-jar=~/Klaviyo/Misc/js_compiler.jar && bin/django remove_sourcemaps"
+
 alias grafana='ssh -L 8888:127.0.0.01:8888 -L 3000:localhost:3000 ubuntu@grafana.klaviyodevops.com'
 
 # needs to be run on init
@@ -145,3 +151,5 @@ alias klcomponents='cd ~/Klaviyo/Repos/fender/packages/component-library'
 alias klutils='cd ~/Klaviyo/Repos/fender/packages/utils'
 
 alias klemail='sudo python -m smtpd -n -c DebuggingServer localhost:25'
+
+export PYENV_VIRTUALENVWRAPPER_PREFER_PYVENV="true"

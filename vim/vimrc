@@ -4,6 +4,11 @@
 set nocompatible              " be iMproved, required
 " https://github.com/junegunn/vim-plug
 
+if has('nvim')
+    let g:python_host_prog = '/Users/tyrocca/.pyenv/versions/neovim2/bin/python'
+    let g:python3_host_prog = '/Users/tyrocca/.pyenv/versions/neovim36/bin/python'
+endif
+
 
 """"""""""""""""""""""""
 " * Automatic install *"
@@ -51,7 +56,8 @@ else
             " we are setting the theme in the tmux config so
             " we don't want airline to do it
             let g:airline#extensions#tmuxline#enabled = 0
-            " let g:gruvbox_contrast_light="soft"
+            " let g:gruvbox_contrast_light=""
+            " let g:gruvbox_contrast_dark="hard"
         endif
         " Trial ITEMS
         " let g:hardtime_default_on = 1
@@ -179,7 +185,8 @@ cabbrev w' w
 command! W  write
 
 " other abbrevs
-" iabbrev py_breakpoint import ipdb; ipdb.set_trace()
+iabbrev py_breakpoint import ipdb; ipdb.set_trace()
+iabbrev pydebugger import ipdb; ipdb.set_trace()
 
 """"""""""""""""""""""""
 " Vim Backups and Undo "
@@ -421,9 +428,13 @@ endif
 " NeoMake "
 """""""""""
 " Python
-" let g:neomake_python_enabled_makers = ['flake8']
+" let g:neomake_python_enabled_makers = ['pylint']
+" let g:neomake_python_enabled_makers = ['pylint', 'flake8']
 " Ignore Errors
-" let g:neomake_python_flake8_args = ['--max-line-length=200', '--ignore=W391']
+let g:neomake_python_enabled_makers = ['flake8']
+" let g:neomake_python_flake8_args = ['--max-line-length=88', '--ignore=W391']
+" let g:neomake_python_flake8_args = ['--max-line-length=88', '--ignore=W391']
+" let g:neomake_python_pylint_args = ['--ignore=[E0611]']
 
 " Javascript
 let g:neomake_javascript_eslint_exe = $PWD .'/node_modules/.bin/eslint'
@@ -536,7 +547,8 @@ augroup pencil
                 \ | :iabbrev <buffer> True true
                 \ | :iabbrev <buffer> False false
     autocmd FileType python
-                \ :iabbrev <buffer> true True
+                \ setlocal ts=4 sts=4 sw=4 colorcolumn=88
+                \ | :iabbrev <buffer> true True
                 \ | :iabbrev <buffer> false False
     autocmd FileType c,cpp
                 \ setlocal ts=4 sts=4 sw=4 colorcolumn=80
@@ -621,12 +633,9 @@ nmap [h <Plug>GitGutterPrevHunk
 """"""""""
 " Python "
 """"""""""
-" if has("nvim")
-" endif
-
-let g:python_host_prog = '/Users/tyrocca/.pyenv/versions/neovim2/bin/python'
-let g:python3_host_prog = '/Users/tyrocca/.pyenv/versions/neovim3/bin/python'
 au FileType gitcommit,gitrebase let g:gutentags_enabled=0
+let g:airline#extensions#tabline#enabled = 1
+nmap <silent> <C-_> <Plug>(pydocstring)
 
 "" let g:LanguageClient_serverCommands = {
 ""             \ 'javascript': ['javascript-typescript-stdio'],
@@ -636,46 +645,3 @@ au FileType gitcommit,gitrebase let g:gutentags_enabled=0
 "" nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
 "" nnoremap <silent> <F11> :call LanguageClient_textDocument_rename()<CR>
 
-"" tern
-"" if exists('g:plugs["tern_for_vim"]')
-""   let g:deoplete#omni#functions = {}
-""   let g:deoplete#omni#functions.javascript = [
-""     \ 'tern#Complete',
-""     \ 'jspc#omni'
-""   \]
-"" endif
-"" let g:deoplete#sources = {}
-"" let g:deoplete#sources['javascript.jsx'] = ['file', 'ultisnips', 'ternjs']
-"" let g:deoplete#sources#ternjs#filetypes = [
-""             \ 'jsx',
-""             \ 'javascript.jsx',
-""             \ ]
-"" let g:tern#command = ['tern']
-"" let g:tern#arguments = ['--persistent']
-"" let g:tern_request_timeout = 1
-"let g:deoplete#enable_at_startup = 1
-"if !exists('g:deoplete#omni#input_patterns')
-"  let g:deoplete#omni#input_patterns = {}
-"endif
-""autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
-"autocmd InsertLeave * if pumvisible() == 0 | pclose | endif
-"augroup omnifuncs
-"  autocmd!
-"  autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-"  autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-"  autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-"augroup end
-
-""""""""""""""
-""" Deoplete "
-""""""""""""""
-""let g:python_host_prog = '/Users/tyrocca/.pyenv/versions/neovim2/bin/python'
-""let g:python3_host_prog = '/Users/tyrocca/.pyenv/versions/neovim3/bin/python'
-""" let g:deoplete#sources = {}
-""" let g:deoplete#sources.cpp = ['LanguageClient']
-""" let g:deoplete#sources.python = ['LanguageClient']
-""" let g:deoplete#sources.python3 = ['LanguageClient']
-""" let g:deoplete#sources.rust = ['LanguageClient']
-""" let g:deoplete#sources.c = ['LanguageClient']
-""" let g:deoplete#sources.javascript = ['LanguageClient']
-""" let g:deoplete#sources.vim = ['vim']
