@@ -215,6 +215,7 @@ clean_merged_branches() {
 # Add-ons #
 ###########
 source ~/dotfiles/zsh/addons.zsh
+source ~/.klaviyo_dev_profile.zsh
 
 ########
 # MISC #

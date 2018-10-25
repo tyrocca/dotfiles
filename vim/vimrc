@@ -187,6 +187,11 @@ command! W  write
 " other abbrevs
 iabbrev py_breakpoint import ipdb; ipdb.set_trace()
 iabbrev pydebugger import ipdb; ipdb.set_trace()
+iabbrev NOTE NOTE (tyrocca <C-R>=strftime("%Y-%m-%d")<CR>):
+iabbrev HACK HACK (tyrocca <C-R>=strftime("%Y-%m-%d")<CR>):
+iabbrev TODO TODO (tyrocca <C-R>=strftime("%Y-%m-%d")<CR>):
+iabbrev FIXME FIXME (tyrocca <C-R>=strftime("%Y-%m-%d")<CR>):
+iabbrev DELETEME DELETEME (tyrocca <C-R>=strftime("%Y-%m-%d")<CR>):
 
 """"""""""""""""""""""""
 " Vim Backups and Undo "
@@ -207,6 +212,7 @@ set directory=~/.vim/.swp//
 " backup files (~) in a common location if possible
 set backup
 silent !mkdir -p ~/.vim/.backup/ > /dev/null 2>&1
+
 set backupdir=~/.vim/.backup//
 
 " turn on undo files, put them in a common location
