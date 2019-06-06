@@ -62,7 +62,15 @@ eval "$(pyenv virtualenv-init - 2>/dev/null)"
 
 # NVM setup
 export NVM_DIR="$HOME/.nvm"
-. "/usr/local/opt/nvm/nvm.sh"
+# . "/usr/local/opt/nvm/nvm.sh"
+NVM_HOMEBREW="/usr/local/opt/nvm/nvm.sh"
+[ -s "$NVM_HOMEBREW" ] && \. "$NVM_HOMEBREW"
+[ -x "$(command -v npm)" ] && export NODE_PATH=$NODE_PATH:`npm root -g`
+
+# export NVM_DIR="$HOME/.nvm"
+# [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
+# [ -s "/usr/local/opt/nvm/etc/bash_completion" ] && . "/usr/local/opt/nvm/etc/bash_completion"  # This
+
 
 # Possibly needed?
 # export PATH="/usr/local/opt/mysql@5.6/bin:$PATH"
@@ -81,9 +89,10 @@ alias kl_bash="nvim ~/.klaviyo_dev_profile.zsh"
 git_month_branch() {
     if [[ $# -eq 0 ]] ; then
         echo 'ERROR: Please provide a branch name'
+        return 1
     else
         date="$(date '+%Y%m')"
-        git checkout -b "${date}_$1"
+        git checkout -b "${date}_ty_$1"
     fi
 }
 alias gmb=git_month_branch
@@ -91,15 +100,17 @@ alias gmb=git_month_branch
 git_month_checkout() {
     if [[ $# -eq 0 ]] ; then
         echo 'ERROR: Please provide a branch name'
+        return 1
     else
         date="$(date '+%Y%m')"
-        git checkout "${date}_$1"
+        git checkout "${date}_ty_$1"
     fi
 }
 alias gmco=git_month_checkout
 
 kljs() {
     cd ~/Klaviyo/Repos/fender/;
+    nvm use node;
 }
 
 klapp() {
@@ -107,6 +118,10 @@ klapp() {
 }
 
 kldeploy() {
+    cd ~/Klaviyo/Repos/infrastructure-deployment/ && git pull;
+}
+
+klinfra() {
     cd ~/Klaviyo/Repos/infrastructure-deployment/ && git pull;
 }
 
@@ -122,11 +137,10 @@ klshell() {
 alias klworkers='klapp && bin/wrk -d'
 alias klfix='klapp && git checkout -- src/learning/media/dev-js/react/account_management/user_management-bundle.js src/learning/media/dev-js/react/folders/folders-bundle.js src/learning/media/dev-js/react/profiles/profiles-bundle.js src/learning/media/js/react/profiles/profiles-bundle.js src/learning/media/js/react/folders/folders-bundle.js src/learning/media/js/react/account_management/user_management-bundle.js'
 
-alias klserve='klfix && sudo bin/django runserver 127.0.0.1:80'
-alias klflows-js='klfix && yarn react'
+alias klserve='klapp && sudo bin/django runserver 127.0.0.1:80'
 alias kl-compile-statics="bin/django compile_assets --closure-jar=~/Klaviyo/Misc/js_compiler.jar && bin/django remove_sourcemaps"
 
-alias grafana='ssh -L 8888:127.0.0.01:8888 -L 3000:localhost:3000 ubuntu@grafana.klaviyodevops.com'
+alias grafana='ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -L 8888:127.0.0.01:8888 -L 7878:localhost:3000 ubuntu@grafana.klaviyodevops.com'
 
 # needs to be run on init
 kl_init_cassandra() {
@@ -134,9 +148,6 @@ kl_init_cassandra() {
     sudo ifconfig lo0 alias 127.0.0.3 up;
     ccm start;
 }
-
-# Wrap buildout so we skip librabbitmq:
-alias kl-bin-buildout="sed -i -re \"s/(\s'librabbitmq)/#\1/\" setup.py && bin/buildout && sed -i -re \"s/#('librabbitmq)/\1/\" setup.py"
 
 # Kick celery so it starts running again:
 alias kl-chuck-norris-celery='bin/django celery inspect active_queues'
@@ -152,4 +163,19 @@ alias klutils='cd ~/Klaviyo/Repos/fender/packages/utils'
 
 alias klemail='sudo python -m smtpd -n -c DebuggingServer localhost:25'
 
+alias klsettings='klapp && nvim ~/Klaviyo/Repos/app/src/learning/local_settings.py'
+
+alias ssh_micro='ssh qw-on-demand-micro-01b95436b45785331'
+
+alias qw_pagerduty='ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no qw-pagerduty-ondemand.servers.clovesoftware.com'
+
+kl_update_buildout() {
+    klapp && \
+        sed -i .bak "s/\(pyOpenSSL\)[^']*/\1 == 16.2.0/g" setup.py \
+        && ./bin/buildout \
+        && mv setup.py.bak setup.py
+}
+
 export PYENV_VIRTUALENVWRAPPER_PREFER_PYVENV="true"
+
+# alias klfab='kldeploy && fab'

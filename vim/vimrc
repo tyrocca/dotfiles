@@ -232,11 +232,6 @@ set pastetoggle=<F2>
 " Reselecting Pasted text
 nnoremap <expr> gp '`[' . strpart(getregtype(), 0, 1) . '`]'
 
-" For using system clipboard
-" Bind <leader>y to forward last-yanked text to Clipper
-nnoremap <silent> <leader>y :call system('nc localhost 8377', @0)<CR>
-nnoremap <silent> <F19> :call system('nc localhost 8377', @0)<CR>
-
 
 """"""""""""""""
 " * Mappings * "
@@ -273,10 +268,9 @@ nnoremap <F12> :%s///g<CR>
 """""""""""""""""""""""
 " Leader Key Mappings "
 """""""""""""""""""""""
-" for inserting new lines (like <C-o>)
-nnoremap <silent> <leader><CR> i<CR><ESC>
 " this makes a nice surrounding block around a piece of text
 nnoremap <leader>1 :center 80<CR>hhv0r#A<SPACE><ESC>40A#<ESC>d80<BAR>YppVr#kk.
+
 " Another commenting tool
 nnoremap <leader>2 ^3a/<ESC>a<SPACE><ESC>75a*<ESC>o<ESC>^3a/<ESC>a<SPACE><ESC>75a*<ESC>O<ESC>^3a/<ESC>a<SPACE>
 
@@ -339,28 +333,6 @@ let g:tmuxline_powerline_separators = 1
 " Command to exec
 nnoremap <silent> <leader>a :ArgWrap<CR>
 
-
-""""""""
-"" NCM "
-""""""""
-"""" Neocomplete dead
-"if has("nvim")
-"    " for python completions
-"    let g:python_support_python3_requirements =
-"                \ add(get(g:,'python_support_python3_requirements',[]),'jedi')
-"    " language specific completions on markdown file
-"    let g:python_support_python3_requirements =
-"                \ add(get(g:,'python_support_python3_requirements',[]),'mistune')
-"    let g:python_support_python3_requirements =
-"                \ add(get(g:,'python_support_python3_requirements',[]),'python-language-server')
-"    " utils, optional
-"    let g:python_support_python3_requirements =
-"                \ add(get(g:,'python_support_python3_requirements',[]),'psutil')
-"    let g:python_support_python3_requirements =
-"                \ add(get(g:,'python_support_python3_requirements',[]),'setproctitle')
-"endif
-
-
 """""""""""""""""""""
 " Fugitive settings "
 """""""""""""""""""""
@@ -413,7 +385,6 @@ xmap ga <Plug>(EasyAlign)
 
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
-
 
 
 """""""""""""""""""""""
@@ -548,7 +519,7 @@ augroup pencil
     """""""""""""""""""""""""""""""""""""""""
     autocmd FileType html setlocal ts=2 sts=2 sw=2
     autocmd FileType ruby setlocal ts=2 sts=2 sw=2
-    autocmd FileType javascript,javascript.jsx
+    autocmd FileType javascript,javascript.jsx,typescript,typescript.tsx
                 \ setlocal ts=2 sts=2 sw=2 colorcolumn=100
                 \ | :iabbrev <buffer> True true
                 \ | :iabbrev <buffer> False false
@@ -575,13 +546,6 @@ let g:load_doxygen_syntax=1
 """""""""""""""""""
 " * Trial Items * "
 """""""""""""""""""
-
-"""""""""""""
-" vim notes "
-"""""""""""""
-" Currently Disabled
-" let g:notes_directories = ['~/Notes']
-" let g:notes_suffix = '.txt'
 
 """""""""""""
 " Hard Mode "
@@ -641,7 +605,8 @@ nmap [h <Plug>GitGutterPrevHunk
 """"""""""
 au FileType gitcommit,gitrebase let g:gutentags_enabled=0
 let g:airline#extensions#tabline#enabled = 1
-nmap <silent> <C-_> <Plug>(pydocstring)
+
+" nmap <silent> <C-_> <Plug>(pydocstring)
 
 "" let g:LanguageClient_serverCommands = {
 ""             \ 'javascript': ['javascript-typescript-stdio'],

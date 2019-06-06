@@ -16,8 +16,16 @@ sf() {
     [[ -n "$files" ]] && ${EDITOR:-vim} $files
 }
 
+
+gcob() {
+    local branches branch
+    branches=$(git --no-pager branch -vv --sort=-committerdate) &&
+        branch=$(echo "$branches" | fzf +m --reverse --height 40%) &&
+        git checkout $(echo "$branch" | awk '{print $1}' | sed "s/.* //")
+}
+
 ###########
 # Klaviyo #
 ###########
-source ~/.klaviyo_dev_profile.zsh
+# source ~/.klaviyo_dev_profile.zsh
 

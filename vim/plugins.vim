@@ -35,14 +35,21 @@ Plug 'vim-scripts/DoxygenToolkit.vim'
 " C extra stuff
 Plug 'justinmk/vim-syntax-extra'
 
-" CoffeeScript
-Plug 'kchmck/vim-coffee-script', { 'for': ['coffee'] }
+" Cassandra CQL
+Plug 'elubow/cql-vim'
+
+" Go Language
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'ncm2/ncm2-go', { 'do': 'go get -u github.com/mdempsky/gocode' }
 
 " Javascript
 Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'javascript.jsx'] }
 
 " Javascript doc tool
 Plug 'heavenshell/vim-jsdoc', { 'for': ['javascript', 'javascript.jsx'] }
+
+" Typescript
+Plug 'HerringtonDarkholme/yats.vim'
 
 " Jsx
 Plug 'mxw/vim-jsx', { 'for': ['javascript', 'javascript.jsx'] }
@@ -53,12 +60,15 @@ Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 " Stylus
 Plug 'wavded/vim-stylus', { 'for': 'stylus' }
 
+" Terraform
+Plug 'hashivim/vim-terraform', { 'for': 'terraform' }
+
 " Python thing - makes indentation the way I like
 Plug 'hynek/vim-python-pep8-indent', { 'for': 'python' }
 
 " Trial item
 Plug 'ambv/black'
-Plug 'heavenshell/vim-pydocstring'
+" Plug 'heavenshell/vim-pydocstring', { 'for': 'python' }
 
 " Markdown
 Plug 'plasticboy/vim-markdown', { 'for': ['markdown', 'gitcommit']}
@@ -69,6 +79,9 @@ Plug 'xuhdev/vim-latex-live-preview', { 'for': ['plaintex', 'tex'] }
 
 " Indent Deducer
 " Plug 'tpope/vim-sleuth'
+
+" Rust
+Plug 'rust-lang/rust.vim', { 'for': 'rust' }
 
 """""""""""
 " Editing "
@@ -129,6 +142,8 @@ if (has('nvim'))
     " Trial Items
     Plug 'ncm2/ncm2-path'
     Plug 'ncm2/ncm2-github'
+    Plug 'ncm2/ncm2-pyclang'
+    Plug 'ncm2/nvim-typescript', {'do': './install.sh'}
     Plug 'ncm2/ncm2-markdown-subscope'
     Plug 'ncm2/ncm2-html-subscope'
     Plug 'ncm2/ncm2-tagprefix'
@@ -140,22 +155,6 @@ if (has('nvim'))
     set completeopt=noinsert,menuone,noselect
     " Autoformater
     Plug 'sbdchd/neoformat'
-
-"     " Deoplete
-"     Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-
-"     " Python Autocomplete
-"     Plug 'davidhalter/jedi', { 'for': ['python'] }
-"     Plug 'zchee/deoplete-jedi', { 'for': ['python'] }
-
-"     " Javascript
-"     Plug 'ternjs/tern_for_vim', { 'for': ['javascript', 'javascript.jsx'] }
-"     Plug 'carlitux/deoplete-ternjs', { 'for': ['javascript', 'javascript.jsx'] }
-"     " Plug 'othree/jspc.vim', { 'for': ['javascript', 'javascript.jsx'] }
-"     " Plug 'autozimu/LanguageClient-neovim', {
-"     "             \ 'branch': 'next',
-"     "             \ 'do': 'bash install.sh',
-"     "             \ }
 else
     Plug 'Shougo/deoplete.nvim'
     Plug 'roxma/nvim-yarp'
