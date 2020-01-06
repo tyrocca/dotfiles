@@ -26,6 +26,9 @@ Plug 'romainl/flattened'
 " Tomorrow Theme
 Plug 'chriskempson/vim-tomorrow-theme'
 
+" papercolor
+Plug 'NLKNguyen/papercolor-theme'
+
 """""""""""""
 " Languages "
 """""""""""""
@@ -43,7 +46,7 @@ Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'ncm2/ncm2-go', { 'do': 'go get -u github.com/mdempsky/gocode' }
 
 " Javascript
-Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'javascript.jsx'] }
+Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'javascript.jsx', 'typescript', 'typescript.tsx'] }
 
 " Javascript doc tool
 Plug 'heavenshell/vim-jsdoc', { 'for': ['javascript', 'javascript.jsx'] }
@@ -52,7 +55,7 @@ Plug 'heavenshell/vim-jsdoc', { 'for': ['javascript', 'javascript.jsx'] }
 Plug 'HerringtonDarkholme/yats.vim'
 
 " Jsx
-Plug 'mxw/vim-jsx', { 'for': ['javascript', 'javascript.jsx'] }
+Plug 'MaxMEllon/vim-jsx-pretty', { 'for': ['javascript', 'javascript.jsx', 'typescript', 'typescript.tsx'] }
 
 " Styling
 Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
@@ -65,6 +68,7 @@ Plug 'hashivim/vim-terraform', { 'for': 'terraform' }
 
 " Python thing - makes indentation the way I like
 Plug 'hynek/vim-python-pep8-indent', { 'for': 'python' }
+Plug 'Integralist/vim-mypy'
 
 " Trial item
 Plug 'ambv/black'
@@ -205,7 +209,7 @@ Plug 'mhinz/vim-grepper'
 " Tmux and vim "
 """"""""""""""""
 " Tmux
-Plug 'keith/tmux.vim'
+Plug 'tmux-plugins/vim-tmux'
 
 " Tmux line
 Plug 'edkolev/tmuxline.vim'

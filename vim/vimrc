@@ -186,7 +186,8 @@ command! W  write
 
 " other abbrevs
 iabbrev py_breakpoint import ipdb; ipdb.set_trace()
-iabbrev pydebugger import ipdb; ipdb.set_trace()
+iabbrev pydebug import ipdb; ipdb.set_trace()
+iabbrev rdbdebug from celery.contrib import rdb; rdb.set_trace()
 iabbrev NOTE NOTE (tyrocca <C-R>=strftime("%Y-%m-%d")<CR>):
 iabbrev HACK HACK (tyrocca <C-R>=strftime("%Y-%m-%d")<CR>):
 iabbrev TODO TODO (tyrocca <C-R>=strftime("%Y-%m-%d")<CR>):

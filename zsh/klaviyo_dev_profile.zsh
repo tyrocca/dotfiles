@@ -111,10 +111,25 @@ alias gmco=git_month_checkout
 kljs() {
     cd ~/Klaviyo/Repos/fender/;
     nvm use node;
+    if [[ $# -eq 0 ]] ; then
+        return 0
+    else
+        git pull;
+        yarn && yarn dev
+    fi
+}
+
+rmpyc() {
+    find . -name '*.pyc' -exec rm -rf {} \;
+    find . -name __pycache__ -exec rm -rf {} \;
 }
 
 klapp() {
     cd ~/Klaviyo/Repos/app/;
+}
+
+klmaster() {
+    cd ~/Klaviyo/Repos/app-master/ && git pull
 }
 
 kldeploy() {
@@ -165,17 +180,77 @@ alias klemail='sudo python -m smtpd -n -c DebuggingServer localhost:25'
 
 alias klsettings='klapp && nvim ~/Klaviyo/Repos/app/src/learning/local_settings.py'
 
-alias ssh_micro='ssh qw-on-demand-micro-01b95436b45785331'
+alias ssh_micro='ssh qw-on-demand-micro-0aa1a7b73f7464c18'
 
-alias qw_pagerduty='ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no qw-pagerduty-ondemand.servers.clovesoftware.com'
+alias qw_pagerduty='ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no qw-on-demand-small-01a8099de57e7675d'
+
+export django_1_7='1.7.11'
+export django_1_8='1.8.19'
 
 kl_update_buildout() {
+    django_version=""
+    if [[ $# -eq 0 ]] ; then
+        django_version=$django_1_7
+    else
+        django_version=$1
+    fi
+    echo "Setting django version to ${django_version}"
+
+    # sed -i .bak "s/^Django = [^']*/Django = ${django_version}/" buildout.cfg && \
+    # sed -i .bak "s/\(pyOpenSSL\)[^']*/\1 == 16.2.0/; s/\(django ==\) [^']*/\1 ${django_version}/" setup.py && \
+    # mv buildout.cfg.bak buildout.cfg
+    export KLAVIYO_FORCE_DJANGO_VERSION=$django_version
     klapp && \
-        sed -i .bak "s/\(pyOpenSSL\)[^']*/\1 == 16.2.0/g" setup.py \
-        && ./bin/buildout \
-        && mv setup.py.bak setup.py
+        sed -i .bak "s/\(pyOpenSSL\)[^']*/\1 == 16.2.0/" setup.py && \
+        KLAVIYO_FORCE_DJANGO_VERSION=${django_version} ./bin/buildout && \
+        mv setup.py.bak setup.py
+    unset KLAVIYO_FORCE_DJANGO_VERSION
+}
+
+kl_migrate() {
+    export KLAVIYO_FORCE_DJANGO_VERSION=$django_1_8
+    klapp && \
+        kl_update_buildout $django_1_8 && \
+        ./bin/django migrate_klaviyo_databases --fast && \
+        kl_update_buildout $django_1_7
+    unset KLAVIYO_FORCE_DJANGO_VERSION
 }
 
 export PYENV_VIRTUALENVWRAPPER_PREFER_PYVENV="true"
 
 # alias klfab='kldeploy && fab'
+#
+export INFRASTRUCTURE_DEPLOYMENT_REPO_PATH="$HOME/klaviyo/infrastructure-deployment"
+
+function MarkUnhealthy() {
+    aws autoscaling set-instance-health --instance-id $1 --health-status Unhealthy;
+}
+function CompleteTerminatingLifecycleHook() {
+    if [[ "$1" == "help" || "$1" == "-h" || "$1" == "" ]]; then
+        echo "Usage: CompleteTerminatingLifecycleHook [ASG NAME] [INSTANCE ID]"
+    else
+        aws autoscaling complete-lifecycle-action --auto-scaling-group-name $1 --lifecycle-action-result CONTINUE --lifecycle-hook-name "$(echo $1 | sed 's/\./_/g')/hook_terminating" --instance-id $2
+    fi
+}
+function CompleteLaunchingLifecycleHook() {
+    if [[ "$1" == "help" || "$1" == "-h" || "$1" == "" ]]; then
+        echo "Usage: CompleteLaunchingLifecycleHook [ASG NAME] [INSTANCE ID]"
+    else
+        aws autoscaling complete-lifecycle-action --auto-scaling-group-name $2 --lifecycle-action-result CONTINUE --lifecycle-hook-name "$(echo $2 | sed 's/\./_/g')/hook_launching" --instance-id $3
+    fi
+}
+function tf() {
+    if [[ "$1" == "help" || "$1" == "-h" || "$1" == "" ]]; then
+        echo "Usage: tf [ENV] [MODULE] [COMMAND]";
+    else
+        if [[ "$4" == "" ]]; then
+            cmd="terraform.py --env $1 --module $2 --command $3"
+            echo $cmd
+            $cmd
+        else
+            cmd="terraform.py --env $1 --module $2 --command $3 --parallelism $4"
+            echo $cmd
+            $cmd
+        fi
+    fi
+}

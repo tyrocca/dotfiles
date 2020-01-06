@@ -80,6 +80,10 @@ PATH="/usr/local/opt/ncurses/bin:$PATH"
 # add in brew ruby
 PATH="/usr/local/opt/ruby/bin:$PATH"
 
+# LLVM from brew
+# PATH="/usr/local/opt/llvm/bin:$PATH"
+
+
 # END OF PATH
 
 # add Go
@@ -127,7 +131,7 @@ export PATH
 # Add wisely, as too many plugins slow down shell startup.
 
 plugins=(git osx tmux tmuxinator web-search python \
-    django pyenv npm pip yarn docker)
+    django pyenv npm pip yarn docker zsh-aws-vault)
 
 # here we source oh my zsh
 source $ZSH/oh-my-zsh.sh
@@ -203,7 +207,9 @@ toggle_background() {
     if [ $old_color = "light" ]
     then
         vim -u NONE ~/.zshrc "+%s/VIM_BACKGROUND=\zslight\ze/dark/ge" "+silent+" "+wq"
+        vim -u NONE ~/.zshrc "+%s/VIM_COLOR_SCHEME=\zspapercolor\ze/gruvbox/ge" "+silent+" "+wq"
     else
+        vim -u NONE ~/.zshrc "+%s/VIM_COLOR_SCHEME=\zsgruvbox\ze/papercolor/ge" "+silent+" "+wq"
         vim -u NONE ~/.zshrc "+%s/VIM_BACKGROUND=\zsdark\ze/light/ge" "+silent+" "+wq"
     fi
     source ~/.zshrc
@@ -221,6 +227,8 @@ clean_merged_branches() {
 ###########
 source ~/dotfiles/zsh/addons.zsh
 source ~/.klaviyo_dev_profile.zsh
+
+if [ -e /Users/tyrocca/.nix-profile/etc/profile.d/nix.sh ]; then . /Users/tyrocca/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
 
 ########
 # MISC #
@@ -248,3 +256,9 @@ export GPG_TTY=$(tty)
 
 alias godir="cd $GOPATH/src/github.com/tyrocca/"
 
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/tyrocca/Downloads/google-cloud-sdk 2/path.zsh.inc' ]; then . '/Users/tyrocca/Downloads/google-cloud-sdk 2/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/tyrocca/Downloads/google-cloud-sdk 2/completion.zsh.inc' ]; then . '/Users/tyrocca/Downloads/google-cloud-sdk 2/completion.zsh.inc'; fi
