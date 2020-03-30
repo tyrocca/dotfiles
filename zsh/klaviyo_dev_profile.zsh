@@ -115,8 +115,21 @@ kljs() {
         return 0
     else
         git pull;
-        yarn && yarn dev
+        yarn && yarn dev:all
     fi
+}
+
+klms() {
+    if [[ $# -eq 0 ]] ; then
+        nvim ~/Klaviyo/Scratch/klmisc
+    else
+        nvim ~/Klaviyo/Scratch/klmisc/$1
+    fi
+}
+
+klhb() {
+    cd ~/Klaviyo/Repos/eng-handbook/;
+    git br
 }
 
 rmpyc() {
@@ -126,6 +139,10 @@ rmpyc() {
 
 klapp() {
     cd ~/Klaviyo/Repos/app/;
+}
+
+klcs() {
+    cd ~/Klaviyo/Repos/commerceservice/;
 }
 
 klmaster() {
@@ -152,16 +169,18 @@ klshell() {
 alias klworkers='klapp && bin/wrk -d'
 alias klfix='klapp && git checkout -- src/learning/media/dev-js/react/account_management/user_management-bundle.js src/learning/media/dev-js/react/folders/folders-bundle.js src/learning/media/dev-js/react/profiles/profiles-bundle.js src/learning/media/js/react/profiles/profiles-bundle.js src/learning/media/js/react/folders/folders-bundle.js src/learning/media/js/react/account_management/user_management-bundle.js'
 
-alias klserve='klapp && sudo bin/django runserver 127.0.0.1:80'
+alias klserve='klapp && bin/django runserver 127.0.0.1:8765'
 alias kl-compile-statics="bin/django compile_assets --closure-jar=~/Klaviyo/Misc/js_compiler.jar && bin/django remove_sourcemaps"
 
 alias grafana='ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -L 8888:127.0.0.01:8888 -L 7878:localhost:3000 ubuntu@grafana.klaviyodevops.com'
+alias grafana2='ssh -o LogLevel=quiet -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -Nf -L 9988:127.0.0.01:8888 -L 9200:127.0.0.1:9200 -L 3000:localhost:3000 -L 8888:localhost:8888 grafana.klaviyodevops.com'
 
 # needs to be run on init
 kl_init_cassandra() {
     sudo ifconfig lo0 alias 127.0.0.2 up;
     sudo ifconfig lo0 alias 127.0.0.3 up;
     ccm start;
+    return 0
 }
 
 # Kick celery so it starts running again:
@@ -176,26 +195,32 @@ alias klcomponents='cd ~/Klaviyo/Repos/fender/packages/component-library'
 #utils
 alias klutils='cd ~/Klaviyo/Repos/fender/packages/utils'
 
-alias klemail='sudo python -m smtpd -n -c DebuggingServer localhost:25'
+alias klemail='python -m smtpd -n -c DebuggingServer localhost:8766'
 
 alias klsettings='klapp && nvim ~/Klaviyo/Repos/app/src/learning/local_settings.py'
 
 alias ssh_micro='ssh qw-on-demand-micro-0aa1a7b73f7464c18'
 
-alias qw_pagerduty='ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no qw-on-demand-small-01a8099de57e7675d'
+alias qw_pagerduty='ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no qw-on-demand-small-0f8b4d9c034040986'
 
-export django_1_7='1.7.11'
 export django_1_8='1.8.19'
+export django_1_9='1.9.13'
+export django_1_10='1.10.8'
+export django_1_11='1.11.29'
+
+export django_current=$django_1_9
 
 kl_update_buildout() {
     django_version=""
     if [[ $# -eq 0 ]] ; then
-        django_version=$django_1_7
+        django_version=$django_current
     else
         django_version=$1
     fi
     echo "Setting django version to ${django_version}"
 
+    # should we check version?
+    # [[ $(./bin/django version) == $django_1_8 ]] && echo "true" || echo "false"
     # sed -i .bak "s/^Django = [^']*/Django = ${django_version}/" buildout.cfg && \
     # sed -i .bak "s/\(pyOpenSSL\)[^']*/\1 == 16.2.0/; s/\(django ==\) [^']*/\1 ${django_version}/" setup.py && \
     # mv buildout.cfg.bak buildout.cfg
@@ -208,11 +233,10 @@ kl_update_buildout() {
 }
 
 kl_migrate() {
-    export KLAVIYO_FORCE_DJANGO_VERSION=$django_1_8
+    export KLAVIYO_FORCE_DJANGO_VERSION=$django_current
     klapp && \
-        kl_update_buildout $django_1_8 && \
-        ./bin/django migrate_klaviyo_databases --fast && \
-        kl_update_buildout $django_1_7
+        kl_update_buildout $KLAVIYO_FORCE_DJANGO_VERSION && \
+        ./bin/django migrate_klaviyo_databases --fast
     unset KLAVIYO_FORCE_DJANGO_VERSION
 }
 
@@ -253,4 +277,21 @@ function tf() {
             $cmd
         fi
     fi
+}
+
+# AWS MFA Helpers
+avprod() {
+  # If you are not authenticated for 1pass then authenticate first
+  if ! op list items > /dev/null; then
+    eval $(op signin rocca-family)
+  fi
+  aws-vault exec --mfa-token="$(op get totp aws-klaviyo)" klaviyo-prod -- zsh
+}
+
+avdev() {
+  # If you are not authenticated for 1pass then authenticate first
+  if ! op list items > /dev/null; then
+    eval $(op signin rocca-family)
+  fi
+  aws-vault exec --mfa-token="$(op get totp aws-klaviyo-dev)" klaviyo-dev -- zsh
 }

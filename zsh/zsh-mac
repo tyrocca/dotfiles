@@ -1,12 +1,16 @@
 # Path to your oh-my-zsh installation.
-export ZSH=/Users/tyrocca/.oh-my-zsh
+export ZSH="/Users/tyrocca/.oh-my-zsh"
 
-DEFAULT_USER=tyrocca
+DEFAULT_USER="tyrocca"
+
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
 ZSH_THEME=robbyrussell
+# ZSH_THEME=ys
+# for adding date
+# RPROMPT="[%D{%y/%m/%f}|%@]"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -52,76 +56,6 @@ DISABLE_UPDATE_PROMPT=true
 # User configuration
 export EDITOR="nvim"
 
-#######################
-# PATH configurations #
-#######################
-
-
-PATH=$(/usr/bin/getconf PATH)
-
-# add this infront of path?
-# PATH="/usr/local/opt/python@2/libexec/bin:$PATH"
-
-# stack package recommended this:
-PATH="/Users/$USER/.local/bin:$PATH"
-
-# Add brew to path
-PATH="/usr/local/bin:/usr/local/sbin:$PATH"
-
-# add yarn to the path
-PATH="`yarn global bin`:$PATH"
-
-# add open ssl to path (this is very annoying) ????? HERE
-PATH="/usr/local/opt/openssl/bin:$PATH"
-
-# this for vim
-PATH="/usr/local/opt/ncurses/bin:$PATH"
-
-# add in brew ruby
-PATH="/usr/local/opt/ruby/bin:$PATH"
-
-# LLVM from brew
-# PATH="/usr/local/opt/llvm/bin:$PATH"
-
-
-# END OF PATH
-
-# add Go
-PATH=$PATH:$(go env GOPATH)/bin
-
-export GOPATH=$(go env GOPATH)
-# PATH=$PATH:${GOPATH//://bin:}/bin
-# PATH=$PATH:$GOPATH/bin
-
-# add rust
-PATH="$PATH:$HOME/.cargo/bin"
-
-# GCC
-# PATH="/usr/local/Cellar/gcc/7.2.0/bin:$PATH"
-# alias gcc="/usr/local/Cellar/gcc/7.2.0/bin/gcc-7"
-
-export PATH
-
-# export MANPATH="/usr/local/man:$MANPATH"
-
-##############################
-# * Python and virtual env * #
-##############################
-# # The python stuff has to be place here because the plugins get confused
-# # This has to be placed above
-# # alias python="/usr/local/bin/python2"
-# # alias python="/usr/local/bin/python3"
-# export PIP_ROOT_DIR='/usr/local/lib/python2.7/site-packages'
-
-# # Virtual Env Things
-# # export PYTHONPATH="${PYTHONPATH}:/usr/bin"
-# export PYTHONPATH="/usr/local/lib/python:$PYTHONPATH"
-# export WORKON_HOME=~/Envs
-# export PROJECT_HOME=~/Code/current_projects
-# export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python2.7
-# export VIRTUALENVWRAPPER_VIRTUALENV=/usr/local/bin/virtualenv
-# source /usr/local/bin/virtualenvwrapper.sh
-
 ###############
 # ZSH PLUGINS #
 ###############
@@ -131,34 +65,68 @@ export PATH
 # Add wisely, as too many plugins slow down shell startup.
 
 plugins=(git osx tmux tmuxinator web-search python \
-    django pyenv npm pip yarn docker zsh-aws-vault)
+    django pyenv npm zsh-nvm pip yarn docker zsh-aws-vault)
 
 # here we source oh my zsh
 source $ZSH/oh-my-zsh.sh
 
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
+#######################
+# PATH configurations #
+#######################
 
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
+PATH=$(/usr/bin/getconf PATH)
 
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
+# add this infront of path?
+# PATH="/usr/local/opt/python@2/libexec/bin:$PATH"
+
+# ORDERED LEAST TO MOST SPECIFIC
+
+# Add brew to path
+PATH="/usr/local/bin:/usr/local/sbin:$PATH"
+
+# stack package recommended this:
+PATH="/Users/$USER/.local/bin:$PATH"
+
+# add yarn to the path
+PATH="`yarn global bin`:$PATH"
+
+# add open ssl to path (this is very annoying) ????? HERE
+PATH="/usr/local/opt/openssl/bin:$PATH"
+
+# add terraform 0.11.7 for Klaviyo
+PATH="$(brew --prefix)/Caskroom/terraform-0.11.7/0.11.7:$PATH"
+
+# add pgsql 10
+PATH="/Applications/Postgres.app/Contents/Versions/10/bin:$PATH"
+
+# this for vim
+# PATH="/usr/local/opt/ncurses/bin:$PATH"
+
+# add in brew ruby
+PATH="/usr/local/opt/ruby/bin:$PATH"
+PATH="$PATH:/usr/local/lib/ruby/gems/2.6.0/bin"
+
+# Least important added to end of path
+
+# add Go
+PATH=$PATH:$(go env GOPATH)/bin
+export GOPATH=$(go env GOPATH)
+
+# add rust
+PATH="$PATH:$HOME/.cargo/bin"
+
+export PATH
+
+# export MANPATH="/usr/local/man:$MANPATH"
 
 # ssh
 export SSH_KEY_PATH="~/.ssh/"
-export PEM_KEY_PATH="~/.ssh/keys/"
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 
-# export ZSH_CUSTOM="~/dotfiles/zsh/"
 source ~/dotfiles/zsh/aliases.zsh
 
 #bindkey -v
@@ -225,8 +193,8 @@ clean_merged_branches() {
 ###########
 # Add-ons #
 ###########
-source ~/dotfiles/zsh/addons.zsh
-source ~/.klaviyo_dev_profile.zsh
+. ~/dotfiles/zsh/addons.zsh
+. ~/dotfiles/zsh/klaviyo_dev_profile.zsh
 
 if [ -e /Users/tyrocca/.nix-profile/etc/profile.d/nix.sh ]; then . /Users/tyrocca/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
 
@@ -262,3 +230,8 @@ if [ -f '/Users/tyrocca/Downloads/google-cloud-sdk 2/path.zsh.inc' ]; then . '/U
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/tyrocca/Downloads/google-cloud-sdk 2/completion.zsh.inc' ]; then . '/Users/tyrocca/Downloads/google-cloud-sdk 2/completion.zsh.inc'; fi
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+alias tmuxp="${HOME}/.pyenv/versions/python3-misc/bin/tmuxp"
+export DISABLE_AUTO_TITLE='true'

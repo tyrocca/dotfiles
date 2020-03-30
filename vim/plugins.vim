@@ -25,6 +25,8 @@ Plug 'romainl/flattened'
 
 " Tomorrow Theme
 Plug 'chriskempson/vim-tomorrow-theme'
+" TODO (tyrocca 2020-03-16):
+" Plug 'chriskempson/base16-vim'
 
 " papercolor
 Plug 'NLKNguyen/papercolor-theme'
@@ -57,6 +59,9 @@ Plug 'HerringtonDarkholme/yats.vim'
 " Jsx
 Plug 'MaxMEllon/vim-jsx-pretty', { 'for': ['javascript', 'javascript.jsx', 'typescript', 'typescript.tsx'] }
 
+" Jenkins
+Plug 'martinda/Jenkinsfile-vim-syntax'
+
 " Styling
 Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 
@@ -68,10 +73,13 @@ Plug 'hashivim/vim-terraform', { 'for': 'terraform' }
 
 " Python thing - makes indentation the way I like
 Plug 'hynek/vim-python-pep8-indent', { 'for': 'python' }
-Plug 'Integralist/vim-mypy'
+" Plug 'Integralist/vim-mypy'
 
 " Trial item
-Plug 'ambv/black'
+if (has('nvim'))
+    Plug 'psf/black', { 'tag': '19.10b0' }
+    " Plug 'psf/black'
+endif
 " Plug 'heavenshell/vim-pydocstring', { 'for': 'python' }
 
 " Markdown
@@ -307,8 +315,8 @@ call plug#end()
     "Plug 'Shougo/neco-vim'
     "Plug 'sbdchd/neoformat'
 
-    "" LSP
-    "Plug 'autozimu/LanguageClient-neovim', {
-    "            \ 'branch': 'next',
-    "            \ 'do': 'bash install.sh',
-    "            \ }
+"" LSP
+Plug 'autozimu/LanguageClient-neovim', {
+            \ 'branch': 'next',
+            \ 'do': 'bash install.sh',
+            \ }
