@@ -143,6 +143,20 @@ klapp() {
 
 klcs() {
     cd ~/Klaviyo/Repos/commerceservice/;
+    if [[ $# -eq 0 ]] ; then
+        return 0
+    else
+        GRPC_SERVE_PORT=50052 ./manage.py serve
+    fi
+}
+
+klhb() {
+    cd ~/Documents/eng-handbook/;
+    if [[ $# -eq 0 ]] ; then
+        return 0
+    else
+        git pull;
+    fi
 }
 
 klmaster() {
@@ -208,9 +222,9 @@ export django_1_9='1.9.13'
 export django_1_10='1.10.8'
 export django_1_11='1.11.29'
 
-export django_current=$django_1_9
+export django_current=$django_1_10
 
-kl_update_buildout() {
+kl_update() {
     django_version=""
     if [[ $# -eq 0 ]] ; then
         django_version=$django_current
@@ -226,16 +240,18 @@ kl_update_buildout() {
     # mv buildout.cfg.bak buildout.cfg
     export KLAVIYO_FORCE_DJANGO_VERSION=$django_version
     klapp && \
-        sed -i .bak "s/\(pyOpenSSL\)[^']*/\1 == 16.2.0/" setup.py && \
-        KLAVIYO_FORCE_DJANGO_VERSION=${django_version} ./bin/buildout && \
-        mv setup.py.bak setup.py
+        echo "flush_all" | nc localhost 11211 &&
+        # sed -i .bak "s/\(pyOpenSSL\)[^']*/\1 == 16.2.0/" setup.py && \
+        KLAVIYO_FORCE_DJANGO_VERSION=${django_version} pip install -e . && \
+        pip install -r test_requirements.txt
+        # mv setup.py.bak setup.py
     unset KLAVIYO_FORCE_DJANGO_VERSION
 }
 
 kl_migrate() {
     export KLAVIYO_FORCE_DJANGO_VERSION=$django_current
     klapp && \
-        kl_update_buildout $KLAVIYO_FORCE_DJANGO_VERSION && \
+        kl_update $KLAVIYO_FORCE_DJANGO_VERSION && \
         ./bin/django migrate_klaviyo_databases --fast
     unset KLAVIYO_FORCE_DJANGO_VERSION
 }
@@ -295,3 +311,7 @@ avdev() {
   fi
   aws-vault exec --mfa-token="$(op get totp aws-klaviyo-dev)" klaviyo-dev -- zsh
 }
+
+# PIP Things
+export KL_PIP_INSTALL=1
+

@@ -45,7 +45,6 @@ Plug 'elubow/cql-vim'
 
 " Go Language
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-Plug 'ncm2/ncm2-go', { 'do': 'go get -u github.com/mdempsky/gocode' }
 
 " Javascript
 Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'javascript.jsx', 'typescript', 'typescript.tsx'] }
@@ -155,7 +154,8 @@ if (has('nvim'))
     Plug 'ncm2/ncm2-path'
     Plug 'ncm2/ncm2-github'
     Plug 'ncm2/ncm2-pyclang'
-    Plug 'ncm2/nvim-typescript', {'do': './install.sh'}
+    " Plug 'ncm2/nvim-typescript', {'do': './install.sh'}
+    Plug 'ncm2/ncm2-go', { 'do': 'go get -u github.com/mdempsky/gocode' }
     Plug 'ncm2/ncm2-markdown-subscope'
     Plug 'ncm2/ncm2-html-subscope'
     Plug 'ncm2/ncm2-tagprefix'

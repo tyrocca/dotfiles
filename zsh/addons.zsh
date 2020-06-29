@@ -5,6 +5,9 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 . /Users/tyrocca/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
 
 
+# the fuck plugin
+eval $(thefuck --alias)
+
 # http://owen.cymru/sf-a-quick-way-to-search-for-some-thing-in-bash-and-edit-it-with-vim-2/
 sf() {
     if [ "$#" -lt 1 ]; then echo "Supply string to search for!"; return 1; fi

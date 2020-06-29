@@ -64,7 +64,7 @@ export EDITOR="nvim"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 
-plugins=(git osx tmux tmuxinator web-search python \
+plugins=(git osx tmux tmuxinator web-search python autojump \
     django pyenv npm zsh-nvm pip yarn docker zsh-aws-vault)
 
 # here we source oh my zsh
@@ -74,10 +74,11 @@ source $ZSH/oh-my-zsh.sh
 # PATH configurations #
 #######################
 
-PATH=$(/usr/bin/getconf PATH)
+# PATH=$(/usr/bin/getconf PATH)
+PATH=$(/usr/libexec/path_helper)
 
 # add this infront of path?
-# PATH="/usr/local/opt/python@2/libexec/bin:$PATH"
+# PATH="/usr/local/opt/python@3/libexec/bin:$PATH"
 
 # ORDERED LEAST TO MOST SPECIFIC
 

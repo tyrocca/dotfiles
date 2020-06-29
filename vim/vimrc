@@ -609,6 +609,9 @@ nmap [h <Plug>GitGutterPrevHunk
 au FileType gitcommit,gitrebase let g:gutentags_enabled=0
 let g:airline#extensions#tabline#enabled = 1
 
+" https://github.com/ludovicchabant/vim-gutentags/issues/179
+" let g:gutentags_file_list_command = {'markers': {'.pythontags': '/Users/tyrocca/Code/python-playground/python_file_lister.py'} }
+
 " nmap <silent> <C-_> <Plug>(pydocstring)
 
 "" let g:LanguageClient_serverCommands = {
