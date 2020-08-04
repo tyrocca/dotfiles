@@ -222,7 +222,7 @@ export django_1_9='1.9.13'
 export django_1_10='1.10.8'
 export django_1_11='1.11.29'
 
-export django_current=$django_1_10
+export django_current=$django_1_11
 
 kl_update() {
     django_version=""
@@ -299,7 +299,7 @@ function tf() {
 avprod() {
   # If you are not authenticated for 1pass then authenticate first
   if ! op list items > /dev/null; then
-    eval $(op signin rocca-family)
+    eval $(op signin rocca_family)
   fi
   aws-vault exec --mfa-token="$(op get totp aws-klaviyo)" klaviyo-prod -- zsh
 }
@@ -307,7 +307,7 @@ avprod() {
 avdev() {
   # If you are not authenticated for 1pass then authenticate first
   if ! op list items > /dev/null; then
-    eval $(op signin rocca-family)
+    eval $(op signin rocca_family)
   fi
   aws-vault exec --mfa-token="$(op get totp aws-klaviyo-dev)" klaviyo-dev -- zsh
 }
