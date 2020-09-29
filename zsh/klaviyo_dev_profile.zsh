@@ -39,7 +39,7 @@ klaviyo_services() {
         klaviyo_services stop
         klaviyo_services start
     elif [[ $action == "start" || $action == "stop" ]]; then
-        echo memcached rabbitmq mysql@5.6 redis | xargs -n1 brew services $action
+        echo memcached rabbitmq mysql@5.7 redis | xargs -n1 brew services $action
         ccm $action
     else
         brew services list
@@ -111,6 +111,7 @@ alias gmco=git_month_checkout
 kljs() {
     cd ~/Klaviyo/Repos/fender/;
     nvm use node;
+    nvm use 12.17.0;
     if [[ $# -eq 0 ]] ; then
         return 0
     else
@@ -315,3 +316,19 @@ avdev() {
 # PIP Things
 export KL_PIP_INSTALL=1
 
+tunnel_grafana() {
+    pkill -f 'ssh.*3000:localhost:3000'
+    ssh -Nf -o LogLevel=quiet -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -L 3000:localhost:3000 graphite-grafana-vpc-0c4d58fa1becf5c72
+}
+
+MarkUnhealthy() {
+    aws autoscaling set-instance-health --region us-east-1 --profile klaviyo-prod --health-status Unhealthy --instance-id $1
+}
+
+
+update_commerceservice() {
+    curdir=$(PWD);
+    klcs \
+    && cp -r client/commerceservice/client /Users/tyrocca/.pyenv/versions/2.7.18/envs/app/lib/python2.7/site-packages/commerceservice \
+    && cd $curdir
+}

@@ -205,7 +205,8 @@ if has("gui_running")
     " plugin to speed up control p
     Plug 'FelikZ/ctrlp-py-matcher'
 else
-    Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+    " Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+    Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
     Plug 'junegunn/fzf.vim'
 endif
 
@@ -248,6 +249,9 @@ Plug 'tpope/vim-fugitive'
 
 " vim REPL
 Plug 'jpalardy/vim-slime'
+
+" vim DB management
+Plug 'tpope/vim-dadbod'
 
 " Git changes
 Plug 'airblade/vim-gitgutter'

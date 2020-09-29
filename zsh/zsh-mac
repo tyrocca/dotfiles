@@ -75,7 +75,10 @@ source $ZSH/oh-my-zsh.sh
 #######################
 
 # PATH=$(/usr/bin/getconf PATH)
-PATH=$(/usr/libexec/path_helper)
+if [ -x /usr/libexec/path_helper ]; then
+	PATH=""
+	eval `/usr/libexec/path_helper -s`
+fi
 
 # add this infront of path?
 # PATH="/usr/local/opt/python@3/libexec/bin:$PATH"
@@ -98,7 +101,8 @@ PATH="/usr/local/opt/openssl/bin:$PATH"
 PATH="$(brew --prefix)/Caskroom/terraform-0.11.7/0.11.7:$PATH"
 
 # add pgsql 10
-PATH="/Applications/Postgres.app/Contents/Versions/10/bin:$PATH"
+# PATH="/Applications/Postgres.app/Contents/Versions/10/bin:$PATH"
+PATH="/Applications/Postgres.app/Contents/Versions/11/bin:$PATH"
 
 # this for vim
 # PATH="/usr/local/opt/ncurses/bin:$PATH"
@@ -110,8 +114,8 @@ PATH="$PATH:/usr/local/lib/ruby/gems/2.6.0/bin"
 # Least important added to end of path
 
 # add Go
-PATH=$PATH:$(go env GOPATH)/bin
-export GOPATH=$(go env GOPATH)
+PATH="$PATH:$(go env GOPATH)/bin"
+export GOPATH="$(go env GOPATH)"
 
 # add rust
 PATH="$PATH:$HOME/.cargo/bin"
