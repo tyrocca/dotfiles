@@ -241,12 +241,13 @@ kl_update() {
     # mv buildout.cfg.bak buildout.cfg
     export KLAVIYO_FORCE_DJANGO_VERSION=$django_version
     klapp && \
-        echo "flush_all" | nc localhost 11211 &&
-        # sed -i .bak "s/\(pyOpenSSL\)[^']*/\1 == 16.2.0/" setup.py && \
         KLAVIYO_FORCE_DJANGO_VERSION=${django_version} pip install -e . && \
         pip install -r test_requirements.txt
+        # echo "flush_all" | nc localhost 11211 &&
+        # sed -i .bak "s/\(pyOpenSSL\)[^']*/\1 == 16.2.0/" setup.py && \
         # mv setup.py.bak setup.py
     unset KLAVIYO_FORCE_DJANGO_VERSION
+    (sleep 2; echo flush_all; sleep 2; echo quit; ) | telnet 127.0.0.1 11211;
 }
 
 kl_migrate() {
@@ -332,3 +333,6 @@ update_commerceservice() {
     && cp -r client/commerceservice/client /Users/tyrocca/.pyenv/versions/2.7.18/envs/app/lib/python2.7/site-packages/commerceservice \
     && cd $curdir
 }
+
+alias klaviyocli='/Users/tyrocca/.klaviyocli/.venv/bin/klaviyocli'
+

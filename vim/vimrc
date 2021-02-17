@@ -522,6 +522,7 @@ augroup pencil
     """""""""""""""""""""""""""""""""""""""""
     autocmd FileType html setlocal ts=2 sts=2 sw=2
     autocmd FileType ruby setlocal ts=2 sts=2 sw=2
+    autocmd FileType yaml setlocal ts=2 sts=2 sw=2
     autocmd FileType javascript,javascript.jsx,typescript,typescript.tsx
                 \ setlocal ts=2 sts=2 sw=2 colorcolumn=100
                 \ | :iabbrev <buffer> True true
