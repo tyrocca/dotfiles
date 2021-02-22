@@ -60,12 +60,12 @@ eval "$(pyenv virtualenv-init - 2>/dev/null)"
 # SETUP THINGS #
 ################
 
-# NVM setup
-export NVM_DIR="$HOME/.nvm"
-# . "/usr/local/opt/nvm/nvm.sh"
-NVM_HOMEBREW="/usr/local/opt/nvm/nvm.sh"
-[ -s "$NVM_HOMEBREW" ] && \. "$NVM_HOMEBREW"
-[ -x "$(command -v npm)" ] && export NODE_PATH=$NODE_PATH:`npm root -g`
+# # NVM setup
+# export NVM_DIR="$HOME/.nvm"
+# # . "/usr/local/opt/nvm/nvm.sh"
+# NVM_HOMEBREW="/usr/local/opt/nvm/nvm.sh"
+# [ -s "$NVM_HOMEBREW" ] && \. "$NVM_HOMEBREW"
+# [ -x "$(command -v npm)" ] && export NODE_PATH=$NODE_PATH:`npm root -g`
 
 # export NVM_DIR="$HOME/.nvm"
 # [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
@@ -110,8 +110,8 @@ alias gmco=git_month_checkout
 
 kljs() {
     cd ~/Klaviyo/Repos/fender/;
-    nvm use node;
-    nvm use 12.17.0;
+    # nvm use node;
+    # nvm use 12.17.0;
     if [[ $# -eq 0 ]] ; then
         return 0
     else
@@ -335,4 +335,3 @@ update_commerceservice() {
 }
 
 alias klaviyocli='/Users/$USER/.klaviyocli/.venv/bin/klaviyocli'
-

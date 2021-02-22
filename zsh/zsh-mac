@@ -2,6 +2,7 @@
 export ZSH=~/.oh-my-zsh
 
 DEFAULT_USER="ty.rocca"
+GIT_USER="tyrocca"
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -64,8 +65,8 @@ export EDITOR="nvim"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 
-plugins=(git osx tmux tmuxinator web-search python autojump \
-    django pyenv npm zsh-nvm pip yarn docker zsh-aws-vault)
+plugins=(git osx tmux tmuxinator python \
+    django pyenv zsh-nvm pip yarn docker zsh-aws-vault)
 
 # here we source oh my zsh
 source $ZSH/oh-my-zsh.sh
@@ -230,7 +231,7 @@ export GPG_TTY=$(tty)
 # Go #
 ######
 
-alias godir="cd $GOPATH/src/github.com/tyrocca/"
+alias godir="cd $GOPATH/src/github.com/$GIT_USER/"
 
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"

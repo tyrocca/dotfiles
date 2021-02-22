@@ -5,8 +5,8 @@ set nocompatible              " be iMproved, required
 " https://github.com/junegunn/vim-plug
 
 if has('nvim')
-    let g:python_host_prog = '/Users/tyrocca/.pyenv/versions/neovim27/bin/python'
-    let g:python3_host_prog = '/Users/tyrocca/.pyenv/versions/neovim38/bin/python'
+    let g:python_host_prog = '~/.pyenv/versions/neovim27/bin/python'
+    let g:python3_host_prog = '~/.pyenv/versions/neovim/bin/python'
 endif
 
 
