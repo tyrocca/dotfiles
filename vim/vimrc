@@ -48,8 +48,8 @@ else
     if has("gui_vimr")
         " in vimR we want the gui colors because they look nice
         set termguicolors
-    elseif ($USER == "ty" || $USER == "tyrocca")
-        if ($USER == "tyrocca" && has("termguicolors"))
+    elseif ($USER == "ty" || $USER == "tyrocca" || $USER == "ty.rocca")
+        if (($USER == "tyrocca" || $USER == "ty.rocca") && has("termguicolors"))
             set termguicolors
             " set clipboard=unnamed,unnamedplus
             let g:gruvbox_italic=1
@@ -409,8 +409,8 @@ endif
 " let g:neomake_python_enabled_makers = ['pylint']
 " let g:neomake_python_enabled_makers = ['pylint', 'flake8']
 " Ignore Errors
-let g:neomake_python_mypy_exe = '/Users/tyrocca/.pyenv/versions/neovim38/bin/mypy'
-let g:neomake_python_flake8_exe = '/Users/tyrocca/.pyenv/versions/neovim38/bin/flake8'
+let g:neomake_python_mypy_exe = '~/.pyenv/versions/neovim38/bin/mypy'
+let g:neomake_python_flake8_exe = '~/.pyenv/versions/neovim38/bin/flake8'
 let g:neomake_python_enabled_makers = ['flake8', 'mypy']
 let g:neomake_python_flake8_args = ['--max-line-length=88', '--ignore=W391']
 " let g:neomake_python_flake8_args = ['--max-line-length=88', '--ignore=W391']

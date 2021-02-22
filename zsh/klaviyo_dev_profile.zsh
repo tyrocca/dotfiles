@@ -330,9 +330,9 @@ MarkUnhealthy() {
 update_commerceservice() {
     curdir=$(PWD);
     klcs \
-    && cp -r client/commerceservice/client /Users/tyrocca/.pyenv/versions/2.7.18/envs/app/lib/python2.7/site-packages/commerceservice \
+    && cp -r client/commerceservice/client /Users/$USER/.pyenv/versions/2.7.18/envs/app/lib/python2.7/site-packages/commerceservice \
     && cd $curdir
 }
 
-alias klaviyocli='/Users/tyrocca/.klaviyocli/.venv/bin/klaviyocli'
+alias klaviyocli='/Users/$USER/.klaviyocli/.venv/bin/klaviyocli'
 
