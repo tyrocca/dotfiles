@@ -139,39 +139,44 @@ Plug 'junegunn/vim-easy-align'
 " Autocomplete - Neovim "
 """""""""""""""""""""""""
 " assuming your using vim-plug: https://github.com/junegunn/vim-plug
-if (has('nvim'))
-    Plug 'ncm2/ncm2'
-    " ncm2 requires nvim-yarp
-    Plug 'roxma/nvim-yarp'
 
-    Plug 'ncm2/ncm2-bufword'
-    Plug 'ncm2/ncm2-tmux'
-    Plug 'ncm2/ncm2-path'
-    Plug 'ncm2/ncm2-jedi'
-    Plug 'ncm2/ncm2-tern',  {'do': 'npm install'}
-    Plug 'ncm2/ncm2-cssomni'
-    " Trial Items
-    Plug 'ncm2/ncm2-path'
-    Plug 'ncm2/ncm2-github'
-    Plug 'ncm2/ncm2-pyclang'
-    " Plug 'ncm2/nvim-typescript', {'do': './install.sh'}
-    Plug 'ncm2/ncm2-go', { 'do': 'go get -u github.com/mdempsky/gocode' }
-    Plug 'ncm2/ncm2-markdown-subscope'
-    Plug 'ncm2/ncm2-html-subscope'
-    Plug 'ncm2/ncm2-tagprefix'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'pappasam/coc-jedi', { 'do': 'yarn install --frozen-lockfile && yarn build' }
 
-    " enable ncm2 for all buffer
-    autocmd BufEnter * call ncm2#enable_for_buffer()
 
-    " note that must keep noinsert in completeopt, the others is optional
-    set completeopt=noinsert,menuone,noselect
-    " Autoformater
-    Plug 'sbdchd/neoformat'
-else
-    Plug 'Shougo/deoplete.nvim'
-    Plug 'roxma/nvim-yarp'
-    Plug 'roxma/vim-hug-neovim-rpc'
-endif
+" if (has('nvim'))
+"     Plug 'ncm2/ncm2'
+"     " ncm2 requires nvim-yarp
+"     Plug 'roxma/nvim-yarp'
+
+"     Plug 'ncm2/ncm2-bufword'
+"     Plug 'ncm2/ncm2-tmux'
+"     Plug 'ncm2/ncm2-path'
+"     Plug 'ncm2/ncm2-jedi'
+"     Plug 'ncm2/ncm2-tern',  {'do': 'npm install'}
+"     Plug 'ncm2/ncm2-cssomni'
+"     " Trial Items
+"     Plug 'ncm2/ncm2-path'
+"     Plug 'ncm2/ncm2-github'
+"     Plug 'ncm2/ncm2-pyclang'
+"     " Plug 'ncm2/nvim-typescript', {'do': './install.sh'}
+"     Plug 'ncm2/ncm2-go', { 'do': 'go get -u github.com/mdempsky/gocode' }
+"     Plug 'ncm2/ncm2-markdown-subscope'
+"     Plug 'ncm2/ncm2-html-subscope'
+"     Plug 'ncm2/ncm2-tagprefix'
+
+"     " enable ncm2 for all buffer
+"     autocmd BufEnter * call ncm2#enable_for_buffer()
+
+"     " note that must keep noinsert in completeopt, the others is optional
+"     set completeopt=noinsert,menuone,noselect
+"     " Autoformater
+"     Plug 'sbdchd/neoformat'
+" else
+"     Plug 'Shougo/deoplete.nvim'
+"     Plug 'roxma/nvim-yarp'
+"     Plug 'roxma/vim-hug-neovim-rpc'
+" endif
 
 
 " Supertab
