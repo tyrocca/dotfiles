@@ -10,7 +10,9 @@ alias vimconfig="nvim ~/.vimrc"
 alias vimplugins="nvim ~/dotfiles/vim/plugins.vim"
 alias add_alias="nvim ~/dotfiles/zsh/aliases.zsh"
 alias disable_zsh_git='git config oh-my-zsh.hide-status 1'
-alias mypy='/Users/tyrocca/.pyenv/versions/neovim38/bin/mypy'
+alias mypy='/Users/$USER/.pyenv/versions/neovim/bin/mypy'
+# for mypy
+export MYPY_CACHE_DIR='/Users/$USER/.cache/mypy/'
 # quick source
 alias activate_env="source env/bin/activate"
 # chrome

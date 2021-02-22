@@ -19,16 +19,21 @@
 # 5. This file is (at present) OSX/Homebrew-only; support for additional platforms
 # belongs elsewhere.
 
-# OpenSSL fixups for many, many module installs.
-export CFLAGS="$CFLAGS -I$(brew --prefix openssl)/include"
-export LDFLAGS="$LDFLAGS -L$(brew --prefix openssl)/lib"
 
-# Remove 32bit defaulting for some parts of the 2.7.6 build system.
+export CFLAGS="$CFLAGS -I$(brew --prefix openssl@1.1)/include"
+export LDFLAGS="$LDFLAGS -L$(brew --prefix openssl@1.1)/lib -L/usr/local/opt/zlib/lib"
+export CPPFLAGS="-I/usr/local/opt/zlib/include"
 export ARCHFLAGS="$ARCHFLAGS -arch x86_64"
 
 # Useful when installing virtualenv management outside of/before pyenv. Not using
 # quotes permits tilde expansion.
-export PYENV_ROOT=${PYENV_ROOT:-~/.pyenv/}
+
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+# eval "$(pyenv init --path)"
+# eval "$(pyenv virtualenv-init - 2>/dev/null)"
+
+# export PYENV_ROOT=${PYENV_ROOT:-~/.pyenv/}
 
 export CQLSH_NO_BUNDLED=TRUE
 
@@ -52,20 +57,22 @@ klaviyo_services() {
 # (e.g. things using the "bash preexec" tools or debug traps to intercept "cd"
 # calls and/or hook filesystem navigation to run commands), you may encounter issues
 # when using the functions initialized below, since pyenv-virtualenv also does this.
-eval "$(pyenv init - 2>/dev/null)"
-eval "$(pyenv virtualenv-init - 2>/dev/null)"
+# eval "$(pyenv init - 2>/dev/null)"
+# eval "$(pyenv init -)"
+
+
 
 
 ################
 # SETUP THINGS #
 ################
 
-# NVM setup
-export NVM_DIR="$HOME/.nvm"
-# . "/usr/local/opt/nvm/nvm.sh"
-NVM_HOMEBREW="/usr/local/opt/nvm/nvm.sh"
-[ -s "$NVM_HOMEBREW" ] && \. "$NVM_HOMEBREW"
-[ -x "$(command -v npm)" ] && export NODE_PATH=$NODE_PATH:`npm root -g`
+# # NVM setup
+# export NVM_DIR="$HOME/.nvm"
+# # . "/usr/local/opt/nvm/nvm.sh"
+# NVM_HOMEBREW="/usr/local/opt/nvm/nvm.sh"
+# [ -s "$NVM_HOMEBREW" ] && \. "$NVM_HOMEBREW"
+# [ -x "$(command -v npm)" ] && export NODE_PATH=$NODE_PATH:`npm root -g`
 
 # export NVM_DIR="$HOME/.nvm"
 # [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
@@ -83,7 +90,7 @@ NVM_HOMEBREW="/usr/local/opt/nvm/nvm.sh"
 alias gitbr='git branch | lolcat'
 
 # for editing
-alias kl_bash="nvim ~/.klaviyo_dev_profile.zsh"
+alias kl_bash="nvim ~/$USER/dotfiles/zsh/klaviyo_dev_profile.zsh"
 
 # usage: gmb my_feature_branch > git checkout -b YYYYmm_my_feature_branch
 git_month_branch() {
@@ -110,8 +117,8 @@ alias gmco=git_month_checkout
 
 kljs() {
     cd ~/Klaviyo/Repos/fender/;
-    nvm use node;
-    nvm use 12.17.0;
+    # nvm use node;
+    # nvm use 12.17.0;
     if [[ $# -eq 0 ]] ; then
         return 0
     else
@@ -140,6 +147,10 @@ rmpyc() {
 
 klapp() {
     cd ~/Klaviyo/Repos/app/;
+}
+
+klapp3() {
+    cd ~/Klaviyo/Repos/app-py3/;
 }
 
 klcs() {
@@ -177,7 +188,11 @@ kldbshell() {
 }
 
 klshell() {
-    klapp && ./bin/django shell;
+    klapp && make COMMAND="exec app bash" compose
+}
+
+kllogs() {
+    klapp && make COMMAND='logs -ft app' composee
 }
 
 
@@ -239,6 +254,7 @@ kl_update() {
     # sed -i .bak "s/^Django = [^']*/Django = ${django_version}/" buildout.cfg && \
     # sed -i .bak "s/\(pyOpenSSL\)[^']*/\1 == 16.2.0/; s/\(django ==\) [^']*/\1 ${django_version}/" setup.py && \
     # mv buildout.cfg.bak buildout.cfg
+    rmpyc;
     export KLAVIYO_FORCE_DJANGO_VERSION=$django_version
     klapp && \
         KLAVIYO_FORCE_DJANGO_VERSION=${django_version} pip install -e . && \
@@ -247,7 +263,39 @@ kl_update() {
         # sed -i .bak "s/\(pyOpenSSL\)[^']*/\1 == 16.2.0/" setup.py && \
         # mv setup.py.bak setup.py
     unset KLAVIYO_FORCE_DJANGO_VERSION
+    make COMMAND="restart app" compose
     (sleep 2; echo flush_all; sleep 2; echo quit; ) | telnet 127.0.0.1 11211;
+
+}
+
+alias make3='make PYTHON_VERSION=3_7'
+
+kl_update3() {
+    django_version=""
+    if [[ $# -eq 0 ]] ; then
+        django_version=$django_current
+    else
+        django_version=$1
+    fi
+    echo "Setting django version to ${django_version}"
+
+    # should we check version?
+    # [[ $(./bin/django version) == $django_1_8 ]] && echo "true" || echo "false"
+    # sed -i .bak "s/^Django = [^']*/Django = ${django_version}/" buildout.cfg && \
+    # sed -i .bak "s/\(pyOpenSSL\)[^']*/\1 == 16.2.0/; s/\(django ==\) [^']*/\1 ${django_version}/" setup.py && \
+    # mv buildout.cfg.bak buildout.cfg
+    rmpyc;
+    export KLAVIYO_FORCE_DJANGO_VERSION=$django_version
+    klapp3 && \
+        KLAVIYO_FORCE_DJANGO_VERSION=${django_version} pip install -e . && \
+        pip install -r test_requirements.txt
+        # echo "flush_all" | nc localhost 11211 &&
+        # sed -i .bak "s/\(pyOpenSSL\)[^']*/\1 == 16.2.0/" setup.py && \
+        # mv setup.py.bak setup.py
+    unset KLAVIYO_FORCE_DJANGO_VERSION
+    make3 COMMAND="restart app" compose
+    (sleep 2; echo flush_all; sleep 2; echo quit; ) | telnet 127.0.0.1 11211;
+
 }
 
 kl_migrate() {
@@ -297,20 +345,32 @@ function tf() {
     fi
 }
 
+# OP HELPERS
+OP_FILE="/tmp/op_temp";
+op_login() {
+    if ! op list items > /dev/null; then
+        op signin rocca_family > $OP_FILE;
+        . $OP_FILE;
+    fi
+}
+if [[ -f "$OP_FILE" ]]; then
+    . $OP_FILE;
+fi
+
 # AWS MFA Helpers
 avprod() {
   # If you are not authenticated for 1pass then authenticate first
-  if ! op list items > /dev/null; then
-    eval $(op signin rocca_family)
-  fi
+  op_login
   aws-vault exec --mfa-token="$(op get totp aws-klaviyo)" klaviyo-prod -- zsh
 }
 
+alias klprod='op_login && aws-vault exec --mfa-token="$(op get totp aws-klaviyo)" klaviyo-prod'
+
+alias kldev='op_login && aws-vault exec --mfa-token="$(op get totp aws-klaviyo-dev)" klaviyo-dev'
+
 avdev() {
   # If you are not authenticated for 1pass then authenticate first
-  if ! op list items > /dev/null; then
-    eval $(op signin rocca_family)
-  fi
+  op_login
   aws-vault exec --mfa-token="$(op get totp aws-klaviyo-dev)" klaviyo-dev -- zsh
 }
 
@@ -330,9 +390,18 @@ MarkUnhealthy() {
 update_commerceservice() {
     curdir=$(PWD);
     klcs \
-    && cp -r client/commerceservice/client /Users/tyrocca/.pyenv/versions/2.7.18/envs/app/lib/python2.7/site-packages/commerceservice \
+    && cp -r client/commerceservice/client /Users/$USER/.pyenv/versions/2.7.18/envs/app/lib/python2.7/site-packages/commerceservice \
     && cd $curdir
 }
 
-alias klaviyocli='/Users/tyrocca/.klaviyocli/.venv/bin/klaviyocli'
+# alias klaviyocli='/Users/$USER/.klaviyocli/.venv/bin/klaviyocli'
 
+export PATH="$PATH:/Users/ty.rocca/.klaviyocli/.bin"
+autoload -Uz compinit && compinit
+fpath=('/Users/ty.rocca/.klaviyocli/.zshcompletions' $fpath)
+
+export KL_DEMAND='qw-on-demand-small-02d664a1582c76234'
+alias klssh="ssh $KL_DEMAND"
+
+eval "$(pyenv init --path)"
+eval "$(pyenv virtualenv-init -)"
