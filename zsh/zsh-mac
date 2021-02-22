@@ -10,7 +10,7 @@ DEFAULT_USER="ty.rocca"
 ZSH_THEME=robbyrussell
 # ZSH_THEME=ys
 # for adding date
-# RPROMPT="[%D{%y/%m/%f}|%@]"
+RPROMPT="[%D{%y/%m/%f}|%@]"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -90,6 +90,11 @@ PATH="/usr/local/bin:/usr/local/sbin:$PATH"
 
 # stack package recommended this:
 PATH="/Users/$USER/.local/bin:$PATH"
+
+# Add NVM
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # add yarn to the path
 PATH="`yarn global bin`:$PATH"
@@ -232,7 +237,3 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 
 alias tmuxp="${HOME}/.pyenv/versions/python3-misc/bin/tmuxp"
 export DISABLE_AUTO_TITLE='true'
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
