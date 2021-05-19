@@ -1,10 +1,6 @@
 # this is the iterm integration
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
-# OPAM configuration
-. /Users/tyrocca/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
-
-
 # the fuck plugin
 eval $(thefuck --alias)
 
@@ -26,9 +22,3 @@ gcob() {
         branch=$(echo "$branches" | fzf +m --reverse --height 40%) &&
         git checkout $(echo "$branch" | awk '{print $1}' | sed "s/.* //")
 }
-
-###########
-# Klaviyo #
-###########
-# source ~/.klaviyo_dev_profile.zsh
-

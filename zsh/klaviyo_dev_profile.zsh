@@ -60,12 +60,12 @@ eval "$(pyenv virtualenv-init - 2>/dev/null)"
 # SETUP THINGS #
 ################
 
-# NVM setup
-export NVM_DIR="$HOME/.nvm"
-# . "/usr/local/opt/nvm/nvm.sh"
-NVM_HOMEBREW="/usr/local/opt/nvm/nvm.sh"
-[ -s "$NVM_HOMEBREW" ] && \. "$NVM_HOMEBREW"
-[ -x "$(command -v npm)" ] && export NODE_PATH=$NODE_PATH:`npm root -g`
+# # NVM setup
+# export NVM_DIR="$HOME/.nvm"
+# # . "/usr/local/opt/nvm/nvm.sh"
+# NVM_HOMEBREW="/usr/local/opt/nvm/nvm.sh"
+# [ -s "$NVM_HOMEBREW" ] && \. "$NVM_HOMEBREW"
+# [ -x "$(command -v npm)" ] && export NODE_PATH=$NODE_PATH:`npm root -g`
 
 # export NVM_DIR="$HOME/.nvm"
 # [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
@@ -110,8 +110,8 @@ alias gmco=git_month_checkout
 
 kljs() {
     cd ~/Klaviyo/Repos/fender/;
-    nvm use node;
-    nvm use 12.17.0;
+    # nvm use node;
+    # nvm use 12.17.0;
     if [[ $# -eq 0 ]] ; then
         return 0
     else
@@ -140,6 +140,10 @@ rmpyc() {
 
 klapp() {
     cd ~/Klaviyo/Repos/app/;
+}
+
+klapp3() {
+    cd ~/Klaviyo/Repos/app-py3/;
 }
 
 klcs() {
@@ -177,7 +181,11 @@ kldbshell() {
 }
 
 klshell() {
-    klapp && ./bin/django shell;
+    klapp && make COMMAND="exec app bash" compose
+}
+
+kllogs() {
+    klapp && make COMMAND='logs -ft app' composee
 }
 
 
@@ -239,6 +247,7 @@ kl_update() {
     # sed -i .bak "s/^Django = [^']*/Django = ${django_version}/" buildout.cfg && \
     # sed -i .bak "s/\(pyOpenSSL\)[^']*/\1 == 16.2.0/; s/\(django ==\) [^']*/\1 ${django_version}/" setup.py && \
     # mv buildout.cfg.bak buildout.cfg
+    rmpyc;
     export KLAVIYO_FORCE_DJANGO_VERSION=$django_version
     klapp && \
         KLAVIYO_FORCE_DJANGO_VERSION=${django_version} pip install -e . && \
@@ -247,7 +256,39 @@ kl_update() {
         # sed -i .bak "s/\(pyOpenSSL\)[^']*/\1 == 16.2.0/" setup.py && \
         # mv setup.py.bak setup.py
     unset KLAVIYO_FORCE_DJANGO_VERSION
+    make COMMAND="restart app" compose
     (sleep 2; echo flush_all; sleep 2; echo quit; ) | telnet 127.0.0.1 11211;
+
+}
+
+alias make3='make PYTHON_VERSION=3_7'
+
+kl_update3() {
+    django_version=""
+    if [[ $# -eq 0 ]] ; then
+        django_version=$django_current
+    else
+        django_version=$1
+    fi
+    echo "Setting django version to ${django_version}"
+
+    # should we check version?
+    # [[ $(./bin/django version) == $django_1_8 ]] && echo "true" || echo "false"
+    # sed -i .bak "s/^Django = [^']*/Django = ${django_version}/" buildout.cfg && \
+    # sed -i .bak "s/\(pyOpenSSL\)[^']*/\1 == 16.2.0/; s/\(django ==\) [^']*/\1 ${django_version}/" setup.py && \
+    # mv buildout.cfg.bak buildout.cfg
+    rmpyc;
+    export KLAVIYO_FORCE_DJANGO_VERSION=$django_version
+    klapp3 && \
+        KLAVIYO_FORCE_DJANGO_VERSION=${django_version} pip install -e . && \
+        pip install -r test_requirements.txt
+        # echo "flush_all" | nc localhost 11211 &&
+        # sed -i .bak "s/\(pyOpenSSL\)[^']*/\1 == 16.2.0/" setup.py && \
+        # mv setup.py.bak setup.py
+    unset KLAVIYO_FORCE_DJANGO_VERSION
+    make3 COMMAND="restart app" compose
+    (sleep 2; echo flush_all; sleep 2; echo quit; ) | telnet 127.0.0.1 11211;
+
 }
 
 kl_migrate() {
@@ -330,9 +371,13 @@ MarkUnhealthy() {
 update_commerceservice() {
     curdir=$(PWD);
     klcs \
-    && cp -r client/commerceservice/client /Users/tyrocca/.pyenv/versions/2.7.18/envs/app/lib/python2.7/site-packages/commerceservice \
+    && cp -r client/commerceservice/client /Users/$USER/.pyenv/versions/2.7.18/envs/app/lib/python2.7/site-packages/commerceservice \
     && cd $curdir
 }
 
-alias klaviyocli='/Users/tyrocca/.klaviyocli/.venv/bin/klaviyocli'
+# alias klaviyocli='/Users/$USER/.klaviyocli/.venv/bin/klaviyocli'
 
+export TARGET_PROCESS_TOKEN="MTAzOk5BY2VzZkNFeFdER2hSUnRoSEwrbnRYWVVSRGtwVHpjQ0x3Z0RrVWJTQ009"
+export PATH="$PATH:/Users/ty.rocca/.klaviyocli/.bin"
+autoload -Uz compinit && compinit
+fpath=('/Users/ty.rocca/.klaviyocli/.zshcompletions' $fpath)
