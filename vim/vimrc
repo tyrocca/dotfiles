@@ -409,8 +409,8 @@ endif
 " let g:neomake_python_enabled_makers = ['pylint']
 " let g:neomake_python_enabled_makers = ['pylint', 'flake8']
 " Ignore Errors
-let g:neomake_python_mypy_exe = '~/.pyenv/versions/neovim38/bin/mypy'
-let g:neomake_python_flake8_exe = '~/.pyenv/versions/neovim38/bin/flake8'
+let g:neomake_python_mypy_exe = $PYENV_ROOT . '/versions/neovim/bin/mypy'
+let g:neomake_python_flake8_exe = $PYENV_ROOT . '/versions/neovim/bin/flake8'
 let g:neomake_python_enabled_makers = ['flake8', 'mypy']
 let g:neomake_python_flake8_args = ['--max-line-length=88', '--ignore=W391']
 " let g:neomake_python_flake8_args = ['--max-line-length=88', '--ignore=W391']

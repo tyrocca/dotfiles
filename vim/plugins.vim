@@ -76,7 +76,7 @@ Plug 'hynek/vim-python-pep8-indent', { 'for': 'python' }
 
 " Trial item
 if (has('nvim'))
-    Plug 'psf/black', { 'tag': '19.10b0' }
+    Plug 'psf/black', { 'tag': '20.8b1' }
     " Plug 'psf/black'
 endif
 " Plug 'heavenshell/vim-pydocstring', { 'for': 'python' }
@@ -325,7 +325,7 @@ call plug#end()
     "Plug 'sbdchd/neoformat'
 
 "" LSP
-Plug 'autozimu/LanguageClient-neovim', {
-            \ 'branch': 'next',
-            \ 'do': 'bash install.sh',
-            \ }
+" Plug 'autozimu/LanguageClient-neovim', {
+"             \ 'branch': 'next',
+"             \ 'do': 'bash install.sh',
+"             \ }
