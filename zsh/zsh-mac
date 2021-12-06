@@ -1,7 +1,7 @@
 # Path to your oh-my-zsh installation.
-export ZSH="/Users/tyrocca/.oh-my-zsh"
+export ZSH="/Users/ty.rocca/.oh-my-zsh"
 
-DEFAULT_USER="tyrocca"
+DEFAULT_USER="ty.rocca"
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -120,6 +120,11 @@ export GOPATH="$(go env GOPATH)"
 # add rust
 PATH="$PATH:$HOME/.cargo/bin"
 
+# Pyenv
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init --path)"
+
 export PATH
 
 # export MANPATH="/usr/local/man:$MANPATH"
@@ -151,7 +156,7 @@ export KEYTIMEOUT=1
 
 # set cow says thing - this is always fun :)
 random_cowsay() {
-    COWDIR="/usr/local/Cellar/cowsay/3.04/share/cows/"
+    COWDIR="/usr/local/Cellar/cowsay/3.04_1/share/cows/"
     fortune | cowsay -f $(ls $COWDIR*.cow | gshuf | head -n1) | lolcat
     echo ""
 }
@@ -201,8 +206,6 @@ clean_merged_branches() {
 . ~/dotfiles/zsh/addons.zsh
 . ~/dotfiles/zsh/klaviyo_dev_profile.zsh
 
-if [ -e /Users/tyrocca/.nix-profile/etc/profile.d/nix.sh ]; then . /Users/tyrocca/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
-
 ########
 # MISC #
 ########
@@ -230,13 +233,11 @@ export GPG_TTY=$(tty)
 alias godir="cd $GOPATH/src/github.com/tyrocca/"
 
 
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/tyrocca/Downloads/google-cloud-sdk 2/path.zsh.inc' ]; then . '/Users/tyrocca/Downloads/google-cloud-sdk 2/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/Users/tyrocca/Downloads/google-cloud-sdk 2/completion.zsh.inc' ]; then . '/Users/tyrocca/Downloads/google-cloud-sdk 2/completion.zsh.inc'; fi
-
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
 alias tmuxp="${HOME}/.pyenv/versions/python3-misc/bin/tmuxp"
 export DISABLE_AUTO_TITLE='true'
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

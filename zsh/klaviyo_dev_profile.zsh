@@ -330,9 +330,20 @@ MarkUnhealthy() {
 update_commerceservice() {
     curdir=$(PWD);
     klcs \
-    && cp -r client/commerceservice/client /Users/tyrocca/.pyenv/versions/2.7.18/envs/app/lib/python2.7/site-packages/commerceservice \
+    && cp -r client/commerceservice/client /Users/$USER/.pyenv/versions/2.7.18/envs/app/lib/python2.7/site-packages/commerceservice \
     && cd $curdir
 }
 
-alias klaviyocli='/Users/tyrocca/.klaviyocli/.venv/bin/klaviyocli'
+alias klaviyocli='/Users/$USER/.klaviyocli/.venv/bin/klaviyocli'
 
+
+function s2a-login {
+        export SAML2AWS_CREDENTIALS_FILE=$(mktemp)
+        saml2aws login --force --skip-prompt --cache-saml "$@" && {
+                AWS_ROLE=$(grep ^x_principal_arn "${SAML2AWS_CREDENTIALS_FILE}" 2>/dev/null | cut -d/ -f2)
+                source <(saml2aws script)
+                export S2A_AWS_ROLE="[${AWS_ROLE}] "
+        }
+        rm -rf ${SAML2AWS_CREDENTIALS_FILE}
+        unset SAML2AWS_CREDENTIALS_FILE
+}
