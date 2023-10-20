@@ -52,6 +52,15 @@ Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'javascript.jsx', 'types
 " Javascript doc tool
 Plug 'heavenshell/vim-jsdoc', { 'for': ['javascript', 'javascript.jsx'] }
 
+" Protobuf
+Plug 'yoheimuta/vim-protolint'
+
+Plug 'google/vim-maktaba'
+Plug 'google/vim-codefmt'
+" Also add Glaive, which is used to configure codefmt's maktaba flags. See
+" `:help :Glaive` for usage.
+Plug 'google/vim-glaive'
+
 " Typescript
 Plug 'HerringtonDarkholme/yats.vim'
 
@@ -118,7 +127,7 @@ Plug 'tpope/vim-commentary'
 Plug 'takac/vim-hardtime'
 
 " Async highlighting
-Plug 'neomake/neomake'
+" Plug 'neomake/neomake'
 
 " Surround
 Plug 'tpope/vim-surround'
@@ -142,45 +151,6 @@ Plug 'junegunn/vim-easy-align'
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'pappasam/coc-jedi', { 'do': 'yarn install --frozen-lockfile && yarn build' }
-
-
-" if (has('nvim'))
-"     Plug 'ncm2/ncm2'
-"     " ncm2 requires nvim-yarp
-"     Plug 'roxma/nvim-yarp'
-
-"     Plug 'ncm2/ncm2-bufword'
-"     Plug 'ncm2/ncm2-tmux'
-"     Plug 'ncm2/ncm2-path'
-"     Plug 'ncm2/ncm2-jedi'
-"     Plug 'ncm2/ncm2-tern',  {'do': 'npm install'}
-"     Plug 'ncm2/ncm2-cssomni'
-"     " Trial Items
-"     Plug 'ncm2/ncm2-path'
-"     Plug 'ncm2/ncm2-github'
-"     Plug 'ncm2/ncm2-pyclang'
-"     " Plug 'ncm2/nvim-typescript', {'do': './install.sh'}
-"     Plug 'ncm2/ncm2-go', { 'do': 'go get -u github.com/mdempsky/gocode' }
-"     Plug 'ncm2/ncm2-markdown-subscope'
-"     Plug 'ncm2/ncm2-html-subscope'
-"     Plug 'ncm2/ncm2-tagprefix'
-
-"     " enable ncm2 for all buffer
-"     autocmd BufEnter * call ncm2#enable_for_buffer()
-
-"     " note that must keep noinsert in completeopt, the others is optional
-"     set completeopt=noinsert,menuone,noselect
-"     " Autoformater
-"     Plug 'sbdchd/neoformat'
-" else
-"     Plug 'Shougo/deoplete.nvim'
-"     Plug 'roxma/nvim-yarp'
-"     Plug 'roxma/vim-hug-neovim-rpc'
-" endif
-
-
-" Supertab
-" Plug 'ervandew/supertab'
 
 """"""""""""""""""""
 " Navigation Tools "
@@ -275,57 +245,3 @@ Plug 'johngrib/vim-game-code-break'
 
 " Add plugins to &runtimepath
 call plug#end()
-
-
-
-""""""""
-"" NCM "
-""""""""
-"""" Neocomplete dead
-"if has("nvim")
-"    " for python completions
-"    let g:python_support_python3_requirements =
-"                \ add(get(g:,'python_support_python3_requirements',[]),'jedi')
-"    " language specific completions on markdown file
-"    let g:python_support_python3_requirements =
-"                \ add(get(g:,'python_support_python3_requirements',[]),'mistune')
-
-"    " utils, optional
-"    let g:python_support_python3_requirements =
-"                \ add(get(g:,'python_support_python3_requirements',[]),'psutil')
-"    let g:python_support_python3_requirements =
-"                \ add(get(g:,'python_support_python3_requirements',[]),'setproctitle')
-"endif
-
-    """"""""""""""""""""""""""""""""""""""
-    "" DEPRECATED OLD VERSION OF COMPLETE "
-    """"""""""""""""""""""""""""""""""""""
-    "Plug 'roxma/nvim-completion-manager'
-    "Plug 'roxma/python-support.nvim'
-
-    "" * Snippets *
-    "" Track the engine.
-    "Plug 'SirVer/ultisnips'
-    "" Snippets are separated from the engine. Add this if you want them:
-    "Plug 'honza/vim-snippets'
-
-    "" C/C++ autocomplete
-    "Plug 'roxma/ncm-clang'
-
-    "" Python Autocomplete
-    "Plug 'davidhalter/jedi', { 'for': ['python'] }
-
-    "" Javascript (Tern autocomplete)
-    "Plug 'ternjs/tern_for_vim', { 'for': ['javascript', 'javascript.jsx'] }
-    "Plug 'roxma/nvim-cm-tern',  {'do': 'npm install'}
-    "" Plug 'othree/jspc.vim', { 'for': ['javascript', 'javascript.jsx'] }
-
-    "" Vimscript autocomplete
-    "Plug 'Shougo/neco-vim'
-    "Plug 'sbdchd/neoformat'
-
-"" LSP
-" Plug 'autozimu/LanguageClient-neovim', {
-"             \ 'branch': 'next',
-"             \ 'do': 'bash install.sh',
-"             \ }

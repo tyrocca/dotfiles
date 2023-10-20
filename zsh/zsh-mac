@@ -65,6 +65,9 @@ export EDITOR="nvim"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
+#
+export NVM_LAZY_LOAD=true
+export NVM_COMPLETION=true
 
 plugins=(git macos tmux python \
     zsh-nvm pip yarn)
@@ -78,8 +81,8 @@ source $ZSH/oh-my-zsh.sh
 
 # PATH=$(/usr/bin/getconf PATH)
 if [ -x /usr/libexec/path_helper ]; then
-	PATH=""
-	eval `/usr/libexec/path_helper -s`
+    PATH=""
+    eval `/usr/libexec/path_helper -s`
 fi
 
 # add this infront of path?
@@ -94,24 +97,15 @@ PATH="/usr/local/bin:/usr/local/sbin:$PATH"
 PATH="/Users/$USER/.local/bin:$PATH"
 
 # Add NVM
-export NVM_LAZY_LOAD=true
-# export NVM_COMPLETION=true
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # add yarn to the path
-PATH="`yarn global bin`:$PATH"
+# PATH="`yarn global bin`:$PATH"
 
 # add open ssl to path (this is very annoying) ????? HERE
 PATH="/usr/local/opt/openssl/bin:$PATH"
-
-# add terraform 0.11.7 for Klaviyo
-# PATH="$(brew --prefix)/Caskroom/terraform-0.11.7/0.11.7:$PATH"
-
-# add pgsql 10
-# PATH="/Applications/Postgres.app/Contents/Versions/10/bin:$PATH"
-PATH="/Applications/Postgres.app/Contents/Versions/11/bin:$PATH"
 
 # this for vim
 # PATH="/usr/local/opt/ncurses/bin:$PATH"
@@ -128,6 +122,8 @@ export GOPATH="$(go env GOPATH)"
 
 # add rust
 PATH="$PATH:$HOME/.cargo/bin"
+
+PATH="/usr/local/bin/ctags:$PATH"
 
 export PATH
 
@@ -207,8 +203,10 @@ clean_merged_branches() {
 ###########
 # Add-ons #
 ###########
+[ -f ~/.secrets.zsh ] && source ~/.secrets.zsh
 . ~/dotfiles/zsh/addons.zsh
 . ~/dotfiles/zsh/klaviyo_dev_profile.zsh
+
 
 ########
 # MISC #
@@ -235,9 +233,8 @@ export GPG_TTY=$(tty)
 ######
 
 alias godir="cd $GOPATH/src/github.com/$GIT_USER/"
-
-
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
 alias tmuxp="${HOME}/.pyenv/versions/python3-misc/bin/tmuxp"
 export DISABLE_AUTO_TITLE='true'
+

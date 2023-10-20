@@ -6,7 +6,7 @@ set nocompatible              " be iMproved, required
 
 if has('nvim')
     let g:python_host_prog = '~/.pyenv/versions/neovim27/bin/python'
-    let g:python3_host_prog = '~/.pyenv/versions/neovim/bin/python'
+    let g:python3_host_prog = '~/.pyenv/versions/neovim3/bin/python'
 endif
 
 
@@ -382,11 +382,17 @@ endif
 " Vim easy align "
 """"""""""""""""""
 " Start interactive EasyAlign in visual mode (e.g. vipga)
-xmap ga <Plug>(EasyAlign)
+xmap gl <Plug>(EasyAlign)
 
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
-nmap ga <Plug>(EasyAlign)
+nmap gl <Plug>(EasyAlign)
 
+"""""""""""""""""""
+" * pydocstring * "
+"""""""""""""""""""
+nmap <silent> ga <Plug>(coc-codeaction-line)
+xmap <silent> ga <Plug>(coc-codeaction-selected)
+nmap <silent> gA <Plug>(coc-codeaction)
 
 """""""""""""""""""""""
 " * Syntax Checking * "
@@ -409,8 +415,8 @@ endif
 " let g:neomake_python_enabled_makers = ['pylint']
 " let g:neomake_python_enabled_makers = ['pylint', 'flake8']
 " Ignore Errors
-let g:neomake_python_mypy_exe = $PYENV_ROOT . '/versions/neovim/bin/mypy'
-let g:neomake_python_flake8_exe = $PYENV_ROOT . '/versions/neovim/bin/flake8'
+let g:neomake_python_mypy_exe = $PYENV_ROOT . '/versions/neovim3/bin/mypy'
+let g:neomake_python_flake8_exe = $PYENV_ROOT . '/versions/neovim3/bin/flake8'
 let g:neomake_python_enabled_makers = ['flake8', 'mypy']
 let g:neomake_python_flake8_args = ['--max-line-length=88', '--ignore=W391']
 " let g:neomake_python_flake8_args = ['--max-line-length=88', '--ignore=W391']
@@ -422,7 +428,7 @@ let g:neomake_python_flake8_args = ['--max-line-length=88', '--ignore=W391']
 " let g:neomake_javascript_enabled_makers = ['eslint']
 " let g:neomake_jsx_enabled_makers = ['eslint']
 
-autocmd! BufWritePost * Neomake
+" autocmd! BufWritePost * Neomake
 
 """"""""""""""""""""
 " Undo helper tool "
@@ -524,6 +530,7 @@ augroup pencil
     autocmd FileType html setlocal ts=2 sts=2 sw=2
     autocmd FileType ruby setlocal ts=2 sts=2 sw=2
     autocmd FileType yaml setlocal ts=2 sts=2 sw=2
+    autocmd FileType proto setlocal ts=2 sts=2 sw=2
     autocmd FileType javascript,javascript.jsx,typescript,typescript.tsx,typescriptreact
                 \ setlocal ts=2 sts=2 sw=2 colorcolumn=100
                 \ | :iabbrev <buffer> True true
@@ -611,6 +618,12 @@ nmap [h <Plug>GitGutterPrevHunk
 au FileType gitcommit,gitrebase let g:gutentags_enabled=0
 let g:airline#extensions#tabline#enabled = 1
 
+" let g:gutentags_trace = 1
+let g:gutentags_enabled = 0
+let g:gutentags_ctags_executable = '/usr/local/Cellar/universal-ctags/HEAD-385c6b8/bin/ctags'
+
+let g:gutentags_ctags_exclude = ["*.min.js", "*.css", "media",  "*.js", "*.min.css", "build", "vendor", ".git", "node_modules", "*.vim/bundle/*"]
+
 " https://github.com/ludovicchabant/vim-gutentags/issues/179
 " let g:gutentags_file_list_command = {'markers': {'.pythontags': '/Users/tyrocca/Code/python-playground/python_file_lister.py'} }
 
@@ -630,7 +643,7 @@ let g:airline#extensions#tabline#enabled = 1
 
 
 " Give more space for displaying messages.
-set cmdheight=2
+" set cmdheight=2
 
 " Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
 " delays and poor user experience.
@@ -670,8 +683,8 @@ endif
 
 " Make <CR> auto-select the first completion item and notify coc.nvim to
 " format on enter, <cr> could be remapped by other vim plugin
-inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
-                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+  inoremap <silent><expr> <CR> coc#pum#visible() ? coc#_select_confirm()
+				\: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
 " Use `[g` and `]g` to navigate diagnostics
 " Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
