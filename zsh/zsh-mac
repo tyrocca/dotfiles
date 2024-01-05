@@ -1,7 +1,8 @@
 # Path to your oh-my-zsh installation.
-export ZSH="/Users/tyrocca/.oh-my-zsh"
-
-DEFAULT_USER="tyrocca"
+export ZSH=~/.oh-my-zsh
+# comment
+DEFAULT_USER="ty.rocca"
+GIT_USER="tyrocca"
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -10,7 +11,7 @@ DEFAULT_USER="tyrocca"
 ZSH_THEME=robbyrussell
 # ZSH_THEME=ys
 # for adding date
-# RPROMPT="[%D{%y/%m/%f}|%@]"
+RPROMPT="[%D{%y/%m/%f}|%@]"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -49,6 +50,7 @@ DISABLE_UPDATE_PROMPT=true
 # stamp shown in the history command output.
 # The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
 # HIST_STAMPS="mm/dd/yyyy"
+SAVE_HIST=1000000
 
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
@@ -63,9 +65,12 @@ export EDITOR="nvim"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
+#
+export NVM_LAZY_LOAD=true
+export NVM_COMPLETION=true
 
-plugins=(git osx tmux tmuxinator web-search python autojump \
-    django pyenv npm zsh-nvm pip yarn docker zsh-aws-vault)
+plugins=(git macos tmux python \
+    zsh-nvm pip yarn)
 
 # here we source oh my zsh
 source $ZSH/oh-my-zsh.sh
@@ -76,8 +81,8 @@ source $ZSH/oh-my-zsh.sh
 
 # PATH=$(/usr/bin/getconf PATH)
 if [ -x /usr/libexec/path_helper ]; then
-	PATH=""
-	eval `/usr/libexec/path_helper -s`
+    PATH=""
+    eval `/usr/libexec/path_helper -s`
 fi
 
 # add this infront of path?
@@ -91,18 +96,16 @@ PATH="/usr/local/bin:/usr/local/sbin:$PATH"
 # stack package recommended this:
 PATH="/Users/$USER/.local/bin:$PATH"
 
+# Add NVM
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
 # add yarn to the path
-PATH="`yarn global bin`:$PATH"
+# PATH="`yarn global bin`:$PATH"
 
 # add open ssl to path (this is very annoying) ????? HERE
 PATH="/usr/local/opt/openssl/bin:$PATH"
-
-# add terraform 0.11.7 for Klaviyo
-PATH="$(brew --prefix)/Caskroom/terraform-0.11.7/0.11.7:$PATH"
-
-# add pgsql 10
-# PATH="/Applications/Postgres.app/Contents/Versions/10/bin:$PATH"
-PATH="/Applications/Postgres.app/Contents/Versions/11/bin:$PATH"
 
 # this for vim
 # PATH="/usr/local/opt/ncurses/bin:$PATH"
@@ -119,6 +122,8 @@ export GOPATH="$(go env GOPATH)"
 
 # add rust
 PATH="$PATH:$HOME/.cargo/bin"
+
+PATH="/usr/local/bin/ctags:$PATH"
 
 export PATH
 
@@ -151,7 +156,7 @@ export KEYTIMEOUT=1
 
 # set cow says thing - this is always fun :)
 random_cowsay() {
-    COWDIR="/usr/local/Cellar/cowsay/3.04/share/cows/"
+    COWDIR="/usr/local/Cellar/cowsay/3.04_1/share/cows/"
     fortune | cowsay -f $(ls $COWDIR*.cow | gshuf | head -n1) | lolcat
     echo ""
 }
@@ -198,10 +203,10 @@ clean_merged_branches() {
 ###########
 # Add-ons #
 ###########
+[ -f ~/.secrets.zsh ] && source ~/.secrets.zsh
 . ~/dotfiles/zsh/addons.zsh
 . ~/dotfiles/zsh/klaviyo_dev_profile.zsh
 
-if [ -e /Users/tyrocca/.nix-profile/etc/profile.d/nix.sh ]; then . /Users/tyrocca/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
 
 ########
 # MISC #
@@ -227,16 +232,9 @@ export GPG_TTY=$(tty)
 # Go #
 ######
 
-alias godir="cd $GOPATH/src/github.com/tyrocca/"
-
-
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/tyrocca/Downloads/google-cloud-sdk 2/path.zsh.inc' ]; then . '/Users/tyrocca/Downloads/google-cloud-sdk 2/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/Users/tyrocca/Downloads/google-cloud-sdk 2/completion.zsh.inc' ]; then . '/Users/tyrocca/Downloads/google-cloud-sdk 2/completion.zsh.inc'; fi
-
+alias godir="cd $GOPATH/src/github.com/$GIT_USER/"
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
 alias tmuxp="${HOME}/.pyenv/versions/python3-misc/bin/tmuxp"
 export DISABLE_AUTO_TITLE='true'
+

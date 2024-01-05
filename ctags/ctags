@@ -98,3 +98,4 @@
 --exclude=test
 --exclude=tests
 --exclude=build
+--exclude=src/learning/media/*
