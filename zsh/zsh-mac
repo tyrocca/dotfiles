@@ -1,6 +1,6 @@
 # Path to your oh-my-zsh installation.
 export ZSH=~/.oh-my-zsh
-
+# comment
 DEFAULT_USER="ty.rocca"
 GIT_USER="tyrocca"
 
